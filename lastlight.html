@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Last Light | K.8</title>
+  <meta name="description" content="A cozy-meets-chaos zombie defense where you build the ultimate home base. Farm by day, defend by night." />
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="lastlight.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Last Light"/>
+  <meta property="og:description" content="Farm by day, defend by night. Build the ultimate home base in a stylized zombie survival sim."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Last Light",
+    "author":{"@type":"Organization","name":"K.8"},
+    "genre":["Simulation","Survival","Defense"],
+    "gamePlatform":["PC","Console"],
+    "description":"A farming and base-building survival game where you craft, fortify, and defend a homestead against nightly hordes.",
+    "url":"https://your-domain.com/lastlight.html"
+  }
+  </script>
+  <script>
+    // Dropdown toggle
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          dropdown.setAttribute('data-open', 'true');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      } else {
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified and including this page) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="K.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="K.8 Studio" class="brand-logo" />
+        <span class="brand-name">K.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="lastlight.html">Last Light</a>
+          </div>
+        </div>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="about.html">About</a>
+        <a href="join.html">Join Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">Zombie Defense Farm Sim</p>
+        <h1 class="kb-title">Last Light</h1>
+        <p class="kb-lead">
+          A cozy-meets-chaos zombie defense where the goal is simple and ambitious:
+          <strong>build the ultimate home base.</strong> Farm and craft by day, fortify and defend by night.
+          A charming 2D pixel art survival sim that feels like <em>Harvest Moon</em> meets <em>Stardew Valley</em> 
+          with the tension of <em>Project Zomboid</em>.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#funding" class="btn primary">View Funding Ask</a>
+          <a href="contact.html" class="btn">Request Full Deck</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- LOGLINE / SUMMARY -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Logline</p>
+          <h2>What is Last Light?</h2>
+          <p class="kb-muted">
+            A charming 2D survival sim about turning a derelict plot into a fortified haven.
+            Grow food, craft defenses, recruit neighbors, and design ingenious base layouts to withstand escalating nightly raids.
+            Your layout—and your choices—write the story.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Genre</dt><dd>Farming & Crafting • Survival Defense</dd></div>
+            <div><dt>Camera</dt><dd>2D Top-Down (Pixel Art)</dd></div>
+            <div><dt>Stage</dt><dd>Prototype planning → Vertical slice</dd></div>
+            <div><dt>Platform</dt><dd>PC (primary), Console (secondary)</dd></div>
+            <div><dt>Session</dt><dd>20–40 min day/night loops • Long-term base goals</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Base First</h3>
+            <p class="kb-muted">The base is the hero. Layout, choke points, traps, power routing, and upgrade paths are the core puzzle.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Cozy Day / Tense Night</h3>
+            <p class="kb-muted">Meditative farming and building by day; tactical defense and panic-management by night.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Neighbors & Stories</h3>
+            <p class="kb-muted">Rescue and recruit NPCs with unique perks; their survival unlocks new stations, tech, and narrative beats.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Core Features</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Deep Base Building</h3>
+            <p class="kb-muted">Walls, gates, platforms; trap types (spike, flame, knockback), power grids, auto-turrets, sensor logic.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Farming & Crafting</h3>
+            <p class="kb-muted">Crops and preserves; metal/wood/stone chains; workbenches, generators, water collection, greenhouse upgrades.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Raids & AI</h3>
+            <p class="kb-muted">Pathfinding waves that adapt to your layout; boss variants; weather and blackout events that change tactics.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Companions</h3>
+            <p class="kb-muted">Recruit specialists (Engineer, Farmer, Guard). Assign shifts, morale buffs, and emergency protocols.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Progression</h3>
+            <p class="kb-muted">Tech tree from makeshift to industrial; blueprint hunts; prestige “New Threat” modes with modifiers.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Shareable Bases</h3>
+            <p class="kb-muted">Photo mode + blueprint export; creator challenges (limited resources, permadeath, storm season).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME LOOP -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Loop</p>
+          <h2>Farm • Build • Defend • Evolve</h2>
+          <ul class="kb-bullets">
+            <li><strong>Morning:</strong> Harvest, craft, plan upgrades, assign NPC tasks.</li>
+            <li><strong>Afternoon:</strong> Expand walls, lay traps, scout for parts, rescue survivors.</li>
+            <li><strong>Night:</strong> Defend the base—repair, reroute power, hold the line.</li>
+            <li><strong>After Action:</strong> Analyze damage heatmaps, unlock new tech, redesign chokepoints.</li>
+          </ul>
+        </div>
+        <aside class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Difficulty</dt><dd>Story, Survival, and “Blood Moon” challenge modes</dd></div>
+            <div><dt>Community</dt><dd>Blueprint sharing, seed challenges, creator spotlights</dd></div>
+            <div><dt>Accessibility</dt><dd>Combat assist toggles, color-blind friendly cues, UI scale</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PRODUCTION PLAN -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Production</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Team</h3>
+            <p class="kb-muted">Producer/Designer, Unity Developer, 2D Pixel Artist, 2D Animator, Sound Composer; rev-share QA.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Tech</h3>
+            <p class="kb-muted">Unity 2D, tile-based building grid, pathfinding AI, damage heatmaps, save states, blueprint export system.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Risks & Mitigation</h3>
+            <p class="kb-muted">Scope → gated tech tree & episodic seasons; Balance → telemetry + weekly playtests; Pixel art pipeline → modular sprite system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MILESTONES -->
+    <section class="kb-section" id="milestones">
+      <div class="kb-container">
+        <p class="kicker">Development Roadmap</p>
+        <h2>Concept to Playable</h2>
+        <p class="kb-muted" style="margin-bottom: 2rem;">Last Light is in early concept phase. Our roadmap focuses on rapid prototyping and validation.</p>
+        
+        <div class="kb-timeline">
+          <article class="kb-node">
+            <h4>Phase 1: Concept & Prototyping <span style="color:var(--seafoam);">(8-10 weeks)</span></h4>
+            <p class="kb-muted">Build core loop: grid-based building, basic resource gathering, simple raid encounter. Validate "tower defense meets base builder" hook.</p>
+          </article>
+          
+          <article class="kb-node">
+            <h4>Phase 2: Vertical Slice <span style="color:var(--seafoam);">(12-14 weeks)</span></h4>
+            <p class="kb-muted">Expand to 2-3 biomes, tech tree progression, power grid system, environmental storytelling. Create investor-ready demo build.</p>
+          </article>
+          
+          <article class="kb-node">
+            <h4>Phase 3: Pre-Production <span style="color:var(--seafoam);">(16-20 weeks)</span></h4>
+            <p class="kb-muted">Secure funding, finalize scope, build production team. Create full GDD, technical architecture, art bible. Plan for 18-month production cycle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNDING -->
+    <section class="kb-section" id="funding">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Funding Ask</p>
+          <h2>Raising: $90k – $150k</h2>
+          <p class="kb-muted">Use of funds: 2D pixel art assets, animation, AI & building systems, sound design and music, user research, and creator campaign for the slice.</p>
+          <ul class="kb-bullets">
+            <li>Flexible: equity, rev-share, or publishing partnership</li>
+            <li>Milestone-gated deliverables & transparent reporting</li>
+            <li>DLC-ready seasonal content plan (optional)</li>
+          </ul>
+          <div class="kb-cta-row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+            <a href="contact.html" class="btn primary">Investor Inquiry</a>
+            <a href="pipeline.html" class="btn">See Studio Slate</a>
+          </div>
+        </div>
+        <aside class="kb-pod">
+          <p class="kicker">Docs</p>
+          <div class="kb-docs">
+            <a class="kb-doc" href="/assets/lastlight/one-pager.pdf">One-Pager (PDF)</a>
+            <a class="kb-doc" href="/assets/lastlight/pitch-deck.pdf">Pitch Deck (PDF)</a>
+          </div>
+          <p class="kb-fine">Decks available upon request.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- GDD ACCESS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <div style="margin-top: 2rem; padding: 2rem; background: rgba(0,0,0,0.3); border-radius: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
+          <h3 style="margin-bottom: 1rem;">📋 Game Design Document</h3>
+          <p class="kb-muted" style="margin-bottom: 1.5rem;">
+            Access our comprehensive Game Design Document with detailed systems, roadmap, technical specs, and production plans. This password-protected resource is available to serious investors, potential partners, and collaborators.
+          </p>
+          <p class="kb-muted" style="margin-bottom: 1.5rem; font-size: 0.9em;">
+            <strong>Note:</strong> The GDD page is password-protected. Please <a href="contact.html" style="color: var(--seafoam); text-decoration: underline;">contact us</a> to request access credentials.
+          </p>
+          <div style="text-align: center;">
+            <a href="lastlight-gdd.html" class="btn primary">View Full GDD</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> K.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="lastlight.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

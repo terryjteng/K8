@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Untitled RPG | K.8</title>
+  <meta name="description" content="A classic turn-based JRPG with snappy combat, branching choices, and time-driven consequences."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="untitledrpg.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Untitled RPG"/>
+  <meta property="og:description" content="Classic turn-based combat meets a modern, choice-driven narrative."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Untitled RPG",
+    "author":{"@type":"Organization","name":"K.8"},
+    "genre":["Role-Playing","Turn-Based"],
+    "gamePlatform":["PC","Console"],
+    "description":"A love letter to classic JRPGs with a modern, branching narrative and expansive decision tree.",
+    "url":"https://your-domain.com/untitledrpg.html"
+  }
+  </script>
+  <script>
+    // Dropdown toggle
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          dropdown.setAttribute('data-open', 'true');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      } else {
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="K.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="K.8 Studio" class="brand-logo" />
+        <span class="brand-name">K.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="lastlight.html">Last Light</a>
+          </div>
+        </div>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="about.html">About</a>
+        <a href="join.html">Join Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">Turn-Based JRPG</p>
+        <h1 class="kb-title">Untitled RPG</h1>
+        <p class="kb-lead">
+          A tribute to classic, turn-based JRPGs—think <em>Chrono Trigger</em>, <em>EarthBound</em>, and <em>FFIII</em>—reimagined with a modern narrative system and an expansive decision tree inspired by <em>BG3</em> and <em>Detroit</em>.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#funding" class="btn primary">View Funding Ask</a>
+          <a href="contact.html" class="btn">Request Full Deck</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ONE-PAGER SUMMARY -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Logline</p>
+          <h2>What is Untitled RPG?</h2>
+          <p class="kb-muted">
+            A party-based, turn-based adventure where time-bending choices ripple through character arcs, locations, and boss routes. 
+            Emphasis on snappy battles, combo abilities, and a grounded, heartfelt story that branches widely without losing coherence.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Genre</dt><dd>Turn-Based RPG • Party Adventure</dd></div>
+            <div><dt>Combat</dt><dd>Timeline & combo-driven; status synergies; limit abilities</dd></div>
+            <div><dt>Stage</dt><dd>Concept → Prototype</dd></div>
+            <div><dt>Platform</dt><dd>PC (primary), Console (secondary)</dd></div>
+            <div><dt>Session</dt><dd>20–40 min quest beats • Boss routes</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Classic, Snappy Turn-Based</h3>
+            <p class="kb-muted">Readable turn order, dual-tech style combos, and status synergies that reward planning without bogging down pacing.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Expansive Decision Tree</h3>
+            <p class="kb-muted">Branching quests and character loyalties; decisions meaningfully reroute scenes, companions, and boss ladders.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Time & Consequence</h3>
+            <p class="kb-muted">Light time-skips and state changes reflect what the player chose—towns evolve, NPCs remember, endings vary.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Core Features</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Party Bonds</h3>
+            <p class="kb-muted">Dialogue choices shape duo/trio abilities and unlock unique combo arts in combat.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Route Variants</h3>
+            <p class="kb-muted">Multiple dungeon orders and optional boss lines; choices surface new paths and close others.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Overworld With Purpose</h3>
+            <p class="kb-muted">Exploration tightens narrative beats—town states, side quests, and crafting reflect your moral trajectory.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Modern UX</h3>
+            <p class="kb-muted">Fast travel, battle speed toggles, readable logs, quest tracking, and lossless respec windows.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Streamer-Friendly Modes</h3>
+            <p class="kb-muted">Seeded runs for challenge paths; spoiler-safe mode for first playthroughs.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Soundtrack First</h3>
+            <p class="kb-muted">Memorable leitmotifs for party members and regions; modern mix with retro instrumentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTION PLAN -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Production</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Team</h3>
+            <p class="kb-muted">Producer/Designer, Unity Engineer, 2D/Pixel Artist, Narrative Designer, Composer; rev-share contributors for UI and additional art.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Tech</h3>
+            <p class="kb-muted">Unity 2D; timeline/ATB-like combat system; ScriptableObjects for skills, status, AI routines.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Risks & Mitigation</h3>
+            <p class="kb-muted">Branch sprawl → act-based gates; Content load → modular quest templates; Balancing → weekly playtest cadence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MILESTONES -->
+    <section class="kb-section" id="milestones">
+      <div class="kb-container">
+        <p class="kicker">Milestones</p>
+        <div class="kb-timeline">
+          <article class="kb-node">
+            <h4>Prototype (Now → +14 weeks)</h4>
+            <p class="kb-muted">Combat core, 2 party members, 1 dungeon, 1 boss line, baseline decision tree.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Vertical Slice (+14 → +32 weeks)</h4>
+            <p class="kb-muted">3 dungeons, 4–5 party members, combo system, branching questline v1, art & audio pass, playtests.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Partner Build (+32 → +44 weeks)</h4>
+            <p class="kb-muted">Roadshow demo, wishlist campaign, creator program, platform submissions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNDING -->
+    <section class="kb-section" id="funding">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Funding Ask</p>
+          <h2>Raising: $80k – $140k</h2>
+          <p class="kb-muted">Use of funds: combat system & narrative tooling, art/animation burst, music & SFX, playtests, and partner-ready slice.</p>
+          <ul class="kb-bullets">
+            <li>Flexible structures: equity, rev-share, or publishing partnership</li>
+            <li>Milestone gates & transparent reporting</li>
+            <li>Potential multi-title slate conversation</li>
+          </ul>
+          <div class="kb-cta-row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+            <a href="contact.html" class="btn primary">Investor Inquiry</a>
+            <a href="pipeline.html" class="btn">See Studio Slate</a>
+          </div>
+        </div>
+        <aside class="kb-pod">
+          <p class="kicker">Docs</p>
+          <div class="kb-docs">
+            <a class="kb-doc" href="/assets/urpg/one-pager.pdf">One-Pager (PDF)</a>
+            <a class="kb-doc" href="/assets/urpg/pitch-deck.pdf">Pitch Deck (PDF)</a>
+          </div>
+          <p class="kb-fine">Decks available upon request.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> K.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="untitledrpg.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
