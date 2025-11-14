@@ -2,233 +2,311 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>K.8 Studios – Investor Overview</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="K.8 Studios investor overview: funding roadmap, business strategy, game production plans, and documentation for Hotdog Hustler and Last Light."
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
   />
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="investors.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <div class="brand-mark">K.8</div>
-        <div class="brand-text">
-          <span class="brand-name">K.8 Studios</span>
-          <span class="brand-tagline">Tomorrow’s pulse in indie games</span>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="#overview">Overview</a>
-        <a href="#funding">Funding Plan</a>
-        <a href="#documents">Document Library</a>
-        <a href="#roadmap">Execution Roadmap</a>
-        <a href="#studio-build">Studio Setup</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO + GAME PLAN + AT A GLANCE -->
-    <section id="overview" class="hero">
-      <div class="hero-inner">
-        <div class="hero-text">
-          <h1>From Micro-Game to Funded Studio</h1>
-          <p class="hero-subtitle">
-            K.8 Studios is using a deliberately small, shippable title –
-            <strong>Hotdog Hustler</strong> – to fund the formation of the studio, 
-            validate our workflows, and build a polished demo for
-            <strong>Last Light</strong>.
-          </p>
-          <div class="hero-pills">
-            <span class="pill">Micro-scope, 2D time-management game</span>
-            <span class="pill">Revenue-share team structure</span>
-            <span class="pill">Studio setup + Last Light demo</span>
+  <div class="page">
+    <!-- Top nav -->
+    <header class="site-header">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div class="brand-text">
+            <span>K.8 Studios</span>
+            <span>Tomorrow's pulse in indie games</span>
           </div>
         </div>
+        <nav class="nav-links">
+          <a class="nav-link" href="#overview">Overview</a>
+          <a class="nav-link" href="#funding">Funding Plan</a>
+          <a class="nav-link" href="#docs">Document Library</a>
+          <a class="nav-link" href="#roadmap">Execution Roadmap</a>
+          <a class="nav-link nav-link--primary" href="#studio">
+            <span class="nav-dot"></span>
+            <span>Studio Setup</span>
+          </a>
+        </nav>
       </div>
+    </header>
 
-      <!-- GAME PLAN STRIPE -->
-      <div class="stripe game-plan">
-        <div class="stripe-inner">
-          <p class="eyebrow">Our Strategy</p>
-          <h2 class="stripe-title">The Game Plan</h2>
-          <p class="stripe-lead">
-            We’re a studio built on shipping. Our path from first concept to funded
-            studio is deliberately narrow and milestone-driven: prove we can ship,
-            use revenue to stand up the studio, then build a publisher-ready demo
-            for <strong>Last Light</strong>.
-          </p>
-
-          <div class="step-grid">
-            <!-- Step 1 -->
-            <article class="step-card">
-              <span class="step-number">1</span>
-              <h3>Build &amp; Ship Hotdog Hustler</h3>
-              <p>
-                <strong>First priority.</strong> Complete development, polish, and launch
-                to generate initial revenue and prove we can ship quality titles on time.
-              </p>
-            </article>
-
-            <!-- Step 2 -->
-            <article class="step-card">
-              <span class="step-number">2</span>
-              <h3>Fund Studio Setup</h3>
-              <p>
-                Use Hotdog Hustler revenue to establish K.8 Studios LLC, handle legal and
-                accounting, and cover lightweight operational costs.
-              </p>
-            </article>
-
-            <!-- Step 3 -->
-            <article class="step-card">
-              <span class="step-number">3</span>
-              <h3>Develop the Last Light Demo</h3>
-              <p>
-                With core infrastructure in place, build a tight, vertical slice of
-                <strong>Last Light</strong> that shows our full capabilities.
-              </p>
-            </article>
-
-            <!-- Step 4 -->
-            <article class="step-card">
-              <span class="step-number">4</span>
-              <h3>Secure Publishing / Investment</h3>
-              <p>
-                Leverage a playable demo and proven shipping track record to attract
-                publisher or micro-angel funding for full production.
-              </p>
-            </article>
-          </div>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-copy-eyebrow">
+          <span>Investor Overview</span>
+          <span></span>
+          <span>Hotdog Hustler → Last Light</span>
+        </div>
+        <h1 id="hero-title" class="hero-title">
+          From <span class="highlight">micro-game</span> to funded studio.
+        </h1>
+        <p class="hero-lede">
+          K.8 Studios is using a deliberately small, shippable title –
+          <strong>Hotdog Hustler</strong> – to fund the formation of the
+          studio, validate our workflows, and build a polished demo for
+          <strong>Last Light</strong>.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-meta-badge">Micro-scope, 2D time-management game</div>
+          <div class="hero-meta-badge">Revenue-share team structure</div>
+          <div class="hero-meta-badge">Studio setup + Last Light demo</div>
+        </div>
+        <div class="hero-cta-row">
+          <button class="btn-primary" type="button">
+            <span>View Key Documents</span>
+            <span class="chevron">↗</span>
+          </button>
+          <button class="btn-ghost" type="button">
+            <span>Talk through the roadmap</span>
+          </button>
+        </div>
+        <div class="hero-footnote">
+          Every number and milestone on this page is backed by internal
+          documentation, sprint plans, and itemized budgets.
         </div>
       </div>
 
-      <!-- FINANCIAL OVERVIEW STRIPE -->
-      <div class="stripe financial-overview">
-        <div class="stripe-inner">
-          <p class="eyebrow">Financial Targets</p>
-          <h2 class="stripe-title">At a Glance</h2>
-          <p class="stripe-lead">
-            Realistic budgets grounded in itemized costs, with a clear path from micro-game
-            revenue to studio setup and a polished demo.
-          </p>
-
-          <div class="metric-grid">
-            <article class="metric-card">
-              <span class="metric-chip">Studio Setup Goal</span>
-              <p class="metric-value-large">$800 – $3K</p>
-              <p class="metric-caption">LLC + 3–6 months lightweight operations</p>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-chip">Last Light Demo Budget</span>
-              <p class="metric-value-large">$4K – $10.6K</p>
-              <p class="metric-caption">Development, art, sound, and QA</p>
-            </article>
-
-            <article class="metric-card">
-              <span class="metric-chip">Total Capital Range</span>
-              <p class="metric-value-large">$4.8K – $15.6K</p>
-              <p class="metric-caption">From “barebones but viable” to “comfortably resourced”</p>
-            </article>
+      <aside class="hero-visual" aria-label="Funding snapshot">
+        <div class="hero-visual-inner">
+          <div>
+            <div class="hero-tag">Snapshot</div>
+            <div class="hero-panel-title">
+              From first launch to investor-ready demo
+            </div>
+            <div class="hero-panel-sub">
+              Self-contained plan to ship Hotdog Hustler, form the studio, and
+              build a focused vertical slice of Last Light.
+            </div>
+          </div>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <div class="hero-metric-label">Studio Setup Goal</div>
+              <div class="hero-metric-value">$800 – $3K</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Last Light Demo</div>
+              <div class="hero-metric-value">$4K – $10.6K</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Total Capital Range</div>
+              <div class="hero-metric-value">$4.8K – $15.6K</div>
+            </div>
           </div>
         </div>
+      </aside>
+      <div class="hero-ribbon">
+        Grounded in itemized costs, with a clear path from
+        <span>micro-game revenue</span> to studio setup and a polished demo.
       </div>
     </section>
 
-    <!-- FUNDING PLAN -->
-    <section id="funding" class="section section-alt">
-      <div class="section-inner">
+    <main>
+      <!-- Strategy / Game Plan -->
+      <section id="overview" class="section" aria-labelledby="overview-title">
         <div class="section-header">
-          <h2>Funding Plan: Hotdog Hustler → Last Light Demo</h2>
+          <div>
+            <div class="section-kicker">Our strategy</div>
+            <h2 id="overview-title" class="section-title">The game plan</h2>
+          </div>
+        </div>
+        <div class="section-body">
           <p>
-            We’ve modeled revenue from <strong>Hotdog Hustler</strong> at both a
-            standard premium price and a $1 micro-price, then mapped that to
-            concrete milestones: studio setup, demo production, and investor
-            pitches.
+            We’re a studio built on shipping. Our path from first concept to
+            funded studio is deliberately narrow and milestone-driven: prove we
+            can ship, use revenue to stand up the studio, then build a
+            publisher-ready demo for Last Light.
+          </p>
+        </div>
+        <div class="strategy-grid">
+          <div class="strategy-steps" aria-label="Four-step strategy">
+            <div class="step">
+              <div class="step-index">1</div>
+              <div>
+                <div class="step-title">Build &amp; Ship Hotdog Hustler</div>
+                <div class="step-body">
+                  First priority. Complete development, polish, and launch to
+                  generate initial revenue and prove we can ship quality titles
+                  on time.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">2</div>
+              <div>
+                <div class="step-title">Fund Studio Setup</div>
+                <div class="step-body">
+                  Use Hotdog Hustler revenue to establish K.8 Studios LLC,
+                  handle legal and accounting, and cover lightweight operational
+                  costs.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">3</div>
+              <div>
+                <div class="step-title">Develop the Last Light Demo</div>
+                <div class="step-body">
+                  With core infrastructure in place, build a tight, vertical
+                  slice of Last Light that shows our full capabilities.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">4</div>
+              <div>
+                <div class="step-title">Secure Publishing / Investment</div>
+                <div class="step-body">
+                  Leverage a playable demo and proven shipping track record to
+                  attract publisher or micro-angel funding for full production.
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="strategy-note">
+            Hotdog Hustler isn’t just a first title – it’s our engine for
+            studio formation, workflow validation, and early community building,
+            designed from day one to be shippable within a lean, time-boxed
+            production window.
+          </p>
+        </div>
+      </section>
+
+      <!-- Funding / Financials -->
+      <section id="funding" class="section" aria-labelledby="funding-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Financial targets</div>
+            <h2 id="funding-title" class="section-title">At a glance</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            Realistic budgets grounded in itemized costs, with a clear path from
+            micro-game revenue to studio setup and a polished demo.
           </p>
         </div>
 
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>Phase 1 — Revenue via Hotdog Hustler</h3>
-            <p class="card-tag">Revenue Phase</p>
-            <p>
-              Ship a cozy 2D hotdog cart simulator on Steam/itch.io in ~2 months, 
-              using a lean revenue-share team and micro-scope design to ensure 
-              completion and polish.
+        <div class="stats-panel" aria-label="High-level budget ranges">
+          <div class="stats-grid">
+            <div>
+              <div class="stat-label">Studio Setup Goal</div>
+              <div class="stat-value">$800 – $3K</div>
+              <div class="doc-meta">LLC + 3–6 months lightweight operations</div>
+            </div>
+            <div>
+              <div class="stat-label">Last Light Demo Budget</div>
+              <div class="stat-value">$4K – $10.6K</div>
+              <div class="doc-meta">Development, art, sound, and QA</div>
+            </div>
+            <div>
+              <div class="stat-label">Total Capital Range</div>
+              <div class="stat-value">$4.8K – $15.6K</div>
+              <div class="doc-meta">
+                From “barebones but viable” to “comfortably resourced”
+              </div>
+            </div>
+          </div>
+          <div class="stat-caption">
+            We’ve modeled both a standard premium price and a $1 micro-price for
+            Hotdog Hustler, then mapped that revenue into concrete milestones
+            for studio setup, demo production, and investor pitches.
+          </div>
+        </div>
+
+        <div class="funding-layout">
+          <div>
+            <div class="funding-phase-label">
+              Phase 1 — Revenue via Hotdog Hustler
+            </div>
+            <div class="funding-phase-title">Revenue Phase</div>
+            <p class="section-body">
+              Ship a cozy 2D hotdog cart simulator on Steam/itch.io in ~2
+              months, using a lean revenue-share team and micro-scope design to
+              ensure completion and polish.
             </p>
-            <ul class="card-list">
+            <ul class="funding-list">
               <li>$4.99 base price with targeted $1 sales events</li>
               <li>Steam &amp; itch.io distribution</li>
               <li>50% of net revenue dedicated to studio fund</li>
             </ul>
-          </article>
 
-          <article class="card">
-            <h3>Phase 2 — Establish K.8 Studios LLC</h3>
-            <p class="card-tag">Operations Phase</p>
-            <p>
+            <div class="funding-phase-label" style="margin-top: 20px;">
+              Phase 2 — Establish K.8 Studios LLC
+            </div>
+            <div class="funding-phase-title">Operations Phase</div>
+            <p class="section-body">
               Use early revenue to formally create the California LLC, open
               business accounts, and set up core tools and legal infrastructure.
             </p>
-            <ul class="card-list">
+            <ul class="funding-list">
               <li>LLC registration, EIN, operating agreement</li>
               <li>Accounting &amp; banking setup</li>
               <li>Website &amp; studio communications (already in place)</li>
             </ul>
-          </article>
 
-          <article class="card">
-            <h3>Phase 3 — Build the Last Light Demo</h3>
-            <p class="card-tag">Production Phase</p>
-            <p>
-              Invest in a tight vertical slice of <strong>Last Light</strong> – one
-              biome, core loop, and a playable demo designed specifically for 
+            <div class="funding-phase-label" style="margin-top: 20px;">
+              Phase 3 — Build the Last Light Demo
+            </div>
+            <div class="funding-phase-title">Production Phase</div>
+            <p class="section-body">
+              Invest in a tight vertical slice of Last Light – one biome, core
+              loop, and a playable demo designed specifically for
               publisher/investor review.
             </p>
-            <ul class="card-list">
+            <ul class="funding-list">
               <li>Unity dev: $2.5K–$6K</li>
               <li>Art: $1K–$3K</li>
               <li>Sound: $300–$1K</li>
               <li>QA: $200–$600</li>
             </ul>
-          </article>
-        </div>
+          </div>
 
-        <div class="funding-scenarios">
-          <h3>Funding Scenarios</h3>
-          <div class="grid grid-2">
-            <div>
-              <h4>Self-Funded + Hustler Revenue</h4>
-              <p>
+          <aside class="funding-scenarios" aria-label="Funding scenarios">
+            <div class="scenario-label">Scenarios</div>
+
+            <div class="scenario">
+              <div class="scenario-title">Self-Funded + Hustler Revenue</div>
+              <div class="scenario-body">
                 Use Hotdog Hustler revenue plus small personal investment to
-                fund both studio setup and demo build. Requires
-                ~1,500–4,000 units at $4.99 or ~7,000–22,000 at $1.00.
-              </p>
+                fund both studio setup and demo build. Requires ~1,500–4,000
+                units at $4.99 or ~7,000–22,000 at $1.00.
+              </div>
             </div>
-            <div>
-              <h4>Hybrid / Investor-Backed (Recommended)</h4>
-              <p>
+
+            <div class="scenario">
+              <div class="scenario-title">
+                Hybrid / Investor-Backed (Recommended)
+              </div>
+              <div class="scenario-body">
                 Let Hustler fund studio formation, build 10–20% of the demo,
-                then leverage traction and prototype into
-                micro-angel/publisher funding ($20K–$75K range) for a
-                publisher-quality demo and marketing runway.
-              </p>
+                then leverage traction and prototype into micro-angel/publisher
+                funding ($20K–$75K range) for a publisher-quality demo and
+                marketing runway.
+              </div>
             </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Document Library -->
+      <section id="docs" class="section" aria-labelledby="docs-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Support material</div>
+            <h2 id="docs-title" class="section-title">Document library</h2>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- DOCUMENT LIBRARY -->
-    <section id="documents" class="section">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2>Document Library</h2>
+        <div class="section-body">
           <p>
             Every major claim on this page is backed by detailed internal
             documentation – from high-level strategy to sprint-by-sprint
@@ -236,276 +314,233 @@
           </p>
         </div>
 
-        <div class="doc-grid">
-          <!-- BUSINESS STRATEGY -->
-          <article class="doc-card">
-            <h3>K.8 Studios — Business Strategy</h3>
-            <p class="doc-type">Studio Strategy · PDF</p>
-            <p>
+        <div class="docs-grid">
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">K.8 Studios — Business Strategy</div>
+              <div class="doc-meta">Studio Strategy · PDF</div>
+            </div>
+            <div class="doc-bullets">
               Defines our mission, studio identity, phased formation strategy,
-              Hotdog Hustler revenue-share model, and long-term roadmap toward 
-              a mid-sized indie studio.
-            </p>
-            <ul class="doc-meta">
-              <li>Vision &amp; mission</li>
-              <li>Phase 1–4 growth model</li>
-              <li>Financial projections &amp; risks</li>
-            </ul>
-            <a href="docs/Kato8-Business-Strategy.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+              Hotdog Hustler revenue-share model, and long-term roadmap toward a
+              mid-sized indie studio.
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- FUNDING ROADMAP -->
-          <article class="doc-card">
-            <h3>K.8 Studios Funding Roadmap</h3>
-            <p class="doc-type">Financial Plan · PDF</p>
-            <p>
-              Detailed cost breakdown, pricing scenarios (including a $1
-              price point), funding paths, and risk analysis for the journey 
-              from Hotdog Hustler to Last Light demo.
-            </p>
-            <ul class="doc-meta">
-              <li>Studio &amp; demo budget ranges</li>
-              <li>Revenue scenarios &amp; unit targets</li>
-              <li>Timeline from launch to fundraising</li>
-            </ul>
-            <a href="docs/K8-Studios-Funding-Roadmap.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">K.8 Studios Funding Roadmap</div>
+              <div class="doc-meta">Financial Plan · PDF</div>
+            </div>
+            <div class="doc-bullets">
+              Detailed cost breakdown, pricing scenarios (including a $1 price
+              point), funding paths, and risk analysis for the journey from
+              Hotdog Hustler to Last Light demo.
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- STRATEGIC OVERVIEW -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — Strategic Overview</h3>
-            <p class="doc-type">Product Strategy · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — Strategic Overview</div>
+              <div class="doc-meta">Product Strategy · PDF</div>
+            </div>
+            <div class="doc-bullets">
               Frames Hotdog Hustler as a foundational micro-game: first shipped
-              title, LLC funding engine, workflow testbed, and early community 
+              title, LLC funding engine, workflow testbed, and early community
               foothold.
-            </p>
-            <ul class="doc-meta">
-              <li>Project purpose &amp; goals</li>
-              <li>Scope control &amp; design pillars</li>
-              <li>Marketing &amp; audience segmentation</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-Strategic-Overview.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- GDD -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — Master GDD (v2)</h3>
-            <p class="doc-type">Game Design · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — Master GDD (v2)</div>
+              <div class="doc-meta">Game Design · PDF</div>
+            </div>
+            <div class="doc-bullets">
               Full design specification: high concept, core loop, topping
-              system, systems design, art &amp; audio direction, balancing, and 
+              system, systems design, art &amp; audio direction, balancing, and
               future feature roadmap.
-            </p>
-            <ul class="doc-meta">
-              <li>Core &amp; meta loops</li>
-              <li>Finalized topping system</li>
-              <li>Technical design &amp; future v2 features</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-GDD-v2.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- PRODUCTION PLAN -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — Production Plan</h3>
-            <p class="doc-type">Production · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — Production Plan</div>
+              <div class="doc-meta">Production · PDF</div>
+            </div>
+            <div class="doc-bullets">
               A 6–8 week sprint plan with clearly defined roles, weekly
               milestones, QA plan, and release pipeline for Steam/itch.io.
-            </p>
-            <ul class="doc-meta">
-              <li>Team roles &amp; responsibilities</li>
-              <li>6 sprints + buffer weeks</li>
-              <li>QA &amp; release planning</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-Production-Plan.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- ROADMAP PHASE 1 -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — Phase 1 Roadmap</h3>
-            <p class="doc-type">Gameplay Roadmap · PDF</p>
-            <p>
-              Breaks the Hotdog Cart phase into three milestones across 
-              gameplay, UI/UX, art, and sound, culminating in a polished 
-              core loop and the ability to purchase the Food Truck.
-            </p>
-            <ul class="doc-meta">
-              <li>Milestones &amp; deliverables</li>
-              <li>System &amp; content priorities</li>
-              <li>Phase 1 “finish line” definition</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-Phase1-Roadmap.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — Phase 1 Roadmap</div>
+              <div class="doc-meta">Gameplay Roadmap · PDF</div>
+            </div>
+            <div class="doc-bullets">
+              Breaks the Hotdog Cart phase into three milestones across
+              gameplay, UI/UX, art, and sound, culminating in a polished core
+              loop and the ability to purchase the Food Truck.
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- ART ASSETS -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — Art Assets (Phase 1)</h3>
-            <p class="doc-type">Art Scope · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — Art Assets (Phase 1)</div>
+              <div class="doc-meta">Art Scope · PDF</div>
+            </div>
+            <div class="doc-bullets">
               Detailed checklist of all art required for the core release:
-              characters, environments, UI, HUD, upgrade menus, and 
-              animations with status tracking.
-            </p>
-            <ul class="doc-meta">
-              <li>Player &amp; customer animations</li>
-              <li>Topping &amp; cart assets</li>
-              <li>HUD, menus, and VFX</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-Art-Assets-Phase1.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+              characters, environments, UI, HUD, upgrade menus, and animations
+              with status tracking.
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- UI/UX WIREFRAMES -->
-          <article class="doc-card">
-            <h3>Hotdog Hustler — UI/UX Wireframes</h3>
-            <p class="doc-type">UX Design · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Hotdog Hustler — UI/UX Wireframes</div>
+              <div class="doc-meta">UX Design · PDF</div>
+            </div>
+            <div class="doc-bullets">
               Wireframes for the main menu, HUD, summary screens, upgrade shop,
-              pause menu, and tutorial overlays, aligning art needs with UX 
+              pause menu, and tutorial overlays, aligning art needs with UX
               flows.
-            </p>
-            <ul class="doc-meta">
-              <li>Main menu &amp; settings layouts</li>
-              <li>In-game HUD &amp; order flow</li>
-              <li>Upgrade shop &amp; tutorial tooltips</li>
-            </ul>
-            <a href="docs/Hotdog-Hustler-UIUX-Wireframes.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
 
-          <!-- STUDIO BUILD CHECKLIST -->
-          <article class="doc-card">
-            <h3>Studio Build — Checklist</h3>
-            <p class="doc-type">Ops &amp; Legal · PDF</p>
-            <p>
+          <div class="doc-row">
+            <div>
+              <div class="doc-title">Studio Build — Checklist</div>
+              <div class="doc-meta">Ops &amp; Legal · PDF</div>
+            </div>
+            <div class="doc-bullets">
               A structured checklist covering business formation, legal
-              contracts, tools &amp; systems, website legal requirements, and 
+              contracts, tools &amp; systems, website legal requirements, and
               financial operations planning.
-            </p>
-            <ul class="doc-meta">
-              <li>LLC, banking, licensing</li>
-              <li>NDA &amp; revenue-share agreements</li>
-              <li>Privacy policy &amp; terms of service</li>
-            </ul>
-            <a href="docs/K8-Studio-Build-Checklist.pdf" target="_blank" class="doc-link">
-              View / Download
-            </a>
-          </article>
+            </div>
+            <div class="doc-actions">
+              <a href="#">View / Download</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- EXECUTION ROADMAP -->
-    <section id="roadmap" class="section section-alt">
-      <div class="section-inner">
+      <!-- Roadmap / Studio -->
+      <section id="roadmap" class="section" aria-labelledby="roadmap-title">
         <div class="section-header">
-          <h2>Execution Roadmap</h2>
+          <div>
+            <div class="section-kicker">Execution</div>
+            <h2 id="roadmap-title" class="section-title">Execution roadmap</h2>
+          </div>
+        </div>
+        <div class="section-body">
           <p>
             We’ve already translated vision into concrete, timeboxed execution –
-            with sprints, roles, and deliverables defined from pre-production to release.
+            with sprints, roles, and deliverables defined from pre-production to
+            release.
           </p>
         </div>
 
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>Pre-Production</h3>
-            <p class="card-tag">~1 Week</p>
-            <ul class="card-list">
-              <li>Team onboarding &amp; ClickUp setup</li>
-              <li>GitHub repo creation &amp; architecture outline</li>
-              <li>Art tests &amp; finalized topping list</li>
-            </ul>
-          </article>
+        <div class="roadmap-grid">
+          <div class="timeline" aria-label="Production timeline for Hotdog Hustler">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Pre-Production</div>
+              <div class="tl-meta">~1 Week</div>
+              <div class="tl-body">
+                Team onboarding &amp; ClickUp setup, GitHub repo creation &amp;
+                architecture outline, and art tests with finalized topping list.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Sprints 1–3: Core Loop</div>
+              <div class="tl-meta">Weeks 1–3</div>
+              <div class="tl-body">
+                Input, cart state machine, and core interactions. Topping system
+                &amp; basic UI wired. Customer spawning, orders, timers, and
+                end-of-day summary. By Sprint 3: full loop playable, no new
+                features added.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Sprints 4–6: Content, Polish, Release</div>
+              <div class="tl-meta">Weeks 4–6 (+ buffer)</div>
+              <div class="tl-body">
+                Content completion &amp; animation integration, polish/QA with
+                multiple playtest rounds, and Steam/itch.io build pipeline and
+                store assets.
+              </div>
+            </div>
+          </div>
 
-          <article class="card">
-            <h3>Sprints 1–3: Core Loop</h3>
-            <p class="card-tag">Weeks 1–3</p>
-            <ul class="card-list">
-              <li>Input, cart state machine, and core interactions</li>
-              <li>Topping system &amp; basic UI wired</li>
-              <li>Customer spawning, orders, timers, and end-of-day summary</li>
-              <li>By Sprint 3: full loop playable, no new features added</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Sprints 4–6: Content, Polish, Release</h3>
-            <p class="card-tag">Weeks 4–6 (+ buffer)</p>
-            <ul class="card-list">
-              <li>Content completion &amp; animation integration</li>
-              <li>Polish/QA with multiple playtest rounds</li>
-              <li>Steam/itch.io build pipeline and store assets</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- STUDIO BUILD -->
-    <section id="studio-build" class="section">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2>Building a Sustainable Studio</h2>
-          <p>
-            Beyond one game, K.8 is structured to become a sustainable 
-            mid-sized indie studio with a strong IP pipeline (Last Light, Corebound, 
-            Big Boss Cleanup, and more).
-          </p>
-        </div>
-
-        <div class="grid grid-2">
-          <div>
-            <h3>Studio Formation Strategy</h3>
-            <ul class="bullet-list">
+          <div class="studio-block" id="studio">
+            <h4>Building a sustainable studio</h4>
+            <p>
+              Beyond one game, K.8 is structured to become a sustainable
+              mid-sized indie studio with a strong IP pipeline (Last Light,
+              Corebound, Big Boss Cleanup, and more).
+            </p>
+            <h4>Studio formation strategy</h4>
+            <ul class="studio-list">
               <li>Phase 1: Revenue-share, zero overhead, Hotdog Hustler</li>
               <li>Phase 2: Form K.8 Studios LLC, lock in legal &amp; ops</li>
               <li>Phase 3: Fund and build Last Light demo</li>
               <li>Phase 4: Grow into a multi-project mid-sized studio</li>
             </ul>
-          </div>
-          <div>
-            <h3>What We’re Looking For</h3>
+            <h4 style="margin-top: 14px;">What we’re looking for</h4>
             <p>
               We’re open to conversations with aligned partners who value:
             </p>
-            <ul class="bullet-list">
+            <ul class="studio-list">
               <li>Disciplined scope and realistic budgeting</li>
               <li>Strong documentation and transparent planning</li>
               <li>Roadmaps that actually map to shipping</li>
             </ul>
-            <p class="contact-note">
+            <p style="margin-top: 10px;">
               Interested in seeing deeper builds, decks, or internal boards?
               Reach out and we’ll walk you through the full pipeline.
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>&copy; K.8 Studios — Investor Overview</p>
-        <p class="footer-note">
-          All documents and figures are for planning purposes and can be
-          tailored to specific partner conversations.
-        </p>
-      </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div>© K.8 Studios — Investor Overview</div>
+      <small>
+        All documents and figures are for planning purposes and can be
+        tailored to specific partner conversations.
+      </small>
     </footer>
-  </main>
+  </div>
 </body>
 </html>
