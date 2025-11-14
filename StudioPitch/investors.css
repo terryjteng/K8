@@ -363,6 +363,7 @@ a {
 }
 
 /* Main content layout */
+/* Updated: 2025-11-14 */
 main {
   max-width: var(--content-width);
   margin: 0 auto 64px;
