@@ -3,34 +3,42 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Last Light — GDD & Pitch (Private) | K.8</title>
+  <title>Last Light — GDD & Pitch (Private) | Kato.8</title>
   <meta name="robots" content="noindex,nofollow"/>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="bigbosscleanup-gdd.css"/>
 
-  <!-- Scripts -->
   <script>
-    // Dropdown toggle
+    // Dropdown toggle (supports nested dropdowns)
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.dropdown > button');
       if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
         const dropdown = btn.parentElement;
         const isOpen = dropdown.getAttribute('data-open') === 'true';
-        document.querySelectorAll('.dropdown').forEach(d => {
-          d.setAttribute('data-open', 'false');
-          const b = d.querySelector('button');
-          if (b) b.setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          dropdown.setAttribute('data-open', 'true');
-          btn.setAttribute('aria-expanded', 'true');
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
         }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
       } else {
+        // Close all dropdowns when clicking outside
         document.querySelectorAll('.dropdown').forEach(d => {
           d.setAttribute('data-open', 'false');
-          const b = d.querySelector('button');
+          const b = d.querySelector(':scope > button');
           if (b) b.setAttribute('aria-expanded', 'false');
         });
       }
@@ -44,15 +52,16 @@
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="index.html" aria-label="K.8 Home">
-        <img src="Art/Branding/KatoK_indexLogo.png" alt="K.8 Studio" class="brand-logo" />
-        <span class="brand-name">K.8</span>
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
       </button>
       <nav id="nav-menu" class="nav-links" data-collapsed="true">
         <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
         <div class="dropdown" data-open="false">
           <button type="button" aria-expanded="false" aria-haspopup="true">
             Games
@@ -62,11 +71,21 @@
             <a href="corebound.html">Corebound</a>
             <a href="bigbosscleanup.html">Big Boss Cleanup</a>
             <a href="untitledrpg.html">Untitled RPG</a>
-            <a href="lastlight.html">Last Light</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
           </div>
         </div>
-        <a href="pipeline.html">Pipeline</a>
         <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
@@ -88,14 +107,13 @@
     </div>
   </section>
 
-  <!-- DECK LAYOUT -->
+  <!-- DECK -->
   <main id="gddContent" class="hidden">
-    <!-- Sidebar TOC + controls -->
     <aside class="deck-sidebar" aria-label="Slide navigation">
       <div class="deck-logo">
         <span class="brand-gem"></span>
         <strong>Last Light</strong>
-        <small>GDD & Pitch</small>
+        <small>GDD &amp; Pitch</small>
       </div>
       <nav id="deckTOC" class="deck-toc"></nav>
       <div class="deck-meta">
@@ -110,11 +128,15 @@
         <div class="slide-inner">
           <p class="kicker">Private • Do Not Distribute</p>
           <h1>Last Light</h1>
-          <h2>2D Zombie Defense Farm Sim • GDD + Pitch</h2>
-          <p class="lead">A charming 2D pixel art survival game where cozy farming by day meets tense base defense by night. Build the ultimate homestead against the undead.</p>
+          <h2>2D Zombie Survival &amp; Home-Fortification Game</h2>
+          <p class="lead">
+            A 2D zombie survival and home-fortification game where players gather wood, stone, and metal,
+            upgrade a single home, build turrets, and manage a shared ammo pool between themselves and
+            their defenses.
+          </p>
           <div class="cover-meta">
-            <div><strong>Studio:</strong> K.8</div>
-            <div><strong>Build Path:</strong> Prototype → Vertical Slice → Partner Build</div>
+            <div><strong>Studio:</strong> Kato.8</div>
+            <div><strong>Structure:</strong> Demo → Expanded Scope → Full Game</div>
             <div><strong>Contact:</strong> terryjteng@gmail.com</div>
           </div>
         </div>
@@ -125,12 +147,11 @@
         <div class="slide-inner">
           <h3>Executive Summary</h3>
           <ul class="bullets">
-            <li><strong>Core:</strong> A 2D top-down farming and base-building survival sim where you craft, fortify, and defend against nightly zombie hordes.</li>
-            <li><strong>Market Fit:</strong> Fans of Stardew Valley, Harvest Moon, and Project Zomboid—cozy farm sim meets tactical defense.</li>
-            <li><strong>Art Style:</strong> Charming pixel art with detailed environmental storytelling and expressive character animations.</li>
-            <li><strong>Unique Hook:</strong> Day/night rhythm where your base layout and defensive strategy are just as important as farming efficiency.</li>
-            <li><strong>Prototype (12w):</strong> Core building grid, crops, basic raids, traps v1, repair loop, simple survivor.</li>
-            <li><strong>VS (+16w):</strong> Three biomes, tech tree, power/sensors, boss raids, blueprint export, playtests.</li>
+            <li><strong>Core:</strong> 2D zombie survival and home-fortification focused on one upgradeable home.</li>
+            <li><strong>Loop:</strong> Gather wood, stone, and metal → strengthen the home and build turrets → manage shared ammo and survive zombie threats.</li>
+            <li><strong>Key Tension:</strong> The same ammo supports both the player’s gun and the home’s turrets.</li>
+            <li><strong>Demo Role:</strong> Prove that this resource and ammo loop is clear, satisfying, and sustainable.</li>
+            <li><strong>Full Game:</strong> Extend the same systems—more ways to gather, fortify, and decide how to use limited ammo—without changing the core identity.</li>
           </ul>
         </div>
       </article>
@@ -141,16 +162,25 @@
           <h3>Design Pillars</h3>
           <div class="grid-3">
             <div class="card">
-              <h4>Base First</h4>
-              <p>The homestead is the hero. Layout decisions, choke points, trap placement, and upgrade paths form the core strategic puzzle.</p>
+              <h4>Home at the Center</h4>
+              <p>
+                The home is the anchor. Players always come back to this single space and invest their
+                resources into keeping it standing.
+              </p>
             </div>
             <div class="card">
-              <h4>Cozy Day / Tense Night</h4>
-              <p>Meditative farming and crafting by day transforms into tactical defense and panic-management when the sun sets.</p>
+              <h4>Shared Ammo, Shared Fate</h4>
+              <p>
+                Ammo decisions affect both the player and their turrets. Spending aggressively now impacts
+                how well the home can be defended later.
+              </p>
             </div>
             <div class="card">
-              <h4>Neighbors & Stories</h4>
-              <p>Rescue and recruit NPCs with unique abilities and backstories. Their survival unlocks new crafting stations, tech, and narrative moments.</p>
+              <h4>Focused Feature Set</h4>
+              <p>
+                Systems stay tightly scoped: resources, home upgrades, turrets, machete, gun, and zombies.
+                The game grows by deepening these, not by adding unrelated features.
+              </p>
             </div>
           </div>
         </div>
@@ -159,860 +189,236 @@
       <!-- Core Loop -->
       <article class="slide" data-title="Core Loop">
         <div class="slide-inner">
-          <h3>Core Loop: Farm • Build • Defend • Evolve</h3>
+          <h3>Core Loop: Gather • Fortify • Survive</h3>
           <div class="grid-2">
             <div>
-              <h5>Morning Phase</h5>
+              <h5>Gather</h5>
               <ul class="bullets compact">
-                <li>Harvest crops and collect resources</li>
-                <li>Craft materials at workbenches</li>
-                <li>Plan base expansions and upgrades</li>
-                <li>Assign NPC tasks and schedules</li>
+                <li>Obtain wood, stone, and metal.</li>
+                <li>These resources are the foundation of every upgrade and turret.</li>
               </ul>
-              <h5>Afternoon Phase</h5>
+
+              <h5>Fortify</h5>
               <ul class="bullets compact">
-                <li>Build walls, gates, and platforms</li>
-                <li>Lay traps and set up defenses</li>
-                <li>Scout for salvage and parts</li>
-                <li>Rescue survivors from nearby areas</li>
+                <li>Spend resources to reinforce and improve the home.</li>
+                <li>Build and maintain turrets that support defense.</li>
               </ul>
             </div>
             <div>
-              <h5>Night Phase (Defense)</h5>
+              <h5>Survive</h5>
               <ul class="bullets compact">
-                <li>Defend against zombie waves</li>
-                <li>Repair damaged structures in real-time</li>
-                <li>Reroute power to critical systems</li>
-                <li>Hold defensive positions with NPCs</li>
+                <li>Use machete and gun while turrets provide supporting fire.</li>
+                <li>All gunfire and turret usage draw from the same ammo pool.</li>
+                <li>How long the home stands depends on resource and ammo choices.</li>
               </ul>
-              <h5>After Action</h5>
+
+              <h5>Repeat</h5>
               <ul class="bullets compact">
-                <li>Review damage heatmaps and breach points</li>
-                <li>Unlock new tech from research bench</li>
-                <li>Redesign chokepoints and trap layouts</li>
-                <li>Plan next day's improvements</li>
+                <li>Gather again, patch weaknesses, and adjust how resources and ammo are used.</li>
               </ul>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Farming & Crafting Systems -->
-      <article class="slide" data-title="Farming & Crafting">
+      <!-- Systems Overview -->
+      <article class="slide" data-title="Systems Overview">
         <div class="slide-inner">
-          <h3>Farming & Crafting Systems</h3>
-          <div class="grid-2">
-            <div>
-              <h5>Crops & Food Production</h5>
-              <ul class="bullets compact">
-                <li>10+ crop types with varying growth rates</li>
-                <li>Seasonal variants and weather effects</li>
-                <li>Food preservation: drying, canning, smoking</li>
-                <li>Greenhouse upgrades for year-round farming</li>
-                <li>Water collection and irrigation systems</li>
-              </ul>
-              <h5>Resource Chains</h5>
-              <ul class="bullets compact">
-                <li>Wood → Planks → Reinforced Walls</li>
-                <li>Metal Scrap → Plates → Turrets/Traps</li>
-                <li>Stone → Brick → Fortified Foundations</li>
-                <li>Electronics → Circuits → Power Grid</li>
-              </ul>
-            </div>
-            <div>
-              <h5>Crafting Stations</h5>
-              <ul class="bullets compact">
-                <li><strong>Workbench:</strong> Basic tools and repairs</li>
-                <li><strong>Forge:</strong> Metal items and weapons</li>
-                <li><strong>Electronics Bench:</strong> Sensors and power</li>
-                <li><strong>Chemistry Station:</strong> Medicine and fuel</li>
-                <li><strong>Research Desk:</strong> Tech tree unlocks</li>
-              </ul>
-              <h5>Blueprint System</h5>
-              <ul class="bullets compact">
-                <li>Discover blueprints through exploration</li>
-                <li>Learn from rescued NPCs</li>
-                <li>Research advanced tech combinations</li>
-                <li>Export/share base designs with community</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Base Building & Defense -->
-      <article class="slide" data-title="Base Building">
-        <div class="slide-inner">
-          <h3>Base Building & Defense</h3>
-          <div class="grid-2">
-            <div>
-              <h5>Structural Elements</h5>
-              <ul class="bullets compact">
-                <li>Walls (Wood → Stone → Reinforced Metal)</li>
-                <li>Gates and doors with lock systems</li>
-                <li>Elevated platforms and watchtowers</li>
-                <li>Underground bunkers and storage</li>
-                <li>Modular room system for specialization</li>
-              </ul>
-              <h5>Trap Types</h5>
-              <ul class="bullets compact">
-                <li><strong>Spike Traps:</strong> Ground-level damage zones</li>
-                <li><strong>Flame Traps:</strong> Area denial and crowd control</li>
-                <li><strong>Knockback Pads:</strong> Launch zombies off cliffs</li>
-                <li><strong>Electric Fences:</strong> Stun and damage combo</li>
-                <li><strong>Explosive Barrels:</strong> Manual detonation timing</li>
-              </ul>
-            </div>
-            <div>
-              <h5>Power Grid System</h5>
-              <ul class="bullets compact">
-                <li>Generators (Gas, Solar, Wind)</li>
-                <li>Power routing with cable management</li>
-                <li>Battery banks for backup power</li>
-                <li>Priority systems during brownouts</li>
-                <li>Auto-turrets and sensor networks</li>
-              </ul>
-              <h5>Advanced Defense</h5>
-              <ul class="bullets compact">
-                <li><strong>Auto-Turrets:</strong> Ammo-based automated guns</li>
-                <li><strong>Sensor Logic:</strong> Trigger traps on detection</li>
-                <li><strong>Spotlight System:</strong> Reveal zombies, boost accuracy</li>
-                <li><strong>Loudspeakers:</strong> Lure zombies to kill zones</li>
-                <li><strong>Emergency Protocols:</strong> NPC fallback positions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- NPC Companions -->
-      <article class="slide" data-title="NPC System">
-        <div class="slide-inner">
-          <h3>NPC Companions & Recruitment</h3>
+          <h3>Systems Overview</h3>
           <div class="grid-3">
             <div class="card">
-              <h4>Engineer</h4>
-              <p><strong>Abilities:</strong> Repair structures 50% faster, unlock automated systems, reduce power consumption.</p>
-              <p><strong>Story:</strong> Former electrician searching for family.</p>
+              <h4>Resources</h4>
+              <ul class="bullets compact">
+                <li><strong>Wood:</strong> General structural use and upgrades.</li>
+                <li><strong>Stone:</strong> Stronger, more resilient improvements.</li>
+                <li><strong>Metal:</strong> Turrets and more advanced reinforcement options.</li>
+              </ul>
             </div>
             <div class="card">
-              <h4>Farmer</h4>
-              <p><strong>Abilities:</strong> Crops grow 30% faster, improved harvest yields, can tend animals.</p>
-              <p><strong>Story:</strong> Homesteader who lost everything to the horde.</p>
+              <h4>Player Tools</h4>
+              <ul class="bullets compact">
+                <li>Machete for close-range use without consuming ammo.</li>
+                <li>Gun for ranged use that consumes ammo.</li>
+              </ul>
             </div>
             <div class="card">
-              <h4>Guard</h4>
-              <p><strong>Abilities:</strong> Improved combat damage, can man turrets, boosts nearby NPC morale.</p>
-              <p><strong>Story:</strong> Former military trying to protect civilians.</p>
+              <h4>Home &amp; Turrets</h4>
+              <ul class="bullets compact">
+                <li>One central home to protect and upgrade.</li>
+                <li>Turrets built around the home that use the shared ammo pool.</li>
+                <li>Zombie threats put pressure on how well the home is prepared.</li>
+              </ul>
             </div>
           </div>
-          <h5 style="margin-top: 2rem;">NPC Management</h5>
-          <ul class="bullets compact">
-            <li>Assign day/night shifts and priorities</li>
-            <li>Morale system affects work efficiency</li>
-            <li>Permanent death if not rescued during breaches</li>
-            <li>Relationship building unlocks personal quests</li>
-            <li>Each survivor brings unique tech/recipes</li>
-          </ul>
         </div>
       </article>
 
-      <!-- Enemy AI & Raids -->
-      <article class="slide" data-title="Enemy AI">
+      <!-- Demo Scope -->
+      <article class="slide" data-title="Demo Scope">
         <div class="slide-inner">
-          <h3>Enemy AI & Raid System</h3>
+          <h3>Demo Scope</h3>
+          <p class="lead">
+            The demo focuses on proving the core loop works with a contained set of features and content.
+          </p>
           <div class="grid-2">
             <div>
-              <h5>Zombie Types</h5>
+              <h5>Core Features in Demo</h5>
               <ul class="bullets compact">
-                <li><strong>Shambler:</strong> Slow, low health, swarm tactics</li>
-                <li><strong>Runner:</strong> Fast, flanking behavior, priority target</li>
-                <li><strong>Brute:</strong> High HP, breaks walls, siege unit</li>
-                <li><strong>Spitter:</strong> Ranged acid attacks, stays back</li>
-                <li><strong>Screamer:</strong> Calls reinforcements, support unit</li>
-              </ul>
-              <h5>Pathfinding AI</h5>
-              <ul class="bullets compact">
-                <li>Dynamic path calculation around walls</li>
-                <li>Exploits weak points in defenses</li>
-                <li>Avoids kill zones after repeated failures</li>
-                <li>Coordinated multi-direction assaults</li>
+                <li>2D zombie survival and home-fortification loop.</li>
+                <li>Wood, stone, and metal gathering.</li>
+                <li>Home upgrades using those resources.</li>
+                <li>Turrets that share ammo with the player’s gun.</li>
+                <li>Machete and gun as primary player tools.</li>
               </ul>
             </div>
             <div>
-              <h5>Raid Progression</h5>
+              <h5>Demo Goals</h5>
               <ul class="bullets compact">
-                <li><strong>Wave 1-5:</strong> Basic shamblers, learn patterns</li>
-                <li><strong>Wave 6-10:</strong> Mixed groups, runners appear</li>
-                <li><strong>Wave 11-15:</strong> Brutes and spitters join</li>
-                <li><strong>Wave 16+:</strong> Boss variants and special events</li>
-              </ul>
-              <h5>Special Events</h5>
-              <ul class="bullets compact">
-                <li><strong>Blood Moon:</strong> 2x spawn rate, boss guaranteed</li>
-                <li><strong>Blackout Storm:</strong> Power fails, limited vision</li>
-                <li><strong>Fog Night:</strong> Reduced sensor range</li>
-                <li><strong>Migration:</strong> Mega-horde from one direction</li>
-                <li><strong>Quiet Night:</strong> No raid, perfect for repairs</li>
+                <li>Show that the resource and ammo decisions feel meaningful.</li>
+                <li>Verify that the home-fortification focus is clear and satisfying.</li>
+                <li>Provide a solid reference for the production plan and investor conversations.</li>
               </ul>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Tech Tree & Progression -->
-      <article class="slide" data-title="Tech Tree">
+      <!-- Full Game Vision -->
+      <article class="slide" data-title="Full Game Vision">
         <div class="slide-inner">
-          <h3>Tech Tree & Progression</h3>
+          <h3>Full Game Vision</h3>
+          <p class="lead">
+            The full game extends the demo’s systems instead of replacing them. The same home, resources, and
+            shared ammo remain at the center while options and variety grow.
+          </p>
+          <div class="grid-2">
+            <div>
+              <h5>What Stays the Same</h5>
+              <ul class="bullets compact">
+                <li>2D zombie survival and home-fortification focus.</li>
+                <li>Wood, stone, and metal as core resources.</li>
+                <li>Single central home to protect.</li>
+                <li>Turrets using a shared ammo pool with the player.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>How It Expands</h5>
+              <ul class="bullets compact">
+                <li>More ways to use wood, stone, and metal to shape the home.</li>
+                <li>More turret and upgrade possibilities using the same core logic.</li>
+                <li>Additional layers of decision-making around ammo and fortification.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Roadmap -->
+      <article class="slide" data-title="Roadmap">
+        <div class="slide-inner">
+          <h3>Roadmap</h3>
           <div class="grid-3">
             <div class="card">
-              <h4>Tier 1: Survival</h4>
+              <h4>Phase 1: Demo</h4>
               <ul class="bullets compact">
-                <li>Basic walls and gates</li>
-                <li>Simple spike traps</li>
-                <li>Campfire cooking</li>
-                <li>Makeshift tools</li>
-                <li>Rain water collection</li>
+                <li>Implement the core resource, home, turret, and ammo systems.</li>
+                <li>Ensure the core loop is playable and understandable.</li>
               </ul>
             </div>
             <div class="card">
-              <h4>Tier 2: Fortification</h4>
+              <h4>Phase 2: Expanded Scope</h4>
               <ul class="bullets compact">
-                <li>Stone walls and reinforcements</li>
-                <li>Flame and electric traps</li>
-                <li>Basic power grid</li>
-                <li>Workshop stations</li>
-                <li>Medical supplies</li>
+                <li>Add more options for how the home can be improved and defended.</li>
+                <li>Refine how wood, stone, and metal are used.</li>
               </ul>
             </div>
             <div class="card">
-              <h4>Tier 3: Industrial</h4>
+              <h4>Phase 3: Full Game</h4>
               <ul class="bullets compact">
-                <li>Reinforced metal structures</li>
-                <li>Auto-turret systems</li>
-                <li>Advanced sensors and logic</li>
-                <li>Renewable power sources</li>
-                <li>Blueprint export system</li>
+                <li>Finalize content, polish, and presentation.</li>
+                <li>Keep the focus on survival and home-fortification with shared ammo.</li>
               </ul>
             </div>
           </div>
-          <h5 style="margin-top: 2rem;">Prestige System</h5>
-          <p>After reaching Day 50, unlock "New Threat" prestige modes with game modifiers:</p>
-          <ul class="bullets compact">
-            <li><strong>Limited Resources:</strong> Scarce materials, high challenge</li>
-            <li><strong>Permadeath:</strong> Lose the base and start over</li>
-            <li><strong>Storm Season:</strong> Frequent blackout nights</li>
-            <li><strong>Speed Run:</strong> Race to Day 30 survival</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Community Features -->
-      <article class="slide" data-title="Community">
-        <div class="slide-inner">
-          <h3>Community & Shareability</h3>
-          <div class="grid-2">
-            <div>
-              <h5>Photo Mode</h5>
-              <ul class="bullets compact">
-                <li>Free camera movement during paused gameplay</li>
-                <li>Filters and time-of-day overrides</li>
-                <li>Hide UI elements for clean shots</li>
-                <li>Highlight defense structures and damage zones</li>
-                <li>Share directly to social media</li>
-              </ul>
-              <h5>Blueprint Export</h5>
-              <ul class="bullets compact">
-                <li>Save complete base layouts as shareable files</li>
-                <li>Include resource requirements and build order</li>
-                <li>Import community blueprints</li>
-                <li>Creator attribution system</li>
-                <li>Featured designs on main menu</li>
-              </ul>
-            </div>
-            <div>
-              <h5>Challenge Creator</h5>
-              <ul class="bullets compact">
-                <li>Set custom starting resources</li>
-                <li>Define specific wave compositions</li>
-                <li>Time-limited objectives</li>
-                <li>Restricted tech tree options</li>
-                <li>Leaderboard for completion times</li>
-              </ul>
-              <h5>Content Creator Support</h5>
-              <ul class="bullets compact">
-                <li>Seed-based world generation for reproducibility</li>
-                <li>Time-lapse recording of base construction</li>
-                <li>Post-raid statistics and heatmaps</li>
-                <li>NPC dialogue options for roleplay</li>
-                <li>Streamer-safe audio and content</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Detailed Roadmap -->
-      <article class="slide" data-title="Development Roadmap">
-        <div class="slide-inner">
-          <h3>Concept Phase Roadmap</h3>
-          
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem;">
-            <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-              <div style="font-size: 2rem; font-weight: bold; color: var(--seafoam);">~36 weeks</div>
-              <div style="color: var(--kraken); font-size: 0.875rem;">Concept → Pre-Prod</div>
-            </div>
-            <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-              <div style="font-size: 2rem; font-weight: bold; color: var(--seafoam);">3 Phases</div>
-              <div style="color: var(--kraken); font-size: 0.875rem;">Prototype → Vertical Slice → Pre-Prod</div>
-            </div>
-            <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-              <div style="font-size: 2rem; font-weight: bold; color: var(--seafoam);">6 Gates</div>
-              <div style="color: var(--kraken); font-size: 0.875rem;">Key Validation Points</div>
-            </div>
-          </div>
-
-          <p style="color: #94a3b8; margin-bottom: 2rem;">Last Light is in early concept development. This roadmap focuses on rapid prototyping, core loop validation, and preparing for full production funding.</p>
-
-          <!-- Phase 1: Concept & Prototyping -->
-          <div style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(40,224,185,0.05), rgba(139,92,246,0.05)); border-radius: 12px; border-left: 4px solid var(--seafoam);">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <h4 style="margin: 0; flex: 1;">Phase 1: Concept & Prototyping</h4>
-              <span style="padding: 0.25rem 0.75rem; background: rgba(40,224,185,0.2); color: var(--seafoam); border-radius: 12px; font-size: 0.875rem; font-weight: 600;">8-10 weeks</span>
-            </div>
-            <p style="color: #94a3b8; margin-bottom: 1rem; font-style: italic;">Build and validate core gameplay hook: "tower defense meets base builder in a post-apocalyptic farm"</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-              <div>
-                <div style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 1rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 1: Core Loop (Weeks 1-4)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>Grid-based building system</li>
-                      <li>Basic resource gathering (wood, stone)</li>
-                      <li>Simple day/night cycle</li>
-                      <li>First raid encounter (5 waves)</li>
-                      <li>Wall/trap placement (2 types)</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div style="display: flex; align-items: start; gap: 0.75rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 2: Systems Expansion (Weeks 5-8)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>Farming mechanics (3-4 crops)</li>
-                      <li>Crafting stations (workbench, forge)</li>
-                      <li>Basic tech tree (8-10 unlocks)</li>
-                      <li>Zombie AI variants (shambler, runner)</li>
-                      <li>Repair mechanics during raids</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); margin-bottom: 1rem;">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 1: Core Loop Validation</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>Playable prototype with 15-min loop</li>
-                    <li>Internal playtest feedback (5+ sessions)</li>
-                    <li>"One more night" retention test</li>
-                    <li>Core systems documented in GDD</li>
-                  </ul>
-                </div>
-                
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 2: Prototype Complete</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>30-min gameplay loop established</li>
-                    <li>5 external playtests completed</li>
-                    <li>Prototype gameplay trailer (1-2 min)</li>
-                    <li>Decision: Pivot, iterate, or proceed to vertical slice</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 2: Vertical Slice -->
-          <div style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(40,224,185,0.05), rgba(139,92,246,0.05)); border-radius: 12px; border-left: 4px solid var(--kraken);">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <h4 style="margin: 0; flex: 1;">Phase 2: Vertical Slice</h4>
-              <span style="padding: 0.25rem 0.75rem; background: rgba(139,92,246,0.2); color: var(--kraken); border-radius: 12px; font-size: 0.875rem; font-weight: 600;">12-14 weeks</span>
-            </div>
-            <p style="color: #94a3b8; margin-bottom: 1rem; font-style: italic;">Create investor-ready demo showcasing scope, art direction, and market viability</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-              <div>
-                <div style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 1rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 3: Content Expansion (Weeks 11-16)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>2-3 distinct biomes with visual identity</li>
-                      <li>Expanded tech tree (20+ unlocks)</li>
-                      <li>5 zombie types with unique behaviors</li>
-                      <li>Power grid system (generators, wiring)</li>
-                      <li>Auto-turrets and advanced traps</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div style="display: flex; align-items: start; gap: 0.75rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 4: Polish & Demo (Weeks 17-22)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>Art pass on all assets (pixel art style finalized)</li>
-                      <li>Environmental storytelling elements</li>
-                      <li>Photo mode & blueprint sharing</li>
-                      <li>SFX and music implementation</li>
-                      <li>20-30 min investor demo build</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); margin-bottom: 1rem;">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 3: Systems Locked</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>All core systems functional and stable</li>
-                    <li>Tech tree progression validated</li>
-                    <li>Power grid and automation tested</li>
-                    <li>Performance targets met (60fps stable)</li>
-                  </ul>
-                </div>
-                
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 4: Vertical Slice Complete</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>Investor demo ready (20-30 min slice)</li>
-                    <li>Trailer and pitch deck prepared</li>
-                    <li>10+ external playtests with positive feedback</li>
-                    <li>Art style and scope validated</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </article>
-
-      <!-- Roadmap: Phase 3 -->
-      <article class="slide" data-title="Roadmap: Pre-Production">
-        <div class="slide-inner">
-          <h3>Phase 3: Pre-Production & Funding</h3>
-
-          <!-- Phase 3: Pre-Production -->
-          <div style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(40,224,185,0.05), rgba(139,92,246,0.05)); border-radius: 12px; border-left: 4px solid var(--seafoam);">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <h4 style="margin: 0; flex: 1;">Phase 3: Pre-Production</h4>
-              <span style="padding: 0.25rem 0.75rem; background: rgba(40,224,185,0.2); color: var(--seafoam); border-radius: 12px; font-size: 0.875rem; font-weight: 600;">16-20 weeks</span>
-            </div>
-            <p style="color: #94a3b8; margin-bottom: 1rem; font-style: italic;">Secure funding and finalize scope for 18-month production cycle</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-              <div>
-                <div style="display: flex; align-items: start; gap: 0.75rem; margin-bottom: 1rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 5: Funding Round (Weeks 23-30)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>Investor pitch deck finalized</li>
-                      <li>Publisher meetings (target: 8-10 meetings)</li>
-                      <li>Crowdfunding campaign prep (Kickstarter)</li>
-                      <li>Grant applications (Epic MegaGrant, etc.)</li>
-                      <li>Secure $250k-500k for production</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div style="display: flex; align-items: start; gap: 0.75rem;">
-                  <div style="width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at center, var(--seafoam), var(--kraken)); box-shadow: 0 0 12px rgba(40,224,185,0.5); margin-top: 0.25rem; flex-shrink: 0;"></div>
-                  <div style="flex: 1;">
-                    <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Milestone 6: Pre-Prod Planning (Weeks 31-40)</h5>
-                    <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.9rem;">
-                      <li>Complete GDD with full scope</li>
-                      <li>Technical architecture document</li>
-                      <li>Art bible and style guide</li>
-                      <li>Audio design document</li>
-                      <li>Build production team (5-7 core)</li>
-                      <li>18-month production roadmap</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); margin-bottom: 1rem;">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 5: Funding Secured</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>$250k minimum funding secured</li>
-                    <li>Publisher deal OR Kickstarter successful</li>
-                    <li>Budget and burn rate established</li>
-                    <li>Legal entity and contracts finalized</li>
-                  </ul>
-                </div>
-                
-                <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--kraken);">Phase Gate 6: Production Ready</h5>
-                  <ul style="margin: 0; padding-left: 1.25rem; color: #94a3b8; font-size: 0.85rem;">
-                    <li>Full GDD and tech docs approved</li>
-                    <li>Core team hired and onboarded</li>
-                    <li>Development pipeline established</li>
-                    <li>Go/No-Go decision for 18-month production</li>
-                  </ul>
-                </div>
-                
-                <div style="margin-top: 1rem; padding: 1rem; background: rgba(40,224,185,0.1); border-radius: 8px; border: 1px solid rgba(40,224,185,0.3);">
-                  <h5 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Post Phase 3: Full Production</h5>
-                  <p style="margin: 0; color: #94a3b8; font-size: 0.85rem;">If funding secured and gates passed, enter 18-month production cycle targeting Q3-Q4 2027 Early Access launch.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Launch Target -->
-          <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(40,224,185,0.1), rgba(139,92,246,0.1)); border-radius: 12px; text-align: center;">
-            <h4 style="margin: 0 0 0.5rem 0; color: var(--seafoam);">Target Early Access Launch</h4>
-            <div style="font-size: 2rem; font-weight: bold; color: var(--kraken); margin-bottom: 0.5rem;">Q3-Q4 2027</div>
-            <p style="margin: 0; color: #94a3b8; font-size: 0.9rem;">(Assumes funding secured by Q2 2025)</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- Technical Architecture -->
-      <article class="slide" data-title="Technical Specs">
-        <div class="slide-inner">
-          <h3>Technical Architecture</h3>
-          <div class="grid-2">
-            <div>
-              <h5>Engine & Tools</h5>
-              <ul class="bullets compact">
-                <li><strong>Engine:</strong> Unity 2D (LTS version)</li>
-                <li><strong>Version Control:</strong> Git with LFS for assets</li>
-                <li><strong>Art Pipeline:</strong> Aseprite for pixel art</li>
-                <li><strong>Audio:</strong> FMOD or Unity Audio Mixer</li>
-                <li><strong>Localization:</strong> Unity Localization package</li>
-              </ul>
-              <h5>Core Systems (ScriptableObjects)</h5>
-              <ul class="bullets compact">
-                <li>`CropSO { id, growthTime, seasons[], yield }`</li>
-                <li>`StructureSO { id, health, tier, resources[] }`</li>
-                <li>`TrapSO { id, damage, range, cooldown }`</li>
-                <li>`ZombieSO { id, speed, hp, ai_behavior }`</li>
-                <li>`NPCSO { id, skills[], morale, backstory }`</li>
-              </ul>
-            </div>
-            <div>
-              <h5>Save System</h5>
-              <ul class="bullets compact">
-                <li>JSON-based world state serialization</li>
-                <li>Incremental saves every dawn phase</li>
-                <li>Cloud save sync (Steam, console)</li>
-                <li>Backup system for corruption recovery</li>
-                <li>Blueprint export as separate files</li>
-              </ul>
-              <h5>Performance Targets</h5>
-              <ul class="bullets compact">
-                <li><strong>PC:</strong> 60 FPS on mid-tier hardware</li>
-                <li><strong>Console:</strong> Stable 30 FPS on last-gen</li>
-                <li><strong>Max Entities:</strong> 200+ zombies on screen</li>
-                <li><strong>Build Size:</strong> Under 500MB</li>
-                <li><strong>Load Times:</strong> Under 10 seconds</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Team & Budget -->
-      <article class="slide" data-title="Team & Budget">
-        <div class="slide-inner">
-          <h3>Team Structure & Budget</h3>
-          <div class="grid-2">
-            <div>
-              <h5>Core Team (Full Development)</h5>
-              <ul class="bullets compact">
-                <li><strong>Producer/Designer:</strong> Vision, features, milestones</li>
-                <li><strong>Unity Developer:</strong> Core systems and gameplay</li>
-                <li><strong>2D Pixel Artist:</strong> Characters, environment, UI</li>
-                <li><strong>2D Animator:</strong> Character states and effects</li>
-                <li><strong>Sound Composer:</strong> Music and SFX design</li>
-              </ul>
-              <h5>Rev-Share Roles</h5>
-              <ul class="bullets compact">
-                <li><strong>QA Testers:</strong> Balance feedback and bug hunting</li>
-                <li><strong>Community Manager:</strong> Discord and social media</li>
-                <li><strong>Additional Artists:</strong> Burst support for assets</li>
-              </ul>
-            </div>
-            <div>
-              <h5>Budget Breakdown ($90k - $150k)</h5>
-              <ul class="bullets compact">
-                <li><strong>Development (40%):</strong> $36k-60k
-                  <br><small>Unity dev salary, tools, licenses</small></li>
-                <li><strong>Art & Animation (30%):</strong> $27k-45k
-                  <br><small>Pixel art assets, animations, UI</small></li>
-                <li><strong>Audio (15%):</strong> $13.5k-22.5k
-                  <br><small>Original music, SFX library</small></li>
-                <li><strong>Marketing (10%):</strong> $9k-15k
-                  <br><small>Trailer, press kit, creator program</small></li>
-                <li><strong>Operations (5%):</strong> $4.5k-7.5k
-                  <br><small>Testing, platform fees, legal</small></li>
-              </ul>
-            </div>
-          </div>
-          <p style="margin-top: 1.5rem; opacity: 0.8;">
-            <strong>Funding Structure:</strong> Flexible equity, rev-share, or publishing partnership. 
-            Milestone-gated deliverables with transparent reporting.
+          <p style="margin-top:1.5rem; opacity:0.8;">
+            Exact dates, budgets, and headcount are managed in the studio’s separate financial and production
+            planning documents and can be updated without changing this high-level structure.
           </p>
         </div>
       </article>
 
-      <!-- Risk Mitigation -->
-      <article class="slide" data-title="Risk Analysis">
+      <!-- Technical Overview (very high-level) -->
+      <article class="slide" data-title="Technical Overview">
         <div class="slide-inner">
-          <h3>Risk Analysis & Mitigation</h3>
-          <div class="grid-3">
-            <div class="card">
-              <h4>Scope Creep</h4>
-              <p><strong>Risk:</strong> Feature additions delay launch.</p>
-              <p><strong>Mitigation:</strong></p>
-              <ul class="bullets compact">
-                <li>Gated tech tree allows episodic content</li>
-                <li>Clear milestone acceptance criteria</li>
-                <li>MVP feature set locked after prototype</li>
-                <li>Post-launch DLC for seasonal content</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h4>Balance Issues</h4>
-              <p><strong>Risk:</strong> Defense too easy/hard, ruins fun.</p>
-              <p><strong>Mitigation:</strong></p>
-              <ul class="bullets compact">
-                <li>Weekly internal playtests</li>
-                <li>Telemetry on survival rates and trap usage</li>
-                <li>Public alpha for balance feedback</li>
-                <li>Difficulty settings for accessibility</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h4>Art Pipeline</h4>
-              <p><strong>Risk:</strong> Pixel art production bottleneck.</p>
-              <p><strong>Mitigation:</strong></p>
-              <ul class="bullets compact">
-                <li>Modular sprite system for reuse</li>
-                <li>Asset library from early prototyping</li>
-                <li>Clear style guide and templates</li>
-                <li>Burst hiring for asset sprints</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Competitive Analysis -->
-      <article class="slide" data-title="Market Position">
-        <div class="slide-inner">
-          <h3>Competitive Analysis</h3>
+          <h3>Technical Overview</h3>
           <div class="grid-2">
             <div>
-              <h5>Similar Games</h5>
+              <h5>Foundation</h5>
               <ul class="bullets compact">
-                <li><strong>Stardew Valley:</strong> Cozy farming but no defense layer</li>
-                <li><strong>Project Zomboid:</strong> Survival focus but less cozy appeal</li>
-                <li><strong>They Are Billions:</strong> RTS defense, not farm sim</li>
-                <li><strong>Don't Starve:</strong> Survival crafting, minimal base building</li>
-              </ul>
-              <h5>Our Differentiation</h5>
-              <ul class="bullets compact">
-                <li>Unique blend of cozy and tense gameplay rhythms</li>
-                <li>2D pixel art charm with deep strategic systems</li>
-                <li>NPC relationships and base-as-narrative focus</li>
-                <li>Community features (blueprints, challenges)</li>
-                <li>Lower price point ($19.99-24.99) than competitors</li>
+                <li>Unity 2D project structure.</li>
+                <li>Separate systems for resources, home state, turrets, and ammo tracking.</li>
               </ul>
             </div>
             <div>
-              <h5>Target Audience</h5>
+              <h5>Key Considerations</h5>
               <ul class="bullets compact">
-                <li>Stardew Valley / Harvest Moon fans seeking new challenge</li>
-                <li>Tower defense and strategy enthusiasts</li>
-                <li>Survival game players wanting more cozy elements</li>
-                <li>Content creators (strong shareability hooks)</li>
-                <li>Ages 16-35, primarily PC and console players</li>
-              </ul>
-              <h5>Marketing Hooks</h5>
-              <ul class="bullets compact">
-                <li>"Stardew Valley meets They Are Billions"</li>
-                <li>Day/night rhythm creates viral gameplay moments</li>
-                <li>Blueprint sharing encourages community content</li>
-                <li>Pixel art aesthetic appeals to indie game fans</li>
-                <li>Strong potential for streamer/YouTuber coverage</li>
+                <li>Reliable tracking of shared ammo between player and turrets.</li>
+                <li>Clear communication of home status and resource usage to the player.</li>
               </ul>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Financial Analysis -->
-      <article class="slide" data-title="Financial Analysis">
+      <!-- Team & Roles (no numbers) -->
+      <article class="slide" data-title="Team & Roles">
         <div class="slide-inner">
-          <h3>Financial Analysis & Projections</h3>
-          
-          <!-- Development Budget -->
-          <div style="margin-bottom: 2rem;">
-            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Development Budget: $90k - $150k</h4>
-            <div class="grid-2">
-              <div>
-                <h5>Budget Allocation</h5>
-                <ul class="bullets compact">
-                  <li><strong>Development (40%):</strong> $36k - $60k
-                    <br><small>Unity engineer, farming systems, defense AI, wave spawner, base building</small></li>
-                  <li><strong>Art & Animation (30%):</strong> $27k - $45k
-                    <br><small>Pixel art characters, environment tiles, crop sprites, zombie animations, UI</small></li>
-                  <li><strong>Audio (15%):</strong> $13.5k - $22.5k
-                    <br><small>Original soundtrack (cozy + tense), SFX library, ambient audio</small></li>
-                  <li><strong>Marketing (10%):</strong> $9k - $15k
-                    <br><small>Trailer production, press kit, influencer campaign, creator program</small></li>
-                  <li><strong>Operations (5%):</strong> $4.5k - $7.5k
-                    <br><small>Balance testing, platform fees, legal, QA contractors</small></li>
-                </ul>
-              </div>
-              <div>
-                <h5>Funding Milestones</h5>
-                <ul class="bullets compact">
-                  <li><strong>Phase 1 (35%):</strong> $31.5k - $52.5k
-                    <br><small>Concept validation + core loop prototype</small></li>
-                  <li><strong>Phase 2 (40%):</strong> $36k - $60k
-                    <br><small>Vertical slice with full day/night cycle</small></li>
-                  <li><strong>Phase 3 (25%):</strong> $22.5k - $37.5k
-                    <br><small>Pre-production prep & funding secured</small></li>
-                </ul>
-                <div style="margin-top: 1rem; padding: 1rem; background: rgba(40,224,185,0.1); border-radius: 8px; border: 1px solid rgba(40,224,185,0.3);">
-                  <p style="margin: 0; font-size: 0.9rem;"><strong>Burn Rate:</strong> ~$5k-9k/month over 16-20 months</p>
-                  <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;"><strong>Note:</strong> This funds concept → vertical slice. Full production requires additional $250k-500k raise.</p>
-                </div>
-              </div>
+          <h3>Team &amp; Roles</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Core Roles</h5>
+              <ul class="bullets compact">
+                <li>Producer / Designer – Owns scope, vision, and coordination.</li>
+                <li>Unity Developer – Implements systems and gameplay logic.</li>
+                <li>2D Artist / UI – Visuals for home, zombies, turrets, and interface.</li>
+                <li>Sound / Music – Audio that supports survival and tension.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Support (As Needed)</h5>
+              <ul class="bullets compact">
+                <li>Additional developers or artists depending on funding.</li>
+                <li>QA support for stability and feel.</li>
+                <li>Marketing support shared with the rest of the Kato.8 slate.</li>
+              </ul>
             </div>
           </div>
+          <p style="margin-top: 1.5rem; opacity: 0.8;">
+            Specific rates, duration, and staffing plans are captured in separate studio-level documents.
+          </p>
+        </div>
+      </article>
 
-          <!-- Market Analysis -->
-          <div style="margin-bottom: 2rem;">
-            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Market Analysis</h4>
-            <div class="grid-3">
-              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
-                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Addressable Market</h5>
-                <div style="font-size: 1.5rem; font-weight: bold; color: var(--seafoam); margin-bottom: 0.5rem;">$1.2B+</div>
-                <p style="margin: 0; font-size: 0.85rem; color: #94a3b8;">Farming sims + Survival/Defense games (Steam + Console + Mobile)</p>
-              </div>
-              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
-                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Comparable Titles</h5>
-                <ul class="bullets compact" style="margin: 0; font-size: 0.85rem; color: #94a3b8;">
-                  <li><strong>Stardew Valley:</strong> 20M+ units</li>
-                  <li><strong>Project Zomboid:</strong> 15M+ units</li>
-                  <li><strong>They Are Billions:</strong> 1.5M+ units</li>
-                </ul>
-              </div>
-              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
-                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Target Price Point</h5>
-                <div style="font-size: 1.5rem; font-weight: bold; color: var(--seafoam); margin-bottom: 0.5rem;">$19.99-24.99</div>
-                <p style="margin: 0; font-size: 0.85rem; color: #94a3b8;">Premium pricing justified by content depth; Early Access at $19.99</p>
-              </div>
+      <!-- Risk & Mitigation -->
+      <article class="slide" data-title="Risk & Mitigation">
+        <div class="slide-inner">
+          <h3>Risk &amp; Mitigation</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Unclear Focus</h4>
+              <p><strong>Risk:</strong> Adding features that distract from home-fortification.</p>
+              <p><strong>Mitigation:</strong> Keep every feature tied directly to resources, home, turrets, or ammo decisions.</p>
             </div>
-          </div>
-
-          <!-- Breakeven Analysis -->
-          <div style="margin-bottom: 2rem;">
-            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Breakeven Analysis</h4>
-            <div class="grid-2">
-              <div style="padding: 1.5rem; background: rgba(40,224,185,0.08); border-radius: 8px; border: 1px solid rgba(40,224,185,0.3);">
-                <h5 style="color: var(--seafoam); margin: 0 0 1rem 0;">Units to Breakeven (Vertical Slice Phase)</h5>
-                <div style="display: grid; gap: 0.75rem;">
-                  <div>
-                    <div style="font-weight: 600; color: #e2e8f0;">Minimum Budget ($90k)</div>
-                    <div style="font-size: 1.25rem; color: var(--seafoam); margin: 0.25rem 0;"><strong>5,850 units</strong> @ $21.99 avg</div>
-                    <div style="font-size: 0.85rem; color: #94a3b8;">$128.6k gross (after 30% platform fees = $90k net)</div>
-                  </div>
-                  <div>
-                    <div style="font-weight: 600; color: #e2e8f0;">Maximum Budget ($150k)</div>
-                    <div style="font-size: 1.25rem; color: var(--seafoam); margin: 0.25rem 0;"><strong>9,750 units</strong> @ $21.99 avg</div>
-                    <div style="font-size: 0.85rem; color: #94a3b8;">$214.4k gross (after 30% platform fees = $150.1k net)</div>
-                  </div>
-                </div>
-                <div style="margin-top: 1rem; padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 6px;">
-                  <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0; font-size: 0.9rem;">Full Production Breakeven ($400k total)</h5>
-                  <div style="font-size: 1.1rem; color: var(--seafoam);"><strong>26,000 units</strong> @ $21.99 avg</div>
-                  <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem;">$571.7k gross (after fees = $400.2k net)</div>
-                </div>
-              </div>
-              <div style="padding: 1.5rem; background: rgba(139,92,246,0.08); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
-                <h5 style="color: var(--kraken); margin: 0 0 1rem 0;">Breakeven Feasibility</h5>
-                <ul class="bullets compact" style="margin: 0;">
-                  <li><strong>Stardew Valley:</strong> 1M units in first year, solo dev @ $15</li>
-                  <li><strong>Project Zomboid:</strong> 1.5M+ in Early Access over 2 years</li>
-                  <li><strong>Genre Blend Advantage:</strong> Unique positioning appeals to both cozy and survival audiences</li>
-                  <li><strong>Community Features:</strong> Blueprint sharing creates organic viral loops</li>
-                  <li><strong>Confidence Level:</strong> <span style="color: var(--seafoam); font-weight: 600;">High</span> - Target is 0.1-0.5% of Stardew success</li>
-                </ul>
-                <div style="margin-top: 1rem; padding: 1rem; background: rgba(40,224,185,0.1); border-radius: 6px;">
-                  <p style="margin: 0; font-size: 0.85rem; color: #94a3b8;"><strong>Early Access Strategy:</strong> Launch at $19.99 after vertical slice to fund remaining development while building community feedback loop</p>
-                </div>
-              </div>
+            <div class="card">
+              <h4>Shared Ammo Feel</h4>
+              <p><strong>Risk:</strong> Shared ammo feels confusing or unfair.</p>
+              <p><strong>Mitigation:</strong> Iterate on UI and feedback in the demo; keep the mechanic readable and predictable.</p>
             </div>
-          </div>
-
-          <!-- Revenue Projections -->
-          <div>
-            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Revenue Projections (Vertical Slice Phase)</h4>
-            <p style="margin-bottom: 1rem; font-size: 0.9rem; opacity: 0.8;">
-              <strong>Note:</strong> These projections are for the concept-to-vertical-slice funding round. 
-              Full production launch projections available upon reaching pre-production phase.
-            </p>
-            <div class="grid-2">
-              <div>
-                <h5>Funding Path Options</h5>
-                <ul class="bullets compact">
-                  <li><strong>Publisher Deal:</strong> $250k-500k advance
-                    <br><small>Target after vertical slice completion for full production</small></li>
-                  <li><strong>Kickstarter Campaign:</strong> $150k-300k goal
-                    <br><small>Strong community appeal + wishlist building strategy</small></li>
-                  <li><strong>Epic MegaGrant:</strong> $100k-500k
-                    <br><small>Technical innovation in day/night rhythm + procedural zombies</small></li>
-                  <li><strong>Early Access:</strong> Staged release
-                    <br><small>Launch basic farm + defense → expand content over 12-18 months</small></li>
-                </ul>
-              </div>
-              <div>
-                <h5>Post-Launch Revenue (Conservative)</h5>
-                <ul class="bullets compact">
-                  <li><strong>Year 1:</strong> 50k units @ $21.99 avg = <span style="color: var(--seafoam);">$769k net</span>
-                    <br><small>After platform fees (30%)</small></li>
-                  <li><strong>Year 2:</strong> 75k additional units = <span style="color: var(--seafoam);">$1.15M net</span>
-                    <br><small>Long-tail sales + seasonal content updates</small></li>
-                  <li><strong>Year 3+:</strong> DLC & expansions = <span style="color: var(--seafoam);">$500k+ net</span>
-                    <br><small>New biomes, story content, multiplayer mode</small></li>
-                </ul>
-                <div style="margin-top: 1rem; padding: 1rem; background: rgba(40,224,185,0.05); border-radius: 8px; border-left: 3px solid var(--seafoam);">
-                  <p style="margin: 0 0 0.5rem 0; font-weight: 600;">3-Year Projection (Conservative)</p>
-                  <p style="margin: 0; font-size: 0.9rem; color: #94a3b8;">
-                    Total Units: 250k+ | Revenue: <strong style="color: var(--seafoam);">~$3.85M net</strong><br>
-                    ROI on full budget ($400k): <strong style="color: var(--seafoam);">862% (9.6x)</strong>
-                  </p>
-                </div>
-              </div>
+            <div class="card">
+              <h4>Production Capacity</h4>
+              <p><strong>Risk:</strong> Team size and funding slow development.</p>
+              <p><strong>Mitigation:</strong> Use demo-first approach and align full game scope with funding scenarios.</p>
             </div>
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">
-              <strong>Market Opportunity:</strong> Unique genre blend with proven audiences (Stardew's cozy fanbase + survival/defense enthusiasts). 
-              High streamability due to emergent gameplay moments (close calls, base tours, blueprint sharing). 
-              Strong potential for community-driven content and long-term engagement.
-            </p>
           </div>
         </div>
       </article>
@@ -1023,26 +429,21 @@
           <h3>Next Steps</h3>
           <div class="grid-2">
             <div>
-              <h5>Immediate Actions</h5>
+              <h5>For the Project</h5>
               <ul class="bullets">
-                <li>Finalize funding round and team recruitment</li>
-                <li>Lock down prototype scope and acceptance criteria</li>
-                <li>Establish art pipeline and style guide</li>
-                <li>Set up project infrastructure (Git, tasks, docs)</li>
-                <li>Begin Week 1 development sprint</li>
+                <li>Finalize demo details based on your latest planning docs.</li>
+                <li>Implement and iterate until the core loop feels strong.</li>
               </ul>
             </div>
             <div>
-              <h5>Contact & Partnership</h5>
+              <h5>For Partners &amp; Investors</h5>
               <ul class="bullets">
-                <li><strong>Email:</strong> terryjteng@gmail.com</li>
-                <li><strong>Studio:</strong> K.8</li>
-                <li><strong>Partnership Types:</strong> Equity, rev-share, or publishing deal</li>
-                <li><strong>Documentation:</strong> Full GDD and financial projections available on request</li>
+                <li>Review demo scope and how it leads to the full game.</li>
+                <li>Discuss funding or collaboration based on studio-wide goals.</li>
               </ul>
               <div style="margin-top: 2rem;">
-                <a href="contact.html" class="btn primary">Schedule a Call</a>
-                <a href="lastlight.html" class="btn" style="margin-left: 1rem;">Public Pitch Page</a>
+                <a href="contact.html" class="btn primary">Schedule a Conversation</a>
+                <a href="lastlight.html" class="btn" style="margin-left: 1rem;">Public Page</a>
               </div>
             </div>
           </div>
@@ -1054,7 +455,7 @@
 
   <footer class="deck-footer">
     <div class="container">
-      <small>© <span id="year"></span> K.8 • Confidential • Do Not Distribute</small>
+      <small>© <span id="year"></span> Kato.8 • Confidential • Do Not Distribute</small>
     </div>
   </footer>
 

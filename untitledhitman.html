@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Untitled Open World Hitman | Kato.8</title>
+  <meta name="description" content="A stealth-action sandbox where precision assassination meets emergent gameplay in expansive, interactive environments."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="untitledhitman.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Untitled Open World Hitman"/>
+  <meta property="og:description" content="Precision stealth meets open-world freedom in this assassination sandbox."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Untitled Open World Hitman",
+    "author":{"@type":"Organization","name":"Kato.8"},
+    "genre":["Stealth","Action","Sandbox"],
+    "gamePlatform":["PC","Console"],
+    "description":"An open-world stealth-action game focused on precision assassination, emergent gameplay, and player-driven creativity.",
+    "url":"https://your-domain.com/untitledhitman.html"
+  }
+  </script>
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">Open World Stealth-Action</p>
+        <h1 class="kb-title">Untitled Open World Hitman</h1>
+        <p class="kb-lead">
+          Coming soon. Details to be added.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="contact.html" class="btn primary">Get in Touch</a>
+          <a href="pipeline.html" class="btn">View Full Pipeline</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <p>&copy; 2025 Kato.8. All rights reserved. — <a href="contact.html">Contact</a> • <a href="join.html">Careers</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

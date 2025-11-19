@@ -1,4 +1,4 @@
-/* K.8 Studio Website - Game Studio Design System
+/* Kato.8 Studio Website - Game Studio Design System
    Inspired by: Supergiant Games, Annapurna Interactive, Coffee Stain, Thunder Lotus
    Design Philosophy: Bold, cinematic, content-first with dynamic motion
 */
@@ -219,8 +219,8 @@ body::before {
   transition: transform var(--transition-fast);
 }
 
-.dropdown[data-open="true"] .dropdown-icon {
-  transform: rotate(180deg);
+.dropdown[data-open="true"] > button > .dropdown-icon {
+  transform: rotate(180deg) !important;
 }
 
 .dropdown-menu {
@@ -239,10 +239,20 @@ body::before {
   transition: all var(--transition-base);
 }
 
-.dropdown[data-open="true"] .dropdown-menu {
+.dropdown[data-open="true"] > .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.dropdown-menu .dropdown {
+  position: relative;
+}
+
+.dropdown-menu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 4px;
 }
 
 .dropdown-menu a {
@@ -256,6 +266,44 @@ body::before {
 .dropdown-menu a:hover {
   background: var(--glass-strong);
   color: var(--text-primary);
+}
+
+/* Nested dropdown */
+.dropdown-menu .dropdown {
+  display: block;
+}
+
+.dropdown-menu .dropdown > button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.dropdown-menu .dropdown > button:hover {
+  background: var(--glass-strong);
+  color: var(--text-primary);
+}
+
+.dropdown-menu .dropdown .dropdown-menu {
+  position: static;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  margin-top: 4px;
+  margin-left: 12px;
+  box-shadow: none;
+  border: 1px solid var(--border-subtle);
+  display: none;
+}
+
+.dropdown-menu .dropdown[data-open="true"] .dropdown-menu {
+  display: block;
 }
 
 /* Mobile Navigation Toggle */
