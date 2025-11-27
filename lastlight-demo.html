@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Last Light – Demo Plan | Kato.8</title>
+  <meta
+    name="description"
+    content="Demo build plan for Last Light, a zombie survival and farm/base-building simulation focused on building and defending a home base."
+  />
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="lastlight.css"/>
+
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (same as other Kato.8 pages) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <a href="join.html">Join Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: DEMO OVERVIEW -->
+    <section class="kb-hero">
+      <div class="kb-container kb-hero-split">
+        <div>
+          <p class="kb-kicker">Last Light · Demo Build</p>
+          <h1 class="kb-title">Demo Plan & Vertical Slice</h1>
+          <p class="kb-lead">
+            This page outlines the focused demo build for <strong>Last Light</strong> –
+            a mix of zombie survival and farm/base build simulation where the goal is to
+            build a home base that can both defend against zombies and sustain a functioning farm.
+          </p>
+          <div class="kb-hero-cta">
+            <a href="#demo-scope" class="kb-btn kb-primary">View Demo Scope</a>
+            <a href="#documents" class="kb-btn">Open Docs Library</a>
+          </div>
+        </div>
+        <aside class="kb-pod kb-snapshot">
+          <h2 class="kb-snapshot-title">Demo at a Glance</h2>
+          <dl class="kb-dl">
+            <div>
+              <dt>Core Loop</dt>
+              <dd>Farm and build defenses by day; defend the base from zombies at night.</dd>
+            </div>
+            <div>
+              <dt>Genre</dt>
+              <dd>Zombie survival · Farm & base build simulation</dd>
+            </div>
+            <div>
+              <dt>Camera</dt>
+              <dd>Same camera style as classic <em>Harvest Moon</em>.</dd>
+            </div>
+            <div>
+              <dt>Goal of Demo</dt>
+              <dd>5–10 minutes of structured play that proves the core loop and base-defense fantasy.</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- DEMO SCOPE -->
+    <section id="demo-scope" class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kb-kicker">Scope</p>
+          <h2>What the Demo Includes</h2>
+          <p class="kb-muted">
+            The demo focuses on a tight slice of the full game loop: gathering basic resources,
+            establishing a simple farm inside the base, and surviving escalating zombie pressure.
+          </p>
+          <p class="kb-muted">
+            The objectives for the player in this vertical slice are:
+          </p>
+          <ul class="kb-bullets">
+            <li>Build and maintain a small, defensible home base.</li>
+            <li>Set up a functioning farm inside the base to supply resources.</li>
+            <li>Survive wandering zombies and basic night waves as difficulty increases.</li>
+          </ul>
+        </div>
+        <aside class="kb-pod">
+          <h3 class="kb-pod-title">Concrete Features in the Demo</h3>
+          <ul class="kb-bullets compact">
+            <li><strong>Starter weapon:</strong> Axe crafted from an easy-to-gather stick that breaks very quickly.</li>
+            <li><strong>Ranged options:</strong> Simple handgun and crossbow for basic defense.</li>
+            <li><strong>Crops:</strong> A small set of crops with planting, watering, and harvesting loops.</li>
+            <li><strong>Defenses:</strong> Wooden fence, scarecrow defense, basic traps, and a basic turret.</li>
+            <li><strong>Enemies:</strong> Constant wandering zombies, with simple waves that increase in count at night.</li>
+            <li><strong>World slice:</strong> One <strong>small forest area</strong> and one <strong>small town</strong> connected to the base.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DEMO MILESTONES -->
+    <section id="milestones" class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Production</p>
+        <h2>Demo Milestones</h2>
+        <p class="kb-muted">
+          The demo is treated as a vertical slice with clear, gated milestones from design
+          through investor-ready build and materials.
+        </p>
+
+        <ol class="kb-steps">
+          <li class="kb-step">
+            <h3>1. Demo Design & GDD Update</h3>
+            <p class="kb-muted">
+              Update the Last Light Game Design Document to clearly define the demo scope,
+              core mechanics to validate, and win/fail conditions.
+            </p>
+          </li>
+          <li class="kb-step">
+            <h3>2. Core Loop Prototype</h3>
+            <p class="kb-muted">
+              Implement basic day/night cycle, farming, base building, and a simple zombie encounter
+              to validate “build your base, defend at night” as the core loop.
+            </p>
+          </li>
+          <li class="kb-step">
+            <h3>3. Visual Direction Lock</h3>
+            <p class="kb-muted">
+              Establish pixel-art style, base/farm tiles, zombies, and key UI elements for the demo slice.
+            </p>
+          </li>
+          <li class="kb-step">
+            <h3>4. Vertical Slice Build (5–10 Minutes)</h3>
+            <p class="kb-muted">
+              Polish a contained map with the small forest, small town, home base, and one
+              complete day/night cycle that showcases farming, building, and defending.
+            </p>
+          </li>
+          <li class="kb-step">
+            <h3>5. Pitch Materials</h3>
+            <p class="kb-muted">
+              Create an investor-facing package: updated GDD extract, business one-pager,
+              and short gameplay capture to accompany the demo build.
+            </p>
+          </li>
+          <li class="kb-step">
+            <h3>6. Publisher & Investor Outreach</h3>
+            <p class="kb-muted">
+              Use the demo and materials in targeted outreach as the foundation for full-game funding conversations.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- BUDGET & FUNDING -->
+    <section id="funding" class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kb-kicker">Budget</p>
+          <h2>Cost Targets for the Demo</h2>
+          <p class="kb-muted">
+            The demo is budgeted as a lean vertical slice, sitting on top of a very small studio setup cost.
+          </p>
+          <div class="kb-stat-grid">
+            <div class="kb-stat">
+              <h3>Studio Setup Goal</h3>
+              <p class="kb-stat-number">$800 – $3,000</p>
+              <p class="kb-muted">
+                Basic studio formation and tools (core hardware, software, and minimal overhead).
+              </p>
+            </div>
+            <div class="kb-stat">
+              <h3>Demo Production Goal</h3>
+              <p class="kb-stat-number">$4,000 – $10,600</p>
+              <p class="kb-muted">
+                Demo development, art, sound, QA, and launch materials for the vertical slice.
+              </p>
+            </div>
+            <div class="kb-stat">
+              <h3>Total Capital Range</h3>
+              <p class="kb-stat-number">$4,800 – $15,600</p>
+              <p class="kb-muted">
+                Combined setup + demo production target for this phase.
+              </p>
+            </div>
+          </div>
+        </div>
+        <aside class="kb-pod">
+          <h3 class="kb-pod-title">How the Demo Fits the Bigger Plan</h3>
+          <ul class="kb-bullets compact">
+            <li>Phase 1 – Ship <strong>Hotdog Hustler</strong> to generate initial revenue.</li>
+            <li>Phase 2 – Use revenue + small additional funding to set up Kato.8 and build the Last Light demo.</li>
+            <li>Phase 3 – Use the demo as the core asset for full-game funding and publishing conversations.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Timeline</p>
+        <h2>From Micro-Game to Demo</h2>
+        <p class="kb-muted">
+          The demo sits in the middle of the broader funding roadmap, following the release of Hotdog Hustler
+          and preceding full Last Light production.
+        </p>
+
+        <div class="kb-timeline">
+          <article class="kb-node">
+            <h4>0–2 Months · Hotdog Hustler Release</h4>
+            <p class="kb-muted">
+              Finalize, launch, and begin monetizing Hotdog Hustler to create initial revenue.
+            </p>
+          </article>
+
+          <article class="kb-node">
+            <h4>2–3 Months · Studio Setup & Prototype</h4>
+            <p class="kb-muted">
+              Apply initial funds to establish Kato.8's basic operations and begin prototyping the Last Light core loop.
+            </p>
+          </article>
+
+          <article class="kb-node">
+            <h4>3–6 Months · Last Light Demo Build</h4>
+            <p class="kb-muted">
+              Focused development of the demo slice: core systems, art pass, and investor-ready build.
+            </p>
+          </article>
+
+          <article class="kb-node">
+            <h4>6+ Months · Fundraising With the Demo</h4>
+            <p class="kb-muted">
+              Use the polished demo and supporting documents to secure funding for the full game.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISKS -->
+    <section id="risks" class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kb-kicker">Risks</p>
+          <h2>Key Demo Risks & Mitigation</h2>
+          <p class="kb-muted">
+            The demo plan is scoped with a clear view of risks around budget, time, and scope creep.
+          </p>
+        </div>
+        <aside class="kb-pod">
+          <ul class="kb-bullets compact">
+            <li>
+              <strong>Budget risk:</strong> Hotdog Hustler revenue or small funding may land on the lower end.<br/>
+              <em>Mitigation:</em> Plan for multiple budget scenarios and prioritize core demo systems first.
+            </li>
+            <li>
+              <strong>Time & availability:</strong> Small team with limited hours can slow demo progress.<br/>
+              <em>Mitigation:</em> Ruthless scope control and milestone-based planning so the slice stays achievable.
+            </li>
+            <li>
+              <strong>Scope creep:</strong> Temptation to add full-game features into the demo.<br/>
+              <em>Mitigation:</em> Lock demo scope around base building, farming, and simple waves only; full systems live on the full-game page.
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DOCUMENT LIBRARY -->
+    <section id="documents" class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Documentation</p>
+        <h2>Demo Documentation Library</h2>
+        <p class="kb-muted">
+          These documents support the business and production side of the Last Light demo and the
+          studio setup around it.
+        </p>
+
+        <div class="kb-doc-grid">
+          <article class="kb-doc-card">
+            <h3>Kato.8 Business Strategy</h3>
+            <p class="kb-muted">
+              High-level studio strategy and how Last Light’s demo fits into the long-term plan.
+            </p>
+            <a href="Kato.8 Business Strategy.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Funding Roadmap</h3>
+            <p class="kb-muted">
+              Cost ranges, funding paths, and risk analysis from Hotdog Hustler to the Last Light demo.
+            </p>
+            <a href="Kato.8 Studios Funding Roadmap.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Hotdog Hustler – Strategic Overview</h3>
+            <p class="kb-muted">
+              How the first game supports studio formation and demo funding.
+            </p>
+            <a href="HOTDOG HUSTLER — STRATEGIC OVERVIEW DOCUMENT.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Hotdog Hustler – GDD</h3>
+            <p class="kb-muted">
+              Master game design document used to validate our production process.
+            </p>
+            <a href="HOTDOG HUSTLER — MASTER GAME DESIGN DOCUMENT (GDD v2).pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Hotdog Hustler – Production Plan</h3>
+            <p class="kb-muted">
+              Scheduling, roles, and sprint structure that we reapply for the Last Light demo.
+            </p>
+            <a href="HOTDOG HUSTLER — PRODUCTION PLAN.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>UI/UX Wireframe Sheet</h3>
+            <p class="kb-muted">
+              Wireframes that show our approach to clarity and player flow.
+            </p>
+            <a href="_HOTDOG HUSTLER - UI_UX WIREFRAME SHEET.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Art Assets – Phase 1</h3>
+            <p class="kb-muted">
+              Phase 1 art asset list demonstrating how we scope visual workload.
+            </p>
+            <a href="Hotdog Hustler Art Assets - Phase1.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+
+          <article class="kb-doc-card">
+            <h3>Studio Build Checklist</h3>
+            <p class="kb-muted">
+              Step-by-step tasks for getting the studio set up around the demo and first release.
+            </p>
+            <a href="Studio Build - Checklist - Sheet1.pdf" target="_blank" class="kb-btn kb-doc-btn">
+              Open PDF
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="lastlight.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Big Boss Cleanup — GDD & Pitch (Private) | Kato.8</title>
+  <meta name="robots" content="noindex,nofollow"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="bigbosscleanup-gdd.css"/>
+
+  <!-- Scripts -->
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+  <script defer src="main.js"></script>
+  <script defer src="bigbosscleanup-gdd.js?v=1"></script>
+</head>
+
+<body class="deck-body">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LOCK SCREEN -->
+  <section id="lockScreen" class="section lock">
+    <div class="container lock-box">
+      <h1>Restricted Access</h1>
+      <p>This deck is available only to approved collaborators and investors.</p>
+      <form id="authForm" class="auth-form">
+        <label>
+          <span>Enter Access Code</span>
+          <input id="accessCode" type="password" placeholder="••••••••••" required/>
+        </label>
+        <button type="submit" class="btn primary">Unlock</button>
+        <p id="authMsg" class="auth-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DECK LAYOUT -->
+  <main id="gddContent" class="hidden">
+    <!-- Sidebar TOC + controls -->
+    <aside class="deck-sidebar" aria-label="Slide navigation">
+      <div class="deck-logo">
+        <span class="brand-gem"></span>
+        <strong>Big Boss Cleanup</strong>
+        <small>GDD & Pitch</small>
+      </div>
+      <nav id="deckTOC" class="deck-toc"></nav>
+      <div class="deck-meta">
+        <button id="lockBtn" class="btn small" type="button">Lock</button>
+        <button id="printBtn" class="btn small" type="button">Export PDF</button>
+      </div>
+    </aside>
+
+    <section class="deck-stage">
+      <!-- Cover -->
+      <article class="slide cover" data-title="Cover">
+        <div class="slide-inner">
+          <p class="kicker">Private • Do Not Distribute</p>
+          <h1>Big Boss Cleanup</h1>
+          <h2>3D Cleanup Simulator • GDD + Pitch</h2>
+          <p class="lead">A modern 3D sim where you clean the aftermath of over-the-top arcade-era brawls—parody-safe, deeply satisfying, and creator-friendly.</p>
+          <div class="cover-meta">
+            <div><strong>Studio:</strong> Kato’s Kraken</div>
+            <div><strong>Build Path:</strong> Prototype → Vertical Slice → Partner Build</div>
+            <div><strong>Contact:</strong> terryjteng@gmail.com</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Executive Summary -->
+      <article class="slide" data-title="Executive Summary">
+        <div class="slide-inner">
+          <h3>Executive Summary</h3>
+          <ul class="bullets">
+            <li><strong>Core:</strong> A first-person (or over-shoulder) cleanup sim about restoring arenas after parody brawls.</li>
+            <li><strong>Market Fit:</strong> Fans of PowerWash/House Flipper/Viscera-style zen loops + YouTube/TikTok “oddly satisfying”.</li>
+            <li><strong>Parody-Safe:</strong> Original IP that evokes classic fighters without infringing—distinct arenas, silhouettes, and FX.</li>
+            <li><strong>Shareability:</strong> Time-lapse replays, grime heatmaps, and job report cards—perfect for creators.</li>
+            <li><strong>Prototype (10–12w):</strong> 1 arena, grime types, 3 tools, scoring, contract loop.</li>
+            <li><strong>VS (+16–18w):</strong> 3 arenas, advanced grime systems, tool mods, hazards, creator replay exporter.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Pillars -->
+      <article class="slide" data-title="Design Pillars">
+        <div class="slide-inner grid-3">
+          <div class="card">
+            <h4>Oddly Satisfying</h4>
+            <p>Top-tier feedback for cleaning, repairing, and restoring—from grime peel to glossy finish and score pop.</p>
+          </div>
+          <div class="card">
+            <h4>Parody, Not Parasitic</h4>
+            <p>Clear homage via vibes, not marks: new move names, unique arenas, original characters & FX reads.</p>
+          </div>
+          <div class="card">
+            <h4>Creator-Ready</h4>
+            <p>Time-lapse exports, photo mode, job summary cards; weekly “challenge contracts”.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Gameplay Loop -->
+      <article class="slide" data-title="Core Loop">
+        <div class="slide-inner">
+          <h3>Core Gameplay Loop</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Contract → Prep → Clean → Repair → Inspect → Grade → Payout</h5>
+              <ul class="bullets compact">
+                <li><strong>Contracts:</strong> pick arena, bonus objectives, penalties (time / chemical use / damage).</li>
+                <li><strong>Prep:</strong> cordon area, set waste bins, choose loadout.</li>
+                <li><strong>Cleaning:</strong> pressure wash, mop/chemical, vacuum shards, scrape decals & gum.</li>
+                <li><strong>Repair:</strong> fix cracked tiles, bent rails, broken signage.</li>
+                <li><strong>Inspect:</strong> UV/forensic light; grime % by type; hazard compliance.</li>
+                <li><strong>Grade:</strong> Bronze–S rank by time, completeness, waste sorting, damage.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Tools (Prototype set)</h5>
+              <ul class="bullets compact">
+                <li>Pressure Washer (nozzles; foam additive)</li>
+                <li>Mop + Bucket (detergent variants)</li>
+                <li>Vacuum (glass/metal shards)</li>
+                <li>Scraper (decals/gum), Rag (detail pass)</li>
+              </ul>
+              <h5>Grime Types</h5>
+              <ul class="bullets compact">
+                <li>Paint FX splashes, soot/scorch, oil, “mystery goop” (non-bio)</li>
+                <li>Physics debris: glass, tiles, props</li>
+                <li>Stickers/posters (parody fight promos)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Arenas (Parody-safe) -->
+      <article class="slide" data-title="Arenas">
+        <div class="slide-inner">
+          <h3>Arenas (Parody-Safe Homages)</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Neon Back-Alley</h4>
+              <p>Broken signage, noodle stall splash, neon paint and cans, cracked cement, knocked trash.</p>
+            </div>
+            <div class="card">
+              <h4>Temple Courtyard</h4>
+              <p>Fallen lanterns, scorch on stone, shattered tiles, koi pond skimmers, paper charms.</p>
+            </div>
+            <div class="card">
+              <h4>Metro Overlook</h4>
+              <p>Railings bent, ad panels ripped, oil streaks, glass rain, transit hazard signage.</p>
+            </div>
+          </div>
+          <p class="fine">Names, moves, and visuals are original; the “retro fight” vibe is tone, not trademark.</p>
+        </div>
+      </article>
+
+      <!-- Systems -->
+      <article class="slide" data-title="Systems & Data">
+        <div class="slide-inner">
+          <h3>Systems & Data</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Scoring</h5>
+              <ul class="bullets compact">
+                <li>Completeness by type (paint, oil, soot, decals, debris)</li>
+                <li>Time efficiency, tool wear, chemical usage</li>
+                <li>Penalties: collateral damage, improper disposal</li>
+              </ul>
+              <h5>Progression</h5>
+              <ul class="bullets compact">
+                <li>Earn cash → buy tool upgrades & detergents</li>
+                <li>Unlock new contracts, tougher hazards</li>
+                <li>Prestige “Night Shift” modifiers</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Data Model (SO)</h5>
+              <ul class="bullets compact">
+                <li>`GrimeSO { id, type, hardness, cleanTool, decals[] }`</li>
+                <li>`ArenaSO { id, layout, grimeSpawners[], hazards[] }`</li>
+                <li>`ToolSO { id, modes[], wearRate, pressure, chemicals[] }`</li>
+                <li>`ContractSO { arena, goals[], penalties[], payout }`</li>
+              </ul>
+              <h5>Replay Export</h5>
+              <ul class="bullets compact">
+                <li>Time-lapse camera paths + UI summary card</li>
+                <li>Blueprint of “before/after” heatmap</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Controls & Feel -->
+      <article class="slide" data-title="Controls & Feel">
+        <div class="slide-inner">
+          <h3>Controls & Feel (Prototype)</h3>
+          <ul class="bullets">
+            <li>FPS or OTS camera, smooth sway; walk/sprint/crouch</li>
+            <li>Washer: mouse aim, pressure curve, nozzle spread</li>
+            <li>Mop: arc sweep with fatigue; bucket refill at stations</li>
+            <li>Vacuum: suction falloff, bag capacity, clog events</li>
+            <li>Haptics/audio: foam hiss, grime peel, shard clinks</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Hazards & Accessibility -->
+      <article class="slide" data-title="Hazards & Accessibility">
+        <div class="slide-inner">
+          <h3>Hazards & Accessibility</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Hazards</h5>
+              <ul class="bullets compact">
+                <li>Wet floors (signage required)</li>
+                <li>Electrical panels (lockout before wash)</li>
+                <li>Chemical misuse penalties</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Accessibility</h5>
+              <ul class="bullets compact">
+                <li>Motion-sickness options (FOV, head bob)</li>
+                <li>High-contrast grime outlines (toggle)</li>
+                <li>“Relaxed” mode (time off, gentler penalties)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Production & Team -->
+      <article class="slide" data-title="Production Plan">
+        <div class="slide-inner">
+          <h3>Production Plan</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Prototype (10–12 weeks)</h5>
+              <ul class="bullets compact">
+                <li>1 arena (Neon Back-Alley)</li>
+                <li>3 grime types + decals</li>
+                <li>Washer/Mop/Vacuum tools</li>
+                <li>Scoring + job report card</li>
+              </ul>
+              <h5>Vertical Slice (+16–18 weeks)</h5>
+              <ul class="bullets compact">
+                <li>+2 arenas, hazards, tool mods</li>
+                <li>Heatmap, replays, creator photo mode</li>
+                <li>Contracts & challenge board</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Team (lean)</h5>
+              <ul class="bullets compact">
+                <li>Producer/Designer, Unity Engineer, 3D Env Artist</li>
+                <li>Rev-share: Tech Artist (FX), Audio, QA</li>
+              </ul>
+              <h5>Risks & Mitigation</h5>
+              <ul class="bullets compact">
+                <li>Legal parody line → original names, silhouettes</li>
+                <li>Performance → GPU-friendly decals, instancing</li>
+                <li>“Punch” of feedback → VFX/audio polish sprints</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Detailed Roadmap -->
+      <article class="slide" data-title="Development Roadmap">
+        <div class="slide-inner">
+          <h3>Development Roadmap & Milestones</h3>
+          <p style="color:#8fa3b8;margin-bottom:2rem;">Comprehensive development timeline with epics, milestones, and deliverables</p>
+          
+          <div class="roadmap-overview" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem;padding:1.5rem;background:rgba(40,224,185,0.05);border:1px solid rgba(40,224,185,0.15);border-radius:12px;">
+            <div>
+              <div style="font-size:12px;color:#8fa3b8;text-transform:uppercase;letter-spacing:0.1em;">Total Duration</div>
+              <div style="font-size:20px;color:#28e0b9;font-weight:700;margin-top:4px;">~24 Months</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#8fa3b8;text-transform:uppercase;letter-spacing:0.1em;">Major Phases</div>
+              <div style="font-size:20px;color:#28e0b9;font-weight:700;margin-top:4px;">8 Phases</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#8fa3b8;text-transform:uppercase;letter-spacing:0.1em;">Milestones</div>
+              <div style="font-size:20px;color:#28e0b9;font-weight:700;margin-top:4px;">18 Gates</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#8fa3b8;text-transform:uppercase;letter-spacing:0.1em;">Team Size</div>
+              <div style="font-size:20px;color:#28e0b9;font-weight:700;margin-top:4px;">3 Core + 3 Support</div>
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 1: Pre-Production</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">4 Weeks</span>
+            </div>
+            
+            <div style="margin-bottom:1.5rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Creative Vision & Technical Foundation</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Finalize parody-safe creative vision and gameplay pillars; define technical scope</p>
+              
+              <div style="display:grid;gap:1rem;">
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 1.1: Tone Bible & Design Doc (Week 1-2)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Parody-safe creative vision with original IP elements</li>
+                    <li>Core gameplay loop documentation</li>
+                    <li>Grime/clean systems design specification</li>
+                    <li>Art style tests and visual direction</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 1.2: Technical Scope (Week 3-4)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Engine selection and technical requirements (Unity URP)</li>
+                    <li>System architecture for grime simulation</li>
+                    <li>Tool pipeline and asset workflow</li>
+                    <li>Performance targets and optimization strategy</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> Creative vision locked, technical foundation defined, ready for prototype
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 2: Prototype</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">10–12 Weeks</span>
+            </div>
+            
+            <div style="margin-bottom:1.5rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Core Gameplay Loop</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Build playable arena with functional cleaning mechanics and grime systems</p>
+              
+              <div style="display:grid;gap:1rem;">
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 2.1: FP Controller & Tools (Week 1-4)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>First-person movement with smooth camera</li>
+                    <li>Tool handling system (equip, swap, use)</li>
+                    <li>Physics-based tool interactions (mop drag, spray direction)</li>
+                    <li>Basic inventory and tool durability</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 2.2: Cleaning Mechanics (Week 5-8)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>3 grime types: blood (liquid), debris (solid), graffiti (surface)</li>
+                    <li>Mop, Broom, Pressure Washer tools with particle FX</li>
+                    <li>Grime removal logic with cleanliness percentage tracking</li>
+                    <li>Tool effectiveness matrix (right tool for right job)</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 2.3: Arena & Job System (Week 9-12)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Neon Back-Alley arena with modular environment kit</li>
+                    <li>Destructible props and interactive elements</li>
+                    <li>Job scoring: time, cleanliness %, tool efficiency</li>
+                    <li>Report card UI with rank (F to S) and money payout</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> Playable cleaning loop, 1 arena, job system with scoring, basic tool set functional
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Roadmap Phase 3-4 -->
+      <article class="slide" data-title="Roadmap: Phases 3-4">
+        <div class="slide-inner">
+          <h3>Roadmap Continued</h3>
+
+          <div class="phase-epic" style="margin-bottom:3rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 3: Vertical Slice</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">16–18 Weeks</span>
+            </div>
+            
+            <div style="margin-bottom:1.5rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Investor-Ready Demo</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Expand prototype into polished demo with full gameplay loop, UI, and grading</p>
+              
+              <div style="display:grid;gap:1rem;">
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 3.1: Arena Expansion (Week 1-6)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>2 additional arenas: Warehouse, Rooftop</li>
+                    <li>Arena-specific grime patterns and challenges</li>
+                    <li>Environmental hazards: broken glass, live wires</li>
+                    <li>Contracts board with special job conditions</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 3.2: Advanced Systems (Week 7-12)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Tool mods: speed, capacity, range upgrades</li>
+                    <li>Heatmap visualization and replay system</li>
+                    <li>Photo mode with filters and free camera</li>
+                    <li>Equipment shop with 3 tiers per tool</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 3.3: Polish & Fight Mode (Week 13-18)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Active fight scenarios with destructible environments</li>
+                    <li>Audio/visual polish: lighting, OST, SFX</li>
+                    <li>Replay export for content creators</li>
+                    <li>Investor demo build with marketing materials</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> 3 arenas, advanced tools, replay/photo mode, fight scenarios, investor-ready demo
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 4: Full Production M1</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">6 Months</span>
+            </div>
+            
+            <div style="margin-bottom:1.5rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Progression Systems</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Implement progression systems, contracts, and advanced grime logic</p>
+              
+              <div style="display:grid;gap:1rem;">
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 4.1: Arena Expansion (Month 1-2)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>2 new arenas (5 total): Casino Floor, Subway Station</li>
+                    <li>Unlock system with progression gates</li>
+                    <li>Tool upgrade paths with skill trees</li>
+                    <li>Grime AI spawners for dynamic mess generation</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 4.2: Challenge Board (Month 3-4)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Challenge board with daily/weekly rotations</li>
+                    <li>Special job conditions: no-tool runs, speedruns</li>
+                    <li>Leaderboard integration with Steam</li>
+                    <li>Reward system for challenge completion</li>
+                  </ul>
+                </div>
+
+                <div style="padding:1rem;background:rgba(0,0,0,0.2);border-left:3px solid #28e0b9;border-radius:6px;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    <span style="width:8px;height:8px;background:#28e0b9;border-radius:50%;"></span>
+                    <strong style="color:#eaf2fb;">Milestone 4.3: Advanced Grime Logic (Month 5-6)</strong>
+                  </div>
+                  <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                    <li>Grime layering and interaction systems</li>
+                    <li>Environmental effects on grime (rain, wind)</li>
+                    <li>Tool synergy mechanics and combos</li>
+                    <li>Performance optimization pass</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> 5 arenas, progression unlocks, challenge board, advanced grime systems
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Roadmap Phase 5-8 -->
+      <article class="slide" data-title="Roadmap: Phases 5-8">
+        <div class="slide-inner">
+          <h3>Roadmap: Final Phases</h3>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 5: Full Production M2</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">6 Months</span>
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Content Expansion & Alpha Prep</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Expand content library and refine game feel for Alpha</p>
+              
+              <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                <li>3 additional arenas (8 total): Penthouse, Garage, Morgue</li>
+                <li>Hazard variations and arena modifiers</li>
+                <li>Creator replay exporter with watermark removal</li>
+                <li>Grime library v2 with 10+ new types</li>
+                <li>VFX pass: improved particle systems and lighting</li>
+              </ul>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> 8 arenas, grime library v2, creator tools, VFX polish complete
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 6: Alpha / Playtest</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">2–3 Months</span>
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Feature Lock & Testing</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Closed playtests and feature lock</p>
+              
+              <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                <li>Closed alpha with 50-100 testers</li>
+                <li>QA build with bug tracking and reporting tools</li>
+                <li>Feedback iteration: balance, UX, accessibility</li>
+                <li>Optimization report and performance targets hit</li>
+                <li>Feature lock: no new major systems</li>
+              </ul>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> Feature locked, QA feedback integrated, performance optimized
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 7: Beta / Marketing Prep</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">3 Months</span>
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Polish & Launch Assets</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Final polish, Steam demo, trailer, PR</p>
+              
+              <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                <li>Beta build with all content unlocked</li>
+                <li>Steam demo: 3 arenas, 30-minute time limit</li>
+                <li>Trailer production: 60s announcement, 2min gameplay</li>
+                <li>Media assets: screenshots, GIFs, press kit</li>
+                <li>Creator outreach program with early access codes</li>
+                <li>Steam page optimization: wishlists, community hub</li>
+              </ul>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> Beta complete, Steam page live, marketing assets ready, wishlists growing
+            </div>
+          </div>
+
+          <div class="phase-epic" style="margin-bottom:2rem;padding:2rem;border:1px solid rgba(40,224,185,0.2);border-radius:12px;background:linear-gradient(135deg,rgba(40,224,185,0.03),rgba(139,92,246,0.02));">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+              <h4 style="color:#28e0b9;font-size:22px;margin:0;">Phase 8: Launch + Post-Launch</h4>
+              <span style="padding:6px 16px;background:rgba(40,224,185,0.15);border:1px solid rgba(40,224,185,0.3);border-radius:8px;font-size:14px;font-weight:700;">TBD</span>
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+              <h5 style="color:#eaf2fb;margin-bottom:0.5rem;">Epic: Release & Live Ops</h5>
+              <p style="color:#8fa3b8;font-size:14px;margin-bottom:1rem;">Release, live ops, mod support</p>
+              
+              <ul class="bullets compact" style="margin:0;padding-left:1.5rem;color:#8fa3b8;">
+                <li>Launch build: PC (Steam) Early Access</li>
+                <li>Day-one patch for launch issues</li>
+                <li>Seasonal arenas: holiday/event themed</li>
+                <li>DLC roadmap: new arenas, tools, cosmetics</li>
+                <li>Mod support: Steam Workshop integration</li>
+                <li>Community events and competitions</li>
+                <li>Full 1.0 launch within 6 months of Early Access</li>
+              </ul>
+            </div>
+
+            <div style="padding:1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+              <strong style="color:#8b5cf6;">✓ Phase Gate:</strong> Successful launch, positive reviews, live ops active, mod support live
+            </div>
+          </div>
+
+          <div style="padding:1.5rem;background:rgba(40,224,185,0.08);border:2px solid rgba(40,224,185,0.3);border-radius:12px;text-align:center;">
+            <h4 style="color:#28e0b9;margin:0 0 8px;">🚀 Launch Target: Q3 2027</h4>
+            <p style="color:#8fa3b8;margin:0;font-size:14px;">PC (Steam) — Early Access → Full 1.0 Launch within 6 months</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Funding -->
+      <article class="slide" data-title="Funding Ask">
+        <div class="slide-inner">
+          <h3>Funding Ask</h3>
+          <div class="grid-2">
+            <div>
+              <p class="lead"><strong>Raising:</strong> $100k – $150k</p>
+              <ul class="bullets compact">
+                <li>Art burst (modular sets, grime/decals library)</li>
+                <li>Tool systems & effects, hazard pass</li>
+                <li>User research + creator campaign</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Deal Flexibility</h5>
+              <ul class="bullets compact">
+                <li>Equity, rev-share, or publishing partnership</li>
+                <li>Milestone-gated deliverables & transparent reporting</li>
+                <li>Steam creator wishlists + demo strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Acceptance -->
+      <article class="slide" data-title="Acceptance Criteria">
+        <div class="slide-inner">
+          <h3>Acceptance Criteria (Prototype)</h3>
+          <ul class="bullets">
+            <li>Complete a job in the Back-Alley at ≥90% cleanliness across grime types</li>
+            <li>Scoring produces A/S rank based on time/usage/penalties</li>
+            <li>Tool feel: washer pressure/nozzle spread feels great; mop fatigue sensible; vacuum capacity loop fun</li>
+            <li>Replay: before/after heatmap + summary card export</li>
+            <li>Stable 60 fps on mid-spec PC; no blockers</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Financial Analysis -->
+      <article class="slide" data-title="Financial Analysis">
+        <div class="slide-inner">
+          <h3>Financial Analysis & Projections</h3>
+          
+          <!-- Development Budget -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Development Budget: $100k - $150k</h4>
+            <div class="grid-2">
+              <div>
+                <h5>Budget Allocation</h5>
+                <ul class="bullets compact">
+                  <li><strong>Development (40%):</strong> $40k - $60k
+                    <br><small>Unity engineer, cleaning physics, grime systems, job framework</small></li>
+                  <li><strong>Art & Environment (35%):</strong> $35k - $52.5k
+                    <br><small>Modular arena kits, grime decals library, tool models, UI/UX</small></li>
+                  <li><strong>Audio & SFX (10%):</strong> $10k - $15k
+                    <br><small>Satisfying cleaning sounds, power washer effects, ambient audio</small></li>
+                  <li><strong>Marketing (10%):</strong> $10k - $15k
+                    <br><small>Creator campaign, before/after showcase trailers, Steam demo</small></li>
+                  <li><strong>Operations (5%):</strong> $5k - $7.5k
+                    <br><small>User research, playtesting, licenses, legal</small></li>
+                </ul>
+              </div>
+              <div>
+                <h5>Funding Milestones</h5>
+                <ul class="bullets compact">
+                  <li><strong>Phase 1 (25%):</strong> $25k - $37.5k
+                    <br><small>Prototype with 1 arena + core mechanics</small></li>
+                  <li><strong>Phase 2 (40%):</strong> $40k - $60k
+                    <br><small>Vertical slice with 3 arenas + progression</small></li>
+                  <li><strong>Phase 3 (35%):</strong> $35k - $52.5k
+                    <br><small>Content expansion & Steam Early Access prep</small></li>
+                </ul>
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(40,224,185,0.1); border-radius: 8px; border: 1px solid rgba(40,224,185,0.3);">
+                  <p style="margin: 0; font-size: 0.9rem;"><strong>Burn Rate:</strong> ~$7k-11k/month over 14-18 months</p>
+                  <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;"><strong>Strategy:</strong> Early Access launch after vertical slice to fund remaining development</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Market Analysis -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Market Analysis</h4>
+            <div class="grid-3">
+              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
+                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Addressable Market</h5>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--seafoam); margin-bottom: 0.5rem;">$420M+</div>
+                <p style="margin: 0; font-size: 0.85rem; color: #94a3b8;">Cozy/Satisfying sims + Cleaning/Job sims (Steam + Console)</p>
+              </div>
+              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
+                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Comparable Titles</h5>
+                <ul class="bullets compact" style="margin: 0; font-size: 0.85rem; color: #94a3b8;">
+                  <li><strong>PowerWash Simulator:</strong> 10M+ units</li>
+                  <li><strong>Viscera Cleanup Detail:</strong> 2M+ units</li>
+                  <li><strong>House Flipper:</strong> 5M+ units</li>
+                </ul>
+              </div>
+              <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px;">
+                <h5 style="color: var(--kraken); margin: 0 0 0.5rem 0;">Target Price Point</h5>
+                <div style="font-size: 1.5rem; font-weight: bold; color: var(--seafoam); margin-bottom: 0.5rem;">$14.99</div>
+                <p style="margin: 0; font-size: 0.85rem; color: #94a3b8;">Early Access: $11.99 | Impulse-buy price point for viral potential</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Breakeven Analysis -->
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Breakeven Analysis</h4>
+            <div class="grid-2">
+              <div style="padding: 1.5rem; background: rgba(40,224,185,0.08); border-radius: 8px; border: 1px solid rgba(40,224,185,0.3);">
+                <h5 style="color: var(--seafoam); margin: 0 0 1rem 0;">Units to Breakeven</h5>
+                <div style="display: grid; gap: 0.75rem;">
+                  <div>
+                    <div style="font-weight: 600; color: #e2e8f0;">Minimum Budget ($100k)</div>
+                    <div style="font-size: 1.25rem; color: var(--seafoam); margin: 0.25rem 0;"><strong>10,600 units</strong> @ $13.49 avg</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8;">$143k gross (after 30% platform fees = $100.1k net)</div>
+                  </div>
+                  <div>
+                    <div style="font-weight: 600; color: #e2e8f0;">Maximum Budget ($150k)</div>
+                    <div style="font-size: 1.25rem; color: var(--seafoam); margin: 0.25rem 0;"><strong>15,900 units</strong> @ $13.49 avg</div>
+                    <div style="font-size: 0.85rem; color: #94a3b8;">$214k gross (after 30% platform fees = $149.9k net)</div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 1.5rem; background: rgba(139,92,246,0.08); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
+                <h5 style="color: var(--kraken); margin: 0 0 1rem 0;">Breakeven Feasibility</h5>
+                <ul class="bullets compact" style="margin: 0;">
+                  <li><strong>PowerWash Simulator:</strong> Sold 1M+ units in first 6 months of Early Access</li>
+                  <li><strong>Viscera Cleanup:</strong> 500k+ units with minimal marketing</li>
+                  <li><strong>Viral Mechanics:</strong> Before/after exports drive organic TikTok/YouTube growth</li>
+                  <li><strong>Confidence Level:</strong> <span style="color: var(--seafoam); font-weight: 600;">Very High</span> - Target is 1-2% of PowerWash success</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue Projections -->
+          <div>
+            <h4 style="color: var(--seafoam); margin-bottom: 1rem;">Revenue Projections (Conservative)</h4>
+            <div class="grid-2">
+              <div>
+                <h5>Year 1 (Early Access + Launch)</h5>
+                <ul class="bullets compact">
+                  <li><strong>Conservative:</strong> 25k units @ $13.49 avg = <span style="color: var(--seafoam);">$236k gross</span>
+                    <br><small>After platform fees (30%): ~$165k net</small></li>
+                  <li><strong>Moderate:</strong> 50k units @ $13.49 avg = <span style="color: var(--seafoam);">$472k gross</span>
+                    <br><small>After platform fees: ~$330k net</small></li>
+                  <li><strong>Optimistic:</strong> 100k units @ $13.49 avg = <span style="color: var(--seafoam);">$944k gross</span>
+                    <br><small>After platform fees: ~$661k net</small></li>
+                </ul>
+                <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;"><strong>Viral Potential:</strong> Highly shareable "before/after" content ideal for TikTok, YouTube, Twitch</p>
+              </div>
+              <div>
+                <h5>ROI Scenarios (2-Year Projection)</h5>
+                <div style="padding: 1rem; background: rgba(40,224,185,0.05); border-radius: 8px; border-left: 3px solid var(--seafoam); margin-bottom: 1rem;">
+                  <p style="margin: 0 0 0.5rem 0; font-weight: 600;">Conservative (125k total units)</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: #94a3b8;">Revenue: ~$826k net | ROI: <strong style="color: var(--seafoam);">551% (6.5x)</strong></p>
+                </div>
+                <div style="padding: 1rem; background: rgba(40,224,185,0.05); border-radius: 8px; border-left: 3px solid var(--seafoam); margin-bottom: 1rem;">
+                  <p style="margin: 0 0 0.5rem 0; font-weight: 600;">Moderate (250k total units)</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: #94a3b8;">Revenue: ~$1.65M net | ROI: <strong style="color: var(--seafoam);">1,202% (13x)</strong></p>
+                </div>
+                <div style="padding: 1rem; background: rgba(40,224,185,0.05); border-radius: 8px; border-left: 3px solid var(--seafoam);">
+                  <p style="margin: 0 0 0.5rem 0; font-weight: 600;">Viral Success (500k+ total units)</p>
+                  <p style="margin: 0; font-size: 0.9rem; color: #94a3b8;">Revenue: ~$3.3M+ net | ROI: <strong style="color: var(--seafoam);">2,504%+ (26x+)</strong></p>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+              <strong>Assumptions:</strong> Early Access on Steam (6 months) + Full launch on Steam/Switch; 70% revenue split; 
+              strong influencer/creator marketing strategy; replay/export features drive organic social sharing. 
+              No DLC/cosmetics monetization included (additional upside).
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Contact -->
+      <article class="slide" data-title="Contact">
+        <div class="slide-inner center">
+          <h3>Next Steps</h3>
+          <p class="lead">Request the full internal deck or schedule a live demo.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="contact.html">Investor / Publisher Inquiry</a>
+            <a class="btn" href="join.html">Join on Rev-Share</a>
+          </div>
+          <p class="fine">© <span id="year"></span> Kato.8. Internal & confidential.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

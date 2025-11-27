@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Last Light | Kato.8</title>
+  <meta name="description" content="A 2D zombie survival and home-fortification game where you gather wood, stone, and metal to strengthen your home, build turrets, and manage a shared ammo pool between you and your defenses." />
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="lastlight.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Last Light"/>
+  <meta property="og:description" content="2D zombie survival and home-fortification game. Gather wood, stone, and metal to reinforce your home, build turrets, and manage shared ammo between you and your defenses."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD (minimal, no genres to avoid assumptions) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Last Light",
+    "author":{"@type":"Organization","name":"Kato.8"},
+    "description":"A 2D zombie survival and home-fortification game where players gather wood, stone, and metal to upgrade their home, build turrets, and manage a shared ammo pool between themselves and their defenses.",
+    "url":"https://your-domain.com/lastlight.html"
+  }
+  </script>
+
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">2D Zombie Survival &amp; Home-Fortification Game</p>
+        <h1 class="kb-title">Last Light</h1>
+        <p class="kb-lead">
+          A 2D zombie survival and home-fortification game built around one idea:
+          <strong>your home is everything.</strong>
+          Gather wood, stone, and metal, reinforce your home, build turrets, and manage a shared ammo pool
+          between yourself and your defenses.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#vision" class="btn primary">Full Game Vision</a>
+          <a href="lastlight-demo.html" class="btn">View Demo Scope</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="kb-section" id="vision">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Overview</p>
+          <h2>What is Last Light?</h2>
+          <p class="kb-muted">
+            Last Light is a 2D zombie survival and home-fortification game. Players gather wood, stone,
+            and metal, return to their home, and use those resources to strengthen the structure, build
+            turrets, and prepare for future zombie threats while managing a shared ammo pool used by both
+            the player and their turrets.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Type</dt><dd>2D zombie survival &amp; home-fortification</dd></div>
+            <div><dt>Focus</dt><dd>Resource gathering, home upgrades, turrets with shared ammo</dd></div>
+            <div><dt>Engine</dt><dd>Unity (2D)</dd></div>
+            <div><dt>Status</dt><dd>Demo planning → Full game pre-production</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS (deriving only from confirmed facts) -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Home at the Center</h3>
+            <p class="kb-muted">
+              The home is the heart of the experience. Resource choices and upgrades revolve around
+              protecting and strengthening this one space.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Shared Ammo Decisions</h3>
+            <p class="kb-muted">
+              The same ammo supports both you and your turrets. Every shot you take is one less round
+              your defenses can use later.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Simple Inputs, Clear Goals</h3>
+            <p class="kb-muted">
+              Core actions stay straightforward: gather, fortify, and survive. The depth comes from how
+              you choose to invest limited resources into your home and defenses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE ELEMENTS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Core Elements</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Resource Gathering</h3>
+            <p class="kb-muted">
+              Collect wood, stone, and metal. These materials are the backbone of your home upgrades
+              and turret construction.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Home Upgrades</h3>
+            <p class="kb-muted">
+              Reinforce and improve your home using gathered resources. The home’s condition and layout
+              determine how well you can withstand zombie threats.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Turrets</h3>
+            <p class="kb-muted">
+              Build turrets that draw from the same ammo pool you use. Turrets extend your defense but
+              also consume precious ammunition.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Machete &amp; Gun</h3>
+            <p class="kb-muted">
+              Swap between close-range melee with the machete and ranged use of the gun, always aware
+              that gunfire draws from the shared ammo pool.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Zombie Threats</h3>
+            <p class="kb-muted">
+              Zombies are the constant pressure on your home. How you prepare with resources, upgrades,
+              and ammo management shapes how long you can hold out.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Demo → Full Game</h3>
+            <p class="kb-muted">
+              The demo focuses on proving this loop with a contained scope. The full game expands on
+              these same systems rather than reinventing them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOOP (purely derived, no extra systems) -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Play Pattern</p>
+          <h2>Gather • Fortify • Survive</h2>
+          <ul class="kb-bullets">
+            <li><strong>Gather:</strong> Obtain wood, stone, and metal for your home.</li>
+            <li><strong>Fortify:</strong> Spend resources to upgrade and strengthen the home and build turrets.</li>
+            <li><strong>Prepare:</strong> Manage how much ammo is available for both you and your turrets.</li>
+            <li><strong>Survive:</strong> Use your machete, gun, and turrets together to keep the home standing against zombies.</li>
+          </ul>
+        </div>
+        <aside class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Key Tension</dt><dd>How you spend resources and ammo to keep the home safe.</dd></div>
+            <div><dt>Demo Purpose</dt><dd>Test and prove this loop on a small, clearly defined scope.</dd></div>
+            <div><dt>Full Game</dt><dd>Extend the loop with more ways to fortify and respond to zombie threats.</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ROADMAP (high-level only) -->
+    <section class="kb-section" id="milestones">
+      <div class="kb-container">
+        <p class="kicker">Development Path</p>
+        <h2>From Demo to Full Game</h2>
+        <p class="kb-muted" style="margin-bottom: 2rem;">
+          Last Light is structured so the demo and full game share the same foundation:
+          gathering resources, fortifying a home, using turrets, and managing shared ammo.
+        </p>
+
+        <div class="kb-timeline">
+          <article class="kb-node">
+            <h4>Phase 1: Demo</h4>
+            <p class="kb-muted">
+              Implement the core elements: resources, home upgrades, turrets, machete, gun, and shared ammo.
+            </p>
+          </article>
+
+          <article class="kb-node">
+            <h4>Phase 2: Expanded Scope</h4>
+            <p class="kb-muted">
+              Build on top of the demo by adding more ways to use wood, stone, and metal, and more possibilities
+              for how players fortify their home and use turrets.
+            </p>
+          </article>
+
+          <article class="kb-node">
+            <h4>Phase 3: Full Game Polish</h4>
+            <p class="kb-muted">
+              Refine pacing, presentation, and quality-of-life based on feedback, keeping the core focus on
+              survival and home-fortification with shared ammo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNDING / POSITIONING -->
+    <section class="kb-section" id="funding">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Position in the Slate</p>
+          <h2>How Last Light Fits</h2>
+          <p class="kb-muted">
+            Hotdog Hustler is used to help establish the studio. Last Light follows as a focused 2D zombie survival
+            and home-fortification project built around a contained, understandable core loop.
+          </p>
+          <ul class="kb-bullets">
+            <li>Demo scope and budget are handled in the studio’s broader demo planning documents.</li>
+            <li>Full game scope grows from the demo’s systems instead of adding unrelated mechanics.</li>
+          </ul>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+            <a href="contact.html" class="btn primary">Investor / Partner Inquiry</a>
+            <a href="pipeline.html" class="btn">View Studio Pipeline</a>
+          </div>
+        </div>
+        <aside class="kb-pod">
+          <p class="kicker">GDD Access</p>
+          <p class="kb-muted">
+            A private GDD / deck for Last Light exists with more detail on the demo, full game, and production needs.
+          </p>
+          <p class="kb-fine">
+            Request access via the contact form. Once approved, you’ll receive credentials for the
+            password-protected GDD page.
+          </p>
+          <div style="margin-top: 1rem;">
+            <a href="lastlight-gdd.html" class="btn">Open GDD Deck</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="lastlight.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

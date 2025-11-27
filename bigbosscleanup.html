@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Big Boss Cleanup | Kato.8</title>
+  <meta name="description" content="Big Boss Cleanup — A 3D first-person cleanup simulator where you clean up the aftermath of over-the-top arena brawls."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="bigbosscleanup.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Big Boss Cleanup"/>
+  <meta property="og:description" content="Clean up after the fight! A lightweight prototype featuring top-down or 3D cleanup gameplay."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Big Boss Cleanup",
+    "author":{"@type":"Organization","name":"Kato.8"},
+    "genre":["Simulation","Arcade"],
+    "gamePlatform":["Browser","PC"],
+    "description":"Clean up after chaotic fighting matches in this fast-paced cleanup simulator.",
+    "url":"https://your-domain.com/bigbosscleanup.html"
+  }
+  </script>
+  
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">3D Cleanup Simulator</p>
+        <h1 class="kb-title">Clean Up After the Fight</h1>
+        <div style="text-align: center; margin: 2rem 0;">
+          <img src="Art/BigBossCleanup/BigBossCleanup_PageBanner.png" alt="Big Boss Cleanup Banner" style="max-width: 900px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,0.4);">
+        </div>
+        <p class="kb-lead">
+          After the match ends, someone has to clean the arena. <strong>Big Boss Cleanup</strong> is a 3D first-person cleanup simulator where you mop puddles, sweep shards, and collect debris after chaotic fighting matches. Complete jobs to earn money for better equipment upgrades, and take on timed challenges or clean up during active fights for bonus pay.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#gameplay" class="btn primary">View Gameplay</a>
+          <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ONE-PAGER SUMMARY -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Overview</p>
+          <h2>What is Big Boss Cleanup?</h2>
+          <p class="kb-muted">
+            <strong>Big Boss Cleanup</strong> is a 3D first-person cleanup simulator where you step into the aftermath of intense arena battles. Navigate the arena after each brawl, using professional cleaning tools to mop puddles, sweep glass shards, and clear debris before the next match begins.
+          </p>
+          <p class="kb-muted">
+            Similar to other simulator games, completing jobs earns you money to purchase better equipment and upgrades. The more efficiently you clean, the more you earn. Take on optional challenges for bonus pay—race against the clock before the next fight starts, or brave cleaning during an active match while dodging fighters and avoiding new messes being created in real-time.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Genre</dt><dd>Cleanup Simulator • First-Person</dd></div>
+            <div><dt>Style</dt><dd>3D First-Person Simulator</dd></div>
+            <div><dt>Platform</dt><dd>PC (primary), Console-ready</dd></div>
+            <div><dt>Stage</dt><dd>Concept Stage</dd></div>
+            <div><dt>Hook</dt><dd>Job progression • Equipment upgrades • Challenge modes • Real-time obstacles</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMEPLAY MECHANICS -->
+    <section class="kb-section" id="gameplay">
+      <div class="kb-container">
+        <p class="kicker">Core Mechanics</p>
+        <h2>Gameplay</h2>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Arena Cleanup</h3>
+            <p class="kb-muted">Navigate arenas in first-person view, using your mop and broom to clean up after intense battles. Each job completed earns money for upgrades.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Equipment Progression</h3>
+            <p class="kb-muted">Earn money from completed jobs to purchase better cleaning tools and equipment. Upgrade your arsenal to handle tougher messes more efficiently.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Timed Challenges</h3>
+            <p class="kb-muted">Clean up before the next fight begins. Race against the clock to complete the job and earn bonus pay for speed and thoroughness.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Active Fight Mode</h3>
+            <p class="kb-muted">Take on high-risk, high-reward jobs cleaning during live matches. Avoid fighters, dodge obstacles, and manage new messes being created in real-time.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Physics-Based Cleaning</h3>
+            <p class="kb-muted">Realistic 3D physics-driven interactions. Mop puddles, sweep shards, and move debris with satisfying, tactile feedback.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Challenge System</h3>
+            <p class="kb-muted">Optional modifiers increase difficulty and payout. Balance risk versus reward as you decide which challenges to accept.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Immersive Simulation</h3>
+            <p class="kb-muted">First-person perspective with realistic physics creates an engaging, tactile cleaning experience. Feel the satisfaction of a job well done.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Risk & Reward</h3>
+            <p class="kb-muted">Choose your challenges wisely. Timed cleanups and active fight mode offer higher payouts but demand quick thinking and precise execution.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Progression System</h3>
+            <p class="kb-muted">Earn money from jobs to upgrade your equipment. Build your cleaning business from basic tools to professional-grade gear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT ROADMAP -->
+    <section class="kb-section" id="roadmap">
+      <div class="kb-container">
+        <p class="kicker">Development Roadmap</p>
+        <h2>High-Level Milestones</h2>
+        <div class="kb-timeline">
+          <article class="kb-node">
+            <h4>Phase 1: Pre-Production <span style="color:var(--seafoam);font-weight:400;">(4 weeks)</span></h4>
+            <p class="kb-muted">Finalize parody-safe creative vision and gameplay pillars; define technical scope and system foundations.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 2: Prototype <span style="color:var(--seafoam);font-weight:400;">(10–12 weeks)</span></h4>
+            <p class="kb-muted">Build a playable arena with functional cleaning mechanics and grime systems.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 3: Vertical Slice <span style="color:var(--seafoam);font-weight:400;">(16–18 weeks)</span></h4>
+            <p class="kb-muted">Expand prototype into an investor-ready demo with full gameplay loop, UI, and grading.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 4: Full Production M1 <span style="color:var(--seafoam);font-weight:400;">(6 months)</span></h4>
+            <p class="kb-muted">Implement progression systems, contracts, and advanced grime logic.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 5: Full Production M2 <span style="color:var(--seafoam);font-weight:400;">(6 months)</span></h4>
+            <p class="kb-muted">Expand content library and refine game feel for Alpha.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 6: Alpha / Playtest <span style="color:var(--seafoam);font-weight:400;">(2–3 months)</span></h4>
+            <p class="kb-muted">Closed playtests and feature lock.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 7: Beta / Marketing Prep <span style="color:var(--seafoam);font-weight:400;">(3 months)</span></h4>
+            <p class="kb-muted">Final polish, Steam demo, trailer, PR.</p>
+          </article>
+          <article class="kb-node">
+            <h4>Phase 8: Launch + Post-Launch <span style="color:var(--seafoam);font-weight:400;">(TBD)</span></h4>
+            <p class="kb-muted">Release, live ops, mod support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTION INFO -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Production</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Current Status</h3>
+            <p class="kb-muted">Concept stage with core vision defined. Seeking team members to begin development of this immersive 3D cleanup simulator.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Tech Stack</h3>
+            <p class="kb-muted">Will be built in Unity or Unreal Engine. 3D first-person framework with physics-based interactions and progression systems.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Team Needs</h3>
+            <p class="kb-muted">Currently seeking: 3D Artist, C++ Programmer, Sound Designer, and Unity/Unreal Developer to join the team.</p>
+            <div style="margin-top: 1rem;">
+              <a href="join.html" class="btn primary" style="font-size: 0.9em; padding: 8px 16px;">Join the Team</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="kb-section">
+      <div class="kb-container" style="text-align:center;">
+        <p class="kicker">Get Involved</p>
+        <h2>Interested in Big Boss Cleanup?</h2>
+        <p class="kb-muted" style="max-width:600px;margin:0 auto 2rem;">
+          Whether you're a potential collaborator, publisher, or just curious about the concept, we'd love to hear from you.
+        </p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn primary">Get in Touch</a>
+          <a href="pipeline.html" class="btn">View Full Pipeline</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="bigbosscleanup.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
+        </div>
+      </div>
+    <!-- CALL TO ACTION -->
+    <section class="kb-section">
+      <div class="kb-container" style="text-align:center;">
+        <p class="kicker">Get Involved</p>
+        <h2>Interested in Big Boss Cleanup?</h2>
+        <p class="kb-muted" style="max-width:600px;margin:0 auto 2rem;">
+          Whether you're a potential collaborator, publisher, or just curious about the concept, we'd love to hear from you.
+        </p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn primary">Get in Touch</a>
+          <a href="pipeline.html" class="btn">View Full Pipeline</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="bigbosscleanup.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

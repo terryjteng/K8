@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Join the Team — Rev-Share | Kato.8</title>
+  <meta name="description" content="Join Kato.8 on a rev-share basis: flexible time, clear milestones, real upside. Apply for production, engineering, art, audio, and QA roles."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="join.css"/>
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+  <script defer src="main.js"></script>
+  <script defer src="join.js"></script>
+</head>
+<body class="join-page">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html" aria-current="page">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">Rev-Share Program</p>
+        <h1>Build Games. Share the Upside.</h1>
+        <p class="lead">
+          Join Kato.8 as a part-time collaborator on clear, milestone-scoped work. 
+          We operate with producer discipline, transparent reporting, and <strong style="color: var(--seafoam);">rev-share</strong> at ship.
+        </p>
+        
+        <!-- Quick Stats -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0;">
+          <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: bold; color: var(--seafoam);">4 Games</div>
+            <div style="color: #94a3b8; font-size: 0.875rem;">Active Pipeline</div>
+          </div>
+          <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: bold; color: var(--seafoam);">6 Roles</div>
+            <div style="color: #94a3b8; font-size: 0.875rem;">Open Positions</div>
+          </div>
+          <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: bold; color: var(--seafoam);">Flexible</div>
+            <div style="color: #94a3b8; font-size: 0.875rem;">Time Commitment</div>
+          </div>
+          <div style="padding: 1rem; background: rgba(139,92,246,0.1); border-radius: 8px; border: 1px solid rgba(139,92,246,0.3); text-align: center;">
+            <div style="font-size: 1.75rem; font-weight: bold; color: var(--seafoam);">Remote</div>
+            <div style="color: #94a3b8; font-size: 0.875rem;">100% Distributed</div>
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <a class="btn primary" href="#open-roles">See Open Roles</a>
+          <a class="btn" href="#how-it-works">How It Works</a>
+        </div>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">Process</p>
+          <h2>How It Works</h2>
+          <ol class="steps" style="list-style: none; padding: 0;">
+            <li style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--seafoam), var(--kraken)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; color: white; box-shadow: 0 4px 12px rgba(40,224,185,0.3);">1</div>
+              <div><strong style="color: var(--seafoam);">Apply</strong> with portfolio & availability.</div>
+            </li>
+            <li style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--seafoam), var(--kraken)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; color: white; box-shadow: 0 4px 12px rgba(40,224,185,0.3);">2</div>
+              <div><strong style="color: var(--seafoam);">Scope</strong> a milestone (2–6 weeks) with deliverables and acceptance criteria.</div>
+            </li>
+            <li style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--seafoam), var(--kraken)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; color: white; box-shadow: 0 4px 12px rgba(40,224,185,0.3);">3</div>
+              <div><strong style="color: var(--seafoam);">Sign</strong> a short-form contractor + rev-share addendum (IP assignments protected; credit rules explicit).</div>
+            </li>
+            <li style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--seafoam), var(--kraken)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; color: white; box-shadow: 0 4px 12px rgba(40,224,185,0.3);">4</div>
+              <div><strong style="color: var(--seafoam);">Build</strong> in short sprints with async standups and weekly demos.</div>
+            </li>
+            <li style="display: flex; align-items: start; gap: 1rem;">
+              <div style="width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--seafoam), var(--kraken)); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; color: white; box-shadow: 0 4px 12px rgba(40,224,185,0.3);">5</div>
+              <div><strong style="color: var(--seafoam);">Share</strong> in net revenues per shipped title, pro-rata by approved milestone points.</div>
+            </li>
+          </ol>
+        </div>
+        <aside class="panel" style="background: linear-gradient(135deg, rgba(40,224,185,0.05), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.3);">
+          <p class="kicker">Rev-Share Snapshot</p>
+          <ul class="bullets">
+            <li>💰 Per-title pool with pro-rata points by milestone</li>
+            <li>📊 Payouts quarterly after platform fees/taxes</li>
+            <li>📋 Public milestone ledger for transparency</li>
+            <li>✍️ Credit policy defined at contract signature</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OPEN ROLES -->
+    <section id="open-roles" class="section">
+      <div class="container">
+        <p class="kicker">Open Roles</p>
+        <h2>Current Needs (Rev-Share)</h2>
+
+        <!-- Filters (client-side) -->
+        <div class="filters panel" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(40,224,185,0.05), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.3); padding: 2rem;">
+          <p class="kicker" style="margin-bottom: 1rem;">Filter Roles</p>
+          <div class="filter-row" style="gap: 1.5rem;">
+            <label style="flex: 1;"><span style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--seafoam);">Team</span>
+              <select id="roleTeam" style="width: 100%;">
+                <option value="">All Teams</option>
+                <option value="production">Production</option>
+                <option value="engineering">Engineering</option>
+                <option value="art">Art</option>
+                <option value="audio">Audio</option>
+                <option value="qa">QA</option>
+              </select>
+            </label>
+            <label class="grow" style="flex: 2;"><span style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--seafoam);">Search</span>
+              <input id="roleSearch" type="search" placeholder="Search by role, skill, or game…" style="width: 100%;">
+            </label>
+            <label style="flex: 1;"><span style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--seafoam);">Sort</span>
+              <select id="roleSort" style="width: 100%;">
+                <option value="title-asc">Title (A→Z)</option>
+                <option value="title-desc">Title (Z→A)</option>
+                <option value="team">Team</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid cards role-grid">
+          <!-- Producer / PM -->
+          <article class="card role" data-team="production" data-title="Associate Producer" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">Associate Producer</h3>
+              <span style="font-size: 1.5rem;" title="Production">📋</span>
+            </div>
+            <p class="card-meta">Cross-title • Part-time (10-15 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(139,92,246,0.2); color: var(--kraken); border-radius: 4px; font-size: 0.75rem; font-weight: 600;">All Games</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>Sprint planning, Jira/Notion hygiene, risk tracking</li>
+              <li>Milestone acceptance & demo coordination</li>
+              <li>Partner/vendor comms support</li>
+              <li>Budget tracking and resource allocation</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Organized communicators with game production experience and passion for keeping teams aligned</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="Associate Producer">Apply Now</a>
+            </div>
+          </article>
+
+          <!-- Unity Engineer -->
+          <article class="card role" data-team="engineering" data-title="Unity Engineer" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">Unity Engineer</h3>
+              <span style="font-size: 1.5rem;" title="Engineering">⚙️</span>
+            </div>
+            <p class="card-meta">Corebound • Last Light • Part-time (12-20 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(124,92,255,0.2); color: #7c5cff; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Corebound</span>
+              <span style="padding: 0.25rem 0.5rem; background: rgba(124,92,255,0.2); color: #7c5cff; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Last Light</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>2D/URP systems, tools, and gameplay scripting</li>
+              <li>Save/load, state machines, combat or AI</li>
+              <li>Performance pass, profiling, build pipeline</li>
+              <li>Custom editor tools and workflow automation</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Mid-senior Unity developers who love 2D mechanics and creating robust, maintainable systems</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="Unity Engineer">Apply Now</a>
+            </div>
+          </article>
+
+          <!-- 3D Environment Artist -->
+          <article class="card role" data-team="art" data-title="3D Environment Artist" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">3D Environment Artist</h3>
+              <span style="font-size: 1.5rem;" title="Art">🎨</span>
+            </div>
+            <p class="card-meta">Big Boss Cleanup • Part-time (10-16 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(255,107,145,0.2); color: #ff6b91; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Big Boss Cleanup</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>Modular sets, trims, props; scene dressing</li>
+              <li>Stylized realism; strong material reads</li>
+              <li>Decal/dirt mask friendly workflows</li>
+              <li>UE5/Unity experience with performance optimization</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Artists who excel at stylized environments and understand modular asset creation for games</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="3D Environment Artist">Apply Now</a>
+            </div>
+          </article>
+
+          <!-- 2D/Pixel Artist -->
+          <article class="card role" data-team="art" data-title="2D/Pixel Artist" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">2D/Pixel Artist</h3>
+              <span style="font-size: 1.5rem;" title="Art">🖼️</span>
+            </div>
+            <p class="card-meta">Corebound • Untitled RPG • Part-time (10-16 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(124,92,255,0.2); color: #7c5cff; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Corebound</span>
+              <span style="padding: 0.25rem 0.5rem; background: rgba(124,92,255,0.2); color: #7c5cff; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">Untitled RPG</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>Characters, tilesets, UI icons, FX sprites</li>
+              <li>Clean silhouette & animation-ready assets</li>
+              <li>Collab with design on readable combat</li>
+              <li>Sprite sheet creation and optimization</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Pixel artists with strong fundamentals who can work within established art direction and style guides</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="2D/Pixel Artist">Apply Now</a>
+            </div>
+          </article>
+
+          <!-- Audio Designer / Composer -->
+          <article class="card role" data-team="audio" data-title="Audio Designer / Composer" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">Audio Designer / Composer</h3>
+              <span style="font-size: 1.5rem;" title="Audio">🎵</span>
+            </div>
+            <p class="card-meta">All Titles • Part-time (8-12 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(139,92,246,0.2); color: var(--kraken); border-radius: 4px; font-size: 0.75rem; font-weight: 600;">All Games</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>Leitmotifs, ambience loops, combat/impact SFX</li>
+              <li>Middleware (Wwise/FMOD) or Unity audio graphs</li>
+              <li>Loudness standards, export pipelines</li>
+              <li>Adaptive music systems and dynamic audio</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Composers and sound designers who understand game audio implementation and can work across genres</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="Audio Designer / Composer">Apply Now</a>
+            </div>
+          </article>
+
+          <!-- QA -->
+          <article class="card role" data-team="qa" data-title="QA (Functional / Playtest)" style="border-top: 3px solid var(--seafoam);">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+              <h3 class="card-title" style="margin: 0;">QA (Functional / Playtest)</h3>
+              <span style="font-size: 1.5rem;" title="QA">🔍</span>
+            </div>
+            <p class="card-meta">All Titles • Part-time (8-15 hrs/week)</p>
+            
+            <!-- Game Tags -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0;">
+              <span style="padding: 0.25rem 0.5rem; background: rgba(139,92,246,0.2); color: var(--kraken); border-radius: 4px; font-size: 0.75rem; font-weight: 600;">All Games</span>
+            </div>
+            
+            <ul class="bullets" style="margin: 1rem 0;">
+              <li>Test plans, reproduction steps, telemetry sanity</li>
+              <li>Balancing feedback, UX notes, device coverage</li>
+              <li>Regression tracking per milestone</li>
+              <li>Bug documentation with clear repro steps</li>
+            </ul>
+            
+            <div style="padding: 0.75rem; background: rgba(40,224,185,0.05); border-radius: 6px; margin: 0.75rem 0; border-left: 3px solid var(--seafoam);">
+              <strong style="color: var(--seafoam); font-size: 0.875rem;">Ideal For:</strong>
+              <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #94a3b8;">Detail-oriented testers with game QA experience and ability to provide constructive feedback</p>
+            </div>
+            
+            <div class="card-actions">
+              <a class="btn primary" href="#apply" data-role="QA (Functional / Playtest)">Apply Now</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPLICATION -->
+    <section id="apply" class="section">
+      <div class="container">
+        <p class="kicker">Apply</p>
+        <h2>Tell Us About You</h2>
+        <p class="muted">We'll review applications weekly and respond with next steps. Fields marked * are required.</p>
+
+        <form id="applyForm" class="form panel" novalidate style="max-width: 900px; margin: 0 auto;">
+          <div class="grid form-grid">
+            <label class="field">
+              <span>Full Name *</span>
+              <input name="name" type="text" required placeholder="Jane Doe"/>
+            </label>
+            <label class="field">
+              <span>Email *</span>
+              <input name="email" type="email" required placeholder="jane@example.com"/>
+            </label>
+            <label class="field">
+              <span>Role *</span>
+              <select name="role" required>
+                <option value="">Select a role…</option>
+                <option>Associate Producer</option>
+                <option>Unity Engineer</option>
+                <option>3D Environment Artist</option>
+                <option>2D/Pixel Artist</option>
+                <option>Audio Designer / Composer</option>
+                <option>QA (Functional / Playtest)</option>
+                <option>Other (specify below)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Availability (hrs/week) *</span>
+              <input name="availability" type="number" min="5" max="40" step="1" placeholder="10" required/>
+            </label>
+            <label class="field">
+              <span>Experience Level *</span>
+              <select name="experience" required>
+                <option value="">Select level…</option>
+                <option>Junior (0-2 years)</option>
+                <option>Mid-Level (2-5 years)</option>
+                <option>Senior (5+ years)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Time Zone</span>
+              <input name="timezone" type="text" placeholder="EST, PST, GMT+1, etc."/>
+            </label>
+            <label class="field stretch">
+              <span>Portfolio / Links *</span>
+              <input name="links" type="url" placeholder="https://portfolio.example.com" required/>
+            </label>
+            <label class="field stretch">
+              <span>Additional Links</span>
+              <input name="additional_links" type="text" placeholder="GitHub, ArtStation, etc. (separate with commas)"/>
+            </label>
+            <label class="field stretch">
+              <span>Why this team? *</span>
+              <textarea name="why" rows="4" placeholder="What draws you to Kato.8? What excites you about indie games in a rev-share model?" required></textarea>
+            </label>
+            <label class="field stretch">
+              <span>Relevant Skills / Tools</span>
+              <textarea name="skills" rows="3" placeholder="e.g., Unity, Blender, Aseprite, Git, Jira, Wwise, etc."></textarea>
+            </label>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" name="agree" required/>
+            <span>I agree to the rev-share program's contributor terms (non-exclusive, credit rules, IP assignment to studio).</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Submit Application</button>
+            <a class="btn" href="mailto:terryjteng@gmail.com?subject=Rev-Share%20Application%20-%20Kato%27s%20Kraken">Email Instead</a>
+          </div>
+
+          <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Info Panels Below Form -->
+        <div class="grid-2" style="margin-top: 3rem;">
+          <aside class="panel">
+            <p class="kicker">What You Get</p>
+            <ul class="bullets">
+              <li>✅ Clear scopes, acceptance criteria, and timelines</li>
+              <li>📊 Public milestone ledger & producer support</li>
+              <li>💰 Rev-share at ship, pro-rata by milestone points</li>
+              <li>🏆 Resume credit + portfolio-safe clips (where possible)</li>
+            </ul>
+          </aside>
+          
+          <aside class="panel">
+            <p class="kicker">What We Expect</p>
+            <ul class="bullets">
+              <li>💬 Reliable communication and version control hygiene</li>
+              <li>🎯 Own your slice; flag risks early</li>
+              <li>⚡ Push for readability, performance, and fun</li>
+            </ul>
+            <hr class="divider"/>
+            <p class="fine">This page is informational and not an employment offer. Contributors operate as independent contractors under a short-form agreement.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Kato’s Kraken — Rev-Share Program</div>
+      <div>Investors: <a href="pipeline.html">View Pipeline</a></div>
+    </div>
+  </footer>
+</body>
+</html>
