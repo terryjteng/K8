@@ -1,0 +1,108 @@
+<!-- STANDARD NAVIGATION TEMPLATE FOR ALL PAGES -->
+<!-- This is the reference template for consistent navigation across all pages -->
+
+<!-- For pages in root directory (index.html, pipeline.html, etc.) -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="Kato.8 Home">
+      <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+      <span class="brand-name">Kato.8</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+    </button>
+    <nav id="nav-menu" class="nav-links" data-collapsed="true">
+      <a href="index.html">Home</a>
+      <a href="pipeline.html">Pipeline</a>
+      <a href="StudioPitch/investors.html">Investors</a>
+      <div class="dropdown" data-open="false">
+        <button type="button" aria-expanded="false" aria-haspopup="true">
+          Games
+          <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="corebound.html">Corebound</a>
+          <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+          <a href="untitledrpg.html">Untitled RPG</a>
+          <a href="untitledhitman.html">Untitled Open World Hitman</a>
+          <div class="dropdown" data-open="false">
+            <button type="button" aria-expanded="false" aria-haspopup="true">
+              Last Light
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="lastlight-demo.html">Last Light Demo</a>
+              <a href="lastlight.html">Last Light Full Game</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="join.html">Join Team</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- For pages in StudioPitch directory (investors.html, china-market.html) -->
+<!-- Use ../ prefix for all links -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="../index.html" aria-label="Kato.8 Home">
+      <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+      <span class="brand-name">Kato.8</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+    </button>
+    <nav id="nav-menu" class="nav-links" data-collapsed="true">
+      <a href="../index.html">Home</a>
+      <a href="../pipeline.html">Pipeline</a>
+      <a href="investors.html">Investors</a>
+      <div class="dropdown" data-open="false">
+        <button type="button" aria-expanded="false" aria-haspopup="true">
+          Games
+          <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="../corebound.html">Corebound</a>
+          <a href="../bigbosscleanup.html">Big Boss Cleanup</a>
+          <a href="../untitledrpg.html">Untitled RPG</a>
+          <a href="../untitledhitman.html">Untitled Open World Hitman</a>
+          <div class="dropdown" data-open="false">
+            <button type="button" aria-expanded="false" aria-haspopup="true">
+              Last Light
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="../lastlight-demo.html">Last Light Demo</a>
+              <a href="../lastlight.html">Last Light Full Game</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="../join.html">Join Team</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- REQUIRED JAVASCRIPT -->
+<!-- All pages should include: -->
+<script defer src="main.js"></script>
+<!-- For pages in subdirectories: -->
+<script defer src="../main.js"></script>
+
+<!-- ACTIVE PAGE INDICATION -->
+<!-- Add aria-current="page" to the current page's nav link -->
+<!-- Example: <a href="index.html" aria-current="page">Home</a> -->
+
+<!-- GUIDELINES -->
+<!-- 1. Always include Pipeline link between Home and Investors -->
+<!-- 2. Games dropdown should include all game pages -->
+<!-- 3. Last Light should be a nested dropdown within Games -->
+<!-- 4. Use correct relative paths based on file location -->
+<!-- 5. Include aria attributes for accessibility -->
+<!-- 6. Use data-collapsed="true" for mobile nav initial state -->
+<!-- 7. Include main.js for dropdown and mobile nav functionality -->

@@ -56,53 +56,27 @@
       }
     }
 
-    // Dropdown toggle (supports nested dropdowns)
+  </script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.dropdown > button');
-        if (btn) {
-          e.preventDefault();
-          e.stopPropagation();
-          const dropdown = btn.parentElement;
-          const isOpen = dropdown.getAttribute('data-open') === 'true';
-          
-          // Close sibling dropdowns at the same level
-          const parent = dropdown.parentElement;
-          if (parent) {
-            parent.querySelectorAll(':scope > .dropdown').forEach(d => {
-              if (d !== dropdown) {
-                d.setAttribute('data-open', 'false');
-                const b = d.querySelector(':scope > button');
-                if (b) b.setAttribute('aria-expanded', 'false');
-              }
-            });
-          }
-          
-          // Toggle current dropdown
-          dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
-          btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-        } else {
-          // Close all dropdowns when clicking outside
-          document.querySelectorAll('.dropdown').forEach(d => {
-            d.setAttribute('data-open', 'false');
-            const b = d.querySelector(':scope > button');
-            if (b) b.setAttribute('aria-expanded', 'false');
-          });
-        }
-      });
-
       // Password modal event listeners
-      document.getElementById('passwordCancel').addEventListener('click', hidePasswordModal);
-      document.getElementById('passwordSubmit').addEventListener('click', verifyPassword);
+      const cancelBtn = document.getElementById('passwordCancel');
+      if (cancelBtn) cancelBtn.addEventListener('click', hidePasswordModal);
       
-      document.getElementById('passwordInput').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          verifyPassword();
-        } else if (e.key === 'Escape') {
-          hidePasswordModal();
-        }
-      });
+      const submitBtn = document.getElementById('passwordSubmit');
+      if (submitBtn) submitBtn.addEventListener('click', verifyPassword);
+      
+      const passwordInput = document.getElementById('passwordInput');
+      if (passwordInput) {
+        passwordInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            verifyPassword();
+          } else if (e.key === 'Escape') {
+            hidePasswordModal();
+          }
+        });
+      }
 
       // Protected link handlers
       document.querySelectorAll('[data-protected]').forEach(link => {
@@ -112,38 +86,9 @@
           showPasswordModal(linkId);
         });
       });
-
-      // Smooth scroll for anchor links
-      document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="#"]');
-        if (link && !link.hasAttribute('data-protected')) {
-          e.preventDefault();
-          const target = document.querySelector(link.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-
-      // Navbar scroll effect
-      window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.nav');
-        if (nav) {
-          nav.classList.toggle('scrolled', window.scrollY > 50);
-        }
-      });
-
-      // Mobile nav toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      navToggle.addEventListener('click', () => {
-        const isCollapsed = navLinks.getAttribute('data-collapsed') === 'true';
-        navLinks.setAttribute('data-collapsed', !isCollapsed ? 'true' : 'false');
-        navToggle.setAttribute('aria-expanded', isCollapsed ? 'true' : 'false');
-      });
     });
   </script>
+  <script defer src="../main.js"></script>
 </head>
 
 <body>
@@ -179,6 +124,7 @@
       </button>
       <nav id="nav-menu" class="nav-links" data-collapsed="true">
         <a href="../index.html">Home</a>
+        <a href="../pipeline.html">Pipeline</a>
         <a href="investors.html">Investors</a>
         <div class="dropdown" data-open="false">
           <button type="button" aria-expanded="false" aria-haspopup="true">
