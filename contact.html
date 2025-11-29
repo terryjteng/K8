@@ -7,41 +7,7 @@
   <meta name="description" content="Get in touch with Kato.8 for investment opportunities, partnerships, press inquiries, or general questions."/>
   <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="contact.css"/>
-  <script>
-    // Dropdown toggle (supports nested dropdowns)
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.dropdown > button');
-      if (btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        const dropdown = btn.parentElement;
-        const isOpen = dropdown.getAttribute('data-open') === 'true';
-        
-        // Close sibling dropdowns at the same level
-        const parent = dropdown.parentElement;
-        if (parent) {
-          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
-            if (d !== dropdown) {
-              d.setAttribute('data-open', 'false');
-              const b = d.querySelector(':scope > button');
-              if (b) b.setAttribute('aria-expanded', 'false');
-            }
-          });
-        }
-        
-        // Toggle current dropdown
-        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
-        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-      } else {
-        // Close all dropdowns when clicking outside
-        document.querySelectorAll('.dropdown').forEach(d => {
-          d.setAttribute('data-open', 'false');
-          const b = d.querySelector(':scope > button');
-          if (b) b.setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
-  </script>
+
   <script defer src="main.js"></script>
 </head>
 <body class="contact-page">
@@ -54,10 +20,9 @@
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
-      </button>
-      <nav id="nav-menu" class="nav-links" data-collapsed="true">
-        <a href="index.html">Home</a>
-        <a href="StudioPitch/investors.html">Investors</a>
+      </button>            <nav id="nav-menu" class="nav-links" data-collapsed="true">
+                <a href="index.html">Home</a>
+                <a href="StudioPitch/investors.html">Investors</a>
         <div class="dropdown" data-open="false">
           <button type="button" aria-expanded="false" aria-haspopup="true">
             Games
@@ -243,7 +208,6 @@
     <div class="container footer-inner">
       <div>© <span id="year"></span> Kato.8 — Indie Studio</div>
       <div>
-        <a href="pipeline.html">Pipeline</a>
         <a href="about.html">About</a> • 
         <a href="join.html">Join Team</a> • 
         <a href="contact.html">Contact</a>

@@ -3,156 +3,39 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>China Market Analysis | Kato.8 Investors</title>
+  <title>China Market Analysis | Kato.8</title>
   <meta name="description" content="China mobile gaming market analysis, entry strategy, and penetration plan for 2025. Market opportunities and strategic insights."/>
   
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="china-market.css"/>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="China Market Analysis | Kato.8 Investors"/>
+  <meta property="og:title" content="China Market Analysis | Kato.8"/>
   <meta property="og:description" content="Strategic analysis of the China mobile gaming market and entry opportunities for 2025."/>
   <meta property="og:type" content="website"/>
 
-  <script>
-    // Password protection system
-    const protectedLinks = {
-      'dumpling-gdd': 'dumplings2025'
-    };
-
-    function showPasswordModal(linkId) {
-      const modal = document.getElementById('passwordModal');
-      const input = document.getElementById('passwordInput');
-      const error = document.getElementById('passwordError');
-      
-      modal.style.display = 'flex';
-      input.value = '';
-      error.style.display = 'none';
-      input.focus();
-      
-      // Store the link ID for verification
-      modal.setAttribute('data-link-id', linkId);
-    }
-
-    function hidePasswordModal() {
-      const modal = document.getElementById('passwordModal');
-      modal.style.display = 'none';
-    }
-
-    function verifyPassword() {
-      const modal = document.getElementById('passwordModal');
-      const input = document.getElementById('passwordInput');
-      const error = document.getElementById('passwordError');
-      const linkId = modal.getAttribute('data-link-id');
-      const enteredPassword = input.value;
-      
-      if (protectedLinks[linkId] && enteredPassword === protectedLinks[linkId]) {
-        hidePasswordModal();
-        // For now, just show success message. In real implementation, this would redirect to the GDD
-        alert('Access granted! GDD document would open here.');
-      } else {
-        error.style.display = 'block';
-        input.value = '';
-        input.focus();
-      }
-    }
-
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Password modal event listeners
-      const cancelBtn = document.getElementById('passwordCancel');
-      if (cancelBtn) cancelBtn.addEventListener('click', hidePasswordModal);
-      
-      const submitBtn = document.getElementById('passwordSubmit');
-      if (submitBtn) submitBtn.addEventListener('click', verifyPassword);
-      
-      const passwordInput = document.getElementById('passwordInput');
-      if (passwordInput) {
-        passwordInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            verifyPassword();
-          } else if (e.key === 'Escape') {
-            hidePasswordModal();
-          }
-        });
-      }
-
-      // Protected link handlers
-      document.querySelectorAll('[data-protected]').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const linkId = link.getAttribute('data-protected');
-          showPasswordModal(linkId);
-        });
-      });
-    });
-  </script>
-  <script defer src="../main.js"></script>
+  <script defer src="main.js"></script>
 </head>
 
 <body>
-  <!-- Password Modal -->
-  <div id="passwordModal" class="password-modal">
-    <div class="password-modal-content">
-      <h3>Protected Content</h3>
-      <p>This document requires a password to access.</p>
-      <input
-        type="password"
-        id="passwordInput"
-        class="password-input"
-        placeholder="Enter password"
-        autocomplete="off"
-      />
-      <div id="passwordError" class="password-error">Incorrect password. Please try again.</div>
-      <div class="password-modal-actions">
-        <button id="passwordCancel" class="btn-ghost">Cancel</button>
-        <button id="passwordSubmit" class="btn-primary">Submit</button>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-gem"></div>
+          Kato.8
+          <span class="badge">STUDIO</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="join.html">Join</a>
+          <a href="contact.html">Contact</a>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- Navigation -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="../index.html" aria-label="Kato.8 Home">
-        <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
-        <span class="brand-name">Kato.8</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
-      </button>
-      <nav id="nav-menu" class="nav-links" data-collapsed="true">
-        <a href="../index.html">Home</a>
-        <a href="investors.html">Investors</a>
-        <div class="dropdown" data-open="false">
-          <button type="button" aria-expanded="false" aria-haspopup="true">
-            Games
-            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../corebound.html">Corebound</a>
-            <a href="../bigbosscleanup.html">Big Boss Cleanup</a>
-            <a href="../untitledrpg.html">Untitled RPG</a>
-            <a href="../untitledhitman.html">Untitled Open World Hitman</a>
-            <div class="dropdown" data-open="false">
-              <button type="button" aria-expanded="false" aria-haspopup="true">
-                Last Light
-                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-              </button>
-              <div class="dropdown-menu">
-                <a href="../lastlight-demo.html">Last Light Demo</a>
-                <a href="../lastlight.html">Last Light Full Game</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="../join.html">Join Team</a>
-        <a href="../about.html">About</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -216,11 +99,6 @@
           <div class="quick-nav-icon">💰</div>
           <h3>Investment Analysis</h3>
           <p>Financial projections, ROI metrics, risk assessment, and 5-year revenue forecasts</p>
-        </a>
-        <a href="#dumpling-maker" class="quick-nav-card">
-          <div class="quick-nav-icon">🥟</div>
-          <h3>Dumpling Maker</h3>
-          <p>China-focused mobile game showcase and strategic case study</p>
         </a>
       </div>
     </div>
@@ -311,54 +189,6 @@
       </div>
     </div>
   </section>
-          </div>
-          <ul class="market-points">
-            <li>Sustained growth despite market maturity</li>
-            <li>Premium gaming segment expanding rapidly</li>
-            <li>Rural market penetration accelerating</li>
-          </ul>
-        </div>
-
-        <div class="market-card">
-          <h3>Player Demographics</h3>
-          <div class="market-metrics">
-            <div class="metric">
-              <span class="metric-value">665M</span>
-              <span class="metric-label">Active Players</span>
-            </div>
-            <div class="metric">
-              <span class="metric-value">73%</span>
-              <span class="metric-label">Urban Penetration</span>
-            </div>
-          </div>
-          <ul class="market-points">
-            <li>Gen Z driving premium content demand</li>
-            <li>Female player base growing (47% of market)</li>
-            <li>Aging millennials seek complex experiences</li>
-          </ul>
-        </div>
-
-        <div class="market-card">
-          <h3>Revenue Trends</h3>
-          <div class="market-metrics">
-            <div class="metric">
-              <span class="metric-value">¥194</span>
-              <span class="metric-label">ARPU (Monthly)</span>
-            </div>
-            <div class="metric">
-              <span class="metric-value">+15%</span>
-              <span class="metric-label">IAP Growth</span>
-            </div>
-          </div>
-          <ul class="market-points">
-            <li>Battle pass models gaining traction</li>
-            <li>Cosmetic monetization strong</li>
-            <li>Live service games dominating revenue</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Competitive Landscape -->
   <section id="competitive-landscape" class="section alt">
@@ -415,7 +245,7 @@
           </div>
           <div class="competitor-stats highlight">
             <span>20% Unserved Demand</span>
-            <span class="tag">Food & Cooking</span>
+            <span>High ARPU Potential</span>
           </div>
           <ul class="competitor-strengths">
             <li>Quality over quantity focus</li>
@@ -428,7 +258,7 @@
   </section>
 
   <!-- Entry Strategy -->
-  <section id="entry-strategy" class="section alt">
+  <section id="entry-strategy" class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">STRATEGIC ROADMAP</span>
@@ -443,7 +273,7 @@
           <div class="phase-duration">Q1 2025 • 3 months</div>
           <ul class="phase-objectives">
             <li>Localize core portfolio for Chinese players</li>
-            <li>Soft launch Dumpling Maker prototype</li>
+            <li>Soft launch with select titles</li>
             <li>Establish publishing partnerships</li>
             <li>Cultural adaptation testing</li>
           </ul>
@@ -456,7 +286,7 @@
           <div class="phase-duration">Q2 2025 • 6 months</div>
           <ul class="phase-objectives">
             <li>Secure Tier 2 publisher relationships</li>
-            <li>Full Dumpling Maker development</li>
+            <li>Develop China-specific content</li>
             <li>Build local development team</li>
             <li>Establish distribution channels</li>
           </ul>
@@ -468,10 +298,10 @@
           <h3>Market Penetration</h3>
           <div class="phase-duration">Q3-Q4 2025 • 6 months</div>
           <ul class="phase-objectives">
-            <li>Dumpling Maker full market launch</li>
+            <li>Full market launch of adapted titles</li>
             <li>Aggressive user acquisition campaigns</li>
             <li>Live ops optimization</li>
-            <li>Revenue scaling & portfolio expansion</li>
+            <li>Revenue scaling & optimization</li>
           </ul>
           <div class="phase-budget">Budget: $1.2M - $2M</div>
         </div>
@@ -502,7 +332,7 @@
   </section>
 
   <!-- Investment Opportunity -->
-  <section id="investment" class="section">
+  <section id="investment" class="section alt">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">INVESTMENT THESIS</span>
@@ -598,85 +428,29 @@
     </div>
   </section>
 
-  <!-- Dumpling Maker Game Section -->
-  <section id="dumpling-maker" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">CHINA-FOCUSED TITLE</span>
-        <h2>Dumpling Maker Mobile Game</h2>
-        <p>A culturally authentic cooking simulation game designed specifically for the Chinese market</p>
-      </div>
-
-      <div class="dumpling-showcase">
-        <div class="dumpling-info">
-          <div class="dumpling-card">
-            <h3>🥟 Game Overview</h3>
-            <div class="dumpling-details">
-              <div class="detail-item">
-                <span class="detail-label">Genre:</span>
-                <span class="detail-value">Cooking Simulation / Casual Mobile</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Target Market:</span>
-                <span class="detail-value">China (Primary), Asia-Pacific (Secondary)</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Platform:</span>
-                <span class="detail-value">iOS & Android</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Development Status:</span>
-                <span class="detail-value">Pre-Production / Concept</span>
-              </div>
-            </div>
-            
-            <h4>Core Gameplay</h4>
-            <ul class="dumpling-features">
-              <li>Authentic dumpling-making mechanics with traditional recipes</li>
-              <li>Restaurant management and customer satisfaction systems</li>
-              <li>Cultural storytelling through family recipes and traditions</li>
-              <li>Social features for sharing recipes and competing with friends</li>
-              <li>Seasonal events tied to Chinese festivals and celebrations</li>
-            </ul>
-
-            <h4>Market Positioning</h4>
-            <div class="positioning-grid">
-              <div class="position-card">
-                <h5>Cultural Authenticity</h5>
-                <p>Deep research into regional dumpling varieties and cooking traditions</p>
-              </div>
-              <div class="position-card">
-                <h5>Social Gaming</h5>
-                <p>WeChat integration and friend-based progression mechanics</p>
-              </div>
-              <div class="position-card">
-                <h5>Premium Feel</h5>
-                <p>High-quality art and animations with satisfying tactile feedback</p>
-              </div>
-            </div>
-
-            <div class="dumpling-actions">
-              <button class="btn btn-primary" data-protected="dumpling-gdd">
-                🔒 View Full GDD
-              </button>
-              <a href="../contact.html" class="btn btn-secondary">
-                Discuss Partnership
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Call to Action -->
   <section class="cta-section">
     <div class="container">
       <div class="cta-content">
-        <h2>Ready to Enter the China Market?</h2>
-        <p>Partner with Kato.8 to capitalize on the world's largest mobile gaming opportunity.</p>
+        <h2>Ready to Capture the China Opportunity?</h2>
+        <p>Partner with Kato.8 to unlock the world's largest mobile gaming market. Our proven strategies and local expertise ensure successful market entry and sustainable growth.</p>
         <div class="cta-actions">
-          <a href="../contact.html" class="btn btn-primary">Schedule Discussion</a>
+          <a href="contact.html" class="btn btn-primary">Schedule Strategic Discussion</a>
+          <a href="StudioPitch/investors.html" class="btn btn-secondary">Access Full Investor Materials</a>
+        </div>
+        <div class="cta-stats">
+          <div class="cta-stat">
+            <span class="cta-number">285%</span>
+            <span class="cta-label">Projected 3-Year ROI</span>
+          </div>
+          <div class="cta-stat">
+            <span class="cta-number">18 Mo</span>
+            <span class="cta-label">Payback Period</span>
+          </div>
+          <div class="cta-stat">
+            <span class="cta-number">$4.5M</span>
+            <span class="cta-label">Target Revenue (2028)</span>
+          </div>
         </div>
       </div>
     </div>
@@ -688,16 +462,16 @@
       <div class="footer-content">
         <div class="footer-brand">
           <div class="brand">
-            <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
-            <span class="brand-name">Kato.8</span>
+            <div class="brand-gem"></div>
+            Kato.8
           </div>
           <p>Building the future of gaming, one experience at a time.</p>
         </div>
         <div class="footer-links">
-          <a href="../index.html">Portfolio</a>
-          <a href="../about.html">About</a>
-          <a href="../join.html">Join</a>
-          <a href="../contact.html">Contact</a>
+          <a href="index.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="join.html">Join</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
       <div class="footer-bottom">
