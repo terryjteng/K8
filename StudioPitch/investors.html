@@ -11,138 +11,87 @@
     rel="stylesheet"
   />
 
-  <!-- Main stylesheet -->
+  <!-- Main site stylesheet for consistent navigation -->
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Page-specific stylesheet -->
   <link rel="stylesheet" href="investors.css" />
   
   <script>
-    // Dropdown toggle (supports nested dropdowns)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.dropdown > button');
-        if (btn) {
-          e.preventDefault();
-          e.stopPropagation();
-          const dropdown = btn.parentElement;
-          const isOpen = dropdown.getAttribute('data-open') === 'true';
-          
-          // Close sibling dropdowns at the same level
-          const parent = dropdown.parentElement;
-          if (parent) {
-            parent.querySelectorAll(':scope > .dropdown').forEach(d => {
-              if (d !== dropdown) {
-                d.setAttribute('data-open', 'false');
-                const b = d.querySelector(':scope > button');
-                if (b) b.setAttribute('aria-expanded', 'false');
-              }
-            });
-          }
-          
-          // Toggle current dropdown
-          dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
-          btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    // Password protection variables
+    let hhUnlocked = false;
+    const HH_PASSWORD = 'hotdog2025';
+    let llUnlocked = false;
+    const LL_PASSWORD = 'lastlight2025';
+
+    // Password protection event handlers
+    document.addEventListener('click', (e) => {
+      const hhLink = e.target.closest('.hh-protected');
+      const llLink = e.target.closest('.ll-protected');
+      
+      if (hhLink) {
+        e.preventDefault();
+        if (hhUnlocked) {
+          window.open(hhLink.href, '_blank');
         } else {
-          // Close all dropdowns when clicking outside
-          document.querySelectorAll('.dropdown').forEach(d => {
-            d.setAttribute('data-open', 'false');
-            const b = d.querySelector(':scope > button');
-            if (b) b.setAttribute('aria-expanded', 'false');
-          });
+          showPasswordModal(hhLink.href, 'hh');
         }
-      });
-
-      // Password protection for Hotdog Hustler documents
-      let hhUnlocked = false;
-      const HH_PASSWORD = 'hotdog2025'; // Change this to your desired password
-
-      // Password protection for Last Light documents
-      let llUnlocked = false;
-      const LL_PASSWORD = 'lastlight2025'; // Change this to your desired password
-
-      document.addEventListener('click', (e) => {
-        const hhLink = e.target.closest('.hh-protected');
-        const llLink = e.target.closest('.ll-protected');
-        
-        if (hhLink) {
-          e.preventDefault();
-          
-          if (hhUnlocked) {
-            window.open(hhLink.href, '_blank');
-          } else {
-            showPasswordModal(hhLink.href, 'hh');
-          }
-        } else if (llLink) {
-          e.preventDefault();
-          
-          if (llUnlocked) {
-            window.open(llLink.href, '_blank');
-          } else {
-            showPasswordModal(llLink.href, 'll');
-          }
-        }
-      });
-
-      function showPasswordModal(docUrl, type) {
-        const modal = document.getElementById('passwordModal');
-        const passwordInput = document.getElementById('passwordInput');
-        const errorMsg = document.getElementById('passwordError');
-        const modalTitle = document.querySelector('.password-modal-title');
-        const modalText = document.querySelector('.password-modal-text');
-        
-        // Update modal text based on document type
-        if (type === 'hh') {
-          modalTitle.textContent = 'Protected Documents';
-          modalText.textContent = 'Enter password to access Hotdog Hustler documents';
+      } else if (llLink) {
+        e.preventDefault();
+        if (llUnlocked) {
+          window.open(llLink.href, '_blank');
         } else {
-          modalTitle.textContent = 'Protected Documents';
-          modalText.textContent = 'Enter password to access Last Light Demo documents';
+          showPasswordModal(llLink.href, 'll');
         }
-        
-        modal.style.display = 'flex';
-        passwordInput.value = '';
-        errorMsg.style.display = 'none';
-        passwordInput.focus();
-
-        // Handle submit
-        const submitBtn = document.getElementById('passwordSubmit');
-        const cancelBtn = document.getElementById('passwordCancel');
-        
-        const handleSubmit = () => {
-          const correctPassword = type === 'hh' ? HH_PASSWORD : LL_PASSWORD;
-          
-          if (passwordInput.value === correctPassword) {
-            if (type === 'hh') {
-              hhUnlocked = true;
-            } else {
-              llUnlocked = true;
-            }
-            modal.style.display = 'none';
-            window.open(docUrl, '_blank');
-          } else {
-            errorMsg.style.display = 'block';
-            passwordInput.value = '';
-            passwordInput.focus();
-          }
-        };
-
-        submitBtn.onclick = handleSubmit;
-        cancelBtn.onclick = () => {
-          modal.style.display = 'none';
-        };
-
-        passwordInput.onkeypress = (e) => {
-          if (e.key === 'Enter') {
-            handleSubmit();
-          }
-        };
-
-        // Close on background click
-        modal.onclick = (e) => {
-          if (e.target === modal) {
-            modal.style.display = 'none';
-          }
-        };
       }
     });
+
+    function showPasswordModal(docUrl, type) {
+      const modal = document.getElementById('passwordModal');
+      const passwordInput = document.getElementById('passwordInput');
+      const errorMsg = document.getElementById('passwordError');
+      const modalTitle = document.querySelector('.password-modal-title');
+      const modalText = document.querySelector('.password-modal-text');
+      
+      // Update modal text based on document type
+      if (type === 'hh') {
+        modalTitle.textContent = 'Protected Documents';
+        modalText.textContent = 'Enter password to access Hotdog Hustler documents';
+      } else {
+        modalTitle.textContent = 'Protected Documents';
+        modalText.textContent = 'Enter password to access Last Light Demo documents';
+      }
+      
+      modal.style.display = 'flex';
+      passwordInput.value = '';
+      errorMsg.style.display = 'none';
+      passwordInput.focus();
+
+      const handleSubmit = () => {
+        const correctPassword = type === 'hh' ? HH_PASSWORD : LL_PASSWORD;
+        if (passwordInput.value === correctPassword) {
+          if (type === 'hh') {
+            hhUnlocked = true;
+          } else {
+            llUnlocked = true;
+          }
+          modal.style.display = 'none';
+          window.open(docUrl, '_blank');
+        } else {
+          errorMsg.style.display = 'block';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      };
+
+      document.getElementById('passwordSubmit').onclick = handleSubmit;
+      document.getElementById('passwordCancel').onclick = () => modal.style.display = 'none';
+      passwordInput.onkeypress = (e) => {
+        if (e.key === 'Enter') handleSubmit();
+      };
+      modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+      };
+    }
 
     // Collapsible Hotdog Hustler section
     function toggleHHSection() {
