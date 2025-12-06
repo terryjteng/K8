@@ -11,41 +11,6 @@
   <link rel="stylesheet" href="untitledhitman-gdd.css"/>
 
   <!-- Scripts -->
-  <script>
-    // Dropdown toggle (supports nested dropdowns)
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.dropdown > button');
-      if (btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        const dropdown = btn.parentElement;
-        const isOpen = dropdown.getAttribute('data-open') === 'true';
-        
-        // Close sibling dropdowns at the same level
-        const parent = dropdown.parentElement;
-        if (parent) {
-          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
-            if (d !== dropdown) {
-              d.setAttribute('data-open', 'false');
-              const b = d.querySelector(':scope > button');
-              if (b) b.setAttribute('aria-expanded', 'false');
-            }
-          });
-        }
-        
-        // Toggle current dropdown
-        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
-        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-      } else {
-        // Close all dropdowns when clicking outside
-        document.querySelectorAll('.dropdown').forEach(d => {
-          d.setAttribute('data-open', 'false');
-          const b = d.querySelector(':scope > button');
-          if (b) b.setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
-  </script>
   <script defer src="main.js"></script>
   <script defer src="untitledhitman-gdd.js?v=1"></script>
 </head>
