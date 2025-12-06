@@ -48,7 +48,7 @@
   transition: all var(--transition-base);
 }
 
-.container {
+.nav .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 var(--space-md);
