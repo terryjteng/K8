@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Last Light — GDD & Pitch (Private) | Kato.8</title>
+  <meta name="robots" content="noindex,nofollow"/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="bigbosscleanup-gdd.css"/>
+
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+  <script defer src="main.js"></script>
+  <script defer src="lastlight-gdd.js?v=1"></script>
+</head>
+
+<body class="deck-body">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LOCK SCREEN -->
+  <section id="lockScreen" class="section lock">
+    <div class="container lock-box">
+      <h1>Restricted Access</h1>
+      <p>This deck is available only to approved collaborators and investors.</p>
+      <form id="authForm" class="auth-form">
+        <label>
+          <span>Enter Access Code</span>
+          <input id="accessCode" type="password" placeholder="••••••••••" required/>
+        </label>
+        <button type="submit" class="btn primary">Unlock</button>
+        <p id="authMsg" class="auth-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DECK -->
+  <main id="gddContent" class="hidden">
+    <aside class="deck-sidebar" aria-label="Slide navigation">
+      <div class="deck-logo">
+        <span class="brand-gem"></span>
+        <strong>Last Light</strong>
+        <small>GDD &amp; Pitch</small>
+      </div>
+      <nav id="deckTOC" class="deck-toc"></nav>
+      <div class="deck-meta">
+        <button id="lockBtn" class="btn small" type="button">Lock</button>
+        <button id="printBtn" class="btn small" type="button">Export PDF</button>
+      </div>
+    </aside>
+
+    <section class="deck-stage">
+      <!-- Cover -->
+      <article class="slide cover" data-title="Cover">
+        <div class="slide-inner">
+          <p class="kicker">Private • Do Not Distribute</p>
+          <h1>Last Light</h1>
+          <h2>2D Zombie Survival &amp; Home-Fortification Game</h2>
+          <p class="lead">
+            A 2D zombie survival and home-fortification game where players gather wood, stone, and metal,
+            upgrade a single home, build turrets, and manage a shared ammo pool between themselves and
+            their defenses.
+          </p>
+          <div class="cover-meta">
+            <div><strong>Studio:</strong> Kato.8</div>
+            <div><strong>Structure:</strong> Demo → Expanded Scope → Full Game</div>
+            <div><strong>Contact:</strong> terryjteng@gmail.com</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Executive Summary -->
+      <article class="slide" data-title="Executive Summary">
+        <div class="slide-inner">
+          <h3>Executive Summary</h3>
+          <ul class="bullets">
+            <li><strong>Core:</strong> 2D zombie survival and home-fortification focused on one upgradeable home.</li>
+            <li><strong>Loop:</strong> Gather wood, stone, and metal → strengthen the home and build turrets → manage shared ammo and survive zombie threats.</li>
+            <li><strong>Key Tension:</strong> The same ammo supports both the player’s gun and the home’s turrets.</li>
+            <li><strong>Demo Role:</strong> Prove that this resource and ammo loop is clear, satisfying, and sustainable.</li>
+            <li><strong>Full Game:</strong> Extend the same systems—more ways to gather, fortify, and decide how to use limited ammo—without changing the core identity.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Design Pillars -->
+      <article class="slide" data-title="Design Pillars">
+        <div class="slide-inner">
+          <h3>Design Pillars</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Home at the Center</h4>
+              <p>
+                The home is the anchor. Players always come back to this single space and invest their
+                resources into keeping it standing.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Shared Ammo, Shared Fate</h4>
+              <p>
+                Ammo decisions affect both the player and their turrets. Spending aggressively now impacts
+                how well the home can be defended later.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Focused Feature Set</h4>
+              <p>
+                Systems stay tightly scoped: resources, home upgrades, turrets, machete, gun, and zombies.
+                The game grows by deepening these, not by adding unrelated features.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Core Loop -->
+      <article class="slide" data-title="Core Loop">
+        <div class="slide-inner">
+          <h3>Core Loop: Gather • Fortify • Survive</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Gather</h5>
+              <ul class="bullets compact">
+                <li>Obtain wood, stone, and metal.</li>
+                <li>These resources are the foundation of every upgrade and turret.</li>
+              </ul>
+
+              <h5>Fortify</h5>
+              <ul class="bullets compact">
+                <li>Spend resources to reinforce and improve the home.</li>
+                <li>Build and maintain turrets that support defense.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Survive</h5>
+              <ul class="bullets compact">
+                <li>Use machete and gun while turrets provide supporting fire.</li>
+                <li>All gunfire and turret usage draw from the same ammo pool.</li>
+                <li>How long the home stands depends on resource and ammo choices.</li>
+              </ul>
+
+              <h5>Repeat</h5>
+              <ul class="bullets compact">
+                <li>Gather again, patch weaknesses, and adjust how resources and ammo are used.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Systems Overview -->
+      <article class="slide" data-title="Systems Overview">
+        <div class="slide-inner">
+          <h3>Systems Overview</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Resources</h4>
+              <ul class="bullets compact">
+                <li><strong>Wood:</strong> General structural use and upgrades.</li>
+                <li><strong>Stone:</strong> Stronger, more resilient improvements.</li>
+                <li><strong>Metal:</strong> Turrets and more advanced reinforcement options.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Player Tools</h4>
+              <ul class="bullets compact">
+                <li>Machete for close-range use without consuming ammo.</li>
+                <li>Gun for ranged use that consumes ammo.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Home &amp; Turrets</h4>
+              <ul class="bullets compact">
+                <li>One central home to protect and upgrade.</li>
+                <li>Turrets built around the home that use the shared ammo pool.</li>
+                <li>Zombie threats put pressure on how well the home is prepared.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Demo Scope -->
+      <article class="slide" data-title="Demo Scope">
+        <div class="slide-inner">
+          <h3>Demo Scope</h3>
+          <p class="lead">
+            The demo focuses on proving the core loop works with a contained set of features and content.
+          </p>
+          <div class="grid-2">
+            <div>
+              <h5>Core Features in Demo</h5>
+              <ul class="bullets compact">
+                <li>2D zombie survival and home-fortification loop.</li>
+                <li>Wood, stone, and metal gathering.</li>
+                <li>Home upgrades using those resources.</li>
+                <li>Turrets that share ammo with the player’s gun.</li>
+                <li>Machete and gun as primary player tools.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Demo Goals</h5>
+              <ul class="bullets compact">
+                <li>Show that the resource and ammo decisions feel meaningful.</li>
+                <li>Verify that the home-fortification focus is clear and satisfying.</li>
+                <li>Provide a solid reference for the production plan and investor conversations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Full Game Vision -->
+      <article class="slide" data-title="Full Game Vision">
+        <div class="slide-inner">
+          <h3>Full Game Vision</h3>
+          <p class="lead">
+            The full game extends the demo’s systems instead of replacing them. The same home, resources, and
+            shared ammo remain at the center while options and variety grow.
+          </p>
+          <div class="grid-2">
+            <div>
+              <h5>What Stays the Same</h5>
+              <ul class="bullets compact">
+                <li>2D zombie survival and home-fortification focus.</li>
+                <li>Wood, stone, and metal as core resources.</li>
+                <li>Single central home to protect.</li>
+                <li>Turrets using a shared ammo pool with the player.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>How It Expands</h5>
+              <ul class="bullets compact">
+                <li>More ways to use wood, stone, and metal to shape the home.</li>
+                <li>More turret and upgrade possibilities using the same core logic.</li>
+                <li>Additional layers of decision-making around ammo and fortification.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Roadmap -->
+      <article class="slide" data-title="Roadmap">
+        <div class="slide-inner">
+          <h3>Roadmap</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Phase 1: Demo</h4>
+              <ul class="bullets compact">
+                <li>Implement the core resource, home, turret, and ammo systems.</li>
+                <li>Ensure the core loop is playable and understandable.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Phase 2: Expanded Scope</h4>
+              <ul class="bullets compact">
+                <li>Add more options for how the home can be improved and defended.</li>
+                <li>Refine how wood, stone, and metal are used.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Phase 3: Full Game</h4>
+              <ul class="bullets compact">
+                <li>Finalize content, polish, and presentation.</li>
+                <li>Keep the focus on survival and home-fortification with shared ammo.</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top:1.5rem; opacity:0.8;">
+            Exact dates, budgets, and headcount are managed in the studio’s separate financial and production
+            planning documents and can be updated without changing this high-level structure.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Overview (very high-level) -->
+      <article class="slide" data-title="Technical Overview">
+        <div class="slide-inner">
+          <h3>Technical Overview</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Foundation</h5>
+              <ul class="bullets compact">
+                <li>Unity 2D project structure.</li>
+                <li>Separate systems for resources, home state, turrets, and ammo tracking.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Key Considerations</h5>
+              <ul class="bullets compact">
+                <li>Reliable tracking of shared ammo between player and turrets.</li>
+                <li>Clear communication of home status and resource usage to the player.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Team & Roles (no numbers) -->
+      <article class="slide" data-title="Team & Roles">
+        <div class="slide-inner">
+          <h3>Team &amp; Roles</h3>
+          <div class="grid-2">
+            <div>
+              <h5>Core Roles</h5>
+              <ul class="bullets compact">
+                <li>Producer / Designer – Owns scope, vision, and coordination.</li>
+                <li>Unity Developer – Implements systems and gameplay logic.</li>
+                <li>2D Artist / UI – Visuals for home, zombies, turrets, and interface.</li>
+                <li>Sound / Music – Audio that supports survival and tension.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>Support (As Needed)</h5>
+              <ul class="bullets compact">
+                <li>Additional developers or artists depending on funding.</li>
+                <li>QA support for stability and feel.</li>
+                <li>Marketing support shared with the rest of the Kato.8 slate.</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top: 1.5rem; opacity: 0.8;">
+            Specific rates, duration, and staffing plans are captured in separate studio-level documents.
+          </p>
+        </div>
+      </article>
+
+      <!-- Risk & Mitigation -->
+      <article class="slide" data-title="Risk & Mitigation">
+        <div class="slide-inner">
+          <h3>Risk &amp; Mitigation</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Unclear Focus</h4>
+              <p><strong>Risk:</strong> Adding features that distract from home-fortification.</p>
+              <p><strong>Mitigation:</strong> Keep every feature tied directly to resources, home, turrets, or ammo decisions.</p>
+            </div>
+            <div class="card">
+              <h4>Shared Ammo Feel</h4>
+              <p><strong>Risk:</strong> Shared ammo feels confusing or unfair.</p>
+              <p><strong>Mitigation:</strong> Iterate on UI and feedback in the demo; keep the mechanic readable and predictable.</p>
+            </div>
+            <div class="card">
+              <h4>Production Capacity</h4>
+              <p><strong>Risk:</strong> Team size and funding slow development.</p>
+              <p><strong>Mitigation:</strong> Use demo-first approach and align full game scope with funding scenarios.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Next Steps -->
+      <article class="slide" data-title="Next Steps">
+        <div class="slide-inner">
+          <h3>Next Steps</h3>
+          <div class="grid-2">
+            <div>
+              <h5>For the Project</h5>
+              <ul class="bullets">
+                <li>Finalize demo details based on your latest planning docs.</li>
+                <li>Implement and iterate until the core loop feels strong.</li>
+              </ul>
+            </div>
+            <div>
+              <h5>For Partners &amp; Investors</h5>
+              <ul class="bullets">
+                <li>Review demo scope and how it leads to the full game.</li>
+                <li>Discuss funding or collaboration based on studio-wide goals.</li>
+              </ul>
+              <div style="margin-top: 2rem;">
+                <a href="contact.html" class="btn primary">Schedule a Conversation</a>
+                <a href="lastlight.html" class="btn" style="margin-left: 1rem;">Public Page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="deck-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Kato.8 • Confidential • Do Not Distribute</small>
+    </div>
+  </footer>
+
+</body>
+</html>

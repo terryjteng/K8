@@ -1,0 +1,140 @@
+/* Pipeline-specific: compact cards */
+.pipeline-page .card {
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline-page .card-media {
+  height: 140px;
+  margin-bottom: var(--space-xs);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  flex-shrink: 0;
+}
+
+.pipeline-page .card-title {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.pipeline-page .card-meta {
+  font-size: 0.8125rem;
+  margin-bottom: 0.5rem;
+}
+
+.pipeline-page .card-copy {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+  flex-grow: 1;
+}
+
+.pipeline-page .roadmap-summary {
+  margin: 0 0 var(--space-sm);
+  padding: 0.75rem;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-primary);
+  min-height: 70px;
+}
+
+.pipeline-page .roadmap-summary-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.pipeline-page .roadmap-summary-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pipeline-page .card-actions {
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.pipeline-page .card-actions .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.pipeline-page .card-actions .btn-secondary {
+  background: var(--glass-strong);
+  border-color: var(--border-medium);
+}
+
+.pipeline-page .card-actions .btn-primary {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+/* Make grid more compact */
+.pipeline-page .grid.cards {
+  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 1.5in;
+}
+
+/* Reduce section padding above the grid */
+.pipeline-page .section {
+  padding-top: 0.5in;
+}
+
+.filters{
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  background:linear-gradient(180deg,#0c1520,#0a121c);
+  padding:16px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.02) inset, 0 18px 40px rgba(0,0,0,.35);
+}
+
+.filter-row{
+  display:grid;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  gap:12px;
+}
+
+.filter-row label{
+  display:flex; flex-direction:column; gap:6px;
+  color:var(--ink);
+  font-size:14px;
+}
+
+.filter-row select,
+.filter-row input{
+  appearance:none;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:#0e1823;
+  color:var(--ink);
+}
+
+.filter-row .grow{ grid-column: span 2; }
+
+@media (max-width: 980px){
+  .filter-row{ grid-template-columns: 1fr 1fr; }
+  .filter-row .grow{ grid-column: 1 / -1; }
+}
+
+/* Slight distinct style for the active page link */
+nav a[aria-current="page"]{
+  color:var(--ink);
+  background:linear-gradient(180deg, #0d1724, #0a121c);
+  box-shadow:0 0 0 1px var(--stroke) inset, 0 8px 16px rgba(0,0,0,.25);
+}
+
+/* Card media placeholders if no images yet */
+.card .card-media{
+  background:
+    linear-gradient(180deg,#0e1823,#0a131d),
+    repeating-linear-gradient(45deg, rgba(139,92,246,.14) 0 8px, rgba(40,224,185,.12) 8px 16px);
+}

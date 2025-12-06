@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Pipeline — Investor Slate | Kato’s Kraken</title>
+  <meta name="description" content="Explore Kato’s Kraken investor pipeline. Filter by stage, budget, and timeline, then dive into individual game pitches."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="pipeline.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kato.8 — Investor Pipeline"/>
+  <meta property="og:description" content="Filter our slate by stage, budget, and timeline."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="/assets/og-pipeline.jpg"/>
+
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+
+  <script defer src="main.js"></script>
+  <script defer src="pipeline.js"></script>
+</head>
+<body class="pipeline-page">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">Investor Slate</p>
+        <h1>Explore the Pipeline</h1>
+        <p class="lead">
+          Filter our slate by stage, budget, and timeline. Open any title to view a VC-style pitch page with milestones, risks, and funding ask.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#filters">Filter Pipeline</a>
+          <a class="btn" href="join.html">Join the Rev-Share Team</a>
+        </div>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- FILTERS -->
+    <section id="filters" class="section">
+      <div class="container">
+        <p class="kicker">Filters</p>
+        <div class="filters">
+          <div class="filter-row">
+            <label>
+              <span>Stage</span>
+              <select id="filterStage">
+                <option value="">All</option>
+                <option value="concept">Concept</option>
+                <option value="prealpha">Pre-Alpha</option>
+                <option value="prototype">Prototype</option>
+                <option value="verticalslice">Vertical Slice</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Budget</span>
+              <select id="filterBudget">
+                <option value="">Any</option>
+                <option value="lt100">Under $100k</option>
+                <option value="100to150">$100k–$150k</option>
+                <option value="gt150">Over $150k</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Timeline</span>
+              <select id="filterTimeline">
+                <option value="">Any</option>
+                <option value="lt16">Under 16 weeks</option>
+                <option value="16to32">16–32 weeks</option>
+                <option value="gt32">Over 32 weeks</option>
+              </select>
+            </label>
+
+            <label class="grow">
+              <span>Search</span>
+              <input id="filterSearch" type="search" placeholder="Search by title, genre, or hook…"/>
+            </label>
+
+            <label>
+              <span>Sort</span>
+              <select id="sortBy">
+                <option value="title-asc">Title (A→Z)</option>
+                <option value="title-desc">Title (Z→A)</option>
+                <option value="stage">Stage</option>
+                <option value="budget">Budget</option>
+                <option value="timeline">Timeline</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID -->
+    <section class="section">
+      <div class="container">
+        <div id="pipelineGrid" class="grid cards">
+          <!-- Corebound -->
+          <article class="card"
+            data-title="Corebound"
+            data-stage="prototype"
+            data-budget="100to150"
+            data-timeline="16to32"
+            data-tags="action side-scroller rpg choices biomech emotional">
+            <div class="card-media" style="background: url('Art/Corebound/Corebound_GameBanner.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Corebound cover art"></div>
+            <h3 class="card-title">Corebound</h3>
+            <p class="card-meta">Action Side-Scroller / RPG • <span>Prototype</span></p>
+            <p class="card-copy">Emotional 2D journey across a biomech-ravaged world where your choices matter.</p>
+            <div class="roadmap-summary">
+              <div class="roadmap-summary-title">Roadmap Summary</div>
+              <div class="roadmap-summary-text">8 phases • ~24 months • Pre-Production → Full Production → Launch Q3 2027</div>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-secondary" href="corebound.html">Open Pitch</a>
+              <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            </div>
+          </article>
+
+          <!-- Big Boss Cleanup -->
+          <article class="card"
+            data-title="Big Boss Cleanup"
+            data-stage="prealpha"
+            data-budget="75to125"
+            data-budgetclass="100to150"
+            data-timeline="16to32"
+            data-tags="simulation cleaning parody arena comedy">
+            <div class="card-media" style="background: url('Art/BigBossCleanup/BigBossCleanup_PageBanner.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Big Boss Cleanup cover art"></div>
+            <h3 class="card-title">Big Boss Cleanup</h3>
+            <p class="card-meta">3D Cleanup Simulator • <span>Pre-Alpha</span></p>
+            <p class="card-copy">Clean the aftermath of over-the-top arcade-era brawls in a parody-safe world.</p>
+            <div class="roadmap-summary">
+              <div class="roadmap-summary-title">Roadmap Summary</div>
+              <div class="roadmap-summary-text">8 phases • ~24 months • Pre-Production → Full Production → Launch Q3 2027</div>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-secondary" href="bigbosscleanup.html">Open Pitch</a>
+              <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            </div>
+          </article>
+
+          <!-- Untitled RPG -->
+          <article class="card"
+            data-title="Untitled RPG"
+            data-stage="concept"
+            data-budget="80to140"
+            data-budgetclass="100to150"
+            data-timeline="gt32"
+            data-tags="turn-based jrpg chrono trigger earthbound ff3 choices branching narrative">
+            <div class="card-media" style="background: url('Art/RPG/ChatGPT Image Nov 10, 2025, 04_51_59 PM.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Untitled RPG cover art"></div>
+            <h3 class="card-title">Untitled RPG</h3>
+            <p class="card-meta">Turn-Based RPG • <span>Concept</span></p>
+            <p class="card-copy">Classic JRPG feel with a modern, expansive decision tree inspired by BG3/Detroit.</p>
+            <div class="roadmap-summary">
+              <div class="roadmap-summary-title">Roadmap Summary</div>
+              <div class="roadmap-summary-text">TBD • Concept Phase • Awaiting prototype validation before full roadmap</div>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-secondary" href="untitledrpg.html">Open Pitch</a>
+              <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            </div>
+          </article>
+
+          <!-- Untitled Open World Hitman -->
+          <article class="card"
+            data-title="Untitled Open World Hitman"
+            data-stage="concept"
+            data-budget="120to180"
+            data-budgetclass="gt150"
+            data-timeline="gt32"
+            data-tags="stealth action sandbox hitman assassination open world emergent">
+            <div class="card-media" style="background: linear-gradient(135deg, rgba(20,20,30,0.95), rgba(40,40,60,0.85)), linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Untitled Open World Hitman cover art"></div>
+            <h3 class="card-title">Untitled Open World Hitman</h3>
+            <p class="card-meta">Stealth-Action Sandbox • <span>Concept</span></p>
+            <p class="card-copy">Precision assassination meets emergent gameplay in expansive, interactive environments.</p>
+            <div class="roadmap-summary">
+              <div class="roadmap-summary-title">Roadmap Summary</div>
+              <div class="roadmap-summary-text">4 phases • ~52 weeks • Concept → Prototype → Vertical Slice → Partner Build</div>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-secondary" href="untitledhitman.html">Open Pitch</a>
+              <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            </div>
+          </article>
+
+          <!-- Last Light -->
+          <article class="card"
+            data-title="Last Light"
+            data-stage="prototype"
+            data-budget="90to150"
+            data-budgetclass="100to150"
+            data-timeline="16to32"
+            data-tags="zombie defense farming base building stardew harvest moon">
+            <div class="card-media" style="background: url('Art/LastLight/ChatGPT Image Nov 10, 2025, 04_46_00 PM.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Last Light cover art"></div>
+            <h3 class="card-title">Last Light</h3>
+            <p class="card-meta">Farming & Base Defense • <span>Prototype</span></p>
+            <p class="card-copy">Build the ultimate home base. Farm by day, fortify and defend by night.</p>
+            <div class="roadmap-summary">
+              <div class="roadmap-summary-title">Roadmap Summary</div>
+              <div class="roadmap-summary-text">3 phases • ~36 weeks • Concept → Vertical Slice → Pre-Prod (Funding Dependent)</div>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-secondary" href="lastlight.html">Open Pitch</a>
+              <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- CTA -->
+        <div class="grid">
+          <div class="panel cta-wide">
+            <div>
+              <p class="kicker">Next Steps</p>
+              <h3>Interested in the slate or a specific title?</h3>
+              <p class="muted">We’re open to equity, rev-share, or publishing partnerships with milestone gates and transparent reporting.</p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="contact.html">Contact the Studio</a>
+              <a class="btn" href="join.html">Join the Rev-Share Team</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Kato’s Kraken — Investor Pipeline</div>
+      <div>Need a full deck? <a href="contact.html">Request Access</a></div>
+    </div>
+  </footer>
+</body>
+</html>

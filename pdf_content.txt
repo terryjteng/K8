@@ -1,0 +1,1387 @@
+﻿
+================================================================================
+EXTRACTING: LAST LIGHT DEMO ΓÇö GAME OVERVIEW.pdf
+================================================================================
+
+--- Page 1 ---
+LAST  LIGHT  ΓÇö  GAME  OVERVIEW  
+Studio:  Kato.8  Studios  
+ 
+Genre:
+ 
+2D
+ 
+Survival
+ 
+Shooter
+ 
+/
+ 
+Base
+ 
+Defense
+ 
+ 
+Format:
+ 
+Vertical
+ 
+Slice
+ 
+Demo
+ 
+(10ΓÇô15
+ 
+minutes)
+ 
+ 
+Platform:
+ 
+PC
+ 
+(Steam)
+ 
+ 
+Engine:
+ 
+Unity
+ 
+(2D
+ 
+URP)
+ 
+ 
+1.  High  Concept  
+Last  Light  is  a  2D  top-down  survival  shooter  where  players  defend  a  fragile  home  base  from  
+incoming
+ 
+zombie
+ 
+waves
+ 
+while
+ 
+exploring
+ 
+the
+ 
+surrounding
+ 
+area
+ 
+to
+ 
+gather
+ 
+wood,
+ 
+stone,
+ 
+and
+ 
+metal
+.
+ 
+These
+ 
+resources
+ 
+are
+ 
+used
+ 
+to
+ 
+repair
+ 
+the
+ 
+base
+ 
+and
+ 
+craft
+ 
+automated
+ 
+turrets
+ 
+ΓÇö
+ 
+but
+ 
+all
+ 
+turrets
+ 
+and
+ 
+the
+ 
+player
+ 
+share
+ 
+one
+ 
+global
+ 
+ammo
+ 
+pool
+,
+ 
+creating
+ 
+tension
+ 
+and
+ 
+meaningful
+ 
+strategic
+ 
+decisions.
+ 
+The  demo  showcases  the  core  systems,  gameplay  loop,  and  visual  identity  of  the  project  
+intended
+ 
+to
+ 
+become
+ 
+a
+ 
+full-scale
+ 
+commercial
+ 
+title.
+ 
+ 
+2.  Player  Fantasy  
+ΓùÅ  Hold  out  as  the  last  survivor  on  a  quiet,  abandoned  farm.  
+ ΓùÅ  Venture  into  danger  to  gather  materials  for  survival.  
+ ΓùÅ  Build  and  place  automated  turrets  to  help  defend  your  home.  
+ ΓùÅ  Make  tough  trade-offs:  fire  your  gun,  or  feed  ammo  to  your  turrets?  
+ ΓùÅ  Survive  as  long  as  you  can  ΓÇö  or  fall  defending  your  last  light.  
+ 
+ 
+3.  Core  Gameplay  Loop  (Demo)  
+--- Page 2 ---
+1.  Explore  the  world  beyond  your  base.  
+ 2.  Gather  resources  (wood,  stone,  metal).  
+ 3.  Return  home  before  danger  escalates.  
+ 4.  Build  and  repair  using  materials  collected.  
+ 5.  Defend  the  base  from  zombie  waves.  
+ 6.  Manage  the  shared  ammo  pool ,  balancing  between  offense  &  defense.  
+ 7.  Survive  through  multiple  waves.  
+ 
+ 
+4.  Key  Demo  Features  
+4.1  Shared  Ammo  System  (Signature  Mechanic)  
+All  bullets  come  from  one  global  pool:  
+ΓùÅ  Player  consumes  ammo  while  shooting  
+ ΓùÅ  Turrets  consume  ammo  while  firing  
+ 
+This  forces  constant  moment-to-moment  decisions:  
+ΓùÅ  ΓÇ£Do  I  shoot  now?ΓÇ¥  
+ ΓùÅ  ΓÇ£Do  I  let  the  turrets  handle  this?ΓÇ¥  
+ ΓùÅ  ΓÇ£Do  we  even  have  enough  ammo  to  survive  the  next  wave?ΓÇ¥  
+ 
+This  creates  high  tension  and  strategic  depth  without  complex  UI  or  systems.  
+ 
+4.2  Resource  Gathering  
+Three  resources  form  the  demo's  economy:  
+--- Page 3 ---
+ΓùÅ  Wood  ΓÇô  basic  building  material  
+ ΓùÅ  Stone  ΓÇô  stronger  crafting  material  
+ ΓùÅ  Metal  ΓÇô  rare;  required  for  turret  creation  
+ 
+Nodes  deplete  with  harvesting  and  respawn  after  waves  or  over  time.  
+ 
+4.3  Base  Defense  
+The  playerΓÇÖs  home  base  has  its  own  health  bar:  
+ΓùÅ  If  base  HP  reaches  zero  ΓåÆ  demo  ends  
+ ΓùÅ  Players  can  spend  resources  to  repair  it  
+ ΓùÅ  One  turret  type  is  available:  
+ Γùï  Auto-targets  enemies  
+ Γùï  Uses  shared  ammo  
+ 
+ 
+4.4  Wave  System  
+An  escalating  wave  system  drives  tension:  
+ΓùÅ  3ΓÇô5  waves  total  for  demo  
+ ΓùÅ  Each  wave  increases  zombie  count  &  difficulty  
+ ΓùÅ  Between  waves,  the  player  prepares:  
+ Γùï  Repairing  base  
+ Γùï  Gathering  resources  
+ Γùï  Building  turrets  
+ 
+--- Page 4 ---
+ 
+5.  Demo  Scope  (Vertical  Slice)  
+Included:  
+ΓùÅ  Single  playable  map  
+ ΓùÅ  One  character  class  
+ ΓùÅ  One  zombie  enemy  type  
+ ΓùÅ  One  turret  type  
+ ΓùÅ  Shared  ammo  system  
+ ΓùÅ  Resource  harvesting  
+ ΓùÅ  Base  repair  
+ ΓùÅ  Core  combat  (melee  +  ranged)  
+ ΓùÅ  UI  for  health,  ammo,  resources,  waves  
+ ΓùÅ  Basic  sound  design  &  VFX  
+ ΓùÅ  High-quality  art  direction  
+ 
+Not  Included  (For  Full  Game  Later):  
+ΓùÅ  Additional  turret  types  
+ ΓùÅ  Additional  zombie  types  
+ ΓùÅ  New  maps  or  biomes  
+ ΓùÅ  Story  or  questing  
+ ΓùÅ  Weather/day-night  cycles  
+ ΓùÅ  Meta  progression  
+ 
+--- Page 5 ---
+The  demo  proves  the  fun,  tension,  and  identity  of  the  game  without  extending  scope.  
+ 
+6.  Target  Audience  
+ΓùÅ  Players  who  enjoy:  
+ Γùï  Survival  games  (Project  Zomboid,  7  Days  to  Die)  
+ Γùï  Base  defense  (They  Are  Billions,  Kingdom:  Two  Crowns)  
+ Γùï  Resource-driven  tension  (Darkwood,  DonΓÇÖt  Starve)  
+ Γùï  Indie  action  games  with  tight  loops  (Brotato,  Vampire  Survivors)  
+ 
+ 
+7.  Art  &  Aesthetic  Direction  
+Tone:  
+Moody,  atmospheric,  gritty  ΓÇö  but  readable  and  stylized.  The  goal  is  emotional  intensity,  not  
+realism.
+ 
+Visuals:  
+ΓùÅ  Top-down  2D  
+ ΓùÅ  Clean  silhouettes  
+ ΓùÅ  Contrasting  dark  and  light  zones  
+ ΓùÅ  Simple  but  expressive  animations  
+ ΓùÅ  Clarity  before  complexity  
+ 
+Demo  Art  Pipeline:  
+ΓùÅ  Hero  assets:  player,  zombie,  turret,  base  
+ 
+--- Page 6 ---
+ΓùÅ  Core  world  assets:  trees,  rocks,  scrap,  props  
+ ΓùÅ  FX:  muzzle  flashes,  hits,  dust,  harvest  effects  
+ ΓùÅ  UI:  HUD,  icons,  wave  prompts,  interaction  markers  
+ 
+ 
+8.  Why  This  Demo  Works  (Investment  Angle)  
+The  demo  demonstrates:  
+ΓùÅ  Strong  moment-to-moment  tension  
+ ΓùÅ  Player  agency  in  resource  allocation  
+ ΓùÅ  A  unique  selling  feature  (shared  ammo)  
+ ΓùÅ  A  survival  loop  with  clear  expansion  potential  
+ ΓùÅ  Systems  that  scale  effortlessly  into  a  full  game  
+ ΓùÅ  Modern  indie  viability  ΓÇö  small  team,  reasonable  scope  
+ 
+Low  cost  demo  ΓåÆ  high  ROI  potential  when  expanded.  
+ 
+9.  Future  Vision  (For  Full  Game  Pitch)  
+Beyond  the  demo,  the  game  can  grow  into:  
+ΓùÅ  New  turret  types  (flamethrower,  sniper  tower,  shock  turret)  
+ ΓùÅ  New  zombie  classes  (fast,  tank,  ranged,  mutants)  
+ ΓùÅ  Multi-map  campaign  
+ ΓùÅ  Weather  &  day/night  systems  
+ ΓùÅ  Persistent  meta-progression  
+ 
+--- Page 7 ---
+ΓùÅ  NPC  rescues  and  questlines  
+ ΓùÅ  Difficulty  modes  
+ ΓùÅ  Consoles  ports  
+ 
+The  demo  is  a  foundation  to  prove  the  gameplay  identity.  
+ 
+The
+ 
+full
+ 
+game
+ 
+is
+ 
+a
+ 
+scalable,
+ 
+content-driven
+ 
+product
+ 
+with
+ 
+strong
+ 
+market
+ 
+promise.
+ 
+ 
+
+================================================================================
+EXTRACTING: LAST LIGHT DEMO - High-Level Timeline.pdf
+================================================================================
+
+--- Page 1 ---
+High-Level  Timeline  
+Total  Duration:  ~ 24ΓÇô28  weeks  (about  6ΓÇô7  months)  
+ΓùÅ  Phase  0  ΓÇô  Setup  &  Alignment  (Week  1)  
+ ΓùÅ  Phase  1  ΓÇô  Pre-Production  (Weeks  2ΓÇô6)  
+ ΓùÅ  Phase  2  ΓÇô  Core  Systems  Production  (Weeks  7ΓÇô16)  
+ ΓùÅ  Phase  3  ΓÇô  Content,  Polish  &  Balancing  (Weeks  17ΓÇô24)  
+ ΓùÅ  Phase  4  ΓÇô  Packaging  &  External  Readiness  (Weeks  25ΓÇô28)  
+ 
+Each  milestone  below  has:  
+ΓùÅ  Objective  ΓÇô  what  it  proves  
+ ΓùÅ  Owners  ΓÇô  who  drives  it  
+ ΓùÅ  Key  Tasks  ΓÇô  whatΓÇÖs  actually  happening  
+ ΓùÅ  Exit  Criteria  ΓÇô  how  you  know  youΓÇÖre  done  
+ 
+ 
+≡ƒö╣  Phase  0  ΓÇö  Project  Setup  &  Alignment  (Week  1)  
+M0.1  ΓÇô  Project  Kickoff  &  Foundations  
+Objective:  Get  everyone  aligned  on  vision,  tools,  and  communication  so  production  can  move  
+without
+ 
+friction.
+ 
+Owners:  Producer  (you),  Designer,  Senior  Dev,  Artist  
+Key  Tasks:  
+ΓùÅ  Confirm  demo  scope  and  constraints  (10ΓÇô15  min  experience,  one  biome,  one  enemy  
+type,
+ 
+one
+ 
+turret).
+ 
+ 
+--- Page 2 ---
+ΓùÅ  Choose  tools:  
+ Γùï  Unity  2D  URP  LTS  version  
+ Γùï  Source  control  (GitHub,  Plastic,  etc.)  
+ Γùï  Task  tracking  (Jira/Trello/Notion)  
+ Γùï  Communication  (Slack/Discord)  
+ ΓùÅ  Set  up:  
+ Γùï  Unity  project  (URP,  2D  template,  input  system)  
+ Γùï  Repo  &  branches  (main  /  dev  /  feature  branches)  
+ ΓùÅ  Create  initial  project  folder  structure :  
+ Γùï  Art/Characters,  Art/Environment,  Scripts/Systems,  Scripts/Gameplay,  Scenes,  Prefabs,  Audio,  UI  
+ ΓùÅ  Define  definition  of  done  for:  
+ Γùï  Features  
+ Γùï  Art  assets  
+ Γùï  Bugs  (P0ΓÇôP3)  
+ 
+Exit  Criteria:  
+ΓùÅ  Unity  project  created  and  compiling.  
+ ΓùÅ  Repo  initialized  and  everyone  can  pull/build.  
+ ΓùÅ  Task  board  created  with  initial  Epics  &  Phase  1  tasks.  
+ ΓùÅ  One-page  demo  scope  statement  reviewed  and  agreed.  
+ 
+ 
+≡ƒö╣  Phase  1  ΓÇö  Pre-Production  (Weeks  2ΓÇô6)  
+--- Page 3 ---
+M1.1  ΓÇô  Core  Vision  &  Loop  Lock  (Weeks  2ΓÇô3)  
+Objective:  Lock  the  core  loop  and  pillars  so  thereΓÇÖs  no  ΓÇ£what  is  this  gameΓÇ¥  ambiguity  
+mid-development.
+ 
+Owners:  Designer  (lead),  Producer,  Senior  Dev,  Artist  
+Key  Tasks:  
+ΓùÅ  Define  core  gameplay  loop :  
+ 
+ 
+ 
+Fight
+ 
+zombies
+ 
+ΓåÆ
+ 
+Gather
+ 
+resources
+ 
+ΓåÆ
+ 
+Upgrade/repair
+ 
+base
+ 
+ΓåÆ
+ 
+Survive
+ 
+stronger
+ 
+waves
+ 
+ 
+ ΓùÅ  Define  game  pillars  (e.g.  ΓÇ£tense  but  fair,ΓÇ¥  ΓÇ£resource-driven  defense,ΓÇ¥  ΓÇ£cozy  but  
+dangerous
+ 
+nightsΓÇ¥).
+ 
+ ΓùÅ  Write  Micro-GDD  (10ΓÇô15  pages) :  
+ Γùï  Player  combat  (melee  +  ranged)  
+ Γùï  Zombie  behavior  
+ Γùï  Resource  system  
+ Γùï  Base  &  turret  system  
+ Γùï  Wave  structure  
+ Γùï  UI  &  UX  flows  
+ ΓùÅ  List  must-have  vs.  stretch  features  for  the  demo.  
+ ΓùÅ  Create  flowcharts  for:  
+ Γùï  Wave  progression  
+ Γùï  Resource  ΓåÆ  crafting  ΓåÆ  turret  ΓåÆ  defense  loop  
+ 
+Exit  Criteria:  
+ΓùÅ  Micro-GDD  completed  and  reviewed.  
+ 
+--- Page 4 ---
+ΓùÅ  One-page  loop  diagram  everyone  understands.  
+ ΓùÅ  Clear  ΓÇ£in-scope  /  out-of-scopeΓÇ¥  list  for  the  demo.  
+ 
+ 
+M1.2  ΓÇô  Technical  Blueprint  &  Whitebox  (Weeks  3ΓÇô4)  
+Objective:  Nail  architecture  and  a  rough  playable  space  before  you  add  any  real  content.  
+Owners:  Senior  Dev  (lead),  Designer,  Producer  
+Key  Tasks:  
+ΓùÅ  Create  Technical  Design  Document  (TDD) :  
+ Γùï  Systems:  combat,  AI,  resources,  crafting,  base,  save/load,  UI.  
+ Γùï  Key  interfaces  (IDamageable,  IResourceNode,  etc.).  
+ Γùï  Event/messaging  approach  (UnityEvents,  C#  events,  scriptable  event  system).  
+ ΓùÅ  Set  up  core  scenes :  
+ Γùï  Boot /  MainMenu (placeholder)  
+ Γùï  DemoLevel (whiteboxed  layout)  
+ ΓùÅ  Whitebox:  
+ Γùï  Rough  map  (player  spawn,  base  area,  zombie  spawn  zones,  resource  clusters).  
+ ΓùÅ  Create  core  prefabs  (empty/placeholder) :  
+ Γùï  Player  
+ Γùï  Zombie  
+ Γùï  Resource  node  
+ Γùï  Base  
+ Γùï  Turret  spot  
+ 
+--- Page 5 ---
+ΓùÅ  Decide  on  resolution  &  camera  rules  (pixel-perfect  vs  not,  orthographic  size).  
+ 
+Exit  Criteria:  
+ΓùÅ  TDD  written  and  reviewed.  
+ ΓùÅ  You  can:  
+ Γùï  Press  Play  
+ Γùï  Move  a  placeholder  player  
+ Γùï  Walk  around  a  whiteboxed  map  (no  real  systems  yet).  
+ 
+ 
+M1.3  ΓÇô  Art  Style  Test  &  Direction  (Weeks  4ΓÇô6)  
+Objective:  Choose  the  art  style  and  framework  without  blocking  engineering.  
+Owners:  Artist  (lead),  Producer,  Designer  
+Key  Tasks:  
+ΓùÅ  Produce  test  assets  in:  
+ Γùï  Pixel  Art  
+ Γùï  Hand-painted  
+ ΓùÅ  For  each  style:  
+ Γùï  Player  idle  +  walk  
+ Γùï  One  zombie  
+ Γùï  Tree,  rock,  metal  scrap  pile  
+ ΓùÅ  Integrate  into  the  whitebox  scene  for  readability  tests :  
+ Γùï  Is  the  player  readable?  
+ 
+--- Page 6 ---
+Γùï  Are  zombies  visually  distinct?  
+ Γùï  Does  the  environment  cause  noise?  
+ ΓùÅ  Define  final  art  style  direction :  
+ Γùï  Fully  commit  to  one  style  or  
+ Γùï  Use  one  style  for  the  demo  and  keep  dual-style  as  a  full-game  stretch.  
+ ΓùÅ  Create  Art  Style  Guide :  
+ Γùï  Palette  basics  
+ Γùï  Line  thickness  (if  relevant)  
+ Γùï  Scale  (pixels  per  meter)  
+ Γùï  Animation  FPS  and  frame  counts  
+ 
+Exit  Criteria:  
+ΓùÅ  One  art  style  chosen  for  the  demo.  
+ ΓùÅ  Art  Style  Guide  documented.  
+ ΓùÅ  Test  scene  with  chosen  style  running  in  engine.  
+ 
+ 
+≡ƒö╣  Phase  2  ΓÇö  Core  Systems  Production  (Weeks  7ΓÇô16)  
+This  is  where  the  game  becomes  ΓÇ£real,ΓÇ¥  even  if  ugly  at  first.  
+ 
+M2.1  ΓÇô  Player  Controller  &  Combat  Core  (Weeks  7ΓÇô9)  
+Objective:  Make  the  player  feel  good  to  control  and  fight  with  before  anything  else.  
+Owners:  Senior  Dev  (lead),  Designer,  Artist  
+Key  Tasks:  
+--- Page 7 ---
+ΓùÅ  Implement:  
+ Γùï  Movement  (4/8  direction)  
+ Γùï  Collision  handling  
+ Γùï  Dash/roll  (if  included)  
+ ΓùÅ  Implement  melee  combat :  
+ Γùï  Attack  arcs  
+ Γùï  Damage  application  
+ Γùï  Simple  hit-stop  
+ ΓùÅ  Implement  ranged  combat :  
+ Γùï  Bullet  prefab  
+ Γùï  Fire  rate,  recoil  timing  (if  any)  
+ Γùï  Ammo  pool  &  reload  rules  
+ ΓùÅ  Hook  in  temporary  VFX  &  SFX  for  feel.  
+ ΓùÅ  Add  basic  health  &  damage  system.  
+ 
+Exit  Criteria:  
+ΓùÅ  Player  can:  
+ Γùï  Move,  aim,  and  attack.  
+ Γùï  Kill  placeholder  zombies.  
+ ΓùÅ  Internal  playtest:  team  agrees  ΓÇ£combat  has  potentialΓÇ¥  (even  with  temp  art).  
+ 
+ 
+M2.2  ΓÇô  Zombie  AI  &  Wave  System  (Weeks  9ΓÇô11)  
+Objective:  Establish  enemy  behavior  and  wave  pressure  that  defines  the  gameΓÇÖs  tension.  
+--- Page 8 ---
+Owners:  Senior  Dev  (lead),  Designer  
+Key  Tasks:  
+ΓùÅ  Zombie  state  machine:  
+ Γùï  Idle/Wander  
+ Γùï  Detect  player/base  
+ Γùï  Chase  
+ Γùï  Attack  
+ ΓùÅ  Implement  pathfinding  (NavMesh/2D  or  custom).  
+ ΓùÅ  Create  Spawner  system :  
+ Γùï  Configurable  wave  definitions  (count,  rate,  spawn  points).  
+ Γùï  Difficulty  curve  parameters  (speed,  HP,  count).  
+ ΓùÅ  Add  simple  telegraphing :  
+ Γùï  Spawn  warnings  or  audio  cues.  
+ ΓùÅ  Integrate  basic  balancing :  
+ Γùï  Initial  TTK,  movement  speeds,  attack  damage.  
+ 
+Exit  Criteria:  
+ΓùÅ  Player  can  fight  waves  of  zombies  until  overwhelmed.  
+ ΓùÅ  A  full  5ΓÇô10  minute  survival  session  is  possible  with  placeholder  balance.  
+ 
+ 
+M2.3  ΓÇô  Resource  Gathering  &  Inventory  (Weeks  11ΓÇô13)  
+Objective:  Let  players  meaningfully  gather  materials  and  track  them.  
+Owners:  Senior  Dev,  Designer,  Artist  
+--- Page 9 ---
+Key  Tasks:  
+ΓùÅ  Implement  resource  nodes :  
+ Γùï  Wood  (trees),  stone  (rocks),  metal  (scrap).  
+ Γùï  Node  HP  &  respawn  cooldown  (if  any).  
+ ΓùÅ  Implement  resource  pickup  &  UI  updates .  
+ ΓùÅ  Build  inventory  system :  
+ Γùï  Simple  numeric  tracking  for  each  material.  
+ Γùï  Event-driven  updates  to  HUD.  
+ ΓùÅ  Add  feedback :  
+ Γùï  Hit  VFX  on  nodes.  
+ Γùï  Pickup  SFX.  
+ ΓùÅ  Ensure  resources  tie  into  crafting  (even  if  crafting  is  stubbed  at  this  point).  
+ 
+Exit  Criteria:  
+ΓùÅ  Player  can:  
+ Γùï  Walk  to  a  node.  
+ Γùï  Harvest  it.  
+ Γùï  See  resources  increase  in  UI.  
+ ΓùÅ  Data  persists  correctly  through  a  session.  
+ 
+ 
+M2.4  ΓÇô  Base,  Repair  &  Turret  Crafting  (Weeks  13ΓÇô16)  
+Objective:  The  central  fantasy:  defend,  repair,  and  build  turrets  using  collected  resources.  
+Owners:  Senior  Dev  (lead),  Designer,  Artist  
+--- Page 10 ---
+Key  Tasks:  
+ΓùÅ  Implement  base  entity :  
+ Γùï  Base  HP  
+ Γùï  Zombie  targeting  rules  
+ Γùï  Repair  interaction  (hold  button  or  press)  
+ ΓùÅ  Implement  crafting  UI :  
+ Γùï  Turret  crafting  recipe  (wood/stone/metal).  
+ Γùï  Simple  craft  confirmation.  
+ ΓùÅ  Implement  turret  placement :  
+ Γùï  Valid/invalid  spots.  
+ Γùï  Turret  prefab  placed.  
+ ΓùÅ  Implement  turret  AI :  
+ Γùï  Targeting  nearest  zombie.  
+ Γùï  Firing  rate,  damage.  
+ ΓùÅ  Implement  shared  ammo  system :  
+ Γùï  Single  ammo  pool  used  by  player  &  turrets.  
+ Γùï  UI  reflects  ammo  usage  by  both.  
+ ΓùÅ  Initial  balance  pass :  
+ Γùï  Cost  of  turret  
+ Γùï  Impact  of  turret  (should  feel  powerful  but  ammo-hungry).  
+ 
+Exit  Criteria:  
+ΓùÅ  Full  loop  is  playable:  
+ 
+--- Page 11 ---
+ 
+ 
+Fight
+ 
+ΓåÆ
+ 
+Gather
+ 
+ΓåÆ
+ 
+Build
+ 
+turret
+ 
+ΓåÆ
+ 
+Defend
+ 
+ΓåÆ
+ 
+Repair
+ 
+ 
+ ΓùÅ  Internal  test:  you  can  survive  multiple  waves  by  engaging  with  all  systems.  
+ 
+ 
+≡ƒö╣  Phase  3  ΓÇö  Content,  Polish  &  Balancing  (Weeks  17ΓÇô24)   
+M3.1  ΓÇô  Environment  &  Art  Integration  (Weeks  17ΓÇô19)  
+Objective:  Replace  placeholder  assets  with  final  (or  near-final)  art  for  the  demo.  
+Owners:  Artist  (lead),  Senior  Dev  
+Key  Tasks:  
+ΓùÅ  Build  final  tilemap  and  environment  layout:  
+ Γùï  Farm  area  
+ Γùï  Base  location  
+ Γùï  Resource  spawn  areas  
+ Γùï  Paths  zombies  navigate  
+ ΓùÅ  Integrate  final  character  animations :  
+ Γùï  Player  full  set  
+ Γùï  Zombie  full  set  
+ ΓùÅ  Replace  placeholder  props  with  final:  
+ Γùï  Trees,  rocks,  scrap  
+ Γùï  Base  structure  
+ Γùï  Turrets  
+ 
+--- Page 12 ---
+ΓùÅ  Ensure  consistent  lighting/contrast :  
+ Γùï  Player  &  enemies  always  readable.  
+ 
+Exit  Criteria:  
+ΓùÅ  Entire  demo  playable  with  final  art  (or  95%  final).  
+ ΓùÅ  No  obvious  placeholder  sprites  in  core  loop.  
+ 
+ 
+M3.2  ΓÇô  UI/UX  Polish  &  Onboarding  (Weeks  19ΓÇô21)  
+Objective:  Make  the  game  understandable  quickly  without  hand-holding.  
+Owners:  Designer  (lead),  Artist,  Senior  Dev  
+Key  Tasks:  
+ΓùÅ  Finalize  HUD  layout :  
+ Γùï  Health  
+ Γùï  Ammo  
+ Γùï  Resources  
+ Γùï  Wave  indicator  
+ ΓùÅ  Implement  tutorial/onboarding :  
+ Γùï  Tooltips  
+ Γùï  Simple  prompts  (ΓÇ£Press  E  to  harvestΓÇ¥,  ΓÇ£Spend  materials  to  build  turretsΓÇ¥).  
+ ΓùÅ  Clean  up  menus :  
+ Γùï  Pause  menu  
+ Γùï  Basic  settings  (volume,  resolution).  
+ 
+--- Page 13 ---
+ΓùÅ  Ensure  input  hints  match  actual  bindings.  
+ 
+Exit  Criteria:  
+ΓùÅ  New  player  can  understand:  
+ Γùï  How  to  move,  attack,  harvest,  craft,  and  defend  
+ Γùï  Without  external  explanation.  
+ ΓùÅ  Internal  ΓÇ£fresh  eyesΓÇ¥  test  passes  (one  person  unfamiliar  can  play  with  minimal  
+confusion).
+ 
+ 
+ 
+M3.3  ΓÇô  Balancing,  Feel  &  Performance  (Weeks  21ΓÇô24)  
+Objective:  Tighten  combat,  difficulty,  and  performance  to  investor-ready  quality.  
+Owners:  Designer  (lead),  Senior  Dev,  Audio,  Artist  
+Key  Tasks:  
+ΓùÅ  Balancing:  
+ Γùï  Adjust  zombie  speeds,  HP,  damage.  
+ Γùï  Tune  wave  durations,  pacing,  and  breaks.  
+ Γùï  Tune  turret  power  and  ammo  consumption.  
+ ΓùÅ  Game  feel:  
+ Γùï  Screen  shake  tuning.  
+ Γùï  Hit  stop  timing.  
+ Γùï  Sound  layering  for  impact.  
+ ΓùÅ  Performance:  
+ Γùï  Add  pooling  to  bullets/zombies  if  not  already.  
+ 
+--- Page 14 ---
+Γùï  Optimize  tilemaps  and  sprite  atlases.  
+ Γùï  Test  on  low-spec  PC.  
+ 
+Exit  Criteria:  
+ΓùÅ  Target  session  (10ΓÇô15  minutes)  feels  tense,  not  frustrating.  
+ ΓùÅ  Stable  FPS  on  target  hardware.  
+ ΓùÅ  No  game-breaking  bugs  or  obvious  stutters.  
+ 
+ 
+≡ƒö╣  Phase  4  ΓÇö  Packaging  &  External  Readiness  (Weeks  
+25ΓÇô28)
+  
+M4.1  ΓÇô  Internal  Release  Candidate  (Weeks  25ΓÇô26)  
+Objective:  Lock  a  build  candidate  stable  enough  for  external  eyes.  
+Owners:  Producer,  Senior  Dev,  Designer  
+Key  Tasks:  
+ΓùÅ  Create  RC  build  (Release  Candidate).  
+ ΓùÅ  Full  internal  QA  pass :  
+ Γùï  Critical  path  tests.  
+ Γùï  Save/load  tests.  
+ Γùï  Wave  progression  tests.  
+ ΓùÅ  Compile  Known  Issues  list :  
+ Γùï  Clearly  mark  which  are  acceptable  for  demo.  
+ 
+Exit  Criteria:  
+--- Page 15 ---
+ΓùÅ  RC  build  with:  
+ Γùï  No  P0  blockers.  
+ Γùï  Only  ΓÇ£acceptableΓÇ¥  minor  issues.  
+ ΓùÅ  Known  Issues  doc  created.  
+ 
+ 
+M4.2  ΓÇô  External  Demo  Package  (Weeks  26ΓÇô28)  
+Objective:  Turn  the  build  into  a  professional  pitch  package.  
+Owners:  Producer  (lead),  Designer,  Artist,  Audio  
+Key  Tasks:  
+ΓùÅ  Build  Windows  installer/zip  for  demo.  
+ ΓùÅ  Set  up  Itch.io  private  page  with:  
+ Γùï  Screenshots  
+ Γùï  Short  description  
+ Γùï  Controls  section  
+ ΓùÅ  (Optional)  Set  up  Steam  draft  page  (hidden).  
+ ΓùÅ  Record  60ΓÇô90  sec  gameplay  trailer :  
+ Γùï  Intro  (farm  night  vibe)  
+ Γùï  Combat  with  zombies  
+ Γùï  Gathering  &  crafting  
+ Γùï  Base  defense  with  turret  firing  
+ ΓùÅ  Prepare  supporting  docs :  
+ Γùï  One-page  demo  overview  (for  investors/publishers).  
+ 
+--- Page 16 ---
+Γùï  ΓÇ£WhatΓÇÖs  next  after  the  demoΓÇ¥  roadmap.  
+ Γùï  Estimated  budget/timeline  for  full  game  (you  already  started  this).  
+ 
+Exit  Criteria:  
+ΓùÅ  Playable  external  demo  build  uploaded.  
+ ΓùÅ  Trailer  complete.  
+ ΓùÅ  Demo  overview  PDF  +  roadmap  ready  for  deck  inclusion.  
+ 
+ 
+≡ƒº▒  Milestones  Summary  (Cheat  Sheet)  
+1.  M0.1  ΓÇô  Setup  &  Alignment  (Week  1)  
+ 2.  M1.1  ΓÇô  Vision  &  Loop  Lock  (Weeks  2ΓÇô3)  
+ 3.  M1.2  ΓÇô  Tech  Blueprint  &  Whitebox  (Weeks  3ΓÇô4)  
+ 4.  M1.3  ΓÇô  Art  Style  Direction  (Weeks  4ΓÇô6)  
+ 5.  M2.1  ΓÇô  Player  &  Combat  Core  (Weeks  7ΓÇô9)  
+ 6.  M2.2  ΓÇô  Zombie  AI  &  Waves  (Weeks  9ΓÇô11)  
+ 7.  M2.3  ΓÇô  Resources  &  Inventory  (Weeks  11ΓÇô13)  
+ 8.  M2.4  ΓÇô  Base,  Repair,  Turrets  &  Ammo  Sharing  (Weeks  13ΓÇô16)  
+ 9.  M3.1  ΓÇô  Environment  &  Art  Integration  (Weeks  17ΓÇô19)  
+ 10.  M3.2  ΓÇô  UI/UX  &  Onboarding  (Weeks  19ΓÇô21)  
+ 11.  M3.3  ΓÇô  Balancing,  Feel  &  Performance  (Weeks  21ΓÇô24)  
+ 12.  M4.1  ΓÇô  Internal  Release  Candidate  (Weeks  25ΓÇô26)  
+ 
+--- Page 17 ---
+13.  M4.2  ΓÇô  External  Demo  Package  (Weeks  26ΓÇô28)  
+ 
+ 
+
+================================================================================
+EXTRACTING: LAST LIGHT ΓÇö DEMO GAME DESIGN DOCUMENT (GDD).pdf
+================================================================================
+
+--- Page 1 ---
+LAST  LIGHT  ΓÇö  DEMO  GAME  DESIGN  
+DOCUMENT
+ 
+(GDD)
+ 
+Version:  Demo  1.0  
+ 
+Scope:
+ 
+Strictly
+ 
+the
+ 
+10ΓÇô15
+ 
+minute
+ 
+vertical
+ 
+slice
+ 
+demo
+ 
+ 
+Studio:
+ 
+Kato.8
+ 
+Studios
+ 
+ 
+1.  HIGH  CONCEPT  (DEMO)  
+1.1  Summary  
+Last  Light  (Demo)  is  a  2D  top-down  survival  shooter  where  the  player  defends  a  fragile  home  
+base
+ 
+from
+ 
+zombie
+ 
+waves
+ 
+while
+ 
+gathering
+ 
+wood,
+ 
+stone,
+ 
+and
+ 
+metal
+ 
+to
+ 
+repair
+ 
+the
+ 
+base
+ 
+and
+ 
+build
+ 
+turrets
+.
+ 
+The
+ 
+central
+ 
+mechanic
+ 
+is
+ 
+a
+ 
+shared
+ 
+ammo
+ 
+pool
+ 
+between
+ 
+the
+ 
+player
+ 
+and
+ 
+all
+ 
+turrets,
+ 
+forcing
+ 
+the
+ 
+player
+ 
+to
+ 
+make
+ 
+strategic
+ 
+decisions
+ 
+about
+ 
+how
+ 
+to
+ 
+allocate
+ 
+their
+ 
+limited
+ 
+firepower.
+ 
+1.2  Demo  Goal  
+Deliver  a  tight,  polished  10ΓÇô15  minute  vertical  slice  that  demonstrates  the  core  identity  of  
+Last
+ 
+Light:
+ 
+ΓùÅ  Fun,  responsive  combat  
+ ΓùÅ  Meaningful  resource  gathering  
+ ΓùÅ  Base  defense  under  pressure  
+ ΓùÅ  Tension-driven  wave  survival  
+ ΓùÅ  A  clear  and  readable  art  style  
+ ΓùÅ  Intuitive  UI/UX  
+ 
+This  demo  forms  the  foundation  for  future  publisher  pitches  and  full-game  funding  discussions.  
+ 
+--- Page 2 ---
+2.  DESIGN  PILLARS  (DEMO)  
+Pillar  1  ΓÇö  Every  Bullet  Matters  
+The  shared  ammo  pool  means  firing  your  gun  reduces  turret  output.  Every  choice  carries  
+weight.
+ 
+Pillar  2  ΓÇö  Tension  Over  Panic  
+Waves  escalate  gradually.  The  player  should  always  feel  ΓÇ£barely  survivingΓÇ¥  without  ever  feeling  
+hopeless
+ 
+or
+ 
+overwhelmed.
+ 
+Pillar  3  ΓÇö  Your  Base  Tells  Your  Story  
+Repairs,  scars,  and  turret  placements  reflect  the  playerΓÇÖs  growing  mastery  and  resilience.  
+Pillar  4  ΓÇö  Immediate  Readability  
+Every  actionΓÇöfrom  harvesting  to  shootingΓÇömust  be  instantly  understandable  with  strong  visual  
+clarity.
+ 
+ 
+3.  TARGET  PLATFORM  &  AUDIENCE  
+Platforms  (Demo)  
+ΓùÅ  PC  (mouse  +  keyboard)  
+ ΓùÅ  Controller  support  optional,  not  required  for  demo  
+ 
+Audience  
+ΓùÅ  Fans  of  survival  shooters  
+ ΓùÅ  Players  who  enjoy  extract-and-return  loops  
+ ΓùÅ  Indie  game  showcase  audiences  (Steam  festivals,  publisher  demos)  
+ 
+ 
+--- Page 3 ---
+4.  GAME  STRUCTURE  ΓÇö  DEMO  LOOP  
+The  demo  focuses  on  a  single,  tight  loop:  
+Gather  ΓåÆ  Return  ΓåÆ  Build/Repair  ΓåÆ  Defend  ΓåÆ  Survive  ΓåÆ  Repeat  
+No  long-term  progression,  no  meta  systems,  no  additional  maps  or  characters.  
+4.1  Session  Length  
+ΓùÅ  Ideal  length:  10ΓÇô15  minutes  
+ ΓùÅ  Survival  ends  when:  
+ Γùï  Base  HP  reaches  zero,  or  
+ Γùï  Player  dies  
+ 
+4.2  End  Condition  
+ΓùÅ  Wave  Count  End:  Player  reaches  the  final  demo  wave  
+ ΓùÅ  Loss  Condition:  Base  destroyed  or  player  death  
+ ΓùÅ  End  screen:  ΓÇ£Thank  you  for  playing  the  Last  Light  demo!ΓÇ¥  
+ 
+ 
+5.  PLAYER  ΓÇö  DEMO  SPEC  
+5.1  Movement  &  Controls  
+ΓùÅ  WASD:  move  
+ ΓùÅ  Mouse:  aim  
+ ΓùÅ  Left  click:  fire  gun  
+ ΓùÅ  Right  click:  melee  attack  
+ 
+--- Page 4 ---
+ΓùÅ  E:  interact  (harvest,  repair,  build  turret)  
+ ΓùÅ  R:  reload  (optionalΓÇödepends  on  tuning)  
+ ΓùÅ  ESC:  pause  menu  
+ 
+5.2  Player  Stats  (Demo  Values  TBD)  
+ΓùÅ  HP  
+ ΓùÅ  Move  speed  
+ ΓùÅ  Gun  damage  
+ ΓùÅ  Melee  damage  
+ ΓùÅ  Attack  speed  
+ ΓùÅ  Ammo  capacity  
+ 
+5.3  Combat  Actions  
+ΓùÅ  Gun:  
+ Γùï  Consumes  shared  ammo  
+ Γùï  High  range  
+ Γùï  High  damage  
+ ΓùÅ  Melee  Weapon  (Machete):  
+ Γùï  No  ammo  
+ Γùï  Close-range  arc  
+ Γùï  Reliable  when  low  on  bullets  
+ 
+5.4  Feedback  
+--- Page 5 ---
+ΓùÅ  Muzzle  flashes  
+ ΓùÅ  Hit  VFX  
+ ΓùÅ  Small  camera  shake  
+ ΓùÅ  Hit-stop  for  major  hits  
+ 
+ 
+6.  ENEMIES  ΓÇö  DEMO  SCOPE  
+6.1  Main  Enemy:  Zombie  Walker  
+The  demo  only  features  one  enemy  type  with  tuned  variants.  
+6.2  Behavior  
+ΓùÅ  Wanders  until  player  or  base  detected  
+ ΓùÅ  Moves  directly  toward  target  
+ ΓùÅ  Melee  attack  when  in  range  
+ ΓùÅ  Damages  either  player  or  base  
+ 
+6.3  Stats  (Tunable  per  Wave)  
+ΓùÅ  HP  
+ ΓùÅ  Move  speed  
+ ΓùÅ  Damage  
+ ΓùÅ  Attack  interval  
+ 
+6.4  Wave  Scaling  
+ΓùÅ  More  zombies  
+ 
+--- Page 6 ---
+ΓùÅ  Slight  HP  increases  
+ ΓùÅ  Slight  speed  increases  
+ 
+No  special  zombies,  no  ranged  enemiesΓÇöstrictly  simple  walkers.  
+ 
+7.  BASE  &  STRUCTURES  ΓÇö  DEMO  
+7.1  Base  Core  
+ΓùÅ  Central  structure  with  HP  
+ ΓùÅ  If  destroyed  ΓåÆ  demo  ends  
+ ΓùÅ  Repairable  with  resources  
+ 
+7.2  Turrets  ΓÇö  Demo  Version  
+One  turret  type  ONLY.  
+ 
+Goal
+ 
+is
+ 
+to
+ 
+show
+ 
+core
+ 
+defense
+ 
+mechanics
+ 
+cleanly
+ 
+without
+ 
+over-complication.
+ 
+Behavior:  
+ΓùÅ  Automatically  targets  nearest  zombie  
+ ΓùÅ  Consumes  ammo  from  shared  ammo  pool  
+ ΓùÅ  Fire  rate  and  damage  tuned  for  balanced  defense  
+ ΓùÅ  Cannot  be  moved  once  placed  
+ 
+7.3  Valid  Turret  Placement  
+ΓùÅ  Small,  fixed  footprint  around  the  base  
+ ΓùÅ  Cannot  be  placed  in  walk-blocking  areas  
+ 
+--- Page 7 ---
+7.4  Repair  System  
+ΓùÅ  Player  spends  wood/stone/metal  to  repair  base  HP  
+ ΓùÅ  Hold  E  to  repair  
+ ΓùÅ  Costs  increase  based  on  missing  HP  
+ 
+ 
+8.  RESOURCES  &  ECONOMY  ΓÇö  DEMO  
+8.1  Resource  Types  
+1.  Wood  
+ Γùï  Used  to  repair  base  and  craft  turret  base  components  
+ Γùï  Found  in  trees  near  the  base  
+ 2.  Stone  
+ Γùï  Structural  material  for  turret  platforms  
+ Γùï  Found  in  rock  nodes  
+ 3.  Metal  
+ Γùï  Highest-value  material  
+ Γùï  Required  for  turret  construction  
+ Γùï  Found  in  scrap  piles  farther  from  base  
+ 
+8.2  Gathering  Nodes  
+ΓùÅ  Each  node  has  HP  or  uses  
+ ΓùÅ  Player  interacts  with  E  to  gather  
+ 
+--- Page 8 ---
+ΓùÅ  Node  disappears  after  depletion  
+ ΓùÅ  Nodes  respawn  after  waves  or  time  
+ 
+8.3  Crafting  Costs  (Example  placeholder)  
+Basic  Turret:  
+ΓùÅ  20  Wood  
+ ΓùÅ  15  Stone  
+ ΓùÅ  10  Metal  
+ 
+Base  Repair:  
+ΓùÅ  Varies  by  missing  HP  (scales  upward  per  repair)  
+ 
+ 
+9.  SHARED  AMMO  SYSTEM  ΓÇö  DEMO  
+FEATURE
+ 
+9.1  Core  Concept  
+All  bullets  are  stored  in  a  single  global  ammo  pool .  
+9.2  Ammo  Usage  
+ΓùÅ  Player  gun  consumes  ammo  
+ ΓùÅ  Turrets  also  consume  ammo  for  every  shot  
+ ΓùÅ  When  ammo  =  0:  
+ Γùï  Player  gun  cannot  fire  
+ Γùï  Turrets  shut  down  
+ 
+--- Page 9 ---
+9.3  Ammo  Sources  
+For  the  demo:  
+ΓùÅ  Scattered  ammo  pickups  (rare)  
+ ΓùÅ  Occasional  drops  from  zombies  
+ ΓùÅ  Optional:  small  crafting  recipe  (metal  ΓåÆ  ammo)  
+ 
+9.4  Design  Purpose  
+This  mechanic  drives  strategy:  
+ΓùÅ  Turrets  too  strong?  Player  loses  personal  firepower.  
+ ΓùÅ  Player  firing  constantly?  Turrets  become  underpowered.  
+ 
+ 
+10.  WAVE  SYSTEM  ΓÇö  DEMO  
+10.1  Structure  
+ΓùÅ  Fixed  number  of  waves  (3ΓÇô5  depending  on  tuning)  
+ ΓùÅ  Each  wave:  
+ Γùï  Spawns  set  number  of  zombies  
+ Γùï  Slightly  increases  difficulty  
+ Γùï  Ends  when  all  zombies  die  
+ 
+10.2  Intermission  
+Between  waves:  
+ΓùÅ  Player  can  harvest  
+ 
+--- Page 10 ---
+ΓùÅ  Craft/build  turrets  
+ ΓùÅ  Repair  base  
+ ΓùÅ  Restock  ammo  if  found  
+ 
+10.3  Wave  UI  
+ΓùÅ  ΓÇ£Wave  2  IncomingΓÇ¥  banner  
+ ΓùÅ  Optional  timer  or  countdown  
+ 
+ 
+11.  LEVEL  DESIGN  ΓÇö  DEMO  MAP  
+11.1  Layout  
+ΓùÅ  Single  open  map  
+ ΓùÅ  Base  at  center  
+ ΓùÅ  Resource  nodes  positioned  at  progressive  distances  
+ ΓùÅ  Open  paths  for  zombie  approach  
+ ΓùÅ  Small  obstacles  to  create  lanes  
+ 
+11.2  Zones  
+ΓùÅ  Safe  Zone:  directly  around  the  base  
+ ΓùÅ  Resource  Band:  predictable  nodes  (trees/rocks)  
+ ΓùÅ  Danger  Zone:  farther  scrap  piles  with  higher  zombie  presence  
+ 
+ 
+--- Page 11 ---
+12.  ART  DIRECTION  ΓÇö  DEMO  
+12.1  Style  
+ΓùÅ  Pixel  or  hand-painted  style  (final  style  already  selected)  
+ ΓùÅ  High  readability,  moody  atmosphere  
+ 
+12.2  Required  Assets  
+ΓùÅ  Player  (idle,  walk,  melee,  shoot,  hurt)  
+ ΓùÅ  Zombie  walker  (idle,  walk,  attack,  hurt,  death)  
+ ΓùÅ  Resource  nodes:  tree,  rock,  scrap  
+ ΓùÅ  Turret  (idle,  firing  animation)  
+ ΓùÅ  Base  (idle,  damaged  states  optional)  
+ ΓùÅ  Tileset  +  props  
+ ΓùÅ  VFX:  hit  flash,  muzzle  flash,  harvest  FX  
+ ΓùÅ  UI  icons  
+ 
+ 
+13.  AUDIO  ΓÇö  DEMO  
+13.1  Music  
+ΓùÅ  One  ambient  loop  
+ ΓùÅ  One  slightly  intensified  layer  for  waves  
+ 
+13.2  Sound  Effects  
+--- Page 12 ---
+ΓùÅ  Gunshot  
+ ΓùÅ  Machete  swing  +  hit  
+ ΓùÅ  Zombie  attack  +  death  
+ ΓùÅ  Resource  harvesting  
+ ΓùÅ  UI  interactions  
+ ΓùÅ  Base  damage  
+ ΓùÅ  Turret  firing  
+ 
+13.3  Audio  Goals  
+ΓùÅ  Support  tension,  not  chaos  
+ ΓùÅ  Punchy  combat,  clear  feedback  
+ 
+ 
+14.  UI/UX  ΓÇö  DEMO  
+14.1  HUD  Elements  
+ΓùÅ  Player  health  
+ ΓùÅ  Ammo  counter  
+ ΓùÅ  Resource  counters  
+ ΓùÅ  Wave  indicator  
+ ΓùÅ  Interact  prompts  
+ 
+14.2  Menus  
+ΓùÅ  Pause:  Resume,  Settings,  Quit  
+ 
+--- Page 13 ---
+ΓùÅ  End  screen  
+ 
+14.3  Onboarding  Prompts  
+ΓùÅ  ΓÇ£Move  with  WASDΓÇ¥  
+ ΓùÅ  ΓÇ£Aim  with  mouse,  click  to  shootΓÇ¥  
+ ΓùÅ  ΓÇ£Press  E  to  harvest  resourcesΓÇ¥  
+ ΓùÅ  ΓÇ£Press  E  near  the  base  to  repairΓÇ¥  
+ ΓùÅ  ΓÇ£Press  E  to  build  turretΓÇ¥  
+ 
+ 
+15.  TECHNICAL  ΓÇö  DEMO  
+15.1  Engine  
+Unity  (2D  URP)  
+15.2  Systems  Required  
+ΓùÅ  Player  controller  
+ ΓùÅ  AI  state  machine  
+ ΓùÅ  Wave  spawner  
+ ΓùÅ  Damage  &  health  system  
+ ΓùÅ  Inventory  &  resources  
+ ΓùÅ  Crafting  
+ ΓùÅ  Turret  behavior  
+ ΓùÅ  Shared  ammo  controller  
+ 
+--- Page 14 ---
+ΓùÅ  Save/load  (light,  only  if  desired  for  demo)  
+ ΓùÅ  UI  event  messaging  
+ 
+15.3  Performance  Targets  
+ΓùÅ  60  FPS  on  mid-range  PCs  
+ ΓùÅ  Efficient  zombie  spawning  
+ ΓùÅ  Object  pooling  for  bullets  and  FX  
+ 
+ 
+16.  OUT-OF-SCOPE  (DEMO)  
+These  things  will  NOT  be  included  in  the  demo:  
+Γ¥î  Additional  zombie  types  
+ 
+Γ¥î
+ 
+Additional
+ 
+turret
+ 
+types
+ 
+ 
+Γ¥î
+ 
+Day/night
+ 
+cycle
+ 
+ 
+Γ¥î
+ 
+Weather
+ 
+ 
+Γ¥î
+ 
+Multiple
+ 
+maps
+ 
+ 
+Γ¥î
+ 
+Story,
+ 
+quests,
+ 
+or
+ 
+cutscenes
+ 
+ 
+Γ¥î
+ 
+Deep
+ 
+crafting
+ 
+tree
+ 
+ 
+Γ¥î
+ 
+Long-term
+ 
+progression
+ 
+ 
+Γ¥î
+ 
+Skill
+ 
+upgrades
+ 
+or
+ 
+leveling
+ 
+ 
+Γ¥î
+ 
+NPCs
+ 
+ 
+Γ¥î
+ 
+Bosses
+ 
+ 
+Γ¥î
+ 
+Inventory
+ 
+equipment
+ 
+ 
+Γ¥î
+ 
+Meta-progression
+ 
+The  demo  is  a  pure  vertical  slice ,  not  a  partial  full  game.  
+ 
+17.  DEMO  SUCCESS  CRITERIA  
+17.1  Player  Experience  Goals  
+--- Page 15 ---
+ΓùÅ  Controls  feel  responsive  and  fun  
+ ΓùÅ  Turrets  feel  powerful  but  costly  
+ ΓùÅ  Resource  gathering  is  quick  and  easy  
+ ΓùÅ  Shared  ammo  decisions  feel  meaningful  
+ ΓùÅ  Each  wave  increases  tension  
+ ΓùÅ  10ΓÇô15  minute  experience  feels  complete  
+ 
+17.2  Technical  Goals  
+ΓùÅ  Stable  build  
+ ΓùÅ  Smooth  framerate  
+ ΓùÅ  No  major  bugs  impacting  combat  or  building  
+ 
+17.3  Presentation  Goals  
+ΓùÅ  Clean  art  direction  
+ ΓùÅ  Usable  trailer  footage  
+ ΓùÅ  Strong  screenshot  moments  
+ 
+ 

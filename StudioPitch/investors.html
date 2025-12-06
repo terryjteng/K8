@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kato.8 Studios – Investor Overview</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Page stylesheet with navigation styles -->
+  <link rel="stylesheet" href="investors.css" />
+  
+  <script defer src="../main.js"></script>
+  <script>
+    // Password protection variables
+    let hhUnlocked = false;
+    const HH_PASSWORD = 'hotdog2025';
+    let llUnlocked = false;
+    const LL_PASSWORD = 'lastlight2025';
+
+    // Password protection event handlers - use capture phase to not interfere with dropdowns
+    document.addEventListener('click', (e) => {
+      const hhLink = e.target.closest('.hh-protected');
+      const llLink = e.target.closest('.ll-protected');
+      
+      // Only handle password-protected links, don't interfere with dropdown
+      if (hhLink) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (hhUnlocked) {
+          window.open(hhLink.href, '_blank');
+        } else {
+          showPasswordModal(hhLink.href, 'hh');
+        }
+        return;
+      } else if (llLink) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (llUnlocked) {
+          window.open(llLink.href, '_blank');
+        } else {
+          showPasswordModal(llLink.href, 'll');
+        }
+        return;
+      }
+    }, true); // Use capture phase
+
+    function showPasswordModal(docUrl, type) {
+      const modal = document.getElementById('passwordModal');
+      const passwordInput = document.getElementById('passwordInput');
+      const errorMsg = document.getElementById('passwordError');
+      const modalTitle = document.querySelector('.password-modal-title');
+      const modalText = document.querySelector('.password-modal-text');
+      
+      // Update modal text based on document type
+      if (type === 'hh') {
+        modalTitle.textContent = 'Protected Documents';
+        modalText.textContent = 'Enter password to access Hotdog Hustler documents';
+      } else {
+        modalTitle.textContent = 'Protected Documents';
+        modalText.textContent = 'Enter password to access Last Light Demo documents';
+      }
+      
+      modal.style.display = 'flex';
+      passwordInput.value = '';
+      errorMsg.style.display = 'none';
+      passwordInput.focus();
+
+      const handleSubmit = () => {
+        const correctPassword = type === 'hh' ? HH_PASSWORD : LL_PASSWORD;
+        if (passwordInput.value === correctPassword) {
+          if (type === 'hh') {
+            hhUnlocked = true;
+          } else {
+            llUnlocked = true;
+          }
+          modal.style.display = 'none';
+          window.open(docUrl, '_blank');
+        } else {
+          errorMsg.style.display = 'block';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      };
+
+      document.getElementById('passwordSubmit').onclick = handleSubmit;
+      document.getElementById('passwordCancel').onclick = () => modal.style.display = 'none';
+      passwordInput.onkeypress = (e) => {
+        if (e.key === 'Enter') handleSubmit();
+      };
+      modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+      };
+    }
+
+    // Collapsible Hotdog Hustler section
+    function toggleHHSection() {
+      const content = document.getElementById('hhDocsContent');
+      const icon = document.getElementById('hhCollapseIcon');
+      
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Collapsible Last Light Demo section
+    function toggleLLSection() {
+      const content = document.getElementById('llDocsContent');
+      const icon = document.getElementById('llCollapseIcon');
+      
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Initialize collapsed state on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const hhContent = document.getElementById('hhDocsContent');
+      const hhIcon = document.getElementById('hhCollapseIcon');
+      const llContent = document.getElementById('llDocsContent');
+      const llIcon = document.getElementById('llCollapseIcon');
+      
+      hhContent.style.maxHeight = hhContent.scrollHeight + 'px';
+      hhIcon.style.transform = 'rotate(180deg)';
+      
+      llContent.style.maxHeight = llContent.scrollHeight + 'px';
+      llIcon.style.transform = 'rotate(180deg)';
+    });
+  </script>
+</head>
+<body>
+  <!-- Password Modal -->
+  <div id="passwordModal" class="password-modal">
+    <div class="password-modal-content">
+      <h3 class="password-modal-title">Protected Documents</h3>
+      <p class="password-modal-text">Enter password to access Hotdog Hustler documents</p>
+      <input 
+        type="password" 
+        id="passwordInput" 
+        class="password-input" 
+        placeholder="Enter password"
+        autocomplete="off"
+      />
+      <div id="passwordError" class="password-error">Incorrect password. Please try again.</div>
+      <div class="password-modal-actions">
+        <button id="passwordCancel" class="btn-ghost">Cancel</button>
+        <button id="passwordSubmit" class="btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html" aria-label="Kato.8 Home">
+        <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="../index.html">Home</a>
+        <a href="investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../corebound.html">Corebound</a>
+            <a href="../bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="../untitledrpg.html">Untitled RPG</a>
+            <a href="../untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="../lastlight-demo.html">Last Light Demo</a>
+                <a href="../lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="../join.html">Join Team</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  
+  <div class="page">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-copy-eyebrow">
+          <span>Investor Overview</span>
+          <span></span>
+          <span>Hotdog Hustler → Last Light</span>
+        </div>
+        <h1 id="hero-title" class="hero-title">
+          From <span class="highlight">micro-game</span> to funded studio.
+        </h1>
+        <p class="hero-lede">
+          Kato.8 Studios is using a deliberately small, shippable title –
+          <strong>Hotdog Hustler</strong> – to fund the formation of the
+          studio, validate our workflows, and build a polished demo for
+          <strong>Last Light</strong>.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-meta-badge">Micro-scope, 2D time-management game</div>
+          <div class="hero-meta-badge">Revenue-share team structure</div>
+          <div class="hero-meta-badge">Studio setup + Last Light demo</div>
+        </div>
+        <div class="hero-cta-row">
+          <a href="#documents" class="btn-primary">
+            <span>View Key Documents</span>
+            <span class="chevron">↗</span>
+          </a>
+          <a href="../contact.html" class="btn-ghost">
+            <span>Talk through the roadmap</span>
+          </a>
+        </div>
+        <div class="hero-footnote">
+          Every number and milestone on this page is backed by internal
+          documentation, sprint plans, and itemized budgets.
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-label="Funding snapshot">
+        <div class="hero-visual-inner">
+          <div>
+            <div class="hero-tag">Snapshot</div>
+            <div class="hero-panel-title">
+              From first launch to investor-ready demo
+            </div>
+            <div class="hero-panel-sub">
+              Self-contained plan to ship Hotdog Hustler, form the studio, and
+              build a focused vertical slice of Last Light.
+            </div>
+          </div>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <div class="hero-metric-label">Studio Setup Goal</div>
+              <div class="hero-metric-value">$800 – $3K</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Last Light Demo</div>
+              <div class="hero-metric-value">$4K – $10.6K</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-label">Total Capital Range</div>
+              <div class="hero-metric-value">$4.8K – $15.6K</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="hero-ribbon">
+        Grounded in itemized costs, with a clear path from
+        <span>micro-game revenue</span> to studio setup and a polished demo.
+      </div>
+    </section>
+
+    <main>
+      <!-- Investment Opportunities -->
+      <section id="investment" class="section investment-section" aria-labelledby="investment-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Investment Opportunities</div>
+            <h2 id="investment-title" class="section-title">Partner With Us</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            We're offering two distinct investment paths: invest in our games for project-specific returns, or invest in the studio for equity ownership and long-term growth potential.
+          </p>
+        </div>
+
+        <div class="investment-paths">
+          <!-- Game Investment Path -->
+          <div class="investment-path">
+            <div class="investment-path-header">
+              <div class="investment-icon">🎮</div>
+              <h3 class="investment-path-title">Invest in Games</h3>
+              <p class="investment-path-subtitle">Project-Specific Revenue Share</p>
+            </div>
+            
+            <div class="investment-path-body">
+              <p class="investment-description">
+                Fund individual game projects (Hotdog Hustler or Last Light Demo) and receive a percentage of that specific game's revenue until you reach your target return.
+              </p>
+              
+              <div class="investment-features">
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Project-specific returns (revenue share)</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Clear ROI targets and timelines</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Defined exit once target is met</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Lower risk, single-project focus</span>
+                </div>
+              </div>
+
+              <div class="investment-examples">
+                <div class="investment-example">
+                  <div class="example-label">Hotdog Hustler</div>
+                  <div class="example-value">$1K - $5K</div>
+                </div>
+                <div class="investment-example">
+                  <div class="example-label">Last Light Demo</div>
+                  <div class="example-value">$5K - $25K</div>
+                </div>
+              </div>
+
+              <a href="#hotdog-hustler-docs" class="investment-cta btn-primary">
+                <span>Explore Game Investment</span>
+                <span class="chevron">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Studio Investment Path -->
+          <div class="investment-path investment-path-featured">
+            <div class="investment-path-badge">Growth Opportunity</div>
+            <div class="investment-path-header">
+              <div class="investment-icon">🏢</div>
+              <h3 class="investment-path-title">Invest in Studio</h3>
+              <p class="investment-path-subtitle">Equity Ownership</p>
+            </div>
+            
+            <div class="investment-path-body">
+              <p class="investment-description">
+                Acquire equity stake in Kato.8 Studios and participate in the long-term growth of the entire company across all current and future titles.
+              </p>
+              
+              <div class="investment-features">
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Equity ownership in the studio</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Share in all studio revenue streams</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Long-term growth potential</span>
+                </div>
+                <div class="investment-feature">
+                  <svg class="feature-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Strategic partnership opportunity</span>
+                </div>
+              </div>
+
+              <div class="investment-examples">
+                <div class="investment-example">
+                  <div class="example-label">Studio Setup Cost</div>
+                  <div class="example-value">$800 – $3K</div>
+                </div>
+                <div class="investment-example">
+                  <div class="example-label">Equity Range</div>
+                  <div class="example-value">Negotiable</div>
+                </div>
+              </div>
+
+              <a href="../contact.html" class="investment-cta btn-primary">
+                <span>Discuss Equity Investment</span>
+                <span class="chevron">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="investment-footer">
+          <p>
+            <strong>Not sure which path is right for you?</strong> We're happy to discuss both options and help you determine the best fit for your investment goals and risk tolerance.
+          </p>
+          <a href="../contact.html" class="btn-ghost">
+            <span>Schedule a Conversation</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Strategy / Game Plan -->
+      <section id="overview" class="section" aria-labelledby="overview-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Our strategy</div>
+            <h2 id="overview-title" class="section-title">The game plan</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            We’re a studio built on shipping. Our path from first concept to
+            funded studio is deliberately narrow and milestone-driven: prove we
+            can ship, use revenue to stand up the studio, then build a
+            publisher-ready demo for Last Light.
+          </p>
+        </div>
+        <div class="strategy-grid">
+          <div class="strategy-steps" aria-label="Four-step strategy">
+            <div class="step">
+              <div class="step-index">1</div>
+              <div>
+                <div class="step-title">Build &amp; Ship Hotdog Hustler</div>
+                <div class="step-body">
+                  First priority. Complete development, polish, and launch to
+                  generate initial revenue and prove we can ship quality titles
+                  on time.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">2</div>
+              <div>
+                <div class="step-title">Fund Studio Setup</div>
+                <div class="step-body">
+                  Use Hotdog Hustler revenue to establish Kato.8 Studios LLC,
+                  handle legal and accounting, and cover lightweight operational
+                  costs.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">3</div>
+              <div>
+                <div class="step-title">Develop the Last Light Demo</div>
+                <div class="step-body">
+                  With core infrastructure in place, build a tight, vertical
+                  slice of Last Light that shows our full capabilities.
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">4</div>
+              <div>
+                <div class="step-title">Secure Publishing / Investment</div>
+                <div class="step-body">
+                  Leverage a playable demo and proven shipping track record to
+                  attract publisher or micro-angel funding for full production.
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="strategy-note">
+            Hotdog Hustler isn’t just a first title – it’s our engine for
+            studio formation, workflow validation, and early community building,
+            designed from day one to be shippable within a lean, time-boxed
+            production window.
+          </p>
+        </div>
+      </section>
+
+      <!-- Game Plan Roadmap -->
+      <div class="game-plan-roadmap-container">
+        <div class="game-plan-roadmap">
+          <div class="roadmap-header">
+            <h3 class="roadmap-title">Our Path to Success</h3>
+            <p class="roadmap-subtitle">A clear, milestone-driven journey from micro-game to funded studio</p>
+          </div>
+          <div class="roadmap-track">
+            <div class="roadmap-line"></div>
+            <div class="roadmap-milestone milestone-active">
+              <div class="milestone-marker">
+                <div class="milestone-number">1</div>
+              </div>
+              <div class="milestone-content">
+                <div class="milestone-icon">🎮</div>
+                <div class="milestone-title">Hotdog Hustler</div>
+                <div class="milestone-desc">Ship & Generate Revenue</div>
+                <div class="milestone-status">In Progress</div>
+              </div>
+            </div>
+            <div class="roadmap-milestone">
+              <div class="milestone-marker">
+                <div class="milestone-number">2</div>
+              </div>
+              <div class="milestone-content">
+                <div class="milestone-icon">🏢</div>
+                <div class="milestone-title">Studio Setup</div>
+                <div class="milestone-desc">$800 – $3K</div>
+                <div class="milestone-status">Next Step</div>
+              </div>
+            </div>
+            <div class="roadmap-milestone">
+              <div class="milestone-marker">
+                <div class="milestone-number">3</div>
+              </div>
+              <div class="milestone-content">
+                <div class="milestone-icon">⚡</div>
+                <div class="milestone-title">Last Light Demo</div>
+                <div class="milestone-desc">$4K – $10.6K</div>
+                <div class="milestone-status">Future</div>
+              </div>
+            </div>
+            <div class="roadmap-milestone">
+              <div class="milestone-marker">
+                <div class="milestone-number">4</div>
+              </div>
+              <div class="milestone-content">
+                <div class="milestone-icon">🚀</div>
+                <div class="milestone-title">Full Production</div>
+                <div class="milestone-desc">Publisher/Investor Funded</div>
+                <div class="milestone-status">Goal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funding / Financials -->
+      <section id="funding" class="section" aria-labelledby="funding-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Financial targets</div>
+            <h2 id="funding-title" class="section-title">At a glance</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            Realistic budgets grounded in itemized costs, with a clear path from
+            micro-game revenue to studio setup and a polished demo.
+          </p>
+        </div>
+
+        <div class="stats-panel" aria-label="High-level budget ranges">
+          <div class="stats-grid">
+            <div>
+              <div class="stat-label">Studio Setup Goal</div>
+              <div class="stat-value">$800 – $3K</div>
+              <div class="doc-meta">LLC + 3–6 months lightweight operations</div>
+            </div>
+            <div>
+              <div class="stat-label">Last Light Demo Budget</div>
+              <div class="stat-value">$4K – $10.6K</div>
+              <div class="doc-meta">Development, art, sound, and QA</div>
+            </div>
+            <div>
+              <div class="stat-label">Total Capital Range</div>
+              <div class="stat-value">$4.8K – $15.6K</div>
+              <div class="doc-meta">
+                From “barebones but viable” to “comfortably resourced”
+              </div>
+            </div>
+          </div>
+          <div class="stat-caption">
+            We’ve modeled both a standard premium price and a $1 micro-price for
+            Hotdog Hustler, then mapped that revenue into concrete milestones
+            for studio setup, demo production, and investor pitches.
+          </div>
+        </div>
+
+        <div class="funding-layout">
+          <div>
+            <div class="funding-phase-label">
+              Phase 1 — Revenue via Hotdog Hustler
+            </div>
+            <div class="funding-phase-title">Revenue Phase</div>
+            <p class="section-body">
+              Ship a cozy 2D hotdog cart simulator on Steam/itch.io in ~2
+              months, using a lean revenue-share team and micro-scope design to
+              ensure completion and polish.
+            </p>
+            <ul class="funding-list">
+              <li>$4.99 base price with targeted $1 sales events</li>
+              <li>Steam &amp; itch.io distribution</li>
+              <li>50% of net revenue dedicated to studio fund</li>
+            </ul>
+
+            <div class="funding-phase-label" style="margin-top: 20px;">
+              Phase 2 — Establish Kato.8 Studios LLC
+            </div>
+            <div class="funding-phase-title">Operations Phase</div>
+            <p class="section-body">
+              Use early revenue to formally create the California LLC, open
+              business accounts, and set up core tools and legal infrastructure.
+            </p>
+            <ul class="funding-list">
+              <li>LLC registration, EIN, operating agreement</li>
+              <li>Accounting &amp; banking setup</li>
+              <li>Website &amp; studio communications (already in place)</li>
+            </ul>
+
+            <div class="funding-phase-label" style="margin-top: 20px;">
+              Phase 3 — Build the Last Light Demo
+            </div>
+            <div class="funding-phase-title">Production Phase</div>
+            <p class="section-body">
+              Invest in a tight vertical slice of Last Light – one biome, core
+              loop, and a playable demo designed specifically for
+              publisher/investor review.
+            </p>
+            <ul class="funding-list">
+              <li>Unity dev: $2.5K–$6K</li>
+              <li>Art: $1K–$3K</li>
+              <li>Sound: $300–$1K</li>
+              <li>QA: $200–$600</li>
+            </ul>
+          </div>
+
+          <aside class="funding-scenarios" aria-label="Funding scenarios">
+            <div class="scenario-label">Scenarios</div>
+
+            <div class="scenario">
+              <div class="scenario-title">Self-Funded + Hustler Revenue</div>
+              <div class="scenario-body">
+                Use Hotdog Hustler revenue plus small personal investment to
+                fund both studio setup and demo build. Requires ~1,500–4,000
+                units at $4.99 or ~7,000–22,000 at $1.00.
+              </div>
+            </div>
+
+            <div class="scenario">
+              <div class="scenario-title">
+                Hybrid / Investor-Backed (Recommended)
+              </div>
+              <div class="scenario-body">
+                Let Hustler fund studio formation, build 10–20% of the demo,
+                then leverage traction and prototype into micro-angel/publisher
+                funding ($20K–$75K range) for a publisher-quality demo and
+                marketing runway.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Document Library -->
+      <section id="docs" class="section" aria-labelledby="docs-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Support material</div>
+            <h2 id="docs-title" class="section-title">Document library</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            Every major claim on this page is backed by detailed internal
+            documentation – from high-level strategy to sprint-by-sprint
+            execution plans.
+          </p>
+        </div>
+
+        <!-- Kato.8 Studio Documents -->
+        <div class="doc-section" id="documents">
+          <h3 class="doc-section-title">Kato.8 Studio Documents</h3>
+          <div class="docs-grid">
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Kato.8 Studios — Business Strategy</div>
+                <div class="doc-meta">Studio Strategy · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Defines our mission, studio identity, phased formation strategy,
+                Hotdog Hustler revenue-share model, and long-term roadmap toward a
+                mid-sized indie studio.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/Studio/Kato.8 BUSINESS STRATEGY DOCUMENT.pdf" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Kato.8 Studios Funding Roadmap</div>
+                <div class="doc-meta">Financial Plan · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Detailed cost breakdown, pricing scenarios (including a $1 price
+                point), funding paths, and risk analysis for the journey from
+                Hotdog Hustler to Last Light demo.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/Studio/K.8 Studios Funding Roadmap.pdf" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Studio Build — Checklist</div>
+                <div class="doc-meta">Ops &amp; Legal · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                A structured checklist covering business formation, legal
+                contracts, tools &amp; systems, website legal requirements, and
+                financial operations planning.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/Studio/Studio Build - Checklist - Sheet1.pdf" target="_blank">View / Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotdog Hustler Documents -->
+        <div class="doc-section" id="hotdog-hustler-docs" style="margin-top: 40px;">
+          <div class="collapsible-header" onclick="toggleHHSection()">
+            <h3 class="doc-section-title">Hotdog Hustler Documents</h3>
+            <svg class="collapse-icon" id="hhCollapseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="doc-section-note">Click to view all Hotdog Hustler production documents (password required)</p>
+          <div class="docs-grid collapsible-content" id="hhDocsContent">
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Strategic Overview</div>
+                <div class="doc-meta">Product Strategy · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Frames Hotdog Hustler as a foundational micro-game: first shipped
+                title, LLC funding engine, workflow testbed, and early community
+                foothold.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/HOTDOG HUSTLER — STRATEGIC OVERVIEW DOCUMENT.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Master GDD (v2)</div>
+                <div class="doc-meta">Game Design · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Full design specification: high concept, core loop, topping
+                system, systems design, art &amp; audio direction, balancing, and
+                future feature roadmap.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/HOTDOG HUSTLER — MASTER GAME DESIGN DOCUMENT (GDD v2).pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Production Plan</div>
+                <div class="doc-meta">Production · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                A 6–8 week sprint plan with clearly defined roles, weekly
+                milestones, QA plan, and release pipeline for Steam/itch.io.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/HOTDOG HUSTLER — PRODUCTION PLAN.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Phase 1 Roadmap</div>
+                <div class="doc-meta">Gameplay Roadmap · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Breaks the Hotdog Cart phase into three milestones across
+                gameplay, UI/UX, art, and sound, culminating in a polished core
+                loop and the ability to purchase the Food Truck.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/Hotdog Huslter Roadmap - Phase 1 (1).pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Art Assets (Phase 1)</div>
+                <div class="doc-meta">Art Scope · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Detailed checklist of all art required for the core release:
+                characters, environments, UI, HUD, upgrade menus, and animations
+                with status tracking.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/Hotdog Hustler Art Assets - Phase1.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — UI/UX Wireframes</div>
+                <div class="doc-meta">UX Design · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Wireframes for the main menu, HUD, summary screens, upgrade shop,
+                pause menu, and tutorial overlays, aligning art needs with UX
+                flows.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/_HOTDOG HUSTLER - UI_UX WIREFRAME SHEET.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — Sound Assets (Phase 1)</div>
+                <div class="doc-meta">Audio Scope · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Comprehensive list of all sound effects, music tracks, and audio
+                assets needed for Phase 1, including SFX for cooking, customer
+                interactions, and ambient city sounds.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/Sound Assets - Phase 1.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Core Gameplay Loop — Hotdog Hustler</div>
+                <div class="doc-meta">Game Design · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Detailed breakdown of the core gameplay loop: order intake,
+                topping selection, cooking mechanics, customer satisfaction, and
+                progression systems that drive player engagement.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/🎯 Core Gameplay Loop – Hotdog Hustler.pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Hotdog Hustler — RACI Matrix</div>
+                <div class="doc-meta">Team Structure · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Defines roles and responsibilities across the team using the RACI
+                framework (Responsible, Accountable, Consulted, Informed) for
+                clear accountability and workflow.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/HH/Hotdog Hustler - RACI - Sheet1 (1).pdf" class="hh-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last Light Demo Documents -->
+        <div class="doc-section" style="margin-top: 40px;">
+          <div class="collapsible-header" onclick="toggleLLSection()">
+            <h3 class="doc-section-title">Last Light Demo Documents</h3>
+            <svg class="collapse-icon" id="llCollapseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="doc-section-note">Click to view comprehensive documentation for the Last Light demo build</p>
+          <div class="docs-grid collapsible-content" id="llDocsContent">
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Vision Statement</div>
+                <div class="doc-meta">Vision · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                High-level vision for the Last Light demo: core pillars, target
+                experience, strategic positioning, and how this vertical slice
+                will attract publisher interest.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT — DEMO VISION STATEMENT.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Game Design Document</div>
+                <div class="doc-meta">Game Design · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Complete GDD for the demo build: gameplay systems, narrative
+                framework, combat mechanics, farming loop, base defense, and
+                day/night cycle integration.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT — DEMO GAME DESIGN DOCUMENT (GDD).pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Funding Scenarios</div>
+                <div class="doc-meta">Financial Plan · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Detailed cost breakdown and funding scenarios for the demo build,
+                including staffing options, timeline impacts, and budget ranges
+                from minimal to optimal production.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT – DEMO FUNDING SCENARIOS DOCUMENT.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Roadmap</div>
+                <div class="doc-meta">Production Roadmap · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Sprint-by-sprint production plan for the demo, breaking down
+                milestones, deliverables, and dependencies across design, art,
+                engineering, and audio.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT — DEMO ROADMAP.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Timeline Comparison</div>
+                <div class="doc-meta">Timeline Analysis · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                High-level comparison of different production timelines and team
+                structures, helping visualize trade-offs between speed, cost, and
+                scope for the demo.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT — HIGH-LEVEL DEMO TIMELINE COMPARISON.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Demo Asset List</div>
+                <div class="doc-meta">Asset Scope · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Comprehensive checklist of all art, audio, and technical assets
+                required for the demo build, with status tracking and
+                dependencies.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT – DEMO ASSET LIST.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — Detailed System Specs</div>
+                <div class="doc-meta">Systems Design · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                In-depth specifications for core systems: combat mechanics,
+                farming loops, AI behavior, day/night cycle, and base defense
+                systems with technical implementation notes.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT - Detailed System Specs (combat, farming, AI, day_night, defenses).pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+
+            <div class="doc-row">
+              <div>
+                <div class="doc-title">Last Light — RACI Matrix (Demo)</div>
+                <div class="doc-meta">Team Structure · PDF</div>
+              </div>
+              <div class="doc-bullets">
+                Roles and responsibilities matrix for the demo team using the
+                RACI framework, defining who is Responsible, Accountable,
+                Consulted, and Informed for each deliverable.
+              </div>
+              <div class="doc-actions">
+                <a href="../Documents/LL/Demo/LAST LIGHT - RACI - Demo.pdf" class="ll-protected" target="_blank">View / Download</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap / Studio -->
+      <section id="roadmap" class="section" aria-labelledby="roadmap-title">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Execution</div>
+            <h2 id="roadmap-title" class="section-title">Execution roadmap</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            We’ve already translated vision into concrete, timeboxed execution –
+            with sprints, roles, and deliverables defined from pre-production to
+            release.
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="timeline" aria-label="Production timeline for Hotdog Hustler">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Pre-Production</div>
+              <div class="tl-meta">~1 Week</div>
+              <div class="tl-body">
+                Team onboarding &amp; ClickUp setup, GitHub repo creation &amp;
+                architecture outline, and art tests with finalized topping list.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Sprints 1–3: Core Loop</div>
+              <div class="tl-meta">Weeks 1–3</div>
+              <div class="tl-body">
+                Input, cart state machine, and core interactions. Topping system
+                &amp; basic UI wired. Customer spawning, orders, timers, and
+                end-of-day summary. By Sprint 3: full loop playable, no new
+                features added.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-title">Sprints 4–6: Content, Polish, Release</div>
+              <div class="tl-meta">Weeks 4–6 (+ buffer)</div>
+              <div class="tl-body">
+                Content completion &amp; animation integration, polish/QA with
+                multiple playtest rounds, and Steam/itch.io build pipeline and
+                store assets.
+              </div>
+            </div>
+          </div>
+
+          <div class="studio-block" id="studio">
+            <h4>Building a sustainable studio</h4>
+            <p>
+              Beyond one game, Kato.8 is structured to become a sustainable
+              mid-sized indie studio with a strong IP pipeline (Last Light,
+              Corebound, Big Boss Cleanup, and more).
+            </p>
+            <h4>Studio formation strategy</h4>
+            <ul class="studio-list">
+              <li>Phase 1: Revenue-share, zero overhead, Hotdog Hustler</li>
+              <li>Phase 2: Form Kato.8 Studios LLC, lock in legal &amp; ops</li>
+              <li>Phase 3: Fund and build Last Light demo</li>
+              <li>Phase 4: Grow into a multi-project mid-sized studio</li>
+            </ul>
+            <h4 style="margin-top: 14px;">What we’re looking for</h4>
+            <p>
+              We’re open to conversations with aligned partners who value:
+            </p>
+            <ul class="studio-list">
+              <li>Disciplined scope and realistic budgeting</li>
+              <li>Strong documentation and transparent planning</li>
+              <li>Roadmaps that actually map to shipping</li>
+            </ul>
+            <p style="margin-top: 10px;">
+              Interested in seeing deeper builds, decks, or internal boards?
+              Reach out and we’ll walk you through the full pipeline.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>© Kato.8 Studios — Investor Overview</div>
+      <small>
+        All documents and figures are for planning purposes and can be
+        tailored to specific partner conversations.
+      </small>
+    </footer>
+  </div>
+</body>
+</html>

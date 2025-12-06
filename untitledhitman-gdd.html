@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Untitled Hitman GDD (Private) | Kato.8</title>
+  <meta name="robots" content="noindex,nofollow"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="untitledhitman-gdd.css"/>
+
+  <!-- Scripts -->
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+  <script defer src="main.js"></script>
+  <script defer src="untitledhitman-gdd.js?v=1"></script>
+</head>
+
+<body class="deck-body">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LOCK SCREEN -->
+  <section id="lockScreen" class="section lock">
+    <div class="container lock-box">
+      <h1>Restricted Access</h1>
+      <p>This document is available only to approved collaborators and investors.</p>
+      <form id="authForm" class="auth-form">
+        <label>
+          <span>Enter Access Code</span>
+          <input id="accessCode" type="password" placeholder="••••••••••" required/>
+        </label>
+        <button type="submit" class="btn primary">Unlock</button>
+        <p id="authMsg" class="auth-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DECK LAYOUT -->
+  <main id="gddContent" class="hidden">
+    <!-- Deck chrome: sidebar TOC + header controls -->
+    <aside class="deck-sidebar" aria-label="Slide navigation">
+      <div class="deck-logo">
+        <span class="brand-gem"></span>
+        <strong>Untitled Hitman</strong>
+        <small>GDD Deck</small>
+      </div>
+      <nav id="deckTOC" class="deck-toc">
+        <!-- populated by JS based on .slide[data-title] -->
+      </nav>
+      <div class="deck-meta">
+        <button id="lockBtn" class="btn small">Lock</button>
+        <button id="printBtn" class="btn small">Export PDF</button>
+      </div>
+    </aside>
+
+    <section class="deck-stage">
+      <!-- Cover -->
+      <article class="slide cover" data-title="Cover">
+        <div class="slide-inner">
+          <p class="kicker">Private • Do Not Distribute</p>
+          <h1>Untitled Open World Hitman</h1>
+          <h2>Game Design Document (GDD)</h2>
+          <p class="lead">Open World Stealth-Action Sandbox. Creative assassination meets emergent gameplay in expansive environments.</p>
+          <div class="cover-meta">
+            <div><strong>Studio:</strong> Kato.8</div>
+            <div><strong>Build Path:</strong> Concept → Prototype → Vertical Slice → Production</div>
+            <div><strong>Contact:</strong> terryjteng@gmail.com</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Executive Summary -->
+      <article class="slide" data-title="Executive Summary">
+        <div class="slide-inner">
+          <h3>Executive Summary</h3>
+          <ul class="bullets">
+            <li><strong>Concept:</strong> Open-world stealth sandbox emphasizing player creativity and emergent assassination scenarios.</li>
+            <li><strong>Hook:</strong> Every environment becomes a complex puzzle with multiple creative solutions for elimination objectives.</li>
+            <li><strong>Market:</strong> Targets fans of Hitman series, immersive sims like Dishonored, and open-world creativity games.</li>
+            <li><strong>Prototype Goals:</strong> Core stealth mechanics, AI behavior systems, environmental interaction framework.</li>
+            <li><strong>Vertical Slice Goals:</strong> One complete mission area showcasing emergent gameplay possibilities.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Design Pillars -->
+      <article class="slide" data-title="Design Pillars">
+        <div class="slide-inner grid-3">
+          <div class="card">
+            <h4>Emergent Creativity</h4>
+            <p>Player ingenuity drives gameplay through systemic interactions and multiple solution paths.</p>
+          </div>
+          <div class="card">
+            <h4>Living World Systems</h4>
+            <p>Dynamic AI routines and reactive environments create opportunities for organic storytelling.</p>
+          </div>
+          <div class="card">
+            <h4>Methodical Freedom</h4>
+            <p>Combine precise stealth mechanics with open-world exploration and discovery.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Core Mechanics -->
+      <article class="slide" data-title="Core Mechanics">
+        <div class="slide-inner">
+          <h3>Core Gameplay Systems</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Stealth & Detection</h4>
+              <ul class="bullets compact">
+                <li>Line of sight and audio-based detection</li>
+                <li>Dynamic alertness states and investigation</li>
+                <li>Environmental cover and concealment</li>
+                <li>Social stealth and disguise systems</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Environmental Interaction</h4>
+              <ul class="bullets compact">
+                <li>Physics-based object manipulation</li>
+                <li>Environmental hazards and traps</li>
+                <li>Hackable electronics and security systems</li>
+                <li>Destructible elements for creative solutions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- AI Systems -->
+      <article class="slide" data-title="AI Systems">
+        <div class="slide-inner">
+          <h3>Dynamic AI Framework</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Behavioral Routines</h4>
+              <ul class="bullets compact">
+                <li>Realistic daily schedules and patrol routes</li>
+                <li>Context-sensitive conversations and interactions</li>
+                <li>Adaptive responses to environmental changes</li>
+                <li>Memory and communication systems between NPCs</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Detection & Response</h4>
+              <ul class="bullets compact">
+                <li>Multi-layered awareness states (unaware → suspicious → alerted → hostile)</li>
+                <li>Intelligent search patterns and evidence investigation</li>
+                <li>Coordination between security forces</li>
+                <li>Escalating response protocols based on threat level</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tools & Equipment -->
+      <article class="slide" data-title="Tools & Equipment">
+        <div class="slide-inner">
+          <h3>Agent Arsenal</h3>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Stealth Tools</h4>
+              <ul class="bullets compact">
+                <li>Silenced weapons</li>
+                <li>Distraction devices</li>
+                <li>Lock picks and hacking tools</li>
+                <li>Surveillance equipment</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Environmental Tools</h4>
+              <ul class="bullets compact">
+                <li>Rope and grappling gear</li>
+                <li>Explosives and charges</li>
+                <li>Electronic disruptors</li>
+                <li>Chemical compounds</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Disguises & Social</h4>
+              <ul class="bullets compact">
+                <li>Context-appropriate uniforms</li>
+                <li>Fake identification</li>
+                <li>Voice modulators</li>
+                <li>Social manipulation tools</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Level Design Philosophy -->
+      <article class="slide" data-title="Level Design">
+        <div class="slide-inner">
+          <h3>Environment Design Principles</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Systemic Complexity</h4>
+              <p>Every location designed as interconnected systems that players can observe, understand, and manipulate.</p>
+              <ul class="bullets compact">
+                <li>Multiple entry and exit points</li>
+                <li>Vertical exploration opportunities</li>
+                <li>Hidden passages and maintenance areas</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Narrative Integration</h4>
+              <p>Environmental storytelling woven into gameplay mechanics and exploration rewards.</p>
+              <ul class="bullets compact">
+                <li>Story fragments discovered through investigation</li>
+                <li>Character backgrounds revealed through observation</li>
+                <li>Mission context emerging from world details</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Technical Architecture -->
+      <article class="slide" data-title="Technical Architecture">
+        <div class="slide-inner">
+          <h3>Technology Stack</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Engine & Platform</h4>
+              <ul class="bullets compact">
+                <li><strong>Engine:</strong> Unreal Engine 5</li>
+                <li><strong>Primary Platform:</strong> PC (Windows)</li>
+                <li><strong>Secondary:</strong> PlayStation, Xbox</li>
+                <li><strong>Target Performance:</strong> 60fps at 1080p</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Core Systems</h4>
+              <ul class="bullets compact">
+                <li>Advanced AI behavior tree system</li>
+                <li>Dynamic lighting and shadow casting</li>
+                <li>Physics-based interaction framework</li>
+                <li>Modular level streaming architecture</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Development Timeline -->
+      <article class="slide" data-title="Development Timeline">
+        <div class="slide-inner">
+          <h3>Production Roadmap</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Phase 1: Pre-Production <span>(8 weeks)</span></h4>
+              <p>Technical design, AI prototyping, core mechanics proof-of-concept</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Phase 2: Systems Prototype <span>(16 weeks)</span></h4>
+              <p>Playable stealth mechanics, basic AI, first environment</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Phase 3: Vertical Slice <span>(20 weeks)</span></h4>
+              <p>Polished demo level, advanced AI, social stealth systems</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Phase 4: Production Ready <span>(12 months)</span></h4>
+              <p>Full team expansion, multiple environments, content pipeline</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Team & Funding -->
+      <article class="slide" data-title="Team & Funding">
+        <div class="slide-inner">
+          <h3>Project Requirements</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Core Team Needs</h4>
+              <ul class="bullets compact">
+                <li>Lead Programmer (systems architecture)</li>
+                <li>AI Programmer (behavior systems)</li>
+                <li>Level Designer (systemic environments)</li>
+                <li>3D Artist (environment creation)</li>
+                <li>Narrative Designer (environmental storytelling)</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Development Philosophy</h4>
+              <ul class="bullets compact">
+                <li>Iterative prototyping approach</li>
+                <li>Player creativity drives design decisions</li>
+                <li>Systemic complexity over scripted sequences</li>
+                <li>Emergent storytelling through gameplay</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Risk Assessment -->
+      <article class="slide" data-title="Risk Assessment">
+        <div class="slide-inner">
+          <h3>Development Risks & Mitigation</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Technical Challenges</h4>
+              <ul class="bullets compact">
+                <li><strong>AI Complexity:</strong> Incremental behavior system development</li>
+                <li><strong>Performance:</strong> Modular streaming and LOD systems</li>
+                <li><strong>Systemic Interactions:</strong> Extensive prototyping and testing</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Design Challenges</h4>
+              <ul class="bullets compact">
+                <li><strong>Scope Management:</strong> Milestone-driven development gates</li>
+                <li><strong>Player Guidance:</strong> Intuitive tutorial and feedback systems</li>
+                <li><strong>Balance:</strong> Regular playtesting and iteration cycles</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script>
+    // Initialize deck navigation and auth when DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.initializeDeck === 'function') {
+        window.initializeDeck();
+      }
+    });
+  </script>
+</body>
+</html>

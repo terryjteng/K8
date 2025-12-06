@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>China Market Analysis | Kato.8 Investors</title>
+  <meta name="description" content="China mobile gaming market analysis, entry strategy, and penetration plan for 2025. Market opportunities and strategic insights."/>
+  
+  <link rel="stylesheet" href="china-market.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="China Market Analysis | Kato.8 Investors"/>
+  <meta property="og:description" content="Strategic analysis of the China mobile gaming market and entry opportunities for 2025."/>
+  <meta property="og:type" content="website"/>
+
+  <script>
+    // Password protection system
+    const protectedLinks = {
+      'dumpling-gdd': 'dumplings2025'
+    };
+
+    function showPasswordModal(linkId) {
+      const modal = document.getElementById('passwordModal');
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      
+      modal.style.display = 'flex';
+      input.value = '';
+      error.style.display = 'none';
+      input.focus();
+      
+      // Store the link ID for verification
+      modal.setAttribute('data-link-id', linkId);
+    }
+
+    function hidePasswordModal() {
+      const modal = document.getElementById('passwordModal');
+      modal.style.display = 'none';
+    }
+
+    function verifyPassword() {
+      const modal = document.getElementById('passwordModal');
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      const linkId = modal.getAttribute('data-link-id');
+      const enteredPassword = input.value;
+      
+      if (protectedLinks[linkId] && enteredPassword === protectedLinks[linkId]) {
+        hidePasswordModal();
+        // For now, just show success message. In real implementation, this would redirect to the GDD
+        alert('Access granted! GDD document would open here.');
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    }
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Password modal event listeners
+      const cancelBtn = document.getElementById('passwordCancel');
+      if (cancelBtn) cancelBtn.addEventListener('click', hidePasswordModal);
+      
+      const submitBtn = document.getElementById('passwordSubmit');
+      if (submitBtn) submitBtn.addEventListener('click', verifyPassword);
+      
+      const passwordInput = document.getElementById('passwordInput');
+      if (passwordInput) {
+        passwordInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            verifyPassword();
+          } else if (e.key === 'Escape') {
+            hidePasswordModal();
+          }
+        });
+      }
+
+      // Protected link handlers
+      document.querySelectorAll('[data-protected]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const linkId = link.getAttribute('data-protected');
+          showPasswordModal(linkId);
+        });
+      });
+    });
+  </script>
+  <script defer src="../main.js"></script>
+</head>
+
+<body>
+  <!-- Password Modal -->
+  <div id="passwordModal" class="password-modal">
+    <div class="password-modal-content">
+      <h3>Protected Content</h3>
+      <p>This document requires a password to access.</p>
+      <input
+        type="password"
+        id="passwordInput"
+        class="password-input"
+        placeholder="Enter password"
+        autocomplete="off"
+      />
+      <div id="passwordError" class="password-error">Incorrect password. Please try again.</div>
+      <div class="password-modal-actions">
+        <button id="passwordCancel" class="btn-ghost">Cancel</button>
+        <button id="passwordSubmit" class="btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html" aria-label="Kato.8 Home">
+        <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="../index.html">Home</a>
+        <a href="investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../corebound.html">Corebound</a>
+            <a href="../bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="../untitledrpg.html">Untitled RPG</a>
+            <a href="../untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="../lastlight-demo.html">Last Light Demo</a>
+                <a href="../lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="../join.html">Join Team</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🇨🇳 MARKET INTELLIGENCE</div>
+        <h1 class="hero-title">China Mobile Gaming Market</h1>
+        <h2 class="hero-subtitle">Strategic Analysis & Entry Plan 2025</h2>
+        <p class="hero-description">
+          Unlock unprecedented opportunities in the world's largest mobile gaming ecosystem. 
+          Our comprehensive intelligence report reveals market dynamics, competitive landscapes, 
+          and proven penetration strategies for international developers.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">$29.3B</div>
+            <div class="stat-label">Market Size 2025</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">665M</div>
+            <div class="stat-label">Mobile Gamers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">45%</div>
+            <div class="stat-label">Global Market Share</div>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#market-overview" class="btn btn-primary">Explore Market Data</a>
+          <a href="#entry-strategy" class="btn btn-secondary">View Entry Strategy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Navigation -->
+  <section class="quick-nav">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">RESEARCH OVERVIEW</div>
+        <h2>Navigate Our Market Intelligence</h2>
+        <p>Comprehensive analysis across four critical dimensions of the China mobile gaming opportunity</p>
+      </div>
+      <div class="quick-nav-grid">
+        <a href="#market-overview" class="quick-nav-card">
+          <div class="quick-nav-icon">📊</div>
+          <h3>Market Intelligence</h3>
+          <p>$29.3B market size, 665M active players, demographic trends, and growth projections through 2028</p>
+        </a>
+        <a href="#competitive-landscape" class="quick-nav-card">
+          <div class="quick-nav-icon">⚔️</div>
+          <h3>Competitive Landscape</h3>
+          <p>Major players analysis, market positioning strategies, and untapped white space opportunities</p>
+        </a>
+        <a href="#entry-strategy" class="quick-nav-card">
+          <div class="quick-nav-icon">🎯</div>
+          <h3>Market Entry Strategy</h3>
+          <p>3-phase penetration plan with detailed timeline, partnership requirements, and budget allocation</p>
+        </a>
+        <a href="#investment" class="quick-nav-card">
+          <div class="quick-nav-icon">💰</div>
+          <h3>Investment Analysis</h3>
+          <p>Financial projections, ROI metrics, risk assessment, and 5-year revenue forecasts</p>
+        </a>
+        <a href="#dumpling-maker" class="quick-nav-card">
+          <div class="quick-nav-icon">🥟</div>
+          <h3>Dumpling Maker</h3>
+          <p>China-focused mobile game showcase and strategic case study</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Overview -->
+  <section id="market-overview" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MARKET INTELLIGENCE</span>
+        <h2>China Mobile Gaming Market Overview</h2>
+        <p>The world's largest and most dynamic mobile gaming ecosystem presents unprecedented opportunities for strategic market entry and sustained growth</p>
+      </div>
+      
+      <!-- Key Market Insight -->
+      <div class="market-insights">
+        <div class="insight-card featured">
+          <h3>🚀 Strategic Market Opportunity</h3>
+          <p>China's mobile gaming market continues to outpace global growth rates, with premium gaming segments and rural market expansion creating exceptional opportunities for international developers with strong IP and innovative gameplay mechanics.</p>
+          <div class="insight-stats">
+            <span>+8.2% YoY Growth</span>
+            <span>45% Global Share</span>
+            <span>¥194 Monthly ARPU</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="market-grid">
+        <div class="market-card">
+          <h3>📈 Market Size & Growth Trajectory</h3>
+          <div class="market-metrics">
+            <div class="metric">
+              <span class="metric-value">$29.3B</span>
+              <span class="metric-label">2025 Revenue</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">+8.2%</span>
+              <span class="metric-label">YoY Growth</span>
+            </div>
+          </div>
+          <ul class="market-points">
+            <li>Sustained double-digit growth despite market maturity</li>
+            <li>Premium gaming segment expanding at 15% annually</li>
+            <li>Rural market penetration accelerating (+22% growth)</li>
+            <li>Cross-platform gaming driving new revenue streams</li>
+          </ul>
+        </div>
+
+        <div class="market-card">
+          <h3>👥 Player Demographics & Behavior</h3>
+          <div class="market-metrics">
+            <div class="metric">
+              <span class="metric-value">665M</span>
+              <span class="metric-label">Active Players</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">47%</span>
+              <span class="metric-label">Female Players</span>
+            </div>
+          </div>
+          <ul class="market-points">
+            <li>Gen Z driving premium content demand (ages 18-26)</li>
+            <li>Female player base expanding rapidly in RPG/simulation</li>
+            <li>Aging millennials seeking complex narrative experiences</li>
+            <li>Rural players adopting mobile-first gaming habits</li>
+          </ul>
+        </div>
+
+        <div class="market-card">
+          <h3>💸 Revenue & Monetization Trends</h3>
+          <div class="market-metrics">
+            <div class="metric">
+              <span class="metric-value">¥194</span>
+              <span class="metric-label">Monthly ARPU</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">+15%</span>
+              <span class="metric-label">IAP Growth</span>
+            </div>
+          </div>
+          <ul class="market-points">
+            <li>Battle pass models gaining 40% adoption rate</li>
+            <li>Cosmetic monetization showing premium willingness</li>
+            <li>Live service games dominating revenue rankings</li>
+            <li>Social features driving 60% higher engagement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+          </div>
+          <ul class="market-points">
+            <li>Sustained growth despite market maturity</li>
+            <li>Premium gaming segment expanding rapidly</li>
+            <li>Rural market penetration accelerating</li>
+          </ul>
+        </div>
+
+        <div class="market-card">
+          <h3>Player Demographics</h3>
+          <div class="market-metrics">
+            <div class="metric">
+              <span class="metric-value">665M</span>
+              <span class="metric-label">Active Players</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">73%</span>
+              <span class="metric-label">Urban Penetration</span>
+            </div>
+          </div>
+          <ul class="market-points">
+            <li>Gen Z driving premium content demand</li>
+            <li>Female player base growing (47% of market)</li>
+            <li>Aging millennials seek complex experiences</li>
+          </ul>
+        </div>
+
+        <div class="market-card">
+          <h3>Revenue Trends</h3>
+          <div class="market-metrics">
+            <div class="metric">
+              <span class="metric-value">¥194</span>
+              <span class="metric-label">ARPU (Monthly)</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">+15%</span>
+              <span class="metric-label">IAP Growth</span>
+            </div>
+          </div>
+          <ul class="market-points">
+            <li>Battle pass models gaining traction</li>
+            <li>Cosmetic monetization strong</li>
+            <li>Live service games dominating revenue</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Landscape -->
+  <section id="competitive-landscape" class="section alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">COMPETITIVE ANALYSIS</span>
+        <h2>Market Leaders & Positioning</h2>
+        <p>Understanding the competitive dynamics and white space opportunities</p>
+      </div>
+
+      <div class="competitors-grid">
+        <div class="competitor-card">
+          <h3>Tier 1 Publishers</h3>
+          <div class="competitor-logos">
+            <div class="logo-placeholder">Tencent</div>
+            <div class="logo-placeholder">NetEase</div>
+            <div class="logo-placeholder">miHoYo</div>
+          </div>
+          <div class="competitor-stats">
+            <span>65% Market Share</span>
+            <span>¥18.9B Combined Revenue</span>
+          </div>
+          <ul class="competitor-strengths">
+            <li>Massive IP portfolios</li>
+            <li>Cross-platform synergy</li>
+            <li>Advanced live ops</li>
+          </ul>
+        </div>
+
+        <div class="competitor-card">
+          <h3>Emerging Players</h3>
+          <div class="competitor-logos">
+            <div class="logo-placeholder">Lilith</div>
+            <div class="logo-placeholder">FunPlus</div>
+            <div class="logo-placeholder">37Games</div>
+          </div>
+          <div class="competitor-stats">
+            <span>15% Market Share</span>
+            <span>Growing 25% YoY</span>
+          </div>
+          <ul class="competitor-strengths">
+            <li>Innovative gameplay mechanics</li>
+            <li>Global-first approach</li>
+            <li>Agile development cycles</li>
+          </ul>
+        </div>
+
+        <div class="competitor-card opportunity">
+          <h3>Market Gaps</h3>
+          <div class="opportunity-tags">
+            <span class="tag">Indie Premium</span>
+            <span class="tag">Narrative RPG</span>
+            <span class="tag">Co-op Experiences</span>
+          </div>
+          <div class="competitor-stats highlight">
+            <span>20% Unserved Demand</span>
+            <span class="tag">Food & Cooking</span>
+          </div>
+          <ul class="competitor-strengths">
+            <li>Quality over quantity focus</li>
+            <li>Western narrative styles</li>
+            <li>Community-driven content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entry Strategy -->
+  <section id="entry-strategy" class="section alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">STRATEGIC ROADMAP</span>
+        <h2>Market Entry & Penetration Plan</h2>
+        <p>A phased approach to establishing presence in the China mobile gaming market</p>
+      </div>
+
+      <div class="strategy-timeline">
+        <div class="phase-card">
+          <div class="phase-number">01</div>
+          <h3>Market Validation</h3>
+          <div class="phase-duration">Q1 2025 • 3 months</div>
+          <ul class="phase-objectives">
+            <li>Localize core portfolio for Chinese players</li>
+            <li>Soft launch Dumpling Maker prototype</li>
+            <li>Establish publishing partnerships</li>
+            <li>Cultural adaptation testing</li>
+          </ul>
+          <div class="phase-budget">Budget: $200K - $350K</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">02</div>
+          <h3>Partnership Development</h3>
+          <div class="phase-duration">Q2 2025 • 6 months</div>
+          <ul class="phase-objectives">
+            <li>Secure Tier 2 publisher relationships</li>
+            <li>Full Dumpling Maker development</li>
+            <li>Build local development team</li>
+            <li>Establish distribution channels</li>
+          </ul>
+          <div class="phase-budget">Budget: $500K - $800K</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">03</div>
+          <h3>Market Penetration</h3>
+          <div class="phase-duration">Q3-Q4 2025 • 6 months</div>
+          <ul class="phase-objectives">
+            <li>Dumpling Maker full market launch</li>
+            <li>Aggressive user acquisition campaigns</li>
+            <li>Live ops optimization</li>
+            <li>Revenue scaling & portfolio expansion</li>
+          </ul>
+          <div class="phase-budget">Budget: $1.2M - $2M</div>
+        </div>
+      </div>
+
+      <div class="strategy-pillars">
+        <h3>Strategic Pillars</h3>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <h4>Cultural Localization</h4>
+            <p>Deep adaptation of gameplay, narrative, and monetization to Chinese player preferences and cultural values.</p>
+          </div>
+          <div class="pillar-card">
+            <h4>Partnership Strategy</h4>
+            <p>Leverage established local publishers for market access, distribution, and regulatory navigation.</p>
+          </div>
+          <div class="pillar-card">
+            <h4>Premium Positioning</h4>
+            <p>Target underserved premium segment with high-quality, narrative-driven experiences.</p>
+          </div>
+          <div class="pillar-card">
+            <h4>Community Building</h4>
+            <p>Foster engaged player communities through social features and user-generated content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Opportunity -->
+  <section id="investment" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">INVESTMENT THESIS</span>
+        <h2>China Market Investment Case</h2>
+        <p>Financial projections and return opportunities for China market expansion</p>
+      </div>
+
+      <div class="investment-grid">
+        <div class="investment-card">
+          <h3>Revenue Projections</h3>
+          <div class="projection-chart">
+            <div class="year-projection">
+              <span class="year">2025</span>
+              <div class="bar" style="height: 20%;">
+                <span class="value">$400K</span>
+              </div>
+            </div>
+            <div class="year-projection">
+              <span class="year">2026</span>
+              <div class="bar" style="height: 50%;">
+                <span class="value">$1.2M</span>
+              </div>
+            </div>
+            <div class="year-projection">
+              <span class="year">2027</span>
+              <div class="bar" style="height: 80%;">
+                <span class="value">$2.8M</span>
+              </div>
+            </div>
+            <div class="year-projection">
+              <span class="year">2028</span>
+              <div class="bar" style="height: 100%;">
+                <span class="value">$4.5M</span>
+              </div>
+            </div>
+          </div>
+          <div class="projection-notes">
+            <p>Conservative estimates based on 15% market penetration in target segments</p>
+          </div>
+        </div>
+
+        <div class="investment-metrics">
+          <h3>Key Investment Metrics</h3>
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <span class="metric-label">Total Addressable Market</span>
+              <span class="metric-value">$8.2B</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Serviceable Market</span>
+              <span class="metric-value">$1.4B</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Target Market Share</span>
+              <span class="metric-value">0.3%</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">3-Year ROI</span>
+              <span class="metric-value">285%</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Payback Period</span>
+              <span class="metric-value">18 months</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Break-even Timeline</span>
+              <span class="metric-value">Q3 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-assessment">
+        <h3>Risk Assessment & Mitigation</h3>
+        <div class="risk-grid">
+          <div class="risk-card low">
+            <h4>Regulatory Risk</h4>
+            <span class="risk-level">Low</span>
+            <p>Partner with established local publishers for regulatory compliance and approval processes.</p>
+          </div>
+          <div class="risk-card medium">
+            <h4>Competition Risk</h4>
+            <span class="risk-level">Medium</span>
+            <p>Focus on underserved premium segments and unique IP to differentiate from market leaders.</p>
+          </div>
+          <div class="risk-card low">
+            <h4>Cultural Risk</h4>
+            <span class="risk-level">Low</span>
+            <p>Extensive localization testing and local team integration ensure cultural alignment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dumpling Maker Game Section -->
+  <section id="dumpling-maker" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CHINA-FOCUSED TITLE</span>
+        <h2>Dumpling Maker Mobile Game</h2>
+        <p>A culturally authentic cooking simulation game designed specifically for the Chinese market</p>
+      </div>
+
+      <div class="dumpling-showcase">
+        <div class="dumpling-info">
+          <div class="dumpling-card">
+            <h3>🥟 Game Overview</h3>
+            <div class="dumpling-details">
+              <div class="detail-item">
+                <span class="detail-label">Genre:</span>
+                <span class="detail-value">Cooking Simulation / Casual Mobile</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Target Market:</span>
+                <span class="detail-value">China (Primary), Asia-Pacific (Secondary)</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Platform:</span>
+                <span class="detail-value">iOS & Android</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Development Status:</span>
+                <span class="detail-value">Pre-Production / Concept</span>
+              </div>
+            </div>
+            
+            <h4>Core Gameplay</h4>
+            <ul class="dumpling-features">
+              <li>Authentic dumpling-making mechanics with traditional recipes</li>
+              <li>Restaurant management and customer satisfaction systems</li>
+              <li>Cultural storytelling through family recipes and traditions</li>
+              <li>Social features for sharing recipes and competing with friends</li>
+              <li>Seasonal events tied to Chinese festivals and celebrations</li>
+            </ul>
+
+            <h4>Market Positioning</h4>
+            <div class="positioning-grid">
+              <div class="position-card">
+                <h5>Cultural Authenticity</h5>
+                <p>Deep research into regional dumpling varieties and cooking traditions</p>
+              </div>
+              <div class="position-card">
+                <h5>Social Gaming</h5>
+                <p>WeChat integration and friend-based progression mechanics</p>
+              </div>
+              <div class="position-card">
+                <h5>Premium Feel</h5>
+                <p>High-quality art and animations with satisfying tactile feedback</p>
+              </div>
+            </div>
+
+            <div class="dumpling-actions">
+              <button class="btn btn-primary" data-protected="dumpling-gdd">
+                🔒 View Full GDD
+              </button>
+              <a href="../contact.html" class="btn btn-secondary">
+                Discuss Partnership
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Enter the China Market?</h2>
+        <p>Partner with Kato.8 to capitalize on the world's largest mobile gaming opportunity.</p>
+        <div class="cta-actions">
+          <a href="../contact.html" class="btn btn-primary">Schedule Discussion</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="../Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+            <span class="brand-name">Kato.8</span>
+          </div>
+          <p>Building the future of gaming, one experience at a time.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html">Portfolio</a>
+          <a href="../about.html">About</a>
+          <a href="../join.html">Join</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Kato.8. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

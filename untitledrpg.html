@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Untitled RPG | Kato.8</title>
+  <meta name="description" content="An early-stage, turn-based RPG concept about an alien crash that links eras and a search for a missing friend."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="untitledrpg.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Untitled RPG"/>
+  <meta property="og:description" content="An early-stage, classic-inspired RPG concept blending medieval fantasy, sci-fi, and player choice."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Untitled RPG (Working Title)",
+    "author": {
+      "@type": "Organization",
+      "name": "Kato.8"
+    },
+    "genre": ["Role-Playing"],
+    "description": "An early-stage, turn-based RPG concept inspired by classic 16-bit JRPGs and modern choice-driven narratives, centered on an alien crash that connects eras and a search for a missing friend.",
+    "url": "https://your-domain.com/untitledrpg.html"
+  }
+  </script>
+
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kb-kicker">RPG Concept · Early Development</p>
+        <h1 class="kb-title">Untitled RPG (Working Title)</h1>
+        <p class="kb-lead">
+          A turn-based RPG concept inspired by <em>Chrono Trigger</em>, <em>EarthBound</em>, and <em>Super Mario RPG</em>, 
+          with a narrative approach influenced by the choice-driven storytelling of <em>Baldur's Gate 3</em>.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="contact.html" class="kb-btn kb-primary">Contact About This Project</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- OVERVIEW / PREMISE -->
+    <section class="kb-section" id="overview">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kb-kicker">Premise</p>
+          <h2>World & Story Setup</h2>
+          <p class="kb-muted">
+            An alien ship crash-lands on Earth and triggers a portal that links a medieval world with a future setting. 
+            After a close friend disappears while interacting with the crash site, the player character is pulled into a 
+            cross-era journey to find them and understand why the worlds have collided.
+          </p>
+          <ul class="kb-bullets">
+            <li>Alien crash as the inciting incident that connects eras.</li>
+            <li>Portal linking medieval and sci-fi futures into a single, unstable reality.</li>
+            <li>A missing friend at the heart of the main quest.</li>
+            <li>Decisions meant to influence how the journey unfolds and how people respond to you.</li>
+          </ul>
+        </div>
+        <div class="kb-pod">
+          <h3>Project Snapshot</h3>
+          <dl class="kb-dl">
+            <div>
+              <dt>Status</dt>
+              <dd>Early concept · Pre-production</dd>
+            </div>
+            <div>
+              <dt>Structure</dt>
+              <dd>Turn-based RPG</dd>
+            </div>
+            <div>
+              <dt>Core Inspirations</dt>
+              <dd>Chrono Trigger · EarthBound · Super Mario RPG</dd>
+            </div>
+            <div>
+              <dt>Narrative Inspiration</dt>
+              <dd>Baldur's Gate 3 (for player choice and branching scenes)</dd>
+            </div>
+            <div>
+              <dt>World Style</dt>
+              <dd>Blend of medieval fantasy and sci-fi elements</dd>
+            </div>
+            <div>
+              <dt>Exploration</dt>
+              <dd>Designed around a large, explorable map in the spirit of classic 16-bit RPGs</dd>
+            </div>
+          </dl>
+          <p class="kb-fine">
+            Specific systems, platforms, and release plans are still being defined and are not locked in.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMEPLAY DIRECTION -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Gameplay Direction</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Turn-Based Battles</h3>
+            <p class="kb-muted">
+              Combat is planned as classic, menu-driven turn-based battles in the tradition of SNES-era JRPGs. 
+              The exact mechanics (skills, progression, and encounter pacing) are still in active design and not yet finalized.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Exploration & Map</h3>
+            <p class="kb-muted">
+              Players move between locations connected across time, exploring a larger map inspired by games like 
+              <em>Chrono Trigger</em> and early <em>Pokémon</em> titles. Specific regions, dungeons, and side-areas are 
+              still being mapped out.
+            </p>
+          </div>
+          <div class="kb-card">
+            <h3>Player Choice</h3>
+            <p class="kb-muted">
+              The goal is to support meaningful decisions—who you help, how you respond, and where you go—that influence 
+              scenes, quest outcomes, and character reactions. The exact branching structure and number of endings are 
+              intentionally not locked yet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NARRATIVE THEMES -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Narrative Focus</p>
+        <div class="kb-grid-2">
+          <div>
+            <h2>Key Themes</h2>
+            <p class="kb-muted">
+              The story centers on connection across distance and time, the cost of curiosity, and how different cultures 
+              handle a shared crisis. The portal forces medieval and futuristic societies to confront each other, with the 
+              player caught in the middle while trying to bring their friend home.
+            </p>
+          </div>
+          <div class="kb-pod">
+            <h3>Planned Pillars</h3>
+            <ul class="kb-bullets">
+              <li>A personal, character-driven main quest anchored on the missing friend.</li>
+              <li>Conflicting perspectives between eras (tradition vs. progress, faith vs. science).</li>
+              <li>Moments where player choices affect relationships and the tone of key scenes.</li>
+              <li>Room for humor, warmth, and grounded interactions despite the sci-fi premise.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT STATUS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kb-kicker">Development</p>
+        <div class="kb-grid-2">
+          <div class="kb-card">
+            <h3>Where It Is Now</h3>
+            <p class="kb-muted">
+              Untitled RPG is currently in a concept and planning phase. The focus right now is on:
+            </p>
+            <ul class="kb-bullets">
+              <li>Refining the core premise and major story arcs.</li>
+              <li>Defining the turn-based combat feel at a high level.</li>
+              <li>Outlining the structure of the world map and key locations.</li>
+              <li>Identifying what kinds of choices should have visible consequences.</li>
+            </ul>
+          </div>
+          <div class="kb-card">
+            <h3>What’s Still TBD</h3>
+            <p class="kb-muted">
+              Many details are intentionally not fixed yet to keep the design flexible:
+            </p>
+            <ul class="kb-bullets">
+              <li>Specific combat systems (turn order logic, combo systems, etc.).</li>
+              <li>Platform targets and technical stack.</li>
+              <li>Team size, production schedule, and release window.</li>
+              <li>Exact scope of branching paths and endings.</li>
+            </ul>
+            <p class="kb-fine">
+              This page is meant to reflect only confirmed, high-level intentions and will evolve as the design is finalized.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="untitledrpg.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

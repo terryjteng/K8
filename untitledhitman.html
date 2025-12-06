@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>Untitled Open World Hitman | Kato.8</title>
+  <meta name="description" content="A stealth-action sandbox where precision assassination meets emergent gameplay in expansive, interactive environments."/>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="untitledhitman.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Untitled Open World Hitman"/>
+  <meta property="og:description" content="Precision stealth meets open-world freedom in this assassination sandbox."/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Untitled Open World Hitman",
+    "author":{"@type":"Organization","name":"Kato.8"},
+    "genre":["Stealth","Action","Sandbox"],
+    "gamePlatform":["PC","Console"],
+    "description":"An open-world stealth-action game focused on precision assassination, emergent gameplay, and player-driven creativity.",
+    "url":"https://your-domain.com/untitledhitman.html"
+  }
+  </script>
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">Open World Stealth-Action</p>
+        <h1 class="kb-title">Untitled Open World Hitman</h1>
+        <p class="kb-lead">
+          A stealth-action sandbox where every mission becomes a canvas for creative assassination. Navigate expansive, interactive environments where player ingenuity and tactical precision converge in emergent gameplay experiences that reward both patience and boldness.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#funding" class="btn primary">View Project Details</a>
+          <a href="untitledhitman-gdd.html" class="btn">Access GDD</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ONE-PAGER SUMMARY -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Logline</p>
+          <h2>What is Untitled Open World Hitman?</h2>
+          <p class="kb-muted">
+            <strong>Untitled Open World Hitman</strong> is an immersive stealth-action sandbox that combines the methodical planning of traditional stealth games with the creative freedom of an open-world environment. Drawing inspiration from the Hitman series while expanding into uncharted territory.
+          </p>
+          <p class="kb-muted">
+            Every location becomes a puzzle with multiple solutions. Utilize environmental storytelling, dynamic AI systems, and emergent gameplay to craft unique assassination scenarios. Whether through social stealth, environmental manipulation, or direct action, the choice of approach is entirely yours.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Genre</dt><dd>Open World • Stealth-Action Sandbox</dd></div>
+            <div><dt>Style</dt><dd>Immersive Sim • Emergent Gameplay</dd></div>
+            <div><dt>Combat</dt><dd>Tactical stealth; environmental interaction; creative solutions</dd></div>
+            <div><dt>Stage</dt><dd>🚧 Concept Development → Pre-Production</dd></div>
+            <div><dt>Platform</dt><dd>PC (primary), Console (secondary)</dd></div>
+            <div><dt>Theme</dt><dd>Player Agency • Creative Problem Solving • Moral Ambiguity</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Emergent Creativity</h3>
+            <p class="kb-muted">Every environment is a playground for player creativity. Multiple routes, tools, and approaches ensure no two playthroughs are identical. The game rewards clever thinking and unconventional solutions.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Living, Reactive World</h3>
+            <p class="kb-muted">NPCs follow realistic schedules and routines. The world responds dynamically to player actions, creating opportunities for emergent storytelling and systemic gameplay interactions.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Precision Meets Freedom</h3>
+            <p class="kb-muted">Combine the methodical planning of classic stealth games with the exploration and discovery of open-world design. Each mission area offers depth and replayability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Core Features</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Sandbox Assassination</h3>
+            <p class="kb-muted">Large, open environments with multiple entry points, routes, and methods. Every mission location is a complex ecosystem waiting to be explored and exploited.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Dynamic AI Systems</h3>
+            <p class="kb-muted">Intelligent NPCs with realistic behavioral patterns, communication systems, and adaptive responses to player actions and environmental changes.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Environmental Storytelling</h3>
+            <p class="kb-muted">Rich narrative details woven into the world itself. Discover story fragments through exploration, observation, and interaction with the living environment.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Tools & Gadgets</h3>
+            <p class="kb-muted">A diverse arsenal of stealth tools, environmental manipulation devices, and creative problem-solving equipment that enable unique approach strategies.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Social Stealth</h3>
+            <p class="kb-muted">Blend into crowds, adopt disguises, and manipulate social situations. Use conversation, misdirection, and timing to achieve objectives without violence.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Consequence System</h3>
+            <p class="kb-muted">Actions have lasting effects on the world and story. Your methods and choices influence how characters, factions, and environments respond to your presence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CONCEPT -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Concept</p>
+        <h2>The Vision</h2>
+        <div class="kb-grid-2">
+          <div>
+            <p class="kb-muted">
+              Imagine a world where every assassination becomes an art form. Where the environment itself becomes your greatest ally, and where patience and observation are rewarded as much as quick reflexes and precise execution.
+            </p>
+            <p class="kb-muted">
+              This isn't just about eliminating targets—it's about the journey to reach them. The conversations overheard, the patterns observed, the opportunities created. Every mission becomes a unique story shaped entirely by your choices and creativity.
+            </p>
+          </div>
+          <div>
+            <p class="kb-muted">
+              The game embraces the philosophy that the most satisfying victories come from understanding systems and manipulating them creatively. Whether through elaborate Rube Goldberg-style environmental kills or simple, elegant social engineering.
+            </p>
+            <p class="kb-muted">
+              Each location is designed as a living diorama—a complex web of relationships, schedules, and opportunities waiting to be discovered and exploited by the observant player.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTION PLAN -->
+    <section class="kb-section" id="funding">
+      <div class="kb-container">
+        <p class="kicker">Production</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Team Requirements</h3>
+            <p class="kb-muted">
+              Seeking: Lead Programmer, AI Programmer, Level Designer, 3D Artist, and Narrative Designer. Looking for developers passionate about emergent gameplay and systemic design.
+            </p>
+            <div style="margin-top: 1rem;">
+              <a href="join.html" class="btn primary" style="font-size: 0.9em; padding: 8px 16px;">Join Development</a>
+            </div>
+          </div>
+          <div class="kb-card">
+            <h3>Technical Approach</h3>
+            <p class="kb-muted">Unreal Engine 5; advanced AI behavior trees; dynamic lighting and audio systems; modular environment design for maximum replayability.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Development Philosophy</h3>
+            <p class="kb-muted">Iterative prototyping focused on systemic interactions. Player creativity and emergent solutions drive all design decisions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT ROADMAP -->
+    <section class="kb-section" id="roadmap">
+      <div class="kb-container">
+        <p class="kicker">Development Roadmap</p>
+        <h2>Project Timeline</h2>
+        <p class="kb-muted" style="max-width:800px;margin:0 auto 3rem;">
+          <strong>Genre:</strong> Open World Stealth-Action | 
+          <strong>Engine:</strong> Unreal Engine 5 | 
+          <strong>Target Platforms:</strong> PC (Steam), PlayStation, Xbox<br/>
+          <strong>Team Size:</strong> 5-7 Core Developers | 
+          <strong>Current Phase:</strong> Concept Development → Pre-Production
+        </p>
+
+        <div class="kb-timeline">
+          <!-- Phase 1 -->
+          <article class="kb-node">
+            <h4>Phase 1: Pre-Production <span style="color:var(--seafoam);font-weight:400;">(8 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Establish core design principles and systemic gameplay foundations</li>
+              <li>Develop AI behavior prototypes and interaction frameworks</li>
+              <li>Create technical design document for emergent systems</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Technical design document, AI behavior prototype, core interaction systems proof-of-concept</p>
+          </article>
+
+          <!-- Phase 2 -->
+          <article class="kb-node">
+            <h4>Phase 2: Systems Prototype <span style="color:var(--seafoam);font-weight:400;">(16 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Build core stealth mechanics and environmental interaction systems</li>
+              <li>Implement basic AI routines and player detection systems</li>
+              <li>Create first playable environment with multiple approach options</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Playable prototype with one complete level, basic AI systems, core stealth mechanics</p>
+          </article>
+
+          <!-- Phase 3 -->
+          <article class="kb-node">
+            <h4>Phase 3: Vertical Slice <span style="color:var(--seafoam);font-weight:400;">(20 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Polish prototype into investor-ready demonstration</li>
+              <li>Implement advanced AI behaviors and systemic interactions</li>
+              <li>Add social stealth and disguise mechanics</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Polished vertical slice, advanced AI demonstration, social stealth systems</p>
+          </article>
+
+          <!-- Phase 4 -->
+          <article class="kb-node">
+            <h4>Phase 4: Production Ready <span style="color:var(--seafoam);font-weight:400;">(12 months)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Secure funding and expand team to full production size</li>
+              <li>Begin full production with multiple environment creation</li>
+              <li>Establish content pipeline and quality assurance processes</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Full production infrastructure, expanded team, multiple environment prototypes</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <p>&copy; 2025 Kato.8. All rights reserved. — <a href="contact.html">Contact</a> • <a href="join.html">Careers</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

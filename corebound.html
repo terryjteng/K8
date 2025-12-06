@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Corebound | Kato.8</title>
+  <meta name="description" content="Corebound is an action side-scroller with RPG elements. VC-ready page: concept, pillars, features, world, milestones, and funding ask."/>
+  
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="corebound.css"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Corebound"/>
+  <meta property="og:description" content="A post-collapse 2D side-scroller where humanity meets machine in a brutal fight for survival."/>
+  <meta property="og:image" content="/assets/corebound/og-corebound.jpg"/>
+  <meta property="og:type" content="website"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoGame",
+    "name":"Corebound",
+    "author":{"@type":"Organization","name":"Kato.8"},
+    "genre":["Action","Side-Scroller","RPG"],
+    "gamePlatform":["PC","Console"],
+    "description":"A post-collapse dystopian Earth where bio-mechanical horrors roam. Play as Ari, trapped between human emotion and machine logic.",
+    "url":"https://your-domain.com/corebound.html"
+  }
+  </script>
+  
+  <script>
+    // Dropdown toggle (supports nested dropdowns)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dropdown > button');
+      if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const dropdown = btn.parentElement;
+        const isOpen = dropdown.getAttribute('data-open') === 'true';
+        
+        // Close sibling dropdowns at the same level
+        const parent = dropdown.parentElement;
+        if (parent) {
+          parent.querySelectorAll(':scope > .dropdown').forEach(d => {
+            if (d !== dropdown) {
+              d.setAttribute('data-open', 'false');
+              const b = d.querySelector(':scope > button');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        
+        // Toggle current dropdown
+        dropdown.setAttribute('data-open', !isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      } else {
+        // Close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown').forEach(d => {
+          d.setAttribute('data-open', 'false');
+          const b = d.querySelector(':scope > button');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  </script>
+</head>
+<body class="kb-abyss">
+  <!-- NAV (unified) -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Kato.8 Home">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
+        <span class="brand-name">Kato.8</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-links" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a href="StudioPitch/investors.html">Investors</a>
+        <div class="dropdown" data-open="false">
+          <button type="button" aria-expanded="false" aria-haspopup="true">
+            Games
+            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="corebound.html">Corebound</a>
+            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
+            <a href="untitledrpg.html">Untitled RPG</a>
+            <a href="untitledhitman.html">Untitled Open World Hitman</a>
+            <div class="dropdown" data-open="false">
+              <button type="button" aria-expanded="false" aria-haspopup="true">
+                Last Light
+                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="lastlight-demo.html">Last Light Demo</a>
+                <a href="lastlight.html">Last Light Full Game</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="join.html">Join Team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="kb-hero">
+      <div class="kb-container">
+        <p class="kicker">Action Side-Scroller</p>
+        <div style="text-align: center; margin: 3rem 0 2rem;">
+          <img src="Art/Corebound/Corebound_Logo.png" alt="Corebound Logo" style="max-width: 700px; width: 90%; height: auto; filter: drop-shadow(0 8px 24px rgba(0, 212, 255, 0.3));">
+          <p style="font-size: 1em; opacity: 0.7; margin-top: 1rem; letter-spacing: 0.05em;">(Working Title)</p>
+        </div>
+        <p class="kb-lead">
+          Awakening in a barren desert with no memory of how you got there, you play as <strong>Ari</strong> <em>(name pending)</em>—a young survivor who spots a futuristic dystopian city on the horizon. As you journey toward it, survival demands a terrible price: trading pieces of your humanity for mechanical upgrades. Every enhancement brings power, but costs you something irreplaceable.
+        </p>
+        <div class="kb-hero-cta">
+          <a href="#funding" class="btn primary">View Funding Ask</a>
+          <a href="contact.html" class="btn">Request Full Deck</a>
+        </div>
+      </div>
+      <div class="kb-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ONE-PAGER SUMMARY -->
+    <section class="kb-section">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Logline</p>
+          <h2>What is Corebound?</h2>
+          <p class="kb-muted">
+            <strong>Corebound</strong> is a narrative-driven 2D side-scroller blending the fast-paced action of <em>Mega Man X</em> with the atmospheric exploration and emotional depth of <em>Hollow Knight</em>. Players experience a retro-style adventure with real-time combat, deep exploration, and branching storylines where every choice carries weight.
+          </p>
+          <p class="kb-muted">
+            Wake up in the desert with no memory. See a dystopian city in the distance. To survive the journey and uncover the truth, you must make a harrowing choice: trade parts of your human body for mechanical upgrades. Each enhancement grants new abilities but strips away your humanity, piece by piece. The game explores the cost of survival and what it means to lose yourself to become something more—or less—than human.
+          </p>
+        </div>
+        <div class="kb-pod">
+          <dl class="kb-dl">
+            <div><dt>Genre</dt><dd>2D Side-Scroller • Narrative-Driven Action</dd></div>
+            <div><dt>Style</dt><dd>Retro-inspired • Mega Man X meets Hollow Knight</dd></div>
+            <div><dt>Combat</dt><dd>Real-time action; combo-based; upgradeable abilities</dd></div>
+            <div><dt>Stage</dt><dd>🚧 In Development → Pre-Alpha</dd></div>
+            <div><dt>Platform</dt><dd>PC (primary), Console (secondary)</dd></div>
+            <div><dt>Theme</dt><dd>Humanity vs. Technology • Survival • Choice-Driven</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL SHOWCASE - HERO & WORLD -->
+    <section class="kb-section" style="background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);">
+      <div class="kb-container">
+        <p class="kicker">Concept Art</p>
+        <h2>Visual Identity</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div style="text-align: center;">
+            <img src="Art/Corebound/Ari_StoryImage.png" alt="Protagonist Story Art" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+            <p class="kb-muted" style="margin-top: 1rem;">The Protagonist's Journey</p>
+          </div>
+          <div style="text-align: center;">
+            <img src="Art/Corebound/Landscape_GameplayImage.png" alt="Game Environment" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+            <p class="kb-muted" style="margin-top: 1rem;">Exploring the Ruins</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN PILLARS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Design Pillars</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Narrative-Driven Experience</h3>
+            <p class="kb-muted">Story is at the heart of every decision. A mysterious desert awakening leads to a desperate journey toward a distant city. Each mechanical upgrade you trade for comes at the cost of your humanity—creating a deeply personal narrative about sacrifice and identity.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Retro Action Meets Modern Depth</h3>
+            <p class="kb-muted">Fast-paced platforming and combat inspired by <em>Mega Man X</em>, combined with the atmospheric exploration and interconnected world design of <em>Hollow Knight</em>.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Consequence-Driven Progression</h3>
+            <p class="kb-muted">Every body part you trade permanently changes your character, abilities, and story path. Your sacrifices determine not just your power level, but who—or what—you become by journey's end.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE STORY -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Narrative</p>
+        <h2>The Story</h2>
+        <div class="kb-grid-2">
+          <div>
+            <p class="kb-muted">
+              You wake up alone in an endless desert. No memory of who you are or how you got there. The sun beats down mercilessly as you scan the horizon—and then you see it: a massive futuristic city rising in the distance, its towering structures gleaming against the barren wasteland.
+            </p>
+            <p class="kb-muted">
+              With no other choice, you begin the journey toward the city. But survival in this harsh world comes at a price. Along the way, you discover that to gain the strength needed to reach your destination, you must make a terrible bargain: trading pieces of your own body—your flesh, your organs, your humanity—for mechanical upgrades.
+            </p>
+          </div>
+          <div>
+            <p class="kb-muted">
+              Each trade grants you new abilities and power. Enhanced reflexes. Stronger attacks. Advanced mobility. But with every exchange, you lose a part of yourself. The line between human and machine blurs with each decision.
+            </p>
+            <p class="kb-muted">
+              As you draw closer to the dystopian city, you'll encounter bio-mechanical horrors that guard the path. Face challenging bosses. Uncover fragments of the truth about this world, the city, and your own mysterious origins. The question isn't just whether you'll survive the journey—it's what will be left of you when you finally arrive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Core Features</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Body-Trading Mechanic</h3>
+            <p class="kb-muted">Make harrowing choices: trade parts of your human body for powerful mechanical upgrades. Each sacrifice grants new abilities but permanently alters your character and affects the narrative.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Dynamic Combat System</h3>
+            <p class="kb-muted">Fast-paced 2D action with combo chains and abilities that evolve based on your mechanical upgrades. Strategic combat inspired by Mega Man X's precision.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Journey to the City</h3>
+            <p class="kb-muted">Traverse the desert wasteland toward the mysterious futuristic city. Discover hidden areas, lore fragments, and secrets about the world and your own identity.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Bio-Mechanical Horrors</h3>
+            <p class="kb-muted">Face off against unique boss characters including mini-bosses Sha, SeWu, and Xin, leading to the ultimate confrontation with the Bio-Overlord.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Branching Narrative</h3>
+            <p class="kb-muted">Your choices throughout the journey—especially which body parts you trade—determine your path, abilities, and ultimate ending.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Atmospheric Exploration</h3>
+            <p class="kb-muted">Hollow Knight-inspired exploration with interconnected areas, environmental storytelling, and haunting visuals that bring the desert and city to life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARACTERS -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Cast</p>
+        <h2>Key Characters</h2>
+        
+        <!-- Main Characters Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+          <div class="kb-card" style="text-align: center;">
+            <img src="Art/Corebound/Ari_PlayingCard.png" alt="Main Character Card" style="width: 100%; max-width: 250px; margin: 0 auto; border-radius: 8px;">
+            <h3 style="margin-top: 1rem;">The Protagonist</h3>
+            <p class="kb-muted">
+              <em>(Character name work in progress)</em> — A young survivor integrated with machine components. The protagonist struggles with maintaining their humanity while relying on mechanical enhancements to survive. Their journey is one of self-discovery and choosing what it truly means to be human in a world where that definition has become blurred.
+            </p>
+          </div>
+          <div class="kb-card" style="text-align: center;">
+            <img src="Art/Corebound/MainVillian_Card.png" alt="Bio-Overlord Villain Card" style="width: 100%; max-width: 250px; margin: 0 auto; border-radius: 8px;">
+            <h3 style="margin-top: 1rem;">The Bio-Overlord</h3>
+            <p class="kb-muted">
+              The ultimate manifestation of humanity's final experiment gone wrong. Once human, now something far more terrifying. The Bio-Overlord controls the bio-mechanical horrors and holds the secrets to the world's collapse.
+            </p>
+          </div>
+        </div>
+        
+        <p class="kicker" style="margin-top: 3rem;">Mini Bosses</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+          <div class="kb-card" style="text-align: center;">
+            <img src="Art/Corebound/Sha_MiniBoss_Card.png" alt="Sha Mini Boss" style="width: 100%; max-width: 200px; margin: 0 auto; border-radius: 8px;">
+            <h3 style="margin-top: 1rem;">Sha</h3>
+            <p class="kb-muted">A swift, agile bio-mechanical hunter that tests your reflexes and adaptability in combat.</p>
+          </div>
+          <div class="kb-card" style="text-align: center;">
+            <img src="Art/Corebound/SeWu_MiniBoss_Card.png" alt="SeWu Mini Boss" style="width: 100%; max-width: 200px; margin: 0 auto; border-radius: 8px;">
+            <h3 style="margin-top: 1rem;">SeWu</h3>
+            <p class="kb-muted">A heavily armored tank-class adversary that challenges your strategic thinking and resource management.</p>
+          </div>
+          <div class="kb-card" style="text-align: center;">
+            <img src="Art/Corebound/Xin_MiniBoss_card.png" alt="Xin Mini Boss" style="width: 100%; max-width: 200px; margin: 0 auto; border-radius: 8px;">
+            <h3 style="margin-top: 1rem;">Xin</h3>
+            <p class="kb-muted">A tactical ranged enemy that forces you to balance offensive and defensive capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTION PLAN -->
+    <section class="kb-section">
+      <div class="kb-container">
+        <p class="kicker">Production</p>
+        <div class="kb-grid-3">
+          <div class="kb-card">
+            <h3>Team</h3>
+            <p class="kb-muted">
+              Currently seeking: Unity Developers, 2D Artist, Animator, Narrative Designer, and Sound Composer. Rev-share opportunities available for passionate contributors and collaborators.
+            </p>
+            <div style="margin-top: 1rem;">
+              <a href="join.html" class="btn primary" style="font-size: 0.9em; padding: 8px 16px;">Join the Team</a>
+            </div>
+          </div>
+          <div class="kb-card">
+            <h3>Tech Stack</h3>
+            <p class="kb-muted">Unity 2D engine; custom combat system; branching narrative framework; state management for choice consequences.</p>
+          </div>
+          <div class="kb-card">
+            <h3>Risks & Mitigation</h3>
+            <p class="kb-muted">Scope management via milestone gates; narrative complexity controlled through modular story beats; regular playtesting for pacing and difficulty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT ROADMAP -->
+    <section class="kb-section" id="roadmap">
+      <div class="kb-container">
+        <p class="kicker">Development Roadmap</p>
+        <h2>Corebound Development Timeline</h2>
+        <p class="kb-muted" style="max-width:800px;margin:0 auto 3rem;">
+          <strong>Genre:</strong> 2D Action RPG (Metroidvania-inspired) | 
+          <strong>Engine:</strong> Unity | 
+          <strong>Target Platforms:</strong> PC (Steam), Nintendo Switch, PlayStation<br/>
+          <strong>Team Size:</strong> 3 Core + 2 Rev-Share Support | 
+          <strong>Current Phase:</strong> Pre-Production → Early Prototype
+        </p>
+
+        <div class="kb-timeline">
+          <!-- Phase 1 -->
+          <article class="kb-node">
+            <h4>Phase 1: Pre-Production <span style="color:var(--seafoam);font-weight:400;">(4 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Finalize creative direction, narrative pillars, and mechanical scope</li>
+              <li>Build moodboards and tone bibles for visual direction</li>
+              <li>Define combat and exploration systems</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> High-level GDD, mood boards and tone guide, core gameplay loop diagram, early art concepts (Ari + Sister)</p>
+          </article>
+
+          <!-- Phase 2 -->
+          <article class="kb-node">
+            <h4>Phase 2: Prototype <span style="color:var(--seafoam);font-weight:400;">(12 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Develop playable prototype covering movement, combat, and upgrade systems</li>
+              <li>Establish visual identity and base physics</li>
+              <li>Implement 3 core augment upgrades</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Unity project with 1 biome (Desert Outskirts), 3 enemy types + 1 mini-boss, Augments: Leg v1, Recall Blade, Helmet, Core combat metrics logging</p>
+          </article>
+
+          <!-- Phase 3 -->
+          <article class="kb-node">
+            <h4>Phase 3: Vertical Slice <span style="color:var(--seafoam);font-weight:400;">(16–18 weeks)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Expand prototype into polished demo for investors/publishers</li>
+              <li>Add second biome and advanced augment systems</li>
+              <li>Integrate environmental storytelling and cutscenes</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Ruined City biome, 2 mini-bosses, New augments (After-Image Dash, Discharge Arm, Chest Plating), Intro cinematic and debug tools</p>
+          </article>
+
+          <!-- Phase 4 -->
+          <article class="kb-node">
+            <h4>Phase 4: Full Production — Milestone 1 <span style="color:var(--seafoam);font-weight:400;">(6 months)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Implement full progression and augment systems</li>
+              <li>Add early cutscenes and narrative nodes</li>
+              <li>Establish save/load and journal systems</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> 3 core regions, Save/load system, Upgrade nodes and crafting, Voice-over prototype for key cutscenes</p>
+          </article>
+
+          <!-- Phase 5 -->
+          <article class="kb-node">
+            <h4>Phase 5: Full Production — Milestone 2 <span style="color:var(--seafoam);font-weight:400;">(6 months)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Expand content and polish gameplay balance</li>
+              <li>Finalize augment skill trees</li>
+              <li>Integrate all boss encounters</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> 6+ biomes and 10+ enemy archetypes, 5 bosses, Complete augment tree, Cutscene and audio integration</p>
+          </article>
+
+          <!-- Phase 6 -->
+          <article class="kb-node">
+            <h4>Phase 6: Alpha / Playtest <span style="color:var(--seafoam);font-weight:400;">(2–3 months)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Conduct internal and closed playtests</li>
+              <li>Balance tuning and quality of life fixes</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Feedback report and tuning adjustments, QA verification and updated GDD metrics</p>
+          </article>
+
+          <!-- Phase 7 -->
+          <article class="kb-node">
+            <h4>Phase 7: Beta / Marketing Prep <span style="color:var(--seafoam);font-weight:400;">(3 months)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Finalize polish and optimize builds</li>
+              <li>Prepare marketing materials and press kit</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Steam demo build, Trailer + press assets, Publisher outreach packages</p>
+          </article>
+
+          <!-- Phase 8 -->
+          <article class="kb-node">
+            <h4>Phase 8: Launch & Post-Launch <span style="color:var(--seafoam);font-weight:400;">(TBD)</span></h4>
+            <p style="margin-bottom:1rem;"><strong>Goals:</strong></p>
+            <ul class="kb-bullets compact" style="margin-bottom:1rem;">
+              <li>Launch final build across platforms</li>
+              <li>Develop roadmap for DLCs or expansions</li>
+              <li>Begin pre-production on follow-up game (sequel/prequel hybrid)</li>
+            </ul>
+            <p class="kb-muted"><strong>Deliverables:</strong> Day-one patch, Quality of life updates, Post-launch analytics report, Sequel concept documentation</p>
+            
+            <div style="margin-top:1.5rem; padding:1rem; background:rgba(139,92,246,0.1); border-left:3px solid var(--accent-primary); border-radius:6px;">
+              <p style="margin:0; font-size:0.9375rem; line-height:1.6; color:var(--text-secondary);">
+                <strong style="color:var(--accent-primary);">Future Expansion:</strong> Corebound is designed as part of a larger narrative universe. A follow-up game is already in development that will serve as both a sequel and prequel, exploring the world before and after Ari's journey.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Team Structure -->
+        <div style="margin-top:4rem;">
+          <h3 style="margin-bottom:2rem;text-align:center;">Team Structure</h3>
+          <div class="kb-grid-2" style="gap:2rem;">
+            <div class="kb-card">
+              <h5>Design</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">Producer/Designer</p>
+              <ul class="kb-bullets compact">
+                <li>Gameplay tuning</li>
+                <li>Level layouts</li>
+                <li>Augment balance and economy</li>
+              </ul>
+            </div>
+            <div class="kb-card">
+              <h5>Engineering</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">Unity Developer</p>
+              <ul class="kb-bullets compact">
+                <li>Combat systems</li>
+                <li>Physics and animation handling</li>
+                <li>Save/load and optimization</li>
+              </ul>
+            </div>
+            <div class="kb-card">
+              <h5>Art</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">2D Artist/Animator</p>
+              <ul class="kb-bullets compact">
+                <li>Character, environment, and VFX sprite sheets</li>
+                <li>Cinematic illustrations</li>
+                <li>UI mockups</li>
+              </ul>
+            </div>
+            <div class="kb-card">
+              <h5>Audio</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">Rev-share Sound Designer</p>
+              <ul class="kb-bullets compact">
+                <li>Sound FX</li>
+                <li>Ambient loops</li>
+                <li>Voice cues</li>
+              </ul>
+            </div>
+            <div class="kb-card">
+              <h5>Narrative</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">Writer (Rev-share or Contract)</p>
+              <ul class="kb-bullets compact">
+                <li>Dialogue writing</li>
+                <li>Cutscene scripting</li>
+                <li>Branching story logic</li>
+              </ul>
+            </div>
+            <div class="kb-card">
+              <h5>QA</h5>
+              <p style="color:var(--seafoam);margin-bottom:0.5rem;">Rev-share QA Tester</p>
+              <ul class="kb-bullets compact">
+                <li>Bug tracking</li>
+                <li>Feature validation</li>
+                <li>Playtest feedback synthesis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNDING -->
+    <section class="kb-section" id="funding">
+      <div class="kb-container kb-grid-2">
+        <div>
+          <p class="kicker">Funding Ask</p>
+          <h2>Raising: $75k – $125k</h2>
+          <p class="kb-muted">
+            Use of funds: combat system development, character animation pipeline, narrative tooling, environment art, music & sound design, playtesting, and vertical slice polish for publisher outreach.
+          </p>
+          <ul class="kb-bullets">
+            <li>Open to equity, rev-share, or publishing partnership structures</li>
+            <li>Milestone-based funding gates with transparent reporting</li>
+            <li>Potential for multi-title slate discussions</li>
+            <li>Active development with passionate indie team at Kato.8</li>
+          </ul>
+          <div class="kb-cta-row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+            <a href="contact.html" class="btn primary">Investor Inquiry</a>
+            <a href="pipeline.html" class="btn">See Studio Slate</a>
+          </div>
+        </div>
+        <aside class="kb-pod">
+          <p class="kicker">Documentation</p>
+          <div class="kb-docs">
+            <a class="kb-doc" href="/assets/corebound/one-pager.pdf">One-Pager (PDF)</a>
+            <a class="kb-doc" href="/assets/corebound/pitch-deck.pdf">Pitch Deck (PDF)</a>
+            <a class="kb-doc" href="/assets/corebound/design-doc.pdf">Design Document (PDF)</a>
+          </div>
+          <p class="kb-fine">Full documentation available upon request.</p>
+          
+          <p class="kicker" style="margin-top:2rem;">Status</p>
+          <div class="kb-status-badge" style="display:inline-block;padding:8px 16px;background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:4px;color:#ffc107;">
+            🚧 In Active Development
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="kb-section">
+      <div class="kb-container" style="text-align:center;">
+        <p class="kicker">Join Us</p>
+        <h2>Be Part of the Journey</h2>
+        <p class="kb-muted" style="max-width:600px;margin:0 auto 2rem;">
+          Whether you're an investor, developer, artist, writer, or animator excited about the world of Corebound, we'd love to hear from you. We're currently welcoming collaborators to join our creative journey.
+        </p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <a href="join.html" class="btn primary">Join the Team</a>
+          <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+        
+        <!-- GDD Access -->
+        <div style="margin-top: 3rem; padding: 2rem; background: rgba(0,0,0,0.3); border-radius: 8px; max-width: 700px; margin-left: auto; margin-right: auto;">
+          <h3 style="margin-bottom: 1rem;">📋 Game Design Document & Pitch Deck</h3>
+          <p class="kb-muted" style="margin-bottom: 1.5rem;">
+            Access our comprehensive Game Design Document and full pitch deck presentation. This password-protected resource is available to serious investors, potential partners, and collaborators.
+          </p>
+          <p class="kb-muted" style="margin-bottom: 1.5rem; font-size: 0.9em;">
+            <strong>Note:</strong> The GDD page is password-protected. Please <a href="contact.html" style="color: var(--kb-accent, #00d4ff); text-decoration: underline;">contact us</a> to request access credentials.
+          </p>
+          <div style="text-align: center;">
+            <a href="corebound-gdd.html" class="btn primary">View GDD & Pitch Deck</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="kb-footer">
+    <div class="kb-container kb-footer-inner">
+      <div>© <span id="year"></span> Kato.8</div>
+      <div><a href="about.html">About</a> · <a href="join.html">Join</a> · <a href="contact.html">Contact</a></div>
+    </div>
+  </footer>
+
+  <script src="corebound.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
