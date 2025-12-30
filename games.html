@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Games — Kato.8 Studios LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">
+        <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Kato.8 Studios LLC</span>
+        <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
+      </span>
+    </a>
+    <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav">
+      <a class="nav__link" href="games.html">Games</a>
+      <a class="nav__link" href="updates.html">Updates</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="pagehead">
+    <div class="container">
+      <p class="eyebrow">Games</p>
+      <h1 class="h1">The slate</h1>
+      <p class="lead">Explore projects by genre and stage. For game funding, each card links to a milestone conversation.</p>
+      <p class="breadcrumb"><a href="index.html">Home</a> / Games</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="gamegrid">
+        <article class="gamecard">
+          <div class="gamecard__art">
+            <img src="Art/Corebound/Corebound_GameBanner.png" alt="Corebound banner" />
+          </div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Corebound</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">Action Side-Scroller / RPG</p>
+            <p class="p">A narrative-driven action adventure with upgrades and meaningful choices.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="coreboundModal">Learn more</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Corebound">Fund milestones</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gamecard">
+          <div class="gamecard__art">
+            <img src="Art/LastLight/ChatGPT Image Nov 10, 2025, 04_46_00 PM.png" alt="Last Light art" />
+          </div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Last Light</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">Zombie Defense Farm Sim</p>
+            <p class="p">Cozy farming by day, tense defense by night. Build, survive, and expand.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="lastlightModal">Learn more</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Last Light">Fund milestones</a>
+              <a class="btn btn--line" href="financials-lastlight.html">Financials</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gamecard">
+          <div class="gamecard__art">
+            <img src="Art/BigBossCleanup/BigBossCleanup_PageBanner.png" alt="Big Boss Cleanup banner" />
+          </div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Big Boss Cleanup</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">3D Cleanup Comedy Sim</p>
+            <p class="p">Clean up after boss fights while dodging hazards and building style combos.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="bigbossModal">Request info</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Big Boss Cleanup">Fund milestones</a>
+              <a class="btn btn--line" href="updates.html">Financials</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gamecard">
+          <div class="gamecard__art"></div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Hotdog Hustler</h3><span class="badge">In progress</span></div>
+            <p class="meta">Micro-scope time management</p>
+            <p class="p">A small shippable game designed to validate production flow and build momentum.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="hotdogModal">Learn more</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Hotdog Hustler">Fund milestones</a>
+              <a class="btn btn--line" href="financials-hotdog.html">Financials</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gamecard">
+          <div class="gamecard__art"></div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Untitled RPG</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">Turn-based JRPG</p>
+            <p class="p">Classic charm with modern pacing and branching consequences.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="rpgModal">Request info</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Untitled RPG">Fund milestones</a>
+              <a class="btn btn--line" href="updates.html">Financials</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gamecard">
+          <div class="gamecard__art"></div>
+          <div class="gamecard__body">
+            <div class="gamecard__top"><h3 class="h3">Untitled Stealth</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">Open-world stealth-action</p>
+            <p class="p">Creative stealth sandbox with emergent systems and high replayability.</p>
+            <div class="gamecard__actions">
+              <button class="btn btn--ghost" data-open-modal="stealthModal">Request info</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Untitled Stealth">Fund milestones</a>
+              <a class="btn btn--line" href="updates.html">Financials</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">© <span id="year"></span> Kato.8 Studios LLC</div>
+        <div class="footer__meta">Crowdfunding • Game-only funding • Milestone updates</div>
+      </div>
+      <div class="footer__right">
+        <a href="support.html">Support</a>
+        <a href="invest.html">Invest in Games</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- Game modals -->
+<div class="modal" id="coreboundModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="coreboundTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="coreboundTitle">Corebound</h2>
+        <p class="sub">Action Side-Scroller / RPG — Concept</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="grid grid--2">
+        <div>
+          <img src="Art/Corebound/Corebound_GameBanner.png" alt="Corebound art" style="width:100%;border-radius:12px;" />
+        </div>
+        <div>
+          <p class="p">Corebound is currently in concept. We're defining core mechanics and narrative pillars. The team is prioritizing a tight combat loop and upgrade systems that reward exploration.</p>
+          <ul class="list">
+            <li>Concept stage</li>
+            <li>Design pillars: combat, exploration, choices</li>
+            <li>Next: prototype core combat</li>
+          </ul>
+          <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+            <a class="btn btn--ghost" href="contact.html" data-prefill="Corebound">Discuss milestones</a>
+            <a class="btn btn--line" href="updates.html">View progress</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="lastlightModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="lastlightTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="lastlightTitle">Last Light</h2>
+        <p class="sub">Zombie Defense Farm Sim — Concept</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="container">
+        <!-- Moved: Section 6 - Last Light demo -->
+        <section id="demo" class="section">
+          <div class="section__head">
+            <p class="eyebrow">Last Light</p>
+            <h3 class="h3">Building the Last Light demo</h3>
+            <p class="sub">The demo is designed as a vertical slice that demonstrates core loop, visual direction, and production capability.</p>
+          </div>
+
+          <div class="grid grid--2">
+            <article class="card">
+              <h4 class="h4">What the demo proves</h4>
+              <ul class="list"><li>Core gameplay loop</li><li>Visual direction</li><li>Technical capability</li><li>Production quality</li></ul>
+            </article>
+
+            <article class="card card--glow">
+              <h4 class="h4">Why it matters</h4>
+              <p class="p">A polished, contained demo reduces uncertainty and creates a tangible proof point for funding conversations.</p>
+              <div class="spacer"></div>
+              <a class="btn btn--line" href="contact.html" data-prefill="Last Light Demo">Discuss demo milestones</a>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="bigbossModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="bigbossTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="bigbossTitle">Big Boss Cleanup</h2>
+        <p class="sub">3D Cleanup Comedy Sim — Concept</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="grid grid--2">
+        <div>
+          <img src="Art/BigBossCleanup/BigBossCleanup_PageBanner.png" alt="Big Boss Cleanup banner" style="width:100%;border-radius:12px;" />
+        </div>
+        <div>
+          <p class="p">A small comedic 3D sim about cleaning up after boss fights. Concept work focuses on spectacle, hazards, and rewarding combo systems.</p>
+          <ul class="list"><li>Concept stage</li><li>Prototyping planned</li></ul>
+          <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+            <a class="btn btn--ghost" href="contact.html" data-prefill="Big Boss Cleanup">Request info</a>
+            <a class="btn btn--line" href="updates.html">View progress</a>
+            <a class="btn btn--line" href="updates.html">View financials</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="hotdogModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="hotdogTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="hotdogTitle">Hotdog Hustler</h2>
+        <p class="sub">Micro-scope time management — In progress</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="container">
+        <!-- Moved: Section 3 - How Hotdog Hustler funds the studio -->
+        <section id="model" class="section">
+          <div class="section__head">
+            <p class="eyebrow">Studio model</p>
+            <h3 class="h3">How Hotdog Hustler funds the studio</h3>
+            <p class="sub">Hotdog Hustler is designed to be a small, shippable product that generates early revenue, strengthens the studio foundation, and helps support building the Last Light demo.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card">
+              <h4 class="h4">Hotdog Hustler</h4>
+              <p class="p">A focused release intended to validate the pipeline and begin generating revenue through shipping.</p>
+              <ul class="list"><li>Proof of execution</li><li>Community momentum</li><li>Operational learning</li></ul>
+            </article>
+
+            <article class="card card--glow">
+              <h4 class="h4">Capital → Studio stability</h4>
+              <p class="p">Revenue flows into studio fundamentals — keeping operations stable and enabling consistent production.</p>
+              <ul class="list"><li>Tools & infrastructure</li><li>Operational requirements</li><li>Milestone support</li></ul>
+            </article>
+
+            <article class="card">
+              <h4 class="h4">Last Light demo</h4>
+              <p class="p">The goal is to build a demo that demonstrates the core loop and production quality in a contained slice.</p>
+              <ul class="list"><li>Clear proof point</li><li>Publisher / investor conversations</li><li>Foundation for full production</li></ul>
+            </article>
+          </div>
+
+          <div class="flow" aria-label="Funding flow diagram" style="margin-top:12px;">
+            <div class="flow__node">
+              <div class="flow__kicker">Ship</div>
+              <div class="flow__title">Hotdog Hustler</div>
+              <div class="flow__desc">Small, shippable release</div>
+            </div>
+            <div class="flow__arrow" aria-hidden="true">→</div>
+            <div class="flow__node flow__node--accent">
+              <div class="flow__kicker">Funnel</div>
+              <div class="flow__title">Studio Setup</div>
+              <div class="flow__desc">Tools, ops, stability</div>
+            </div>
+            <div class="flow__arrow" aria-hidden="true">→</div>
+            <div class="flow__node">
+              <div class="flow__kicker">Build</div>
+              <div class="flow__title">Last Light Demo</div>
+              <div class="flow__desc">Vertical slice proof point</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Moved: Section 4 - Game plan & pricing -->
+        <section id="plan" class="section" style="margin-top:14px;">
+          <div class="section__head">
+            <p class="eyebrow">Hotdog Hustler</p>
+            <h3 class="h3">Game plan & pricing</h3>
+            <p class="sub">Pricing is tied directly to scope and value.</p>
+          </div>
+
+          <div class="grid grid--2">
+            <article class="card">
+              <div class="planhead">
+                <h4 class="h4" style="margin:0;">Beta</h4>
+                <span class="badge badge--solid">$1</span>
+              </div>
+              <p class="p">Beta is the lowest-friction way to validate the loop and gather early feedback.</p>
+              <ul class="list"><li>Core gameplay focus</li><li>Player feedback and iteration</li><li>Momentum building</li></ul>
+            </article>
+
+            <article class="card card--glow">
+              <div class="planhead">
+                <h4 class="h4" style="margin:0;">Full Release</h4>
+                <span class="badge badge--solid">$5</span>
+              </div>
+              <p class="p">Full release represents the complete, polished vision — with expanded content and systems.</p>
+              <ul class="list"><li>Expanded content</li><li>Polish pass</li><li>Value-aligned pricing</li></ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Moved: Section 5 - Bridge to Last Light -->
+        <section id="bridge" class="section" style="margin-top:14px;">
+          <div class="section__head">
+            <p class="eyebrow">Bridge</p>
+            <h3 class="h3">How Hotdog Hustler leads to Last Light</h3>
+            <p class="sub">Hotdog Hustler helps stabilize operations so the demo can be built with intention and realistic resourcing.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card"><h4 class="h4">Operational stability</h4><p class="p">Covers baseline studio needs so development can stay consistent.</p></article>
+            <article class="card"><h4 class="h4">Proof of execution</h4><p class="p">Shipping builds credibility and reduces uncertainty for partners.</p></article>
+            <article class="card"><h4 class="h4">Demo focus</h4><p class="p">Shifts effort toward a clear, contained demo instead of sprawling full production.</p></article>
+          </div>
+
+          <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:10px;">
+            <a class="btn btn--ghost" href="updates.html">See updates</a>
+            <a class="btn btn--line" href="contact.html" data-prefill="Hotdog Hustler">Fund milestones</a>
+            <a class="btn btn--line" href="financials-hotdog.html">View financials</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="rpgModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="rpgTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="rpgTitle">Untitled RPG</h2>
+        <p class="sub">Turn-based JRPG — Concept</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <p class="p">Exploratory concept; mechanics and story beats are being scoped.</p>
+      <ul class="list"><li>Idea exploration</li></ul>
+      <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:10px"><a class="btn btn--line" href="updates.html">View financials</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="stealthModal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="stealthTitle">
+    <div class="modal__head">
+      <div>
+        <h2 class="h2" id="stealthTitle">Untitled Stealth</h2>
+        <p class="sub">Open-world stealth-action — Concept</p>
+      </div>
+      <button class="modal__close" type="button" aria-label="Close" data-close-modal>✕</button>
+    </div>
+    <div class="modal__body">
+      <p class="p">High-level concept for stealth systems and emergent challenges.</p>
+      <ul class="list"><li>Concept stage</li></ul>
+      <div style="margin-top:12px;display:flex;justify-content:flex-end;gap:10px"><a class="btn btn--line" href="updates.html">View financials</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

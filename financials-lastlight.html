@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kato.8 Studios — Last Light Financial Breakdown</title>
+  <style>
+    :root{
+      --bg:#07070b;
+      --panel:#0f0f18;
+      --panel2:#0c0c14;
+      --text:#f3f3ff;
+      --muted:#b9b9d6;
+      --line:rgba(255,255,255,.12);
+      --accent:#ff4fd8;
+      --accent2:#6be4ff;
+      --good:#8dffb3;
+      --warn:#ffd36b;
+      --bad:#ff7a7a;
+      --shadow: 0 18px 40px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(900px 500px at 20% -10%, rgba(255,79,216,.20), transparent 65%),
+                  radial-gradient(900px 500px at 85% 0%, rgba(107,228,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:44px 18px 70px; }
+
+    .top{
+      display:flex; flex-wrap:wrap; gap:14px;
+      align-items:flex-end; justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      max-width:850px;
+      font-size: 15px;
+    }
+
+    .badge-row{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;
+    }
+    .badge{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      display:inline-flex; align-items:center; gap:8px;
+      white-space:nowrap;
+    }
+    .dot{ width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 14px rgba(255,79,216,.45); }
+    .dot2{ background:var(--accent2); box-shadow:0 0 14px rgba(107,228,255,.35); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      margin-top:18px;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,79,216,.10), rgba(255,255,255,0));
+    }
+    .card .bd{ padding:16px; }
+
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .pillset{
+      display:flex;
+      border-radius:12px;
+      overflow:hidden;
+      /* make the pill container more prominent */
+      padding:4px;
+      border:1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    }
+    .pill{
+      padding:10px 16px;
+      font-size:14px;
+      cursor:pointer;
+      color:var(--muted);
+      background:transparent;
+      border:0;
+      border-radius:10px;
+      transition: transform .14s ease, color .14s ease, box-shadow .14s ease, background .14s ease;
+      outline: none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .pill:hover, .pill:focus{
+      color:var(--text);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 18px rgba(107,228,255,0.06);
+      background: linear-gradient(180deg, rgba(107,228,255,0.03), rgba(255,255,255,0.01));
+    }
+    .pill:focus-visible{
+      box-shadow: 0 0 0 4px rgba(107,228,255,0.06);
+    }
+    .pill[aria-selected="true"]{
+      color:var(--text);
+      background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(107,228,255,.06));
+      box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 6px 26px rgba(107,228,255,0.08);
+      font-weight:700;
+      transform: translateY(-2px);
+    }
+
+    select{
+      appearance:none;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      padding:10px 12px;
+      font-size:13px;
+      outline:none;
+    }
+
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:14px;
+    }
+    @media (max-width: 560px){
+      .kpis{ grid-template-columns: 1fr; }
+    }
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background: rgba(0,0,0,.22);
+    }
+    .kpi .lbl{ font-size:12px; color:var(--muted); }
+    .kpi .val{ margin-top:6px; font-size:18px; font-weight:700; letter-spacing:.2px; }
+    .kpi .hint{ margin-top:6px; font-size:12px; color:var(--muted); }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      font-size:13px;
+    }
+    th, td{
+      text-align:left;
+      padding:10px 8px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    th{ color:var(--muted); font-weight:600; font-size:12px; letter-spacing:.2px; }
+    tr:last-child td{ border-bottom:0; }
+
+    .money{
+      font-variant-numeric: tabular-nums;
+      white-space:nowrap;
+      font-weight:650;
+    }
+    .note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .callout{
+      border:1px dashed rgba(255,79,216,.45);
+      background: rgba(255,79,216,.07);
+      padding:12px;
+      border-radius:16px;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:12px;
+    }
+    .callout strong{ color:var(--text); }
+
+    .list{
+      margin:0; padding-left:18px; color:var(--muted);
+      font-size:13px;
+    }
+    .list li{ margin:8px 0; }
+
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+    }
+
+    a{ color:var(--accent2); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .header {
+      background: rgba(7, 7, 11, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .header__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .brand__mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
+    }
+    .brand__logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .brand__text {
+      line-height: 1.2;
+    }
+    .brand__name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .brand__tag {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .navbtn {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .navbtn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      margin: 2px 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .navbtn[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .navbtn[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .navbtn[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .nav {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    .nav__link {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+    }
+    .nav__link:hover {
+      color: var(--text);
+    }
+    .nav__link--cta {
+      position: relative;
+      z-index: 2;
+    }
+    .nav__link--cta::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+      z-index: -1;
+    }
+    @media (max-width: 920px) {
+      .navbtn {
+        display: flex;
+      }
+      .nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(7, 7, 11, 0.9);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 0 18px 18px;
+        padding: 18px;
+        width: 250px;
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s, transform 0.3s;
+      }
+      .nav[aria-expanded="true"] {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .nav__link {
+        display: block;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Kato.8 Studios LLC</span>
+          <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
+        </span>
+      </a>
+
+      <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a class="nav__link" href="games.html">Games</a>
+        <a class="nav__link" href="updates.html">Updates</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Last Light — Financial Breakdown</h1>
+        <p class="sub">
+          A transparent view of (1) the <b>Demo</b> cost to produce a 10–15 minute vertical slice, and (2) scalable
+          <b>Full Game</b> budgets to take Last Light to commercial release.
+        </p>
+        <div class="badge-row">
+          <div class="badge"><span class="dot"></span> Demo tiers sourced from internal funding strategy doc</div>
+          <div class="badge"><span class="dot dot2"></span> Full-game numbers are adjustable estimates</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: INTERACTIVE BREAKDOWN -->
+      <div class="card">
+        <div class="hd">
+          <div class="controls">
+            <div class="pillset" role="tablist" aria-label="Budget type">
+              <button class="pill" id="tab-demo" role="tab" aria-selected="true">Demo</button>
+              <button class="pill" id="tab-full" role="tab" aria-selected="false">Full Game</button>
+            </div>
+
+            <select id="scenario"></select>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="lbl">Budget Range</div>
+              <div class="val" id="kpiBudget">$—</div>
+              <div class="hint" id="kpiBudgetHint">Total estimate (range)</div>
+            </div>
+            <div class="kpi">
+              <div class="lbl">Timeline</div>
+              <div class="val" id="kpiTimeline">—</div>
+              <div class="hint" id="kpiTimelineHint">Calendar months</div>
+            </div>
+            <div class="kpi">
+              <div class="lbl">Team Model</div>
+              <div class="val" id="kpiTeam">—</div>
+              <div class="hint" id="kpiTeamHint">Core roles / staffing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bd">
+          <div id="summary"></div>
+
+          <table aria-label="Line item budget table">
+            <thead>
+              <tr>
+                <th style="width:46%">Cost Category</th>
+                <th style="width:22%">Low</th>
+                <th style="width:22%">High</th>
+                <th style="width:10%">Notes</th>
+              </tr>
+            </thead>
+            <tbody id="lines"></tbody>
+          </table>
+
+          <div class="callout" id="callout"></div>
+          <div class="note" id="note"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: INVESTOR-FACING NOTES -->
+      <div class="card">
+        <div class="hd">
+          <div style="font-weight:700">What investors get at each stage</div>
+          <div style="color:var(--muted); font-size:12px; margin-top:6px">
+            This copy is designed to live on the investor site alongside the budget selectors.
+          </div>
+        </div>
+
+        <div class="bd">
+          <ul class="list">
+            <li>
+              <b>Demo funding</b> buys a playable proof-of-concept: combat feel, resource loop, base defense, onboarding, and a presentable build for pitch, festivals, and community tests.
+            </li>
+            <li>
+              <b>Full game funding</b> expands content breadth + production readiness: multiple biomes, deeper progression, more enemies/turrets, narrative presentation, performance + platform QA, marketing beats, and launch operations.
+            </li>
+            <li>
+              Budgets are shown as <b>ranges</b> to reflect the real-world variance of contractor rates, scope decisions, and polish depth.
+            </li>
+          </ul>
+
+          <div class="callout">
+            <strong>Investor clarity:</strong> Demo tiers below are pulled from the studio’s “Last Light — Funding Strategy Document”
+            and presented as-is (Tier 1 / 2 / 3). Full-game budgets are stated as estimates and can be replaced with your
+            exact milestone plan later.
+          </div>
+
+          <div class="footer">
+            If you want, I can also generate a second page called <b>“Use of Funds & Milestones”</b> that maps each line item
+            to milestones (Prototype → Vertical Slice → Beta → Launch) so the spend feels directly tied to deliverables.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ----------------------------
+    // DATA
+    // ----------------------------
+    const money = (n) => {
+      if (n === null || n === undefined) return "—";
+      return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    };
+
+    // Demo tiers: budget ranges + timelines are from your funding strategy doc
+    const demoScenarios = [
+      {
+        id: "demo_t1",
+        name: "Tier 1 — Lean & Fast Demo",
+        budgetLow: 120000,
+        budgetHigh: 160000,
+        timeline: "6–7 months",
+        team: "3–4 core + contractors",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            Minimal-but-polished indie demo designed to unlock larger external funding.
+          </p>
+          <ul class="list">
+            <li>One biome, one enemy type (simple variants), one turret, one weapon set.</li>
+            <li>Functional UI, simplified VFX, minimal onboarding prompts.</li>
+          </ul>
+        `,
+        // Line items below are a reasonable internal allocation model for presenting finances.
+        // Keep as ranges; user can edit these values.
+        lines: [
+          { cat: "Core Dev + Design Labor", low: 65000, high: 90000, note: "Primary burn" },
+          { cat: "Art + UI/UX", low: 25000, high: 38000, note: "0.5–0.75 FTE" },
+          { cat: "Audio (contract)", low: 4000, high: 9000, note: "1–1.5 mo" },
+          { cat: "QA (contract)", low: 3000, high: 7000, note: "Final month" },
+          { cat: "Tools / Software / Services", low: 1500, high: 4000, note: "Unity/PM/etc." },
+          { cat: "Build/Release Ops (Steam page, demo packaging)", low: 1000, high: 3000, note: "Light ops" },
+          { cat: "Contingency", low: 7500, high: 15000, note: "Risk buffer" },
+        ],
+        callout: "Best for: proving execution, pitching to publishers, securing grants with a lean burn.",
+        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Adjust line-item allocations to match your exact contractor rates."
+      },
+      {
+        id: "demo_t2",
+        name: "Tier 2 — Polished Vertical Slice (Recommended)",
+        budgetLow: 220000,
+        budgetHigh: 300000,
+        timeline: "7–8 months",
+        team: "4–6 core + optional tech art",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            Balanced team for higher fidelity, polish, and market readiness (publisher-ready vertical slice).
+          </p>
+          <ul class="list">
+            <li>More polished art/animation, improved VFX, stronger UI/UX, audio layers, environment polish.</li>
+            <li>Optional interior or narrative intro; stronger trailer/marketing assets.</li>
+          </ul>
+        `,
+        lines: [
+          { cat: "Core Dev + Systems + Design", low: 105000, high: 145000, note: "Primary burn" },
+          { cat: "Art + UI/UX (full-time)", low: 60000, high: 80000, note: "Fidelity jump" },
+          { cat: "Audio (2–3 mo contract)", low: 9000, high: 18000, note: "Music+SFX" },
+          { cat: "QA (2–3 mo)", low: 9000, high: 18000, note: "Test cycles" },
+          { cat: "Tech Art (optional)", low: 6000, high: 14000, note: "Shaders/VFX" },
+          { cat: "Tools / Software / Services", low: 2500, high: 6000, note: "PM/Build" },
+          { cat: "Trailer / Key Art / Store Assets", low: 4500, high: 12000, note: "Market-ready" },
+          { cat: "Contingency", low: 14000, high: 22000, note: "Risk buffer" },
+        ],
+        callout: "Best for: Steam Next Fest readiness, major publisher outreach, strong community tests.",
+        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Line items are presented as editable allocations for investor clarity."
+      },
+      {
+        id: "demo_t3",
+        name: "Tier 3 — Showpiece Demo + Early Production Start",
+        budgetLow: 350000,
+        budgetHigh: 500000,
+        timeline: "8–10 months",
+        team: "8–10+ (full-stack model)",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            Premier-quality vertical slice that doubles as the foundation for full production.
+          </p>
+          <ul class="list">
+            <li>2–3 zombie types, multiple turrets, advanced VFX, cinematic intro/cutscene panels.</li>
+            <li>Higher production depth across disciplines; heavier QA runway.</li>
+          </ul>
+        `,
+        lines: [
+          { cat: "Engineering (2 devs) + Design", low: 170000, high: 235000, note: "Multi-dev" },
+          { cat: "Environment + Character Animation", low: 90000, high: 135000, note: "Premium art" },
+          { cat: "UI/UX Specialist", low: 25000, high: 42000, note: "Rich UI" },
+          { cat: "Tech Art / VFX", low: 20000, high: 35000, note: "Shaders/FX" },
+          { cat: "Audio (0.5–1.0 FTE / contract)", low: 18000, high: 35000, note: "Layered audio" },
+          { cat: "QA Lead + Tester (final 4 mo)", low: 22000, high: 48000, note: "Heavier QA" },
+          { cat: "Tools / Software / Services", low: 4000, high: 9000, note: "Production ops" },
+          { cat: "Trailer / Key Art / Showcase Assets", low: 12000, high: 25000, note: "Cinematic" },
+          { cat: "Contingency", low: 18000, high: 36000, note: "Risk buffer" },
+        ],
+        callout: "Best for: high-end pitch meetings, showcases, and building momentum for full production funding.",
+        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Line items are illustrative allocations (edit to match real rates)."
+      },
+    ];
+
+    // Full game scenarios: These are explicitly estimates/assumptions you can edit later.
+    // The idea is to show investors you understand the cost drivers.
+    const fullGameScenarios = [
+      {
+        id: "full_indie",
+        name: "Full Game — Indie Lean Release",
+        budgetLow: 650000,
+        budgetHigh: 950000,
+        timeline: "14–18 months",
+        team: "5–7 core + contractors",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            A focused commercial release with strong core loop, limited content breadth, and controlled burn.
+          </p>
+          <ul class="list">
+            <li>2–3 biomes, modest narrative wrapper, progression + crafting depth, optimized for PC launch first.</li>
+            <li>Marketing is lean but deliberate (store page, trailer, community beats, festival presence).</li>
+          </ul>
+        `,
+        lines: [
+          { cat: "Engineering + Design (14–18 mo)", low: 260000, high: 380000, note: "Systems/content" },
+          { cat: "Art + Animation", low: 190000, high: 280000, note: "2D pipeline" },
+          { cat: "UI/UX + Accessibility pass", low: 45000, high: 80000, note: "Polish" },
+          { cat: "Audio (SFX + OST)", low: 35000, high: 70000, note: "Contract/partial" },
+          { cat: "QA (multi-cycle) + Compatibility", low: 45000, high: 90000, note: "Launch readiness" },
+          { cat: "Production/PM + Ops", low: 28000, high: 65000, note: "Scheduling/vendors" },
+          { cat: "Marketing + Trailer + Key Art", low: 25000, high: 65000, note: "Lean plan" },
+          { cat: "Tools/Software/Services", low: 8000, high: 22000, note: "Dev services" },
+          { cat: "Contingency", low: 19000, high: 38000, note: "Buffer" },
+        ],
+        callout: "Positioning: smart, capital-efficient release that proves the franchise and improves publisher leverage for sequels/ports.",
+        note: "Full-game scenario numbers are estimates for investor communication. Replace with your exact milestone plan + vendor quotes as you lock scope."
+      },
+      {
+        id: "full_mid",
+        name: "Full Game — Mid-Scope Flagship Indie",
+        budgetLow: 1200000,
+        budgetHigh: 1800000,
+        timeline: "18–24 months",
+        team: "8–12 core + partners",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            The “flagship indie” path: deeper content variety, higher polish, and better long-tail retention.
+          </p>
+          <ul class="list">
+            <li>3–5 biomes, more enemy/turret variety, richer progression, more narrative presentation.</li>
+            <li>PC launch + planning runway for ports; stronger marketing calendar.</li>
+          </ul>
+        `,
+        lines: [
+          { cat: "Engineering + Design (18–24 mo)", low: 500000, high: 720000, note: "More depth" },
+          { cat: "Art + Animation (env/char/VFX)", low: 360000, high: 560000, note: "Content breadth" },
+          { cat: "UI/UX + Localization + Accessibility", low: 90000, high: 160000, note: "Market readiness" },
+          { cat: "Audio (OST + implementation)", low: 70000, high: 140000, note: "Higher quality" },
+          { cat: "QA (full cycles) + Performance", low: 90000, high: 180000, note: "Stability" },
+          { cat: "Production/PM + Outsourcing mgmt", low: 70000, high: 140000, note: "Vendor control" },
+          { cat: "Marketing + Trailer + PR beats", low: 90000, high: 180000, note: "Go-to-market" },
+          { cat: "Tools/Software/Services", low: 15000, high: 40000, note: "Build/CI/etc." },
+          { cat: "Contingency", low: 40000, high: 80000, note: "Buffer" },
+        ],
+        callout: "Positioning: strong commercial indie with higher chance of feature coverage, streamer traction, and long-tail sales.",
+        note: "Full-game scenario numbers are estimates for investor communication. Swap these with your real staffing plan and milestone-based burn once scope is locked."
+      },
+      {
+        id: "full_premium",
+        name: "Full Game — Premium AA-Indie + Ports",
+        budgetLow: 2500000,
+        budgetHigh: 4000000,
+        timeline: "24–30 months",
+        team: "12–18 core + outsourcing",
+        summary: `
+          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
+            Premium production values, more content variety, and the operational runway to support multi-platform launches.
+          </p>
+          <ul class="list">
+            <li>More biomes and mission variety, richer narrative, expanded systems, deeper endgame.</li>
+            <li>Heavier QA, localization, compliance, and porting pipeline (timing dependent).</li>
+          </ul>
+        `,
+        lines: [
+          { cat: "Engineering + Design (24–30 mo)", low: 980000, high: 1500000, note: "Bigger team" },
+          { cat: "Art + Animation + VFX", low: 820000, high: 1350000, note: "Premium content" },
+          { cat: "UI/UX + Localization (multi-lang)", low: 180000, high: 320000, note: "Global" },
+          { cat: "Audio (OST + VO/light narrative)", low: 140000, high: 260000, note: "Premium" },
+          { cat: "QA (cert/compat) + External testing", low: 220000, high: 420000, note: "Heavier QA" },
+          { cat: "Production/PM + Outsourcing + Legal", low: 150000, high: 280000, note: "Ops" },
+          { cat: "Marketing + PR + Influencer beats", low: 250000, high: 520000, note: "Launch weight" },
+          { cat: "Porting/Platform Services (if applicable)", low: 180000, high: 420000, note: "Varies" },
+          { cat: "Tools/Software/Services", low: 30000, high: 80000, note: "Infra" },
+          { cat: "Contingency", low: 60000, high: 120000, note: "Buffer" },
+        ],
+        callout: "Positioning: premium flagship title with stronger platform/publisher appeal and better multi-platform revenue potential.",
+        note: "Full-game scenario numbers are estimates for investor communication. Porting/cert costs vary heavily by platform and partner rates."
+      },
+    ];
+
+    // ----------------------------
+    // UI STATE
+    // ----------------------------
+    const tabDemo = document.getElementById("tab-demo");
+    const tabFull = document.getElementById("tab-full");
+    const scenarioSelect = document.getElementById("scenario");
+
+    const kpiBudget = document.getElementById("kpiBudget");
+    const kpiTimeline = document.getElementById("kpiTimeline");
+    const kpiTeam = document.getElementById("kpiTeam");
+
+    const summary = document.getElementById("summary");
+    const lines = document.getElementById("lines");
+    const callout = document.getElementById("callout");
+    const note = document.getElementById("note");
+
+    let mode = "demo"; // demo | full
+
+    function setMode(nextMode){
+      mode = nextMode;
+      tabDemo.setAttribute("aria-selected", mode === "demo");
+      tabFull.setAttribute("aria-selected", mode === "full");
+
+      scenarioSelect.innerHTML = "";
+      const data = mode === "demo" ? demoScenarios : fullGameScenarios;
+
+      data.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s.id;
+        opt.textContent = s.name;
+        scenarioSelect.appendChild(opt);
+      });
+
+      // default to the middle option if possible (Tier 2 / mid)
+      scenarioSelect.selectedIndex = data.length >= 2 ? 1 : 0;
+      render();
+    }
+
+    function render(){
+      const data = mode === "demo" ? demoScenarios : fullGameScenarios;
+      const s = data.find(x => x.id === scenarioSelect.value) || data[0];
+
+      kpiBudget.textContent = `${money(s.budgetLow)} – ${money(s.budgetHigh)}`;
+      kpiTimeline.textContent = s.timeline;
+      kpiTeam.textContent = s.team;
+
+      summary.innerHTML = s.summary;
+
+      lines.innerHTML = "";
+      s.lines.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.cat}</td>
+          <td class="money">${money(row.low)}</td>
+          <td class="money">${money(row.high)}</td>
+          <td style="color:var(--muted); font-size:12px">${row.note || ""}</td>
+        `;
+        lines.appendChild(tr);
+      });
+
+      callout.textContent = s.callout;
+      note.textContent = s.note;
+    }
+
+    tabDemo.addEventListener("click", () => setMode("demo"));
+    tabFull.addEventListener("click", () => setMode("full"));
+    scenarioSelect.addEventListener("change", render);
+
+    setMode("demo");
+  </script>
+</body>
+</html>

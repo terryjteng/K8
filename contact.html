@@ -1,219 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Contact & Investment | Kato.8</title>
-  <meta name="description" content="Get in touch with Kato.8 for investment opportunities, partnerships, press inquiries, or general questions."/>
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="contact.css"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Kato.8 Studios LLC</title>
+    <meta name="description" content="Contact Kato.8 Studios for funding, partnerships, or press." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark">
+            <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">Kato.8 Studios LLC</span>
+            <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
+          </span>
+        </a>
 
-  <script defer src="main.js"></script>
-</head>
-<body class="contact-page">
-  <!-- NAV (unified) -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html" aria-label="Kato.8 Home">
-        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
-        <span class="brand-name">Kato.8</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
-      </button>
-      <nav id="nav-menu" class="nav-links" data-collapsed="true">
-        <a href="index.html">Home</a>
-        <a href="StudioPitch/investors.html">Investors</a>
-        <div class="dropdown" data-open="false">
-          <button type="button" aria-expanded="false" aria-haspopup="true">
-            Games
-            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="corebound.html">Corebound</a>
-            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
-            <a href="untitledrpg.html">Untitled RPG</a>
-            <a href="untitledhitman.html">Untitled Open World Hitman</a>
-            <div class="dropdown" data-open="false">
-              <button type="button" aria-expanded="false" aria-haspopup="true">
-                Last Light
-                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-              </button>
-              <div class="dropdown-menu">
-                <a href="lastlight-demo.html">Last Light Demo</a>
-                <a href="lastlight.html">Last Light Full Game</a>
-              </div>
+        <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="nav">
+          <a class="nav__link" href="games.html">Games</a>
+          <a class="nav__link" href="updates.html">Updates</a>
+          <a class="nav__link" href="about.html">About</a>
+          <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="pagehead">
+        <div class="container">
+          <h1 class="h1">Contact</h1>
+          <p class="sub">Reach out for funding conversations, press, or general inquiries.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="grid grid--2">
+            <div>
+              <h2 class="h2">Get in touch</h2>
+              <p class="p">Prefer email? Send a message to <a href="mailto:hello@kato8studios.com">hello@kato8studios.com</a> or use the form to the right.</p>
+
+              <h3 class="h3">Partnerships & funding</h3>
+              <p class="p">For milestone funding or studio partnerships, include project name and a short description in your message.</p>
+            </div>
+
+            <div>
+              <!-- Contact form integrated with Formspree. Replace the action URL with your Formspree form endpoint (https://formspree.io/f/your-form-id) -->
+              <form id="contactForm" class="card" action="https://formspree.io/f/maqygdnd" method="POST" style="padding:18px;">
+                <!-- Optional: subject and redirect after success -->
+                <input type="hidden" name="_subject" value="Website contact form message">
+                <input type="hidden" name="_next" value="contact.html?success=1">
+
+                <label class="micro">Name
+                  <input type="text" name="name" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required>
+                </label>
+
+                <label class="micro" style="margin-top:12px">Email
+                  <!-- Formspree expects the reply-to field to be named _replyto -->
+                  <input type="email" name="_replyto" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required>
+                </label>
+
+                <label class="micro" style="margin-top:12px">Message
+                  <textarea name="message" rows="6" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required></textarea>
+                </label>
+
+                <!-- status area for JS feedback -->
+                <div id="formStatus" aria-live="polite" style="margin-top:12px;display:none"></div>
+
+                <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+                  <button class="btn btn--ghost" type="reset">Clear</button>
+                  <button class="btn btn--primary" type="submit">Send message</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        <a href="join.html">Join Team</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" aria-current="page">Contact</a>
-      </nav>
-    </div>
-  </header>
+      </section>
+    </main>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <p class="kicker">Get in Touch</p>
-        <h1>Contact & Investment</h1>
-        <p class="lead">
-          Interested in funding our pipeline? Have partnership ideas? Want to collaborate? 
-          We're always open to conversations with <strong style="color: var(--seafoam);">investors</strong>, 
-          <strong style="color: var(--kraken);">publishers</strong>, and fellow creators.
-        </p>
-        <div class="hero-cta">
-          <a class="btn primary" href="#vc-investment">Investment Inquiry</a>
-          <a class="btn" href="#general-contact">General Contact</a>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">© <span id="year"></span> Kato.8 Studios LLC</div>
+          <div class="footer__meta">Crowdfunding • Game-only funding • Milestone updates</div>
+        </div>
+        <div class="footer__right">
+          <a href="games.html">Games</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
-      <div class="hero-glow" aria-hidden="true"></div>
-    </section>
+    </footer>
 
-    <!-- VC INVESTMENT SECTION -->
-    <section id="vc-investment" class="section">
-      <div class="container">
-        <p class="kicker">For Investors</p>
-        <h2>Fund the Next Wave of Indie Innovation</h2>
-        <p class="muted" style="max-width: 800px;">Kato.8 is building a portfolio of high-quality indie titles with strong commercial potential and creative vision. We're seeking strategic partners to accelerate our pipeline.</p>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-        <div class="grid" style="margin-top: 2rem; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-          <!-- Investment Highlights -->
-          <div class="card">
-            <h3 style="color: var(--accent-primary); margin-bottom: 1rem; font-size: 1.25rem;">💼 Investment Highlights</h3>
-            <ul class="bullets" style="font-size: 0.9375rem;">
-              <li><strong>4 Active Projects</strong> in various stages</li>
-              <li><strong>Transparent Operations</strong> with milestone tracking</li>
-              <li><strong>Proven Team</strong> across AAA and indie</li>
-              <li><strong>Flexible Models</strong> - equity, revenue share, or hybrid</li>
-              <li><strong>Market-Aware</strong> targeting Steam, console, mobile</li>
-            </ul>
-          </div>
+      // Contact form submission via Fetch to Formspree
+      (function () {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
 
-          <!-- Seed/Series A -->
-          <div class="card">
-            <h4 style="color: var(--accent-primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">💰 Seed/Series A Funding</h4>
-            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">$200K-$800K to accelerate 1-2 titles to launch</p>
-          </div>
+        const status = document.getElementById('formStatus');
 
-          <!-- Strategic Partners -->
-          <div class="card">
-            <h4 style="color: var(--accent-primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">🤝 Strategic Partners</h4>
-            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Publishers, platforms, or studios for co-development</p>
-          </div>
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          status.style.display = 'block';
+          status.textContent = 'Sending...';
 
-          <!-- Milestone-Based -->
-          <div class="card">
-            <h4 style="color: var(--accent-primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">🎯 Milestone-Based Deals</h4>
-            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">Phased funding tied to deliverables and KPIs</p>
-          </div>
+          const action = form.getAttribute('action');
+          const formData = new FormData(form);
 
-          <!-- Investment Contact -->
-          <div class="card" style="background: linear-gradient(135deg, rgba(40,224,185,0.08), rgba(139,92,246,0.08)); border: 1px solid rgba(139,92,246,0.4);">
-            <p class="kicker" style="margin-bottom: 0.5rem;">Investment Contact</p>
-            <h3 style="margin: 0 0 0.75rem 0; font-size: 1.25rem;">Let's Talk Numbers</h3>
-            <p style="margin: 0 0 1rem 0; font-size: 0.9rem; color: var(--text-secondary);">Schedule a call to review our pipeline deck, financials, and roadmap.</p>
-            
-            <div style="padding: 1rem; background: rgba(40,224,185,0.05); border-left: 3px solid var(--accent-primary); border-radius: 6px; margin-bottom: 1rem;">
-              <p style="margin: 0 0 0.5rem 0; font-weight: 600; font-size: 0.875rem;">📧 Email:</p>
-              <a href="mailto:terryt.kato.8@gmail.com?subject=Investment%20Inquiry%20-%20Kato.8" style="color: var(--accent-primary); font-size: 0.95rem; word-break: break-all;">terryt.kato.8@gmail.com</a>
-            </div>
-
-            <a class="btn btn-primary" href="pipeline.html" style="display: block; width: 100%; text-align: center;">View Full Pipeline</a>
-          </div>
-
-          <!-- Quick Stats -->
-          <div class="card">
-            <p class="kicker" style="margin-bottom: 1rem;">Quick Stats</p>
-            <div style="display: grid; gap: 0.75rem;">
-              <div style="padding: 0.75rem; background: rgba(139,92,246,0.1); border-radius: 6px;">
-                <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent-primary); margin: 0 0 0.25rem 0; line-height: 1;">4 Games</div>
-                <div style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Active Development</div>
-              </div>
-              <div style="padding: 0.75rem; background: rgba(139,92,246,0.1); border-radius: 6px;">
-                <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent-primary); margin: 0 0 0.25rem 0; line-height: 1;">~24 Months</div>
-                <div style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Average Dev Timeline</div>
-              </div>
-              <div style="padding: 0.75rem; background: rgba(139,92,246,0.1); border-radius: 6px;">
-                <div style="font-size: 1.5rem; font-weight: bold; color: var(--accent-primary); margin: 0 0 0.25rem 0; line-height: 1;">Rev-Share</div>
-                <div style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Team Model</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- FAQ SECTION -->
-    <section class="section">
-      <div class="container">
-        <p class="kicker">FAQ</p>
-        <h2>Common Questions</h2>
-        
-        <div style="max-width: 800px; margin: 2rem auto;">
-          <details class="panel" style="margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 600; color: var(--seafoam); padding: 1rem; cursor: pointer;">
-              What stage are your games in?
-            </summary>
-            <div style="padding: 0 1rem 1rem 1rem; color: #94a3b8;">
-              Our pipeline includes projects from concept (Last Light) to vertical slice (Corebound). Check our <a href="pipeline.html" style="color: var(--seafoam);">Pipeline page</a> for detailed roadmaps.
-            </div>
-          </details>
-
-          <details class="panel" style="margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 600; color: var(--seafoam); padding: 1rem; cursor: pointer;">
-              What are your funding needs?
-            </summary>
-            <div style="padding: 0 1rem 1rem 1rem; color: #94a3b8;">
-              We're seeking $200K-$800K for seed funding to accelerate 1-2 titles through vertical slice to launch. We're open to equity, revenue share, or milestone-based structures.
-            </div>
-          </details>
-
-          <details class="panel" style="margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 600; color: var(--seafoam); padding: 1rem; cursor: pointer;">
-              Do you work with publishers?
-            </summary>
-            <div style="padding: 0 1rem 1rem 1rem; color: #94a3b8;">
-              Yes! We're open to publishing partnerships, especially with indie-focused publishers who align with our creative vision and can provide marketing support.
-            </div>
-          </details>
-
-          <details class="panel" style="margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 600; color: var(--seafoam); padding: 1rem; cursor: pointer;">
-              Can I playtest your games?
-            </summary>
-            <div style="padding: 0 1rem 1rem 1rem; color: #94a3b8;">
-              We'll announce playtest opportunities as we reach vertical slice milestones. Follow our updates or email us to join our tester list.
-            </div>
-          </details>
-
-          <details class="panel" style="margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 600; color: var(--seafoam); padding: 1rem; cursor: pointer;">
-              Are you hiring full-time staff?
-            </summary>
-            <div style="padding: 0 1rem 1rem 1rem; color: #94a3b8;">
-              Currently we operate on a rev-share model with part-time contributors. Visit our <a href="join.html" style="color: var(--seafoam);">Join Team</a> page for open roles.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Kato.8 — Indie Studio</div>
-      <div>
-        <a href="about.html">About</a> • 
-        <a href="join.html">Join Team</a> • 
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-  </footer>
-</body>
+          // proceed to POST to Formspree
+          fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function (response) {
+            if (response.ok) {
+              status.style.color = 'lightgreen';
+              status.textContent = 'Thanks — your message was sent.';
+              form.reset();
+            } else {
+              response.json().then(function (data) {
+                status.style.color = 'salmon';
+                status.textContent = data.error || 'There was a problem sending your message.';
+              }).catch(function () {
+                status.style.color = 'salmon';
+                status.textContent = 'There was a problem sending your message.';
+              });
+            }
+          }).catch(function () {
+            status.style.color = 'salmon';
+            status.textContent = 'Network error. Please try again later.';
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>

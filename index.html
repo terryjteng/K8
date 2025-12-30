@@ -1,338 +1,531 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kato.8 — Game Studio • Investor Slate</title>
-  <meta name="description" content="Kato.8 builds high-concept indie games with disciplined production. Explore our investable slate or join the rev-share team." />
-  <meta property="og:title" content="Kato.8 — Game Studio • Investor Slate" />
-  <meta property="og:description" content="Explore our investable game pipeline or join the rev-share team." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/og-cover.jpg" />
-  <meta property="og:url" content="https://your-domain.com/" />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Carousel styles */
-    .carousel-container {
-      position: relative;
-      overflow: visible;
-      margin-top: 20px;
-    }
-    .carousel-wrapper {
-      overflow: hidden;
-      padding: 10px 0;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 20px;
-      transition: transform 0.4s ease;
-    }
-    .carousel-track .card {
-      min-width: 390px;
-      max-width: 420px;
-      flex-shrink: 0;
-    }
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 24px;
-    }
-    .carousel-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.02);
-      color: var(--ink);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-    .carousel-btn:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.2);
-    }
-    .carousel-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-    .carousel-dots {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 16px;
-    }
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .carousel-dot.active {
-      background: var(--seafoam);
-      width: 24px;
-      border-radius: 4px;
-    }
-    @media (max-width: 860px) {
-      .carousel-track .card {
-        min-width: 300px;
-        max-width: 340px;
-      }
-    }
-  </style>
-  <script defer src="main.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kato.8 Studios LLC</title>
+    <meta
+      name="description"
+      content="Kato.8 Studios LLC builds indie games blending classic and contemporary design across gameplay and aesthetics. Support via GoFundMe or game-only funding."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark">
+            <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">Kato.8 Studios LLC</span>
+            <span class="brand__tag"
+              >Retro × Modern — in gameplay and aesthetics</span
+            >
+          </span>
+        </a>
 
-</head>
-<body>
-  <!-- NAV (unified) -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html" aria-label="Kato.8 Home">
-        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studio" class="brand-logo" />
-        <span class="brand-name">Kato.8</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-        <span class="nav-bar"></span><span class="nav-bar"></span><span class="nav-bar"></span>
-      </button>
-      <nav id="nav-menu" class="nav-links" data-collapsed="true">
-        <a href="index.html">Home</a>
-        <a href="StudioPitch/investors.html">Investors</a>
-        <div class="dropdown" data-open="false">
-          <button type="button" aria-expanded="false" aria-haspopup="true">
-            Games
-            <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-          </button>
-          <div class="dropdown-menu">
-            <a href="corebound.html">Corebound</a>
-            <a href="bigbosscleanup.html">Big Boss Cleanup</a>
-            <a href="untitledrpg.html">Untitled RPG</a>
-            <a href="untitledhitman.html">Untitled Open World Hitman</a>
-            <div class="dropdown" data-open="false">
-              <button type="button" aria-expanded="false" aria-haspopup="true">
-                Last Light
-                <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8L6 8z"/></svg>
-              </button>
-              <div class="dropdown-menu">
-                <a href="lastlight-demo.html">Last Light Demo</a>
-                <a href="lastlight.html">Last Light Full Game</a>
+        <button
+          class="navbtn"
+          id="navbtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="nav">
+          <a class="nav__link" href="games.html">Games</a>
+          <a class="nav__link" href="updates.html">Updates</a>
+          <a class="nav__link" href="about.html">About</a>
+          <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__inner">
+          <div>
+            <p class="eyebrow">Independent game studio</p>
+            <h1 class="h1">Build worlds that feel timeless.</h1>
+            <p class="lead">
+              Kato.8 Studios LLC creates indie games that deliberately blend
+              classic and contemporary design across both gameplay and
+              aesthetics — sometimes fully nostalgic, sometimes modern, often a
+              purposeful hybrid.
+            </p>
+
+            <div class="hero__callouts">
+              <div class="callout">
+                <div class="callout__kicker">Status</div>
+                <div class="callout__value">LLC formed</div>
+                <div class="callout__desc">
+                  Crowdfunding helps cover early costs and keeps production
+                  moving.
+                </div>
               </div>
+              <div class="callout">
+                <div class="callout__kicker">Support</div>
+                <div class="callout__value">GoFundMe + game-only funding</div>
+                <div class="callout__desc">
+                  We are not offering studio equity through this website.
+                </div>
+              </div>
+            </div>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="support.html"
+                >Support on GoFundMe</a
+              >
+              <a class="btn btn--ghost" href="games.html">Explore games</a>
+              <a class="btn btn--line" href="javascript:void(0)" role="button" data-open-modal="fundingModal">Game funding</a>
+            </div>
+
+            <p class="micro">
+              Primary goals: ship games, fund production responsibly, and update
+              supporters with clear milestones.
+            </p>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="holo holo--simple" aria-hidden="true">
+              <div class="holo__core">
+                <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="holo__core__logo" />
+              </div>
+              <div class="holo__caption">Kato.8 Studios LLC</div>
             </div>
           </div>
         </div>
-        <a href="join.html">Join Team</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+      </section>
 
-  <!-- HERO -->
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <p class="kicker">Independent Game Studio</p>
-          <h1>Building Worlds for Players, Partners, and Publishers.</h1>
-          <p class="lead">
-            We craft high-concept indie games with disciplined production pipelines.
-            Explore our slate, invest in our roadmap, or join the team on rev-share.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="pipeline.html">View Investment Pipeline</a>
-            <a class="btn btn-secondary" href="join.html">Join the Rev-Share Team</a>
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Quick links</h2>
+            <p class="sub">Jump straight to what you’re looking for.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card card--glow">
+              <h3 class="h3">GoFundMe</h3>
+              <p class="p">
+                Help cover early out-of-pocket costs and keep production moving.
+              </p>
+              <a
+                class="btn btn--primary btn--wide"
+                href="https://www.gofundme.com/f/help-launch-my-retro-game-studio"
+                target="_blank"
+                rel="noopener"
+                >Open GoFundMe</a
+              >
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Games</h3>
+              <p class="p">Explore the slate and see what’s in progress.</p>
+              <a class="btn btn--ghost btn--wide" href="games.html"
+                >View games</a
+              >
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PIPELINE PREVIEW -->
-    <section id="pipeline" class="section">
-      <div class="container">
-        <p class="kicker">Investment Pipeline</p>
-        <h2>Our Slate</h2>
-        <p class="lead">A focused pipeline designed for discoverability, replayability, and partner value.</p>
+      <section class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Featured projects</h2>
+            <p class="sub">
+              A quick spotlight on the titles people ask about most.
+            </p>
+          </div>
 
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-track" id="carouselTrack">
-              <!-- Corebound -->
-              <article class="card">
-              <div class="card-media" style="background: url('Art/Corebound/Corebound_GameBanner.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Corebound cover image"></div>
-              <h3 class="card-title">Corebound</h3>
-              <p class="card-meta">Action Side-Scroller / RPG • <span>Prototype</span></p>
-              <p class="card-copy">An emotional journey across a biomech-ravaged world where your choices matter.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="corebound.html">Learn More</a>
-                <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+          <div class="gamegrid">
+            <article class="gamecard">
+              <div class="gamecard__art"></div>
+              <div class="gamecard__body">
+                <div class="gamecard__top">
+                  <h3 class="h3">Hotdog Hustler</h3>
+                  <span class="badge">In progress</span>
+                </div>
+                <p class="meta">Micro-scope time management</p>
+                <p class="p">
+                  A small shippable game designed to validate production flow
+                  and build momentum.
+                </p>
+                <div class="gamecard__actions">
+                  <a class="btn btn--ghost" href="updates.html">See updates</a>
+                  <a
+                    class="btn btn--line"
+                    href="contact.html"
+                    data-prefill="Hotdog Hustler"
+                    >Fund milestones</a
+                  >
+                </div>
               </div>
             </article>
 
-            <!-- Big Boss Cleanup -->
-            <article class="card">
-              <div class="card-media" style="background: url('Art/BigBossCleanup/BigBossCleanup_PageBanner.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Big Boss Cleanup cover image"></div>
-              <h3 class="card-title">Big Boss Cleanup</h3>
-              <p class="card-meta">3D First-Person Cleanup Simulator • <span>Concept</span></p>
-              <p class="card-copy">Clean up arena aftermath with physics-based tools, job progression, and timed challenges.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="bigbosscleanup.html">Learn More</a>
-                <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            <article class="gamecard">
+              <div class="gamecard__art">
+                <img src="Art/LastLight/ChatGPT Image Nov 10, 2025, 04_46_00 PM.png" alt="Last Light art" />
+              </div>
+              <div class="gamecard__body">
+                <div class="gamecard__top">
+                  <h3 class="h3">Last Light</h3>
+                  <span class="badge badge--muted">Concept</span>
+                </div>
+                <p class="meta">Zombie Defense Farm Sim</p>
+                <p class="p">
+                  Cozy farming by day, tense base defense by night. Build,
+                  survive, and expand.
+                </p>
+                <div class="gamecard__actions">
+                  <a class="btn btn--ghost" href="game-lastlight.html"
+                    >Learn more</a
+                  >
+                  <a
+                    class="btn btn--line"
+                    href="contact.html"
+                    data-prefill="Last Light"
+                    >Fund milestones</a
+                  >
+                </div>
               </div>
             </article>
 
-            <!-- Untitled RPG -->
-            <article class="card">
-              <div class="card-media" style="background: url('Art/RPG/ChatGPT Image Nov 10, 2025, 04_51_59 PM.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Untitled RPG cover image"></div>
-              <h3 class="card-title">Untitled RPG</h3>
-              <p class="card-meta">Turn-Based JRPG • <span>Concept</span></p>
-              <p class="card-copy">A love letter to classic JRPGs with snappy combat, branching choices, and time-driven consequences.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="untitledrpg.html">Learn More</a>
-                <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+            <article class="gamecard">
+              <div class="gamecard__art">
+                <img src="Art/Corebound/Landscape_GameplayImage.png" alt="Corebound art" />
               </div>
-            </article>
-
-            <!-- Untitled Open World Hitman -->
-            <article class="card">
-              <div class="card-media" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.12), rgba(255, 107, 53, 0.08)), linear-gradient(45deg, #0a0a0a, #1a1a1a);" role="img" aria-label="Untitled Open World Hitman cover image"></div>
-              <h3 class="card-title">Untitled Open World Hitman</h3>
-              <p class="card-meta">Open World Stealth-Action • <span>Concept</span></p>
-              <p class="card-copy">A stealth-action sandbox where creative assassination meets emergent gameplay in expansive environments.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="untitledhitman.html">Learn More</a>
-                <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
-              </div>
-            </article>
-
-            <!-- Last Light -->
-            <article class="card">
-              <div class="card-media" style="background: url('Art/LastLight/ChatGPT Image Nov 10, 2025, 04_46_00 PM.png') center/cover no-repeat, linear-gradient(135deg, rgba(124,92,255,0.14), rgba(255,107,145,0.08));" role="img" aria-label="Last Light cover image"></div>
-              <h3 class="card-title">Last Light</h3>
-              <p class="card-meta">Zombie Defense Farm Sim • <span>Concept</span></p>
-              <p class="card-copy">Cozy farming by day, tense base defense by night. Build, survive, and connect with neighbors.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="lastlight.html">Learn More</a>
-                <a class="btn btn-primary" href="contact.html">Investor Inquiry</a>
+              <div class="gamecard__body">
+                <div class="gamecard__top">
+                  <h3 class="h3">Corebound</h3>
+                  <span class="badge">Prototype</span>
+                </div>
+                <p class="meta">Action Side-Scroller / RPG</p>
+                <p class="p">
+                  A narrative-driven adventure with upgrades, exploration, and
+                  meaningful choices.
+                </p>
+                <div class="gamecard__actions">
+                  <a class="btn btn--ghost" href="game-corebound.html"
+                    >Learn more</a
+                  >
+                  <a
+                    class="btn btn--line"
+                    href="contact.html"
+                    data-prefill="Corebound"
+                    >Fund milestones</a
+                  >
+                </div>
               </div>
             </article>
           </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer__inner">
+          <div>
+            <div class="footer__brand">
+              © <span id="year"></span> Kato.8 Studios LLC
+            </div>
+            <div class="footer__meta">
+              Crowdfunding • Game-only funding • Milestone updates
+            </div>
+          </div>
+          <div class="footer__right">
+            <a href="games.html">Games</a>
+            <a href="support.html">Support</a>
+            <a href="contact.html">Contact</a>
           </div>
         </div>
+      </footer>
+      <!-- SUPPORT MODAL -->
+      <div class="modal" id="supportModal" aria-hidden="true">
+        <div class="modal__overlay" data-close-modal></div>
 
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevBtn" aria-label="Previous game">‹</button>
-          <button class="carousel-btn" id="nextBtn" aria-label="Next game">›</button>
-        </div>
-        <div class="carousel-dots" id="carouselDots"></div>
-
-        <script>
-          // Carousel functionality
-          const track = document.getElementById('carouselTrack');
-          const prevBtn = document.getElementById('prevBtn');
-          const nextBtn = document.getElementById('nextBtn');
-          const dotsContainer = document.getElementById('carouselDots');
-          const cards = track.querySelectorAll('.card');
-          let currentIndex = 0;
-          const maxIndex = cards.length - 1;
-
-          // Create dots
-          for (let i = 0; i <= maxIndex; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'carousel-dot';
-            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-          }
-
-          function updateCarousel() {
-            const cardWidth = cards[0].offsetWidth;
-            const gap = 20;
-            track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
-            
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-              dot.classList.toggle('active', i === currentIndex);
-            });
-
-            // Update button states
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= maxIndex;
-          }
-
-          function goToSlide(index) {
-            currentIndex = Math.max(0, Math.min(index, maxIndex));
-            updateCarousel();
-          }
-
-          prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-          nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-
-          // Update on resize
-          window.addEventListener('resize', () => {
-            updateCarousel();
-          });
-
-          updateCarousel();
-        </script>
-
-        <div class="grid">
-          <div class="panel cta-wide">
+        <div
+          class="modal__panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="supportTitle"
+        >
+          <div class="modal__head">
             <div>
-              <p class="kicker">Next Steps</p>
-              <h3>Ready to partner with Kato.8?</h3>
-              <p class="muted">Invest in the slate or join the team and share in the upside.</p>
+              <p class="eyebrow">Support</p>
+              <h2 class="h2" id="supportTitle">
+                GoFundMe + Studio Setup Costs
+              </h2>
+              <p class="sub">
+                Kato.8 Studios LLC is already formed. This GoFundMe is to help
+                cover out-of-pocket studio expenses and fund near-term
+                production needs.
+              </p>
             </div>
-            <div class="cta-actions">
-              <a class="btn btn-primary" href="StudioPitch/investors.html">Become an Investor</a>
-              <a class="btn btn-primary" href="pipeline.html">View Full Pipeline</a>
-              <a class="btn btn-secondary" href="join.html">Join the Rev-Share Team</a>
+
+            <button
+              class="modal__close"
+              type="button"
+              aria-label="Close"
+              data-close-modal
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="modal__body">
+            <div class="grid grid--2">
+              <article class="card card--glow">
+                <h3 class="h3">GoFundMe</h3>
+                <p class="p">
+                  Direct support to recover initial costs and keep production
+                  moving.
+                </p>
+                <a
+                  class="btn btn--primary btn--wide"
+                  href="https://www.gofundme.com/f/help-launch-my-retro-game-studio"
+                  target="_blank"
+                  rel="noopener"
+                  >Open GoFundMe</a
+                >
+                <p class="micro micro--muted">
+                  If you’re funding a specific game milestone, use “Invest in
+                  Games” and contact us.
+                </p>
+              </article>
+
+              <article class="card">
+                <h3 class="h3">Where the money goes</h3>
+                <p class="p">
+                  Crowdfunding helps cover early studio costs beyond LLC
+                  formation — tools, infrastructure, compliance, and production
+                  essentials.
+                </p>
+                <div class="pillrow">
+                  <span class="pill">Transparent categories</span>
+                  <span class="pill">Milestone-driven</span>
+                  <span class="pill">Game-focused spending</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="spacer"></div>
+
+            <article class="card">
+              <h3 class="h3">Studio setup cost breakdown</h3>
+              <p class="micro micro--muted">
+                Edit these numbers to match your actual receipts and current
+                needs. You can keep “Paid” items shown for transparency.
+              </p>
+
+              <div class="costs">
+                <div class="costs__row costs__head">
+                  <div>Category</div>
+                  <div class="right">Estimated</div>
+                  <div class="right">Status</div>
+                </div>
+
+                <!-- Core formation / compliance -->
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">LLC formation & filings</div>
+                    <div class="costs__desc">
+                      State filings, formation paperwork, basic compliance.
+                    </div>
+                  </div>
+                  <div class="right">$800–$3,000</div>
+                  <div class="right">
+                    <span class="tag tag--paid">Paid</span>
+                  </div>
+                </div>
+
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Registered agent (annual)</div>
+                    <div class="costs__desc">
+                      Ongoing compliance requirement.
+                    </div>
+                  </div>
+                  <div class="right">$0–$200/yr</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Ongoing</span>
+                  </div>
+                </div>
+
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">
+                      Accounting / bookkeeping setup
+                    </div>
+                    <div class="costs__desc">
+                      Bookkeeping tool + CPA consult (if needed) to stay clean.
+                    </div>
+                  </div>
+                  <div class="right">$200–$1,500</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Planned</span>
+                  </div>
+                </div>
+
+                <!-- Tools / software -->
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Software & tools</div>
+                    <div class="costs__desc">
+                      Adobe/asset tools, project management, storage, plugins.
+                    </div>
+                  </div>
+                  <div class="right">$50–$250/mo</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Ongoing</span>
+                  </div>
+                </div>
+
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Hardware / peripherals</div>
+                    <div class="costs__desc">
+                      PC upgrades, controllers, drives, testing devices.
+                    </div>
+                  </div>
+                  <div class="right">$300–$2,500</div>
+                  <div class="right">
+                    <span class="tag tag--todo">As needed</span>
+                  </div>
+                </div>
+
+                <!-- Brand / web -->
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Website & domains</div>
+                    <div class="costs__desc">
+                      Domain renewals, email, basic web services.
+                    </div>
+                  </div>
+                  <div class="right">$20–$200/yr</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Ongoing</span>
+                  </div>
+                </div>
+
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Brand & marketing foundation</div>
+                    <div class="costs__desc">
+                      Key art, trailer/editor, press kit, store assets,
+                      announcements.
+                    </div>
+                  </div>
+                  <div class="right">$300–$5,000</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Planned</span>
+                  </div>
+                </div>
+
+                <!-- Production spend -->
+                <div class="costs__row">
+                  <div>
+                    <div class="costs__title">Contractors (art/audio/QA)</div>
+                    <div class="costs__desc">
+                      Targeted help to hit milestones and polish releases.
+                    </div>
+                  </div>
+                  <div class="right">$500–$10,000</div>
+                  <div class="right">
+                    <span class="tag tag--todo">Milestone-based</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal__actions">
+                <button
+                  class="btn btn--ghost"
+                  type="button"
+                  id="toggleCostNotes"
+                >
+                  Show “what’s next”
+                </button>
+                <a
+                  class="btn btn--primary"
+                  href="https://www.gofundme.com/f/help-launch-my-retro-game-studio"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Support on GoFundMe
+                </a>
+              </div>
+
+              <div class="notes" id="costNotes" hidden>
+                <div class="notes__inner">
+                  <h4 class="h3" style="margin-top: 0">
+                    What’s next (example)
+                  </h4>
+                  <ul class="list">
+                    <li>Stabilize baseline monthly tooling + operations.</li>
+                    <li>
+                      Fund a small contractor burst to hit the next Hotdog
+                      Hustler milestone.
+                    </li>
+                    <li>
+                      Build marketing foundations (store page assets, press kit,
+                      trailer pass).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <!-- FUNDING MODAL -->
+      <div class="modal" id="fundingModal" aria-hidden="true">
+        <div class="modal__overlay" data-close-modal></div>
+
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="fundingTitle">
+          <div class="modal__head">
+            <div>
+              <p class="eyebrow">Game funding</p>
+              <h2 class="h2" id="fundingTitle">Choose a project to review financials</h2>
+              <p class="sub">Select a game below to view the on-site financial summary and a brief explanation of what that page contains.</p>
+            </div>
+
+            <button class="modal__close" type="button" aria-label="Close" data-close-modal>
+              ✕
+            </button>
+          </div>
+
+          <div class="modal__body">
+            <div class="grid grid--2">
+              <article class="card">
+                <h3 class="h3">Hotdog Hustler</h3>
+                <p class="p">A small shippable title and the studio's primary cash-flow engine. The financial page shows revenue funnel assumptions and pipeline allocation.</p>
+                <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+                  <a class="btn btn--ghost" href="financials-hotdog.html">Open financials</a>
+                </div>
+              </article>
+
+              <article class="card">
+                <h3 class="h3">Last Light</h3>
+                <p class="p">Concept-to-demo planning for Last Light. The financial page presents demo and full-game scenario selectors and line-item breakdowns.</p>
+                <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+                  <a class="btn btn--ghost" href="financials-lastlight.html">Open financials</a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </main>
 
-    <!-- ROADMAP -->
-    <section id="roadmap" class="section">
-      <div class="container">
-        <p class="kicker">Milestones</p>
-        <h2>Studio Roadmap</h2>
-        <p class="lead">Disciplined execution across prototypes, vertical slices, and launch.</p>
-
-        <div class="roadmap">
-          <div class="milestone">
-            <p class="kicker">2026 Q1–Q2</p>
-            <h3>Prototype Development</h3>
-            <p class="muted">Secure seed funding; hire part-time contributors; build playable prototypes for Corebound, Big Boss Cleanup, Untitled RPG, and Last Light.</p>
-          </div>
-          <div class="milestone">
-            <p class="kicker">2026 Q3–Q4</p>
-            <h3>Vertical Slices & Playtests</h3>
-            <p class="muted">Execute closed alpha tests; iterate on core hooks and retention metrics; secure publishing partnerships.</p>
-          </div>
-          <div class="milestone">
-            <p class="kicker">2027</p>
-            <h3>Go-to-Market</h3>
-            <p class="muted">Finalize partner deals; platform submissions; launch with content creator campaigns and community building.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Kato.8 — Where Creativity Meets Production Discipline.</div>
-      <div>Investors: <a href="pipeline.html">View Pipeline</a> · Collaborators: <a href="join.html">Rev-Share Program</a></div>
-    </div>
-  </footer>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
