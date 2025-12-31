@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Invest in Games — Kato.8 Studios LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">
+        <img src="Art/Branding/KatoK_indexLogo.png" alt="Kato.8 Studios logo" class="brand__logo" />
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Kato.8 Studios LLC</span>
+        <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
+      </span>
+    </a>
+    <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a class="nav__link" href="games.html">Games</a>
+      <a class="nav__link" href="support.html">Support</a>
+      <a class="nav__link" href="invest.html">Invest in Games</a>
+      <a class="nav__link" href="updates.html">Updates</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="careers.html">Careers</a>
+      <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="pagehead">
+    <div class="container">
+      <p class="eyebrow">Invest in games</p>
+      <h1 class="h1">Project-only opportunities</h1>
+      <p class="lead">This site supports game-only funding conversations — no studio equity solicitations here.</p>
+      <p class="breadcrumb"><a href="index.html">Home</a> / Invest in Games</p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="h2">Two ways to support a title</h2>
+        <p class="sub">Choose what fits: milestone funding (deliverable-based) or game revenue share (project-specific).</p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 class="h3">Milestone funding</h3>
+          <p class="p">Fund a defined deliverable: prototype, vertical slice, trailer, demo, Steam page assets, etc.</p>
+          <ul class="list">
+            <li>Clear scope + output</li>
+            <li>Progress is easy to audit</li>
+            <li>Fast, simple agreements</li>
+          </ul>
+        </article>
+
+        <article class="card card--glow">
+          <h3 class="h3">Game revenue share</h3>
+          <p class="p">Fund a specific game and share in that game’s revenue under an agreed structure (handled privately).</p>
+          <ul class="list">
+            <li>Project-specific returns</li>
+            <li>Defined reporting cadence</li>
+            <li>Scope boundaries per game</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="h3">Best fit</h3>
+          <p class="p">Angels/creators/operators who want exposure to one title: pick the game and fund milestones.</p>
+          <div class="pillrow">
+            <span class="pill">Single-game focus</span>
+            <span class="pill">Transparent milestones</span>
+            <span class="pill">Private terms</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="section__head" style="margin-top:18px;">
+        <h2 class="h2">Choose a game to fund</h2>
+        <p class="sub">Click a button to prefill your message.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 class="h3">Corebound</h3>
+          <p class="p">Action Side-Scroller / RPG</p>
+          <a class="btn btn--line btn--wide" href="contact.html" data-prefill="Corebound">Fund Corebound milestones</a>
+        </article>
+        <article class="card">
+          <h3 class="h3">Last Light</h3>
+          <p class="p">Zombie Defense Farm Sim</p>
+          <a class="btn btn--line btn--wide" href="contact.html" data-prefill="Last Light">Fund Last Light milestones</a>
+        </article>
+        <article class="card">
+          <h3 class="h3">Hotdog Hustler</h3>
+          <p class="p">Micro-scope time management</p>
+          <a class="btn btn--line btn--wide" href="contact.html" data-prefill="Hotdog Hustler">Fund Hotdog Hustler milestones</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">© <span id="year"></span> Kato.8 Studios LLC</div>
+        <div class="footer__meta">Crowdfunding • Game-only funding • Milestone updates</div>
+      </div>
+      <div class="footer__right">
+        <a href="support.html">Support</a>
+        <a href="games.html">Games</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

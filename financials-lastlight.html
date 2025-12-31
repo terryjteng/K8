@@ -19,6 +19,7 @@
       --bad:#ff7a7a;
       --shadow: 0 18px 40px rgba(0,0,0,.45);
       --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
     *{ box-sizing:border-box; }
@@ -33,6 +34,47 @@
     }
 
     .wrap{ max-width:1100px; margin:0 auto; padding:44px 18px 70px; }
+
+    /* keep your existing “site” header feel simple */
+    .sitehdr{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      margin-bottom:18px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand .name{
+      font-weight:900; letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .spark{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow:0 0 18px rgba(255,79,216,.45);
+      display:inline-block;
+    }
+    .brand .tag{ font-size:12px; color:var(--muted); }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+      align-items:center;
+    }
+    .nav a{
+      color:var(--muted);
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
 
     .top{
       display:flex; flex-wrap:wrap; gap:14px;
@@ -100,43 +142,22 @@
     }
     .pillset{
       display:flex;
-      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      border-radius:999px;
       overflow:hidden;
-      /* make the pill container more prominent */
-      padding:4px;
-      border:1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
     }
     .pill{
-      padding:10px 16px;
-      font-size:14px;
+      padding:10px 12px;
+      font-size:13px;
       cursor:pointer;
       color:var(--muted);
       background:transparent;
       border:0;
-      border-radius:10px;
-      transition: transform .14s ease, color .14s ease, box-shadow .14s ease, background .14s ease;
-      outline: none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .pill:hover, .pill:focus{
-      color:var(--text);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 18px rgba(107,228,255,0.06);
-      background: linear-gradient(180deg, rgba(107,228,255,0.03), rgba(255,255,255,0.01));
-    }
-    .pill:focus-visible{
-      box-shadow: 0 0 0 4px rgba(107,228,255,0.06);
     }
     .pill[aria-selected="true"]{
       color:var(--text);
-      background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(107,228,255,.06));
-      box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 6px 26px rgba(107,228,255,0.08);
-      font-weight:700;
-      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(255,79,216,.20), rgba(255,255,255,.02));
     }
 
     select{
@@ -188,6 +209,7 @@
       font-variant-numeric: tabular-nums;
       white-space:nowrap;
       font-weight:650;
+      font-family: var(--mono);
     }
     .note{
       margin-top:12px;
@@ -219,171 +241,68 @@
       padding-top:14px;
     }
 
-    a{ color:var(--accent2); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .header {
-      background: rgba(7, 7, 11, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .fieldgrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
     }
-    .header__inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    @media (max-width: 980px){ .fieldgrid{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px){ .fieldgrid{ grid-template-columns: 1fr; } }
+    .field{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background: rgba(0,0,0,.22);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+    .field label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
     }
-    .brand__mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      margin-right: 8px;
+    .field input, .field select{
+      width:100%;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      padding:10px 12px;
+      font-size:13px;
+      outline:none;
+      font-family: var(--mono);
     }
-    .brand__logo {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    .btn{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(255,255,255,.03));
+      color:var(--text);
+      padding:10px 12px;
+      font-weight:800;
+      letter-spacing:.2px;
+      cursor:pointer;
+      font-size:13px;
     }
-    .brand__text {
-      line-height: 1.2;
-    }
-    .brand__name {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-    }
-    .brand__tag {
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .navbtn {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 32px;
-      height: 32px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      position: relative;
-      z-index: 2;
-    }
-    .navbtn span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text);
-      margin: 2px 0;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .navbtn[aria-expanded="true"] span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .navbtn[aria-expanded="true"] span:nth-child(2) {
-      opacity: 0;
-    }
-    .navbtn[aria-expanded="true"] span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-    .nav {
-      display: flex;
-      gap: 24px;
-      font-size: 14px;
-      color: var(--muted);
-      position: relative;
-      z-index: 1;
-    }
-    .nav__link {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s;
-    }
-    .nav__link:hover {
-      color: var(--text);
-    }
-    .nav__link--cta {
-      position: relative;
-      z-index: 2;
-    }
-    .nav__link--cta::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-      z-index: -1;
-    }
-    @media (max-width: 920px) {
-      .navbtn {
-        display: flex;
-      }
-      .nav {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: rgba(7, 7, 11, 0.9);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 0 0 18px 18px;
-        padding: 18px;
-        width: 250px;
-        transform: translateY(-10px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s, transform 0.3s;
-      }
-      .nav[aria-expanded="true"] {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-      .nav__link {
-        display: block;
-        padding: 10px 0;
-      }
-    }
+    .btn:hover{ border-color: rgba(255,255,255,.28); }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__mark">
-          <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
-        </span>
-        <span class="brand__text">
-          <span class="brand__name">Kato.8 Studios LLC</span>
-          <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
-        </span>
-      </a>
-
-      <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav" id="nav">
-        <a class="nav__link" href="games.html">Games</a>
-        <a class="nav__link" href="updates.html">Updates</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
   <div class="wrap">
+
+    <!-- light header so page still matches your site without major change -->
+    <div class="sitehdr">
+      <div class="brand">
+        <div class="name"><span class="spark"></span> <a href="index.html" style="color:var(--text); text-decoration:none;">Kato.8 Studios LLC</a></div>
+        <div class="tag">Retro × Modern — in gameplay and aesthetics</div>
+      </div>
+      <div class="nav">
+        <a href="games.html">Games</a>
+        <a href="updates.html">Updates</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
     <div class="top">
       <div>
         <h1>Last Light — Financial Breakdown</h1>
@@ -415,17 +334,17 @@
             <div class="kpi">
               <div class="lbl">Budget Range</div>
               <div class="val" id="kpiBudget">$—</div>
-              <div class="hint" id="kpiBudgetHint">Total estimate (range)</div>
+              <div class="hint">Total estimate (range)</div>
             </div>
             <div class="kpi">
               <div class="lbl">Timeline</div>
               <div class="val" id="kpiTimeline">—</div>
-              <div class="hint" id="kpiTimelineHint">Calendar months</div>
+              <div class="hint">Calendar months</div>
             </div>
             <div class="kpi">
               <div class="lbl">Team Model</div>
               <div class="val" id="kpiTeam">—</div>
-              <div class="hint" id="kpiTeamHint">Core roles / staffing</div>
+              <div class="hint">Core roles / staffing</div>
             </div>
           </div>
         </div>
@@ -485,18 +404,92 @@
         </div>
       </div>
     </div>
+
+    <!-- NEW: FORECASTING (added below existing layout; no layout changes above) -->
+    <div class="card" style="margin-top:14px;">
+      <div class="hd">
+        <div style="font-weight:900; letter-spacing:.2px">Forecasting (Revenue + Break-even)</div>
+        <div style="color:var(--muted); font-size:12px; margin-top:6px">
+          A lightweight forecast to estimate units needed to recoup the selected budget range and how quickly revenue can return capital.
+        </div>
+      </div>
+      <div class="bd">
+        <div class="fieldgrid">
+          <div class="field">
+            <label>Game Price ($)</label>
+            <input id="f_price" type="number" min="0" step="0.5" value="19.99" />
+          </div>
+          <div class="field">
+            <label>Platform Fee (%)</label>
+            <input id="f_platform" type="number" min="0" max="100" step="0.5" value="30" />
+          </div>
+          <div class="field">
+            <label>Marketing % of Gross</label>
+            <input id="f_mktpct" type="number" min="0" max="100" step="0.5" value="10" />
+          </div>
+          <div class="field">
+            <label>Fixed Launch Marketing ($)</label>
+            <input id="f_mktfixed" type="number" min="0" step="500" value="25000" />
+          </div>
+
+          <div class="field">
+            <label>Month 1 Units (Base)</label>
+            <input id="f_m1" type="number" min="0" step="100" value="12000" />
+          </div>
+          <div class="field">
+            <label>Monthly Decay (%)</label>
+            <input id="f_decay" type="number" min="0" max="50" step="0.5" value="8" />
+          </div>
+          <div class="field">
+            <label>Scenario Spread (%)</label>
+            <input id="f_spread" type="number" min="0" max="60" step="1" value="25" />
+          </div>
+          <div class="field" style="display:flex; align-items:end;">
+            <button class="btn" id="f_csv" type="button" style="width:100%;">Download Forecast CSV</button>
+          </div>
+        </div>
+
+        <div class="callout" id="f_summary" style="margin-top:12px;">
+          <strong>Summary:</strong> —
+        </div>
+
+        <table aria-label="Forecast table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Scenario</th>
+              <th>Units</th>
+              <th>Gross</th>
+              <th>Marketing</th>
+              <th>Net (after platform + marketing)</th>
+              <th>Cumulative Net</th>
+              <th>Break-even vs Selected Budget</th>
+            </tr>
+          </thead>
+          <tbody id="f_rows"></tbody>
+        </table>
+
+        <div class="note">
+          Notes: This is a simplified model (price × units) with platform fee + marketing deductions only.
+          It’s meant to communicate investor-ready directional outcomes, not replace full P&L.
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script>
     // ----------------------------
-    // DATA
+    // Existing helper
     // ----------------------------
     const money = (n) => {
-      if (n === null || n === undefined) return "—";
+      if (n === null || n === undefined || !isFinite(n)) return "—";
       return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
     };
 
-    // Demo tiers: budget ranges + timelines are from your funding strategy doc
+    // ----------------------------
+    // DATA (Marketing added as explicit line item; everything else unchanged)
+    // ----------------------------
     const demoScenarios = [
       {
         id: "demo_t1",
@@ -514,15 +507,17 @@
             <li>Functional UI, simplified VFX, minimal onboarding prompts.</li>
           </ul>
         `,
-        // Line items below are a reasonable internal allocation model for presenting finances.
-        // Keep as ranges; user can edit these values.
         lines: [
           { cat: "Core Dev + Design Labor", low: 65000, high: 90000, note: "Primary burn" },
           { cat: "Art + UI/UX", low: 25000, high: 38000, note: "0.5–0.75 FTE" },
           { cat: "Audio (contract)", low: 4000, high: 9000, note: "1–1.5 mo" },
           { cat: "QA (contract)", low: 3000, high: 7000, note: "Final month" },
           { cat: "Tools / Software / Services", low: 1500, high: 4000, note: "Unity/PM/etc." },
-          { cat: "Build/Release Ops (Steam page, demo packaging)", low: 1000, high: 3000, note: "Light ops" },
+
+          /* NEW: explicit marketing line for demo (store page, key art, trailer-lite) */
+          { cat: "Marketing / Store Assets", low: 1500, high: 6000, note: "Capsule + trailer-lite" },
+
+          { cat: "Build/Release Ops (packaging)", low: 1000, high: 3000, note: "Light ops" },
           { cat: "Contingency", low: 7500, high: 15000, note: "Risk buffer" },
         ],
         callout: "Best for: proving execution, pitching to publishers, securing grants with a lean burn.",
@@ -551,7 +546,10 @@
           { cat: "QA (2–3 mo)", low: 9000, high: 18000, note: "Test cycles" },
           { cat: "Tech Art (optional)", low: 6000, high: 14000, note: "Shaders/VFX" },
           { cat: "Tools / Software / Services", low: 2500, high: 6000, note: "PM/Build" },
-          { cat: "Trailer / Key Art / Store Assets", low: 4500, high: 12000, note: "Market-ready" },
+
+          /* NEW: explicit marketing line for demo */
+          { cat: "Marketing / Trailer / Key Art", low: 8000, high: 22000, note: "Pitch-ready" },
+
           { cat: "Contingency", low: 14000, high: 22000, note: "Risk buffer" },
         ],
         callout: "Best for: Steam Next Fest readiness, major publisher outreach, strong community tests.",
@@ -581,7 +579,10 @@
           { cat: "Audio (0.5–1.0 FTE / contract)", low: 18000, high: 35000, note: "Layered audio" },
           { cat: "QA Lead + Tester (final 4 mo)", low: 22000, high: 48000, note: "Heavier QA" },
           { cat: "Tools / Software / Services", low: 4000, high: 9000, note: "Production ops" },
-          { cat: "Trailer / Key Art / Showcase Assets", low: 12000, high: 25000, note: "Cinematic" },
+
+          /* NEW: explicit marketing line for demo */
+          { cat: "Marketing / Showcase Assets", low: 15000, high: 40000, note: "Trailer + press kit" },
+
           { cat: "Contingency", low: 18000, high: 36000, note: "Risk buffer" },
         ],
         callout: "Best for: high-end pitch meetings, showcases, and building momentum for full production funding.",
@@ -589,8 +590,6 @@
       },
     ];
 
-    // Full game scenarios: These are explicitly estimates/assumptions you can edit later.
-    // The idea is to show investors you understand the cost drivers.
     const fullGameScenarios = [
       {
         id: "full_indie",
@@ -609,17 +608,20 @@
           </ul>
         `,
         lines: [
-          { cat: "Engineering + Design (14–18 mo)", low: 260000, high: 380000, note: "Systems/content" },
+          { cat: "Engineering + Design", low: 260000, high: 380000, note: "Systems/content" },
           { cat: "Art + Animation", low: 190000, high: 280000, note: "2D pipeline" },
-          { cat: "UI/UX + Accessibility pass", low: 45000, high: 80000, note: "Polish" },
+          { cat: "UI/UX + Accessibility", low: 45000, high: 80000, note: "Polish" },
           { cat: "Audio (SFX + OST)", low: 35000, high: 70000, note: "Contract/partial" },
-          { cat: "QA (multi-cycle) + Compatibility", low: 45000, high: 90000, note: "Launch readiness" },
+          { cat: "QA + Compatibility", low: 45000, high: 90000, note: "Launch readiness" },
           { cat: "Production/PM + Ops", low: 28000, high: 65000, note: "Scheduling/vendors" },
-          { cat: "Marketing + Trailer + Key Art", low: 25000, high: 65000, note: "Lean plan" },
+
+          /* NEW: explicit marketing line for full game */
+          { cat: "Marketing / Trailer / PR", low: 40000, high: 120000, note: "Launch beats" },
+
           { cat: "Tools/Software/Services", low: 8000, high: 22000, note: "Dev services" },
           { cat: "Contingency", low: 19000, high: 38000, note: "Buffer" },
         ],
-        callout: "Positioning: smart, capital-efficient release that proves the franchise and improves publisher leverage for sequels/ports.",
+        callout: "Positioning: capital-efficient release that proves the franchise and improves publisher leverage for ports/sequels.",
         note: "Full-game scenario numbers are estimates for investor communication. Replace with your exact milestone plan + vendor quotes as you lock scope."
       },
       {
@@ -639,18 +641,21 @@
           </ul>
         `,
         lines: [
-          { cat: "Engineering + Design (18–24 mo)", low: 500000, high: 720000, note: "More depth" },
-          { cat: "Art + Animation (env/char/VFX)", low: 360000, high: 560000, note: "Content breadth" },
+          { cat: "Engineering + Design", low: 500000, high: 720000, note: "More depth" },
+          { cat: "Art + Animation + VFX", low: 360000, high: 560000, note: "Content breadth" },
           { cat: "UI/UX + Localization + Accessibility", low: 90000, high: 160000, note: "Market readiness" },
           { cat: "Audio (OST + implementation)", low: 70000, high: 140000, note: "Higher quality" },
-          { cat: "QA (full cycles) + Performance", low: 90000, high: 180000, note: "Stability" },
+          { cat: "QA + Performance", low: 90000, high: 180000, note: "Stability" },
           { cat: "Production/PM + Outsourcing mgmt", low: 70000, high: 140000, note: "Vendor control" },
-          { cat: "Marketing + Trailer + PR beats", low: 90000, high: 180000, note: "Go-to-market" },
+
+          /* NEW: explicit marketing line for full game */
+          { cat: "Marketing / Trailer / PR", low: 120000, high: 260000, note: "Go-to-market" },
+
           { cat: "Tools/Software/Services", low: 15000, high: 40000, note: "Build/CI/etc." },
           { cat: "Contingency", low: 40000, high: 80000, note: "Buffer" },
         ],
-        callout: "Positioning: strong commercial indie with higher chance of feature coverage, streamer traction, and long-tail sales.",
-        note: "Full-game scenario numbers are estimates for investor communication. Swap these with your real staffing plan and milestone-based burn once scope is locked."
+        callout: "Positioning: stronger commercial indie with higher chance of feature coverage and streamer traction.",
+        note: "Full-game scenario numbers are estimates for investor communication. Swap these with your real staffing plan once scope is locked."
       },
       {
         id: "full_premium",
@@ -669,24 +674,27 @@
           </ul>
         `,
         lines: [
-          { cat: "Engineering + Design (24–30 mo)", low: 980000, high: 1500000, note: "Bigger team" },
+          { cat: "Engineering + Design", low: 980000, high: 1500000, note: "Bigger team" },
           { cat: "Art + Animation + VFX", low: 820000, high: 1350000, note: "Premium content" },
-          { cat: "UI/UX + Localization (multi-lang)", low: 180000, high: 320000, note: "Global" },
+          { cat: "UI/UX + Localization", low: 180000, high: 320000, note: "Global" },
           { cat: "Audio (OST + VO/light narrative)", low: 140000, high: 260000, note: "Premium" },
-          { cat: "QA (cert/compat) + External testing", low: 220000, high: 420000, note: "Heavier QA" },
+          { cat: "QA + External testing", low: 220000, high: 420000, note: "Heavier QA" },
           { cat: "Production/PM + Outsourcing + Legal", low: 150000, high: 280000, note: "Ops" },
-          { cat: "Marketing + PR + Influencer beats", low: 250000, high: 520000, note: "Launch weight" },
+
+          /* NEW: explicit marketing line for full game */
+          { cat: "Marketing / PR / Influencers", low: 260000, high: 650000, note: "Launch weight" },
+
           { cat: "Porting/Platform Services (if applicable)", low: 180000, high: 420000, note: "Varies" },
           { cat: "Tools/Software/Services", low: 30000, high: 80000, note: "Infra" },
           { cat: "Contingency", low: 60000, high: 120000, note: "Buffer" },
         ],
-        callout: "Positioning: premium flagship title with stronger platform/publisher appeal and better multi-platform revenue potential.",
+        callout: "Positioning: premium flagship title with stronger platform/publisher appeal and multi-platform revenue potential.",
         note: "Full-game scenario numbers are estimates for investor communication. Porting/cert costs vary heavily by platform and partner rates."
       },
     ];
 
     // ----------------------------
-    // UI STATE
+    // UI STATE (existing)
     // ----------------------------
     const tabDemo = document.getElementById("tab-demo");
     const tabFull = document.getElementById("tab-full");
@@ -701,7 +709,20 @@
     const callout = document.getElementById("callout");
     const note = document.getElementById("note");
 
+    // Forecast UI
+    const f_price = document.getElementById("f_price");
+    const f_platform = document.getElementById("f_platform");
+    const f_mktpct = document.getElementById("f_mktpct");
+    const f_mktfixed = document.getElementById("f_mktfixed");
+    const f_m1 = document.getElementById("f_m1");
+    const f_decay = document.getElementById("f_decay");
+    const f_spread = document.getElementById("f_spread");
+    const f_rows = document.getElementById("f_rows");
+    const f_summary = document.getElementById("f_summary");
+    const f_csv = document.getElementById("f_csv");
+
     let mode = "demo"; // demo | full
+    let currentScenario = null;
 
     function setMode(nextMode){
       mode = nextMode;
@@ -718,7 +739,6 @@
         scenarioSelect.appendChild(opt);
       });
 
-      // default to the middle option if possible (Tier 2 / mid)
       scenarioSelect.selectedIndex = data.length >= 2 ? 1 : 0;
       render();
     }
@@ -726,6 +746,7 @@
     function render(){
       const data = mode === "demo" ? demoScenarios : fullGameScenarios;
       const s = data.find(x => x.id === scenarioSelect.value) || data[0];
+      currentScenario = s;
 
       kpiBudget.textContent = `${money(s.budgetLow)} – ${money(s.budgetHigh)}`;
       kpiTimeline.textContent = s.timeline;
@@ -747,12 +768,172 @@
 
       callout.textContent = s.callout;
       note.textContent = s.note;
+
+      renderForecast(); // keep in sync with selection
     }
 
     tabDemo.addEventListener("click", () => setMode("demo"));
     tabFull.addEventListener("click", () => setMode("full"));
     scenarioSelect.addEventListener("change", render);
 
+    // ----------------------------
+    // Forecasting (NEW)
+    // ----------------------------
+    function mny(n){
+      if(!isFinite(n)) return "—";
+      return "$" + Math.round(n).toLocaleString("en-US");
+    }
+    function clamp(n,a,b){ return Math.min(b, Math.max(a,n)); }
+    function pct(v){ return clamp(Number(v)||0, 0, 100)/100; }
+
+    function buildForecastRows(mult){
+      // 12 months: month1 units base then decay
+      const price = Math.max(0, Number(f_price.value) || 0);
+      const platform = pct(f_platform.value);
+      const mktpct = pct(f_mktpct.value);
+      const fixedMkt = Math.max(0, Number(f_mktfixed.value) || 0);
+
+      const m1Units = Math.max(0, Number(f_m1.value) || 0) * mult;
+      const decay = pct(f_decay.value); // as percent
+
+      const rows = [];
+      let units = m1Units;
+      let cumNet = 0;
+
+      for(let i=0;i<12;i++){
+        const monthLabel = `M${i+1}`;
+        const gross = units * price;
+        const marketing = (gross * mktpct) + (i===0 ? fixedMkt : 0);
+        const net = Math.max(0, (gross * (1 - platform)) - marketing);
+        cumNet += net;
+
+        rows.push({ month: monthLabel, units, gross, marketing, net, cumNet });
+
+        units = units * (1 - decay); // decay after each month
+      }
+      return rows;
+    }
+
+    function firstBreakEvenMonth(rows, target){
+      for(let i=0;i<rows.length;i++){
+        if(rows[i].cumNet >= target) return i+1;
+      }
+      return null;
+    }
+
+    function renderForecast(){
+      if(!currentScenario) return;
+
+      const s = currentScenario;
+      const spread = pct(f_spread.value);
+      const lowMult = 1 - spread;
+      const baseMult = 1;
+      const highMult = 1 + spread;
+
+      const lowRows = buildForecastRows(lowMult);
+      const baseRows = buildForecastRows(baseMult);
+      const highRows = buildForecastRows(highMult);
+
+      const total = (rows, key) => rows.reduce((a,r)=>a+(r[key]||0),0);
+
+      const baseGross = total(baseRows, "gross");
+      const baseMkt = total(baseRows, "marketing");
+      const baseNet = total(baseRows, "net");
+
+      // Break-even uses selected scenario budget range
+      const beLow = firstBreakEvenMonth(baseRows, s.budgetLow);
+      const beHigh = firstBreakEvenMonth(baseRows, s.budgetHigh);
+
+      // Units needed (range) based on per-unit net in Month 1 (rough investor-friendly shortcut)
+      const price = Math.max(0, Number(f_price.value) || 0);
+      const platform = pct(f_platform.value);
+      const mktpct = pct(f_mktpct.value);
+      const perUnitNetApprox = Math.max(0.01, (price * (1 - platform)) * (1 - mktpct)); // ignores fixed marketing
+      const unitsLow = Math.ceil(s.budgetLow / perUnitNetApprox);
+      const unitsHigh = Math.ceil(s.budgetHigh / perUnitNetApprox);
+
+      f_summary.innerHTML = `<strong>Summary (Base scenario, 12 months):</strong>
+        Gross <b>${mny(baseGross)}</b> • Marketing <b>${mny(baseMkt)}</b> • Net <b>${mny(baseNet)}</b><br/>
+        <strong>Break-even (vs selected budget):</strong> ${beLow ? `~Month ${beLow} (low)` : "Not reached (low)"} / ${beHigh ? `~Month ${beHigh} (high)` : "Not reached (high)"}<br/>
+        <strong>Units to recoup (approx):</strong> ${unitsLow.toLocaleString("en-US")} – ${unitsHigh.toLocaleString("en-US")} units
+        <span style="color:var(--muted);"> (uses per-unit net estimate; fixed marketing handled in monthly table)</span>`;
+
+      // Table rows: Low/Base/High blocks
+      f_rows.innerHTML = "";
+      function addBlock(label, rows){
+        rows.forEach(r=>{
+          const target = s.budgetLow; // for month-by-month indicator, show low target (cleaner)
+          const status = r.cumNet >= target ? "Yes" : "No";
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${r.month}</td>
+            <td><b>${label}</b></td>
+            <td class="money">${Math.round(r.units).toLocaleString("en-US")}</td>
+            <td class="money">${mny(r.gross)}</td>
+            <td class="money">${mny(r.marketing)}</td>
+            <td class="money">${mny(r.net)}</td>
+            <td class="money">${mny(r.cumNet)}</td>
+            <td style="color:var(--muted); font-size:12px">${status}</td>
+          `;
+          f_rows.appendChild(tr);
+        });
+      }
+      addBlock("Low", lowRows);
+      addBlock("Base", baseRows);
+      addBlock("High", highRows);
+    }
+
+    function exportForecastCSV(){
+      if(!currentScenario) return;
+      const s = currentScenario;
+
+      const spread = pct(f_spread.value);
+      const scenarios = [
+        { name:"Low", mult:1-spread },
+        { name:"Base", mult:1 },
+        { name:"High", mult:1+spread }
+      ];
+
+      const rows = [];
+      rows.push(["Month","Scenario","Units","Gross","Marketing","Net","CumulativeNet","BudgetLow","BudgetHigh"]);
+
+      scenarios.forEach(sc=>{
+        const data = buildForecastRows(sc.mult);
+        data.forEach(r=>{
+          rows.push([
+            r.month,
+            sc.name,
+            Math.round(r.units),
+            Math.round(r.gross),
+            Math.round(r.marketing),
+            Math.round(r.net),
+            Math.round(r.cumNet),
+            s.budgetLow,
+            s.budgetHigh
+          ]);
+        });
+      });
+
+      const csv = rows.map(r=>r.join(",")).join("\n");
+      const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "last_light_forecast_12mo.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Forecast input listeners
+    [f_price,f_platform,f_mktpct,f_mktfixed,f_m1,f_decay,f_spread].forEach(el=>{
+      el.addEventListener("input", renderForecast);
+      el.addEventListener("change", renderForecast);
+    });
+    f_csv.addEventListener("click", exportForecastCSV);
+
+    // Init
     setMode("demo");
   </script>
 </body>

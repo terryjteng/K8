@@ -242,33 +242,62 @@
     }
     .ok{ color: var(--good); font-weight:800; }
     .warn{ color: var(--warn); font-weight:800; }
+
+    /* Site header (shared styling used on other financials pages) */
+    .sitehdr{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      margin-bottom:18px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(0,0,0,.18);
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand .name{
+      font-weight:900; letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .spark{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow:0 0 18px rgba(255,79,216,.45);
+      display:inline-block;
+    }
+    .brand .tag{ font-size:12px; color:var(--muted); }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+      align-items:center;
+    }
+    .nav a{
+      color:var(--muted);
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      text-decoration:none;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__mark">
-          <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
-        </span>
-        <span class="brand__text">
-          <span class="brand__name">Kato.8 Studios LLC</span>
-          <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
-        </span>
-      </a>
-
-      <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav" id="nav">
-        <a class="nav__link" href="games.html">Games</a>
-        <a class="nav__link" href="updates.html">Updates</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
-      </nav>
+  <div class="sitehdr">
+    <div class="brand">
+      <div class="name"><span class="spark"></span> <a href="index.html" style="color:var(--text); text-decoration:none;">Kato.8 Studios LLC</a></div>
+      <div class="tag">Retro × Modern — in gameplay and aesthetics</div>
     </div>
-  </header>
+    <div class="nav">
+      <a href="games.html">Games</a>
+      <a href="updates.html">Updates</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
 
   <div class="wrap">
     <h1>Hotdog Hustler — Revenue Funnel Roadmap</h1>

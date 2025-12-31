@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kato.8 Studios — Careers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --bg:#07070b;
+      --panel:#0f0f18;
+      --text:#f3f3ff;
+      --muted:#b9b9d6;
+      --line:rgba(255,255,255,.12);
+      --accent:#ff4fd8;
+      --accent2:#6be4ff;
+      --good:#8dffb3;
+      --warn:#ffd36b;
+      --bad:#ff7a7a;
+      --shadow: 0 18px 40px rgba(0,0,0,.45);
+      --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(900px 500px at 18% -10%, rgba(255,79,216,.20), transparent 65%),
+                  radial-gradient(900px 500px at 85% 0%, rgba(107,228,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    .wrap{ max-width:1150px; margin:0 auto; padding:44px 18px 70px; }
+
+    h1{
+      margin:0;
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:980px;
+      font-size: 15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      margin-top:18px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,79,216,.10), rgba(255,255,255,0));
+    }
+    .card .bd{ padding:16px; }
+
+    .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .badge{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      display:inline-flex; align-items:center; gap:8px;
+      white-space:nowrap;
+    }
+    .dot{ width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 14px rgba(255,79,216,.45); }
+    .dot2{ background:var(--accent2); box-shadow:0 0 14px rgba(107,228,255,.35); }
+    .dot3{ background:var(--good); box-shadow:0 0 14px rgba(141,255,179,.30); }
+
+    .section-title{
+      font-weight:900;
+      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size:14px;
+    }
+
+    .stack{ display:grid; gap:12px; }
+
+    .role{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .role .rhd{
+      padding:12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      cursor:pointer;
+      user-select:none;
+    }
+    .role .title{
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      letter-spacing:.2px;
+    }
+    .pill{
+      font-size:11px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,.14);
+      padding:4px 8px;
+      border-radius:999px;
+      background: rgba(0,0,0,.20);
+      white-space:nowrap;
+    }
+    .chev{
+      font-family: var(--mono);
+      color:var(--muted);
+      font-size:12px;
+      padding-top:2px;
+      min-width: 56px;
+      text-align:right;
+    }
+    .role .rbd{
+      padding:12px;
+      display:none;
+    }
+    .role.open .rbd{ display:block; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 720px){ .two-col{ grid-template-columns:1fr; } }
+
+    ul{
+      margin:8px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    li{ margin:7px 0; }
+
+    .callout{
+      border:1px dashed rgba(255,79,216,.45);
+      background: rgba(255,79,216,.07);
+      padding:12px;
+      border-radius:16px;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:12px;
+    }
+    .callout strong{ color:var(--text); }
+
+    .form{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    input, textarea, select{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      padding:10px 12px;
+      font-size:13px;
+      outline:none;
+    }
+    textarea{ min-height:120px; resize:vertical; }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media (max-width: 720px){ .row{ grid-template-columns:1fr; } }
+
+    .btn{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(180deg, rgba(255,79,216,.22), rgba(255,255,255,.03));
+      color:var(--text);
+      padding:12px 14px;
+      font-weight:900;
+      letter-spacing:.2px;
+      cursor:pointer;
+      box-shadow: 0 16px 30px rgba(0,0,0,.35);
+    }
+    .btn:hover{ border-color: rgba(255,255,255,.28); }
+    .btn:active{ transform: translateY(1px); }
+
+    .mini{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .success{
+      border:1px solid rgba(141,255,179,.35);
+      background: rgba(141,255,179,.08);
+      padding:12px;
+      border-radius:16px;
+      color:var(--muted);
+      font-size:12px;
+      display:none;
+    }
+
+    .footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:12px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+    }
+
+    a{ color:var(--accent2); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img src="Art/Branding/Kato_logo_01.jpg" alt="Kato.8 Studios logo" class="brand__logo" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Kato.8 Studios LLC</span>
+          <span class="brand__tag">Retro × Modern — in gameplay and aesthetics</span>
+        </span>
+      </a>
+
+      <button class="navbtn" id="navbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a class="nav__link" href="games.html">Games</a>
+        <a class="nav__link" href="updates.html">Updates</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="careers.html">Careers</a>
+        <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>Careers</h1>
+    <p class="sub">
+      Kato.8 Studios is building retro-inspired games with modern production discipline.
+      If you like small teams, clear scope, and shipping playable milestones — we’d love to meet you.
+    </p>
+
+    <div class="badge-row">
+      <div class="badge"><span class="dot"></span> Indie-first, milestone-driven</div>
+      <div class="badge"><span class="dot2"></span> Remote-friendly (async)</div>
+      <div class="badge"><span class="dot3"></span> Revenue-share + paid roles as funding unlocks</div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: OPEN ROLES -->
+      <div class="card">
+        <div class="hd">
+          <div style="font-weight:900; letter-spacing:.2px">Open Roles</div>
+          <div style="color:var(--muted); font-size:12px; margin-top:6px">
+            Click a role to expand. These are structured for a demo-first pipeline (starting with Last Light).
+          </div>
+        </div>
+
+        <div class="bd">
+          <div class="stack" id="roles">
+            <!-- Role: Level Designer (kept) -->
+            <div class="role">
+              <div class="rhd" data-toggle>
+                <div>
+                  <div class="title">Level Designer (2D) <span class="pill">Core</span> <span class="pill">Remote</span></div>
+                  <div class="mini">Layout, pacing, encounter design, and player guidance.</div>
+                </div>
+                <div class="chev">[+]</div>
+              </div>
+              <div class="rbd">
+                <div class="two-col">
+                  <div>
+                    <div class="section-title">What you’ll do</div>
+                    <ul>
+                      <li>Block out levels with strong readability and progression beats.</li>
+                      <li>Design encounters and resource placement to support the core loop.</li>
+                      <li>Collaborate with engineering to implement tools and triggers.</li>
+                      <li>Run playtests and iterate based on outcomes.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="section-title">Nice to have</div>
+                    <ul>
+                      <li>Experience shipping small games or mods; strong taste in pacing.</li>
+                      <li>Comfort working inside Unity (tilemaps / prefab placement).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Role: Internal UI/UX Designer (new) -->
+            <div class="role">
+              <div class="rhd" data-toggle>
+                <div>
+                  <div class="title">Internal UI/UX Designer <span class="pill">Core</span> <span class="pill">Remote</span></div>
+                  <div class="mini">Design clear, readable UI and UX flows for small-team games and tools.</div>
+                </div>
+                <div class="chev">[+]</div>
+              </div>
+              <div class="rbd">
+                <div class="two-col">
+                  <div>
+                    <div class="section-title">What you’ll do</div>
+                    <ul>
+                      <li>Design HUD, menus, onboarding flows, and in-game UI that prioritize readability and clarity.</li>
+                      <li>Create interactive prototypes (Figma/Protopie) and iterate from playtest feedback.</li>
+                      <li>Deliver art-ready UI specs and export assets for implementation.</li>
+                      <li>Work closely with engineers to implement responsive, performant UI within Unity.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="section-title">Nice to have</div>
+                    <ul>
+                      <li>Experience with Figma, design systems, and versioned UI libraries.</li>
+                      <li>Knowledge of accessibility, localization, and menu economics for small games.</li>
+                      <li>Motion/UI polish skills (micro-interactions, transitions) and basic Unity UI experience.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Role: QA Tester (kept) -->
+            <div class="role">
+              <div class="rhd" data-toggle>
+                <div>
+                  <div class="title">QA Tester <span class="pill">Part-time</span> <span class="pill">Contract</span></div>
+                  <div class="mini">Bug finding, repro clarity, and build verification.</div>
+                </div>
+                <div class="chev">[+]</div>
+              </div>
+              <div class="rbd">
+                <div class="two-col">
+                  <div>
+                    <div class="section-title">What you’ll do</div>
+                    <ul>
+                      <li>Test milestone builds; write clean repro steps with video/screens.</li>
+                      <li>Track bugs by severity and verify fixes on new builds.</li>
+                      <li>Run basic compatibility checks (resolutions, controllers, etc.).</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <div class="section-title">Nice to have</div>
+                    <ul>
+                      <li>Experience with Jira/Notion bug tracking and Unity builds.</li>
+                      <li>Strong communication and consistency.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: APPLY -->
+      <div class="card">
+        <div class="hd">
+          <div style="font-weight:900; letter-spacing:.2px">Apply / Collaborate</div>
+          <div style="color:var(--muted); font-size:12px; margin-top:6px">
+            Submit your info and we’ll follow up. (Form uses mailto by default — no backend required.)
+          </div>
+        </div>
+
+        <div class="bd">
+          <div class="section-title">Quick Apply</div>
+
+          <div class="form" id="applyForm">
+            <div class="row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" placeholder="Your name" />
+              </div>
+              <div>
+                <label for="role">Role</label>
+                <select id="role">
+                  <option value="Level Designer (2D)">Level Designer (2D)</option>
+                  <option value="Internal UI/UX Designer">Internal UI/UX Designer</option>
+                  <option value="QA Tester">QA Tester</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" placeholder="you@example.com" />
+              </div>
+              <div>
+                <label for="links">Portfolio / Links</label>
+                <input id="links" placeholder="Website, itch, GitHub, ArtStation, etc." />
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us about your experience, availability, rates/rev-share preference, and what you want to build."></textarea>
+              <div class="mini">Tip: Include timezone, weekly hours, and 1–2 strongest examples of shipped work.</div>
+            </div>
+
+            <button class="btn" id="sendBtn" type="button">Send Application</button>
+            <div class="success" id="successBox">
+              <strong>Ready!</strong> Your email draft opened. If it didn’t, copy the generated message and send it manually.
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:14px">
+            <strong>What we value:</strong> clear communication, shippable milestones, and respectful collaboration.
+            Small teams only work when everyone can deliver and iterate without drama.
+          </div>
+
+          <div class="footer">
+            Prefer email? Send your info directly to <b>terryt.kato.8@gmail.com</b> with subject:
+            <span class="pill">Kato.8 — Careers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Expand / collapse roles (unchanged behavior)
+    document.querySelectorAll("[data-toggle]").forEach(hd => {
+      hd.addEventListener("click", () => {
+        const role = hd.closest(".role");
+        const open = role.classList.toggle("open");
+        const chev = role.querySelector(".chev");
+        chev.textContent = open ? "[-]" : "[+]";
+      });
+    });
+  </script>
+
+  <!-- Replace quick-apply card with a real form using Formspree (update action to your form endpoint) -->
+  <script>
+    (function () {
+      // Find the apply form container and replace its inner content with a proper <form>
+      const bdCards = document.querySelectorAll('.card .bd');
+      // No-op if careers page layout not found
+      const applyCard = Array.from(document.querySelectorAll('.card')).find(c => c.querySelector('#applyForm'));
+      // If we found the existing quick-apply container, replace it with a Formspree-backed form element
+      if (applyCard) {
+        const formHtml = `
+          <form id="careersForm" class="form card" action="https://formspree.io/f/xzdblwwq" method="POST" enctype="multipart/form-data" style="padding:18px;">
+            <input type="hidden" name="_subject" value="Website careers form submission">
+            <input type="hidden" name="_next" value="careers.html?success=1">
+
+            <div class="row">
+              <div>
+                <label class="micro">Name
+                  <input type="text" name="name" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required>
+                </label>
+              </div>
+              <div>
+                <label class="micro">Role
+                  <select name="role" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit">
+                    <option>Level Designer (2D)</option>
+                    <option>Internal UI/UX Designer</option>
+                    <option>QA Tester</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+              <div>
+                <label class="micro">Email
+                  <input type="email" name="_replyto" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required>
+                </label>
+              </div>
+              <div>
+                <label class="micro">Portfolio / Links
+                  <input type="text" name="links" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" placeholder="Website, itch, GitHub, ArtStation, etc.">
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label class="micro">Message
+                <textarea name="message" rows="6" style="width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit" required></textarea>
+              </label>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label class="micro">Resume / CV (optional)
+                <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:inherit">
+              </label>
+              <div class="mini">Allowed: .pdf, .doc, .docx — max 5 MB. Note: file uploads require a Formspree paid plan; if you don't have one, the file will be omitted and the form will still submit.</div>
+            </div>
+
+            <div id="careersStatus" aria-live="polite" style="margin-top:12px;display:none"></div>
+
+            <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+              <button class="btn" type="reset">Clear</button>
+              <button class="btn" type="submit">Send Application</button>
+            </div>
+          </form>
+        `;
+
+        // Replace the existing apply form container
+        const oldForm = applyCard.querySelector('#applyForm');
+        if (oldForm) oldForm.outerHTML = formHtml;
+      }
+
+      // Wire submission behavior identical to contact page (Formspree) with client-side validation
+      const form = document.getElementById('careersForm');
+      if (!form) return;
+      const status = document.getElementById('careersStatus');
+      const submitBtn = form.querySelector('[type="submit"]');
+
+      const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+      const ALLOWED_TYPES = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+      function validateForm() {
+        status.style.display = 'block';
+        status.style.color = '';
+        status.textContent = '';
+
+        const name = form.querySelector('[name="name"]').value.trim();
+        const email = form.querySelector('[name="_replyto"]').value.trim();
+        const message = form.querySelector('[name="message"]').value.trim();
+        if (!name || !email || !message) {
+          status.style.color = 'salmon';
+          status.textContent = 'Please fill the required fields: name, email, and message.';
+          return false;
+        }
+
+        // Basic email pattern check
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRe.test(email)) {
+          status.style.color = 'salmon';
+          status.textContent = 'Please enter a valid email address.';
+          return false;
+        }
+
+        const fileInput = form.querySelector('[name="resume"]');
+        if (fileInput && fileInput.files && fileInput.files.length) {
+          const file = fileInput.files[0];
+          if (file.size > MAX_FILE_SIZE) {
+            status.style.color = 'salmon';
+            status.textContent = 'Attachment is too large. Max 5 MB.';
+            return false;
+          }
+          if (!ALLOWED_TYPES.includes(file.type)) {
+            // allow checking by extension as some browsers/OS may report empty type
+            const nameLower = (file.name || '').toLowerCase();
+            if (!nameLower.endsWith('.pdf') && !nameLower.endsWith('.doc') && !nameLower.endsWith('.docx')) {
+              status.style.color = 'salmon';
+              status.textContent = 'Unsupported file type. Use PDF, DOC or DOCX.';
+              return false;
+            }
+          }
+        }
+
+        // clear status if valid
+        status.style.display = 'none';
+        return true;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!validateForm()) return;
+
+        status.style.display = 'block';
+        status.style.color = '';
+        status.textContent = 'Sending...';
+
+        submitBtn.disabled = true;
+
+        const action = form.getAttribute('action');
+        const formData = new FormData(form);
+
+        fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(function (response) {
+          submitBtn.disabled = false;
+          if (response.ok) {
+            status.style.color = 'lightgreen';
+            status.textContent = 'Thanks — your application was sent.';
+            form.reset();
+          } else {
+            response.json().then(function (data) {
+              status.style.color = 'salmon';
+              status.textContent = data.error || 'There was a problem sending your application.';
+            }).catch(function () {
+              status.style.color = 'salmon';
+              status.textContent = 'There was a problem sending your application.';
+            });
+          }
+        }).catch(function () {
+          submitBtn.disabled = false;
+          // Network error fallback: open mailto as last resort
+          status.style.color = 'salmon';
+          status.textContent = 'Network error. Opening your email client as a fallback.';
+
+          const name = form.querySelector('[name="name"]').value || '—';
+          const role = form.querySelector('[name="role"]').value || '—';
+          const email = form.querySelector('[name="_replyto"]').value || '—';
+          const links = form.querySelector('[name="links"]').value || '—';
+          const message = form.querySelector('[name="message"]').value || '—';
+
+          const subject = encodeURIComponent(`Kato.8 Careers — ${role}${name ? ' — ' + name : ''}`);
+          const body = encodeURIComponent(`Hi Kato.8 Team,\n\nI'm applying for: ${role}\n\nName: ${name}\nEmail: ${email}\nPortfolio/Links: ${links}\n\nMessage:\n${message}\n`);
+          const to = 'terryt.kato.8@gmail.com';
+          window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

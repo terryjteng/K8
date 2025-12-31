@@ -8,6 +8,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Stronger featured card styling — emphasize Hotdog Hustler */
+    .gamecard{ position:relative; transition: transform .18s ease, box-shadow .18s ease; }
+    .gamecard--featured{
+      border:1px solid rgba(107,228,255,.18);
+      background: linear-gradient(180deg, rgba(107,228,255,.04), rgba(255,79,216,.02));
+      box-shadow: 0 40px 90px rgba(107,228,255,.06);
+      transform: translateY(-6px);
+    }
+    .gamecard--featured:hover{
+      transform: translateY(-10px);
+      box-shadow: 0 50px 110px rgba(107,228,255,.12);
+    }
+    /* Toned-down 'In progress' badge: softer warm gradient and reduced glow */
+    .badge--highlight{
+      background: linear-gradient(90deg, #FF9A2E 0%, #FF6A3A 100%); /* muted orange → soft red */
+      color: #ffffff;
+      font-weight:800;
+      border-radius:999px;
+      padding:6px 10px;
+      box-shadow:0 8px 22px rgba(255,106,58,0.08);
+      text-shadow: 0 1px 0 rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    /* optional ribbon for featured card */
+    .gamecard__ribbon{ position:absolute; right:12px; top:12px; background:linear-gradient(90deg,var(--accent2),var(--accent)); color:#071018; font-weight:800; padding:6px 10px; border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.12); font-size:12px; }
+  </style>
 </head>
 <body>
 <header class="header">
@@ -29,6 +56,7 @@
       <a class="nav__link" href="games.html">Games</a>
       <a class="nav__link" href="updates.html">Updates</a>
       <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="careers.html">Careers</a>
       <a class="nav__link nav__link--cta" href="contact.html">Contact</a>
     </nav>
   </div>
@@ -47,17 +75,16 @@
   <section class="section">
     <div class="container">
       <div class="gamegrid">
-        <article class="gamecard">
-          <div class="gamecard__art">
-            <img src="Art/Corebound/Corebound_GameBanner.png" alt="Corebound banner" />
-          </div>
+        <article class="gamecard gamecard--featured">
+          <div class="gamecard__art"></div>
           <div class="gamecard__body">
-            <div class="gamecard__top"><h3 class="h3">Corebound</h3><span class="badge badge--muted">Concept</span></div>
-            <p class="meta">Action Side-Scroller / RPG</p>
-            <p class="p">A narrative-driven action adventure with upgrades and meaningful choices.</p>
+            <div class="gamecard__top"><h3 class="h3">Hotdog Hustler</h3><span class="badge badge--highlight">In progress</span></div>
+            <p class="meta">Micro-scope time management</p>
+            <p class="p">A small shippable game designed to validate production flow and build momentum.</p>
             <div class="gamecard__actions">
-              <button class="btn btn--ghost" data-open-modal="coreboundModal">Learn more</button>
-              <a class="btn btn--line" href="contact.html" data-prefill="Corebound">Fund milestones</a>
+              <button class="btn btn--ghost" data-open-modal="hotdogModal">Learn more</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Hotdog Hustler">Fund milestones</a>
+              <a class="btn btn--line" href="financials-hotdog.html">Financials</a>
             </div>
           </div>
         </article>
@@ -89,21 +116,21 @@
             <div class="gamecard__actions">
               <button class="btn btn--ghost" data-open-modal="bigbossModal">Request info</button>
               <a class="btn btn--line" href="contact.html" data-prefill="Big Boss Cleanup">Fund milestones</a>
-              <a class="btn btn--line" href="updates.html">Financials</a>
             </div>
           </div>
         </article>
 
         <article class="gamecard">
-          <div class="gamecard__art"></div>
+          <div class="gamecard__art">
+            <img src="Art/Corebound/Corebound_GameBanner.png" alt="Corebound banner" />
+          </div>
           <div class="gamecard__body">
-            <div class="gamecard__top"><h3 class="h3">Hotdog Hustler</h3><span class="badge">In progress</span></div>
-            <p class="meta">Micro-scope time management</p>
-            <p class="p">A small shippable game designed to validate production flow and build momentum.</p>
+            <div class="gamecard__top"><h3 class="h3">Corebound</h3><span class="badge badge--muted">Concept</span></div>
+            <p class="meta">Action Side-Scroller / RPG</p>
+            <p class="p">A narrative-driven action adventure with upgrades and meaningful choices.</p>
             <div class="gamecard__actions">
-              <button class="btn btn--ghost" data-open-modal="hotdogModal">Learn more</button>
-              <a class="btn btn--line" href="contact.html" data-prefill="Hotdog Hustler">Fund milestones</a>
-              <a class="btn btn--line" href="financials-hotdog.html">Financials</a>
+              <button class="btn btn--ghost" data-open-modal="coreboundModal">Learn more</button>
+              <a class="btn btn--line" href="contact.html" data-prefill="Corebound">Fund milestones</a>
             </div>
           </div>
         </article>
@@ -247,7 +274,6 @@
           <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
             <a class="btn btn--ghost" href="contact.html" data-prefill="Big Boss Cleanup">Request info</a>
             <a class="btn btn--line" href="updates.html">View progress</a>
-            <a class="btn btn--line" href="updates.html">View financials</a>
           </div>
         </div>
       </div>
