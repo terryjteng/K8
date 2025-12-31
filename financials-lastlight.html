@@ -21,7 +21,6 @@
       --radius:18px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
-
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -32,10 +31,8 @@
       color:var(--text);
       line-height:1.35;
     }
-
     .wrap{ max-width:1100px; margin:0 auto; padding:44px 18px 70px; }
 
-    /* keep your existing “site” header feel simple */
     .sitehdr{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
       margin-bottom:18px;
@@ -44,9 +41,7 @@
       border-radius: 16px;
       background: rgba(0,0,0,.18);
     }
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-    }
+    .brand{ display:flex; flex-direction:column; gap:2px; }
     .brand .name{
       font-weight:900; letter-spacing:.2px;
       display:flex; align-items:center; gap:10px;
@@ -81,7 +76,6 @@
       align-items:flex-end; justify-content:space-between;
       margin-bottom:18px;
     }
-
     h1{
       margin:0;
       font-size: clamp(26px, 3vw, 40px);
@@ -93,10 +87,7 @@
       max-width:850px;
       font-size: 15px;
     }
-
-    .badge-row{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;
-    }
+    .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
     .badge{
       border:1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -116,9 +107,7 @@
       gap:14px;
       margin-top:18px;
     }
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 920px){ .grid{ grid-template-columns: 1fr; } }
 
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
@@ -159,7 +148,6 @@
       color:var(--text);
       background: linear-gradient(180deg, rgba(255,79,216,.20), rgba(255,255,255,.02));
     }
-
     select{
       appearance:none;
       border-radius:12px;
@@ -170,16 +158,13 @@
       font-size:13px;
       outline:none;
     }
-
     .kpis{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:10px;
       margin-top:14px;
     }
-    @media (max-width: 560px){
-      .kpis{ grid-template-columns: 1fr; }
-    }
+    @media (max-width: 560px){ .kpis{ grid-template-columns: 1fr; } }
     .kpi{
       border:1px solid var(--line);
       border-radius:16px;
@@ -227,10 +212,7 @@
     }
     .callout strong{ color:var(--text); }
 
-    .list{
-      margin:0; padding-left:18px; color:var(--muted);
-      font-size:13px;
-    }
+    .list{ margin:0; padding-left:18px; color:var(--muted); font-size:13px; }
     .list li{ margin:8px 0; }
 
     .footer{
@@ -261,7 +243,7 @@
       color:var(--muted);
       margin-bottom:6px;
     }
-    .field input, .field select{
+    .field input{
       width:100%;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.12);
@@ -284,12 +266,19 @@
       font-size:13px;
     }
     .btn:hover{ border-color: rgba(255,255,255,.28); }
+
+    .twocol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 920px){ .twocol{ grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- light header so page still matches your site without major change -->
     <div class="sitehdr">
       <div class="brand">
         <div class="name"><span class="spark"></span> <a href="index.html" style="color:var(--text); text-decoration:none;">Kato.8 Studios LLC</a></div>
@@ -307,12 +296,12 @@
       <div>
         <h1>Last Light — Financial Breakdown</h1>
         <p class="sub">
-          A transparent view of (1) the <b>Demo</b> cost to produce a 10–15 minute vertical slice, and (2) scalable
-          <b>Full Game</b> budgets to take Last Light to commercial release.
+          Investor-ready planning for (1) a <b>Demo</b> (10–15 minute vertical slice) and (2) a scalable <b>Full Game</b> release.
+          This page ties budget → milestones → revenue → break-even to keep expectations grounded and measurable.
         </p>
         <div class="badge-row">
-          <div class="badge"><span class="dot"></span> Demo tiers sourced from internal funding strategy doc</div>
-          <div class="badge"><span class="dot dot2"></span> Full-game numbers are adjustable estimates</div>
+          <div class="badge"><span class="dot"></span> Milestone-based spend (validation before scale)</div>
+          <div class="badge"><span class="dot dot2"></span> Conservative assumptions (fees + marketing included)</div>
         </div>
       </div>
     </div>
@@ -326,7 +315,6 @@
               <button class="pill" id="tab-demo" role="tab" aria-selected="true">Demo</button>
               <button class="pill" id="tab-full" role="tab" aria-selected="false">Full Game</button>
             </div>
-
             <select id="scenario"></select>
           </div>
 
@@ -344,7 +332,7 @@
             <div class="kpi">
               <div class="lbl">Team Model</div>
               <div class="val" id="kpiTeam">—</div>
-              <div class="hint">Core roles / staffing</div>
+              <div class="hint">Lean core + contractors</div>
             </div>
           </div>
         </div>
@@ -372,52 +360,168 @@
       <!-- RIGHT: INVESTOR-FACING NOTES -->
       <div class="card">
         <div class="hd">
-          <div style="font-weight:700">What investors get at each stage</div>
+          <div style="font-weight:700">Use of funds & milestone gates</div>
           <div style="color:var(--muted); font-size:12px; margin-top:6px">
-            This copy is designed to live on the investor site alongside the budget selectors.
+            What capital buys at each stage, and how progress is validated.
           </div>
         </div>
 
         <div class="bd">
           <ul class="list">
-            <li>
-              <b>Demo funding</b> buys a playable proof-of-concept: combat feel, resource loop, base defense, onboarding, and a presentable build for pitch, festivals, and community tests.
-            </li>
-            <li>
-              <b>Full game funding</b> expands content breadth + production readiness: multiple biomes, deeper progression, more enemies/turrets, narrative presentation, performance + platform QA, marketing beats, and launch operations.
-            </li>
-            <li>
-              Budgets are shown as <b>ranges</b> to reflect the real-world variance of contractor rates, scope decisions, and polish depth.
-            </li>
+            <li><b>Gate 1 — Demo / Vertical Slice:</b> playable loop, presentable art direction, onboarding, and a pitch-ready build for festivals and community testing.</li>
+            <li><b>Gate 2 — Alpha:</b> core systems implemented, content pipeline proven, feature set locked (no new systems after this point).</li>
+            <li><b>Gate 3 — Beta:</b> content complete, balance pass, performance work, and QA ramp to stabilize for launch.</li>
+            <li><b>Gate 4 — Release Candidate:</b> bug-fix only; marketing beats and store assets finalized.</li>
           </ul>
 
           <div class="callout">
-            <strong>Investor clarity:</strong> Demo tiers below are pulled from the studio’s “Last Light — Funding Strategy Document”
-            and presented as-is (Tier 1 / 2 / 3). Full-game budgets are stated as estimates and can be replaced with your
-            exact milestone plan later.
+            <strong>Investor clarity:</strong> budgets are <b>ranges</b> because contractor rates, asset scope, and polish depth vary.
+            Contingency is included explicitly to prevent surprise overages.
           </div>
 
           <div class="footer">
-            If you want, I can also generate a second page called <b>“Use of Funds & Milestones”</b> that maps each line item
-            to milestones (Prototype → Vertical Slice → Beta → Launch) so the spend feels directly tied to deliverables.
+            This page is meant to be “pitch-clean”: every number ties to a deliverable, and every deliverable ties to de-risking the next spend.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- NEW: FORECASTING (added below existing layout; no layout changes above) -->
+    <!-- INVESTOR SNAPSHOT -->
+    <div class="card" style="margin-top:14px;">
+      <div class="hd">
+        <div style="font-weight:900; letter-spacing:.2px">Investor Snapshot</div>
+        <div style="color:var(--muted); font-size:12px; margin-top:6px">
+          A quick read on scope, pricing, and break-even thresholds.
+        </div>
+      </div>
+      <div class="bd">
+        <div class="twocol">
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Revenue Model</div>
+            <ul class="list">
+              <li><b>Platform:</b> Steam (PC-first)</li>
+              <li><b>Pricing:</b> Demo free; full release <b>$5</b> (premium indie impulse-buy tier)</li>
+              <li><b>Platform fee assumption:</b> 30%</li>
+              <li><b>Net revenue per unit (at $5):</b> ~$3.50 before variable marketing</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Break-even Targets (at $5, 30% platform fee)</div>
+            <table aria-label="Break-even targets">
+              <thead>
+                <tr>
+                  <th>Scope</th>
+                  <th>Budget Range</th>
+                  <th>Units to Recoup (net/unit ≈ $3.50)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Demo</td>
+                  <td class="money">$27,000 – $50,000</td>
+                  <td class="money">~7,715 – 14,286</td>
+                </tr>
+                <tr>
+                  <td>Full Game</td>
+                  <td class="money">$130,000 – $210,000</td>
+                  <td class="money">~37,143 – 60,000</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="note">These break-even units are a simple, investor-friendly baseline. The forecast section below models platform fees + marketing over time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKET & COMPETITIVE -->
+    <div class="card" style="margin-top:14px;">
+      <div class="hd">
+        <div style="font-weight:900; letter-spacing:.2px">Market & Competitive Positioning</div>
+        <div style="color:var(--muted); font-size:12px; margin-top:6px">
+          Where Last Light fits, and how it differentiates without overscoping.
+        </div>
+      </div>
+      <div class="bd">
+        <div class="twocol">
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Genre Fit</div>
+            <ul class="list">
+              <li>Survival + resource gathering + base defense loop.</li>
+              <li>“Cozy systems” meets “pressure moments” (waves / threats).</li>
+              <li>Strong long-tail potential if core loop is satisfying and scalable with content updates.</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Comparable Titles (qualitative)</div>
+            <ul class="list">
+              <li><b>Stardew Valley</b> (system-driven retention + progression)</li>
+              <li><b>They Are Billions</b> / base-defense pressure loop</li>
+              <li><b>Graveyard Keeper</b> (resource chains + crafting progression)</li>
+              <li><b>Project Zomboid</b> (survival tension + emergent stories)</li>
+            </ul>
+            <div class="note">Comparable titles listed for category clarity only (no sales claims here). The demo’s job is to prove the hook and retention inside this market lane.</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Differentiation thesis:</strong> A tight “gather → fortify → survive → upgrade” loop with a retro-modern presentation,
+          built to be digestible at a low price point while leaving room to expand content post-launch.
+        </div>
+      </div>
+    </div>
+
+    <!-- RISK -->
+    <div class="card" style="margin-top:14px;">
+      <div class="hd">
+        <div style="font-weight:900; letter-spacing:.2px">Risk Management</div>
+        <div style="color:var(--muted); font-size:12px; margin-top:6px">
+          How scope, staffing, and funding gaps are controlled.
+        </div>
+      </div>
+      <div class="bd">
+        <div class="twocol">
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Key Risks</div>
+            <ul class="list">
+              <li><b>Scope creep:</b> adding systems late increases cost disproportionately.</li>
+              <li><b>Funding gaps:</b> partial funding can cause stop-start inefficiency.</li>
+              <li><b>Content throughput:</b> art/content can bottleneck engineering progress.</li>
+              <li><b>Go-to-market risk:</b> weak store assets / timing reduces conversion.</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Mitigations</div>
+            <ul class="list">
+              <li><b>Milestone gates:</b> demo → alpha → beta → release candidate.</li>
+              <li><b>Feature lock:</b> no new systems after Alpha gate.</li>
+              <li><b>Contractor flexibility:</b> scale art/audio/QA up or down by milestone needs.</li>
+              <li><b>Contingency:</b> explicit buffer line item in every budget.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Kill criteria (capital protection):</strong> If the demo fails to hit playability + retention benchmarks, the plan pivots to
+          reduced scope (ship smaller) rather than expanding spend to “fix it later.”
+        </div>
+      </div>
+    </div>
+
+    <!-- FORECASTING -->
     <div class="card" style="margin-top:14px;">
       <div class="hd">
         <div style="font-weight:900; letter-spacing:.2px">Forecasting (Revenue + Break-even)</div>
         <div style="color:var(--muted); font-size:12px; margin-top:6px">
-          A lightweight forecast to estimate units needed to recoup the selected budget range and how quickly revenue can return capital.
+          A lightweight 12-month model to estimate units needed to recoup the selected budget range.
+          This is directional and intentionally simple (platform fee + marketing only).
         </div>
       </div>
       <div class="bd">
         <div class="fieldgrid">
           <div class="field">
             <label>Game Price ($)</label>
-            <input id="f_price" type="number" min="0" step="0.5" value="19.99" />
+            <input id="f_price" type="number" min="0" step="0.5" value="5" />
           </div>
           <div class="field">
             <label>Platform Fee (%)</label>
@@ -429,7 +533,7 @@
           </div>
           <div class="field">
             <label>Fixed Launch Marketing ($)</label>
-            <input id="f_mktfixed" type="number" min="0" step="500" value="25000" />
+            <input id="f_mktfixed" type="number" min="0" step="500" value="5000" />
           </div>
 
           <div class="field">
@@ -463,15 +567,15 @@
               <th>Marketing</th>
               <th>Net (after platform + marketing)</th>
               <th>Cumulative Net</th>
-              <th>Break-even vs Selected Budget</th>
+              <th>Break-even vs Selected Budget (Low)</th>
             </tr>
           </thead>
           <tbody id="f_rows"></tbody>
         </table>
 
         <div class="note">
-          Notes: This is a simplified model (price × units) with platform fee + marketing deductions only.
-          It’s meant to communicate investor-ready directional outcomes, not replace full P&L.
+          Notes: This model excludes payroll/tax overhead and assumes marketing is captured via the inputs above.
+          Use it as an investor-facing directional view, not a full P&L.
         </div>
       </div>
     </div>
@@ -479,223 +583,140 @@
   </div>
 
   <script>
-    // ----------------------------
-    // Existing helper
-    // ----------------------------
+    // ----------
+    // helpers
+    // ----------
     const money = (n) => {
       if (n === null || n === undefined || !isFinite(n)) return "—";
       return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
     };
 
-    // ----------------------------
-    // DATA (Marketing added as explicit line item; everything else unchanged)
-    // ----------------------------
+    // ----------
+    // DATA (Realistic indie ranges, aligned to prior planning)
+    // ----------
     const demoScenarios = [
       {
-        id: "demo_t1",
-        name: "Tier 1 — Lean & Fast Demo",
-        budgetLow: 120000,
-        budgetHigh: 160000,
-        timeline: "6–7 months",
-        team: "3–4 core + contractors",
+        id: "demo_conservative",
+        name: "Demo — Conservative (Min viable slice)",
+        budgetLow: 27000,
+        budgetHigh: 35000,
+        timeline: "3 months",
+        team: "Founder-led + 2–3 contractors",
         summary: `
           <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            Minimal-but-polished indie demo designed to unlock larger external funding.
+            Minimum viable vertical slice: prove the core loop, art direction, and a stable PC build suitable for early playtests.
           </p>
           <ul class="list">
-            <li>One biome, one enemy type (simple variants), one turret, one weapon set.</li>
-            <li>Functional UI, simplified VFX, minimal onboarding prompts.</li>
+            <li>One biome, limited enemy variety, basic UI + audio pass</li>
+            <li>Store page + “trailer-lite” for early visibility</li>
           </ul>
         `,
         lines: [
-          { cat: "Core Dev + Design Labor", low: 65000, high: 90000, note: "Primary burn" },
-          { cat: "Art + UI/UX", low: 25000, high: 38000, note: "0.5–0.75 FTE" },
-          { cat: "Audio (contract)", low: 4000, high: 9000, note: "1–1.5 mo" },
-          { cat: "QA (contract)", low: 3000, high: 7000, note: "Final month" },
-          { cat: "Tools / Software / Services", low: 1500, high: 4000, note: "Unity/PM/etc." },
-
-          /* NEW: explicit marketing line for demo (store page, key art, trailer-lite) */
-          { cat: "Marketing / Store Assets", low: 1500, high: 6000, note: "Capsule + trailer-lite" },
-
-          { cat: "Build/Release Ops (packaging)", low: 1000, high: 3000, note: "Light ops" },
-          { cat: "Contingency", low: 7500, high: 15000, note: "Risk buffer" },
+          { cat: "Labor (Dev + Design)", low: 12000, high: 18000, note: "Founder-heavy" },
+          { cat: "Labor (2D Art + UI)", low: 6000, high: 9000, note: "Core visuals" },
+          { cat: "Audio (contract)", low: 1000, high: 2000, note: "SFX + basic music" },
+          { cat: "QA (limited contract)", low: 1000, high: 2000, note: "Final checks" },
+          { cat: "Tools / Software", low: 800, high: 1600, note: "Licenses/assets" },
+          { cat: "Marketing / Store Assets", low: 1200, high: 2400, note: "Capsule/trailer-lite" },
+          { cat: "Overhead + Contingency", low: 5000, high: 8000, note: "10–15% buffer" },
         ],
-        callout: "Best for: proving execution, pitching to publishers, securing grants with a lean burn.",
-        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Adjust line-item allocations to match your exact contractor rates."
+        callout: "Best for: fastest validation and early traction with minimal burn.",
+        note: "Ranges reflect lean indie contractor rates and founder contribution. Adjust line items as vendors are quoted."
       },
       {
-        id: "demo_t2",
-        name: "Tier 2 — Polished Vertical Slice (Recommended)",
-        budgetLow: 220000,
-        budgetHigh: 300000,
-        timeline: "7–8 months",
-        team: "4–6 core + optional tech art",
+        id: "demo_base",
+        name: "Demo — Base (Polished vertical slice)",
+        budgetLow: 35000,
+        budgetHigh: 50000,
+        timeline: "3–4 months",
+        team: "Founder-led + 3–5 contractors",
         summary: `
           <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            Balanced team for higher fidelity, polish, and market readiness (publisher-ready vertical slice).
+            Publisher- and festival-ready demo: higher polish, better UX, and stronger marketing assets to raise conversion.
           </p>
           <ul class="list">
-            <li>More polished art/animation, improved VFX, stronger UI/UX, audio layers, environment polish.</li>
-            <li>Optional interior or narrative intro; stronger trailer/marketing assets.</li>
+            <li>More refined art/animation, better onboarding, stronger UX</li>
+            <li>Trailer + key art suitable for Steam events</li>
           </ul>
         `,
         lines: [
-          { cat: "Core Dev + Systems + Design", low: 105000, high: 145000, note: "Primary burn" },
-          { cat: "Art + UI/UX (full-time)", low: 60000, high: 80000, note: "Fidelity jump" },
-          { cat: "Audio (2–3 mo contract)", low: 9000, high: 18000, note: "Music+SFX" },
-          { cat: "QA (2–3 mo)", low: 9000, high: 18000, note: "Test cycles" },
-          { cat: "Tech Art (optional)", low: 6000, high: 14000, note: "Shaders/VFX" },
-          { cat: "Tools / Software / Services", low: 2500, high: 6000, note: "PM/Build" },
-
-          /* NEW: explicit marketing line for demo */
-          { cat: "Marketing / Trailer / Key Art", low: 8000, high: 22000, note: "Pitch-ready" },
-
-          { cat: "Contingency", low: 14000, high: 22000, note: "Risk buffer" },
+          { cat: "Labor (Dev + Design)", low: 15000, high: 22000, note: "Systems + polish" },
+          { cat: "Labor (2D Art + UI/UX)", low: 9000, high: 14000, note: "Fidelity bump" },
+          { cat: "Audio (contract)", low: 1500, high: 2500, note: "SFX + music pass" },
+          { cat: "QA (contract)", low: 1500, high: 2500, note: "Test cycles" },
+          { cat: "Tools / Software", low: 1200, high: 1800, note: "Licenses/assets" },
+          { cat: "Marketing / Trailer / Key Art", low: 2600, high: 5600, note: "Pitch-ready" },
+          { cat: "Overhead + Contingency", low: 4200, high: 6100, note: "10–15% buffer" },
         ],
-        callout: "Best for: Steam Next Fest readiness, major publisher outreach, strong community tests.",
-        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Line items are presented as editable allocations for investor clarity."
-      },
-      {
-        id: "demo_t3",
-        name: "Tier 3 — Showpiece Demo + Early Production Start",
-        budgetLow: 350000,
-        budgetHigh: 500000,
-        timeline: "8–10 months",
-        team: "8–10+ (full-stack model)",
-        summary: `
-          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            Premier-quality vertical slice that doubles as the foundation for full production.
-          </p>
-          <ul class="list">
-            <li>2–3 zombie types, multiple turrets, advanced VFX, cinematic intro/cutscene panels.</li>
-            <li>Higher production depth across disciplines; heavier QA runway.</li>
-          </ul>
-        `,
-        lines: [
-          { cat: "Engineering (2 devs) + Design", low: 170000, high: 235000, note: "Multi-dev" },
-          { cat: "Environment + Character Animation", low: 90000, high: 135000, note: "Premium art" },
-          { cat: "UI/UX Specialist", low: 25000, high: 42000, note: "Rich UI" },
-          { cat: "Tech Art / VFX", low: 20000, high: 35000, note: "Shaders/FX" },
-          { cat: "Audio (0.5–1.0 FTE / contract)", low: 18000, high: 35000, note: "Layered audio" },
-          { cat: "QA Lead + Tester (final 4 mo)", low: 22000, high: 48000, note: "Heavier QA" },
-          { cat: "Tools / Software / Services", low: 4000, high: 9000, note: "Production ops" },
-
-          /* NEW: explicit marketing line for demo */
-          { cat: "Marketing / Showcase Assets", low: 15000, high: 40000, note: "Trailer + press kit" },
-
-          { cat: "Contingency", low: 18000, high: 36000, note: "Risk buffer" },
-        ],
-        callout: "Best for: high-end pitch meetings, showcases, and building momentum for full production funding.",
-        note: "Demo tier ranges and timelines are sourced from the studio funding strategy document. Line items are illustrative allocations (edit to match real rates)."
+        callout: "Best for: Steam Next Fest readiness and higher conversion assets.",
+        note: "These numbers are designed to be credible to investors: lean scope, explicit marketing, explicit contingency."
       },
     ];
 
     const fullGameScenarios = [
       {
-        id: "full_indie",
-        name: "Full Game — Indie Lean Release",
-        budgetLow: 650000,
-        budgetHigh: 950000,
-        timeline: "14–18 months",
-        team: "5–7 core + contractors",
+        id: "full_conservative",
+        name: "Full Game — Conservative",
+        budgetLow: 130000,
+        budgetHigh: 160000,
+        timeline: "12 months",
+        team: "2–4 core + contractors",
         summary: `
           <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            A focused commercial release with strong core loop, limited content breadth, and controlled burn.
+            Capital-efficient commercial release: controlled content scope with strong loop and polish.
           </p>
           <ul class="list">
-            <li>2–3 biomes, modest narrative wrapper, progression + crafting depth, optimized for PC launch first.</li>
-            <li>Marketing is lean but deliberate (store page, trailer, community beats, festival presence).</li>
+            <li>PC-first launch, limited biomes, tight progression loop</li>
+            <li>Lean but deliberate marketing beats</li>
           </ul>
         `,
         lines: [
-          { cat: "Engineering + Design", low: 260000, high: 380000, note: "Systems/content" },
-          { cat: "Art + Animation", low: 190000, high: 280000, note: "2D pipeline" },
-          { cat: "UI/UX + Accessibility", low: 45000, high: 80000, note: "Polish" },
-          { cat: "Audio (SFX + OST)", low: 35000, high: 70000, note: "Contract/partial" },
-          { cat: "QA + Compatibility", low: 45000, high: 90000, note: "Launch readiness" },
-          { cat: "Production/PM + Ops", low: 28000, high: 65000, note: "Scheduling/vendors" },
-
-          /* NEW: explicit marketing line for full game */
-          { cat: "Marketing / Trailer / PR", low: 40000, high: 120000, note: "Launch beats" },
-
-          { cat: "Tools/Software/Services", low: 8000, high: 22000, note: "Dev services" },
-          { cat: "Contingency", low: 19000, high: 38000, note: "Buffer" },
+          { cat: "Labor (Programming)", low: 40000, high: 52000, note: "Core systems" },
+          { cat: "Labor (2D Art + Animation)", low: 30000, high: 40000, note: "Content throughput" },
+          { cat: "Labor (Design / Production)", low: 15000, high: 20000, note: "Schedule/scope control" },
+          { cat: "Audio (contract)", low: 5000, high: 6500, note: "SFX + music" },
+          { cat: "QA (contract)", low: 6000, high: 8000, note: "Launch readiness" },
+          { cat: "Tools / Infrastructure", low: 3500, high: 5000, note: "Licenses/hosting" },
+          { cat: "Marketing & Launch", low: 10000, high: 15000, note: "Trailer + key art + outreach" },
+          { cat: "Overhead + Contingency", low: 20500, high: 33500, note: "Ops + 10–15% buffer" },
         ],
-        callout: "Positioning: capital-efficient release that proves the franchise and improves publisher leverage for ports/sequels.",
-        note: "Full-game scenario numbers are estimates for investor communication. Replace with your exact milestone plan + vendor quotes as you lock scope."
+        callout: "Best for: shipping a credible indie release with minimal external capital.",
+        note: "Full game budgeting assumes founder contribution and contractor-based staffing flexibility."
       },
       {
-        id: "full_mid",
-        name: "Full Game — Mid-Scope Flagship Indie",
-        budgetLow: 1200000,
-        budgetHigh: 1800000,
-        timeline: "18–24 months",
-        team: "8–12 core + partners",
+        id: "full_base",
+        name: "Full Game — Base (Recommended)",
+        budgetLow: 160000,
+        budgetHigh: 210000,
+        timeline: "12–18 months",
+        team: "3–6 core + contractors",
         summary: `
           <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            The “flagship indie” path: deeper content variety, higher polish, and better long-tail retention.
+            Balanced approach: stronger content depth, more polish runway, and improved market readiness.
           </p>
           <ul class="list">
-            <li>3–5 biomes, more enemy/turret variety, richer progression, more narrative presentation.</li>
-            <li>PC launch + planning runway for ports; stronger marketing calendar.</li>
+            <li>More content variety, better UX, more stable QA runway</li>
+            <li>Marketing assets strong enough for consistent store conversion</li>
           </ul>
         `,
         lines: [
-          { cat: "Engineering + Design", low: 500000, high: 720000, note: "More depth" },
-          { cat: "Art + Animation + VFX", low: 360000, high: 560000, note: "Content breadth" },
-          { cat: "UI/UX + Localization + Accessibility", low: 90000, high: 160000, note: "Market readiness" },
-          { cat: "Audio (OST + implementation)", low: 70000, high: 140000, note: "Higher quality" },
-          { cat: "QA + Performance", low: 90000, high: 180000, note: "Stability" },
-          { cat: "Production/PM + Outsourcing mgmt", low: 70000, high: 140000, note: "Vendor control" },
-
-          /* NEW: explicit marketing line for full game */
-          { cat: "Marketing / Trailer / PR", low: 120000, high: 260000, note: "Go-to-market" },
-
-          { cat: "Tools/Software/Services", low: 15000, high: 40000, note: "Build/CI/etc." },
-          { cat: "Contingency", low: 40000, high: 80000, note: "Buffer" },
+          { cat: "Labor (Programming)", low: 52000, high: 60000, note: "Systems + tooling" },
+          { cat: "Labor (2D Art + Animation)", low: 40000, high: 45000, note: "More breadth" },
+          { cat: "Labor (Design / Production)", low: 20000, high: 25000, note: "Milestone gates" },
+          { cat: "Audio (contract)", low: 6500, high: 8000, note: "Higher quality pass" },
+          { cat: "QA (contract)", low: 8000, high: 10000, note: "More testing cycles" },
+          { cat: "Tools / Infrastructure", low: 5000, high: 7000, note: "Licenses/hosting" },
+          { cat: "Marketing & Launch", low: 15000, high: 21000, note: "Trailer + PR + outreach" },
+          { cat: "Overhead + Contingency", low: 13500, high: 33000, note: "Ops + 10–15% buffer" },
         ],
-        callout: "Positioning: stronger commercial indie with higher chance of feature coverage and streamer traction.",
-        note: "Full-game scenario numbers are estimates for investor communication. Swap these with your real staffing plan once scope is locked."
-      },
-      {
-        id: "full_premium",
-        name: "Full Game — Premium AA-Indie + Ports",
-        budgetLow: 2500000,
-        budgetHigh: 4000000,
-        timeline: "24–30 months",
-        team: "12–18 core + outsourcing",
-        summary: `
-          <p style="margin:0 0 8px; color:var(--muted); font-size:13px">
-            Premium production values, more content variety, and the operational runway to support multi-platform launches.
-          </p>
-          <ul class="list">
-            <li>More biomes and mission variety, richer narrative, expanded systems, deeper endgame.</li>
-            <li>Heavier QA, localization, compliance, and porting pipeline (timing dependent).</li>
-          </ul>
-        `,
-        lines: [
-          { cat: "Engineering + Design", low: 980000, high: 1500000, note: "Bigger team" },
-          { cat: "Art + Animation + VFX", low: 820000, high: 1350000, note: "Premium content" },
-          { cat: "UI/UX + Localization", low: 180000, high: 320000, note: "Global" },
-          { cat: "Audio (OST + VO/light narrative)", low: 140000, high: 260000, note: "Premium" },
-          { cat: "QA + External testing", low: 220000, high: 420000, note: "Heavier QA" },
-          { cat: "Production/PM + Outsourcing + Legal", low: 150000, high: 280000, note: "Ops" },
-
-          /* NEW: explicit marketing line for full game */
-          { cat: "Marketing / PR / Influencers", low: 260000, high: 650000, note: "Launch weight" },
-
-          { cat: "Porting/Platform Services (if applicable)", low: 180000, high: 420000, note: "Varies" },
-          { cat: "Tools/Software/Services", low: 30000, high: 80000, note: "Infra" },
-          { cat: "Contingency", low: 60000, high: 120000, note: "Buffer" },
-        ],
-        callout: "Positioning: premium flagship title with stronger platform/publisher appeal and multi-platform revenue potential.",
-        note: "Full-game scenario numbers are estimates for investor communication. Porting/cert costs vary heavily by platform and partner rates."
+        callout: "Best for: sustainable indie success with a realistic break-even threshold.",
+        note: "Ranges are conservative; swap in vendor quotes when available."
       },
     ];
 
-    // ----------------------------
-    // UI STATE (existing)
-    // ----------------------------
+    // ----------
+    // UI STATE
+    // ----------
     const tabDemo = document.getElementById("tab-demo");
     const tabFull = document.getElementById("tab-full");
     const scenarioSelect = document.getElementById("scenario");
@@ -739,7 +760,7 @@
         scenarioSelect.appendChild(opt);
       });
 
-      scenarioSelect.selectedIndex = data.length >= 2 ? 1 : 0;
+      scenarioSelect.selectedIndex = 0;
       render();
     }
 
@@ -769,16 +790,23 @@
       callout.textContent = s.callout;
       note.textContent = s.note;
 
-      renderForecast(); // keep in sync with selection
+      // Adjust fixed marketing default based on mode (demo usually smaller)
+      if(mode === "demo"){
+        if(Number(f_mktfixed.value) > 8000) f_mktfixed.value = 5000;
+      }else{
+        if(Number(f_mktfixed.value) < 8000) f_mktfixed.value = 10000;
+      }
+
+      renderForecast();
     }
 
     tabDemo.addEventListener("click", () => setMode("demo"));
     tabFull.addEventListener("click", () => setMode("full"));
     scenarioSelect.addEventListener("change", render);
 
-    // ----------------------------
-    // Forecasting (NEW)
-    // ----------------------------
+    // ----------
+    // Forecasting
+    // ----------
     function mny(n){
       if(!isFinite(n)) return "—";
       return "$" + Math.round(n).toLocaleString("en-US");
@@ -787,14 +815,13 @@
     function pct(v){ return clamp(Number(v)||0, 0, 100)/100; }
 
     function buildForecastRows(mult){
-      // 12 months: month1 units base then decay
       const price = Math.max(0, Number(f_price.value) || 0);
       const platform = pct(f_platform.value);
       const mktpct = pct(f_mktpct.value);
       const fixedMkt = Math.max(0, Number(f_mktfixed.value) || 0);
 
       const m1Units = Math.max(0, Number(f_m1.value) || 0) * mult;
-      const decay = pct(f_decay.value); // as percent
+      const decay = pct(f_decay.value);
 
       const rows = [];
       let units = m1Units;
@@ -808,8 +835,7 @@
         cumNet += net;
 
         rows.push({ month: monthLabel, units, gross, marketing, net, cumNet });
-
-        units = units * (1 - decay); // decay after each month
+        units = units * (1 - decay);
       }
       return rows;
     }
@@ -835,20 +861,18 @@
       const highRows = buildForecastRows(highMult);
 
       const total = (rows, key) => rows.reduce((a,r)=>a+(r[key]||0),0);
-
       const baseGross = total(baseRows, "gross");
       const baseMkt = total(baseRows, "marketing");
       const baseNet = total(baseRows, "net");
 
-      // Break-even uses selected scenario budget range
       const beLow = firstBreakEvenMonth(baseRows, s.budgetLow);
       const beHigh = firstBreakEvenMonth(baseRows, s.budgetHigh);
 
-      // Units needed (range) based on per-unit net in Month 1 (rough investor-friendly shortcut)
+      // approximate units to recoup using per-unit net estimate (ignores fixed marketing)
       const price = Math.max(0, Number(f_price.value) || 0);
       const platform = pct(f_platform.value);
       const mktpct = pct(f_mktpct.value);
-      const perUnitNetApprox = Math.max(0.01, (price * (1 - platform)) * (1 - mktpct)); // ignores fixed marketing
+      const perUnitNetApprox = Math.max(0.01, (price * (1 - platform)) * (1 - mktpct));
       const unitsLow = Math.ceil(s.budgetLow / perUnitNetApprox);
       const unitsHigh = Math.ceil(s.budgetHigh / perUnitNetApprox);
 
@@ -856,13 +880,12 @@
         Gross <b>${mny(baseGross)}</b> • Marketing <b>${mny(baseMkt)}</b> • Net <b>${mny(baseNet)}</b><br/>
         <strong>Break-even (vs selected budget):</strong> ${beLow ? `~Month ${beLow} (low)` : "Not reached (low)"} / ${beHigh ? `~Month ${beHigh} (high)` : "Not reached (high)"}<br/>
         <strong>Units to recoup (approx):</strong> ${unitsLow.toLocaleString("en-US")} – ${unitsHigh.toLocaleString("en-US")} units
-        <span style="color:var(--muted);"> (uses per-unit net estimate; fixed marketing handled in monthly table)</span>`;
+        <span style="color:var(--muted);"> (per-unit net estimate; fixed marketing handled in monthly table)</span>`;
 
-      // Table rows: Low/Base/High blocks
       f_rows.innerHTML = "";
       function addBlock(label, rows){
         rows.forEach(r=>{
-          const target = s.budgetLow; // for month-by-month indicator, show low target (cleaner)
+          const target = s.budgetLow;
           const status = r.cumNet >= target ? "Yes" : "No";
           const tr = document.createElement("tr");
           tr.innerHTML = `
@@ -926,14 +949,13 @@
       URL.revokeObjectURL(url);
     }
 
-    // Forecast input listeners
     [f_price,f_platform,f_mktpct,f_mktfixed,f_m1,f_decay,f_spread].forEach(el=>{
       el.addEventListener("input", renderForecast);
       el.addEventListener("change", renderForecast);
     });
     f_csv.addEventListener("click", exportForecastCSV);
 
-    // Init
+    // init
     setMode("demo");
   </script>
 </body>
