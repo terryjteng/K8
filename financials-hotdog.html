@@ -482,6 +482,63 @@
             <strong>Allocation check:</strong> — (must total 100% of pipeline funds)
           </div>
 
+
+          <!-- =========================
+            Hotdog Hustler → Last Light Funding Funnel (Gate Check)
+          ========================= -->
+          <div class="section-title" style="margin-top:14px">Hotdog Hustler → Last Light Funding Funnel</div>
+
+          <div class="callout" style="margin-top:0;">
+            <strong>Milestone gate:</strong> Hotdog Hustler revenue funds the <b>Last Light Demo</b> first (vertical slice validation). Full production scaling is gated until the demo is complete, publicly testable, and ready for Steam-facing beats (page + trailer + feedback).
+          </div>
+
+          <div class="kpis" style="margin-top:12px;">
+            <div class="kpi">
+              <div class="lbl">Allocated to Last Light</div>
+              <div class="val" id="llGateAllocated">$—</div>
+              <div class="hint">Pipeline funds × Last Light %</div>
+            </div>
+            <div class="kpi">
+              <div class="lbl">Demo Funding Gate</div>
+              <div class="val" id="llGateDemo">—</div>
+              <div class="hint">$27k–$50k target</div>
+            </div>
+            <div class="kpi">
+              <div class="lbl">Full Game Gate</div>
+              <div class="val" id="llGateFull">—</div>
+              <div class="hint">$130k–$210k target</div>
+            </div>
+          </div>
+
+          <table aria-label="Last Light gate targets" style="margin-top:12px;">
+            <thead>
+              <tr>
+                <th style="width:40%">Target</th>
+                <th style="width:20%">Low</th>
+                <th style="width:20%">High</th>
+                <th style="width:20%">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Last Light Demo</b> (Vertical Slice)</td>
+                <td class="money">$27,000</td>
+                <td class="money">$50,000</td>
+                <td id="llGateDemoRow" class="muted">—</td>
+              </tr>
+              <tr>
+                <td><b>Last Light Full Game</b> (Lean Indie)</td>
+                <td class="money">$130,000</td>
+                <td class="money">$210,000</td>
+                <td id="llGateFullRow" class="muted">—</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout" id="llGateCallout">
+            <strong>Status:</strong> —
+          </div>
+
           <div class="section-title" style="margin-top:14px">Projected Spend Output (from Pipeline Funds)</div>
           <div class="barwrap" id="pipelineBars"></div>
 
@@ -532,6 +589,14 @@
     const pipelineBars = $("pipelineBars");
     const healthCallout = $("healthCallout");
     const allocCallout = $("allocCallout");
+
+    // Last Light funnel gate outputs
+    const llGateAllocated = $("llGateAllocated");
+    const llGateDemo = $("llGateDemo");
+    const llGateFull = $("llGateFull");
+    const llGateDemoRow = $("llGateDemoRow");
+    const llGateFullRow = $("llGateFullRow");
+    const llGateCallout = $("llGateCallout");
 
     // ----------------------------
     // Core Model
@@ -721,6 +786,42 @@
         amount: m.pipe.mkFunds,
         pctOfMax: (m.pipe.mkFunds / maxPipe) * 100
       }));
+
+
+      // ----------------------------
+      // Hotdog Hustler → Last Light Gate Check (uses Last Light allocation)
+      // ----------------------------
+      if (llGateAllocated && llGateDemo && llGateFull && llGateDemoRow && llGateFullRow && llGateCallout){
+        const allocatedLL = m.pipe.llFunds;
+
+        const demoLow = 27000, demoHigh = 50000;
+        const fullLow = 130000, fullHigh = 210000;
+
+        llGateAllocated.textContent = money(allocatedLL);
+
+        const demoStatus = (allocatedLL >= demoHigh) ? "Met (High)" : (allocatedLL >= demoLow) ? "Met (Low)" : "Not Yet";
+        const fullStatus = (allocatedLL >= fullHigh) ? "Met (High)" : (allocatedLL >= fullLow) ? "Met (Low)" : "Not Yet";
+
+        llGateDemo.textContent = demoStatus;
+        llGateFull.textContent = fullStatus;
+
+        llGateDemo.style.color = (allocatedLL >= demoLow) ? "var(--good)" : "var(--warn)";
+        llGateFull.style.color = (allocatedLL >= fullLow) ? "var(--good)" : "var(--warn)";
+
+        llGateDemoRow.textContent = demoStatus;
+        llGateFullRow.textContent = fullStatus;
+        llGateDemoRow.style.color = (allocatedLL >= demoLow) ? "var(--good)" : "var(--warn)";
+        llGateFullRow.style.color = (allocatedLL >= fullLow) ? "var(--good)" : "var(--warn)";
+
+        if (allocatedLL >= demoHigh){
+          llGateCallout.innerHTML = `<strong>Status:</strong> <span class="ok">Demo funding gate met (high).</span> Last Light can begin vertical slice production with full validation budget coverage.`;
+        } else if (allocatedLL >= demoLow){
+          llGateCallout.innerHTML = `<strong>Status:</strong> <span class="ok">Demo funding gate met (low).</span> Remaining gap to demo high: <b>${money(demoHigh - allocatedLL)}</b>.`;
+        } else {
+          llGateCallout.innerHTML = `<strong>Status:</strong> <span class="warn">Demo funding gate not met yet.</span> Gap to demo low: <b>${money(demoLow - allocatedLL)}</b> • gap to demo high: <b>${money(demoHigh - allocatedLL)}</b>.`;
+        }
+      }
+
     }
 
     // Auto-normalize pipeline allocation inputs to 100% (optional convenience)
