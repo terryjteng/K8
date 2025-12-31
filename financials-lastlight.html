@@ -431,7 +431,100 @@
             <div class="note">These break-even units are a simple, investor-friendly baseline. The forecast section below models platform fees + marketing over time.</div>
           </div>
         </div>
+      
+    <!-- FUNDED BY HOTDOG HUSTLER -->
+    <div class="card" style="margin-top:14px;">
+      <div class="hd">
+        <div style="font-weight:900; letter-spacing:.2px">Funding Path: Hotdog Hustler → Last Light</div>
+        <div style="color:var(--muted); font-size:12px; margin-top:6px">
+          Last Light is milestone-funded. Early revenue from Hotdog Hustler can fund the demo (vertical slice) to validate the loop before scaling production.
+        </div>
       </div>
+      <div class="bd">
+        <div class="callout" style="margin-top:0;">
+          <strong>Investor framing:</strong> Internal demo funding reduces dependency on upfront investment and improves publisher/investor leverage once the vertical slice is playable, presentable, and publicly testable.
+        </div>
+
+        <div class="twocol" style="margin-top:14px;">
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">How the Funnel De-Risks Last Light</div>
+            <ul class="list">
+              <li><b>Capital efficiency:</b> Hotdog Hustler ships faster at smaller scope to prove execution + monetization first.</li>
+              <li><b>Validation gate:</b> no full-production scaling until the demo is complete (playable + stable + pitch-ready).</li>
+              <li><b>Stronger terms:</b> demo + Steam page + trailer supports better publisher/investor conversations.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div style="font-weight:800; margin-bottom:6px;">Demo Funding Target</div>
+            <table aria-label="Demo funding target">
+              <thead>
+                <tr>
+                  <th>Target</th>
+                  <th>Low</th>
+                  <th>High</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vertical Slice Demo</td>
+                  <td class="money">$27,000</td>
+                  <td class="money">$50,000</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="note">These targets align with the demo scenarios on this page.</div>
+          </div>
+        </div>
+
+        <div style="font-weight:800; margin:14px 0 6px;">Inbound Funding Estimator (from Hotdog Hustler)</div>
+        <div class="fieldgrid">
+          <div class="field">
+            <label>HH Studio Revenue ($)</label>
+            <input id="llhh_studioRev" type="number" min="0" step="500" value="50000" />
+          </div>
+          <div class="field">
+            <label>Allocate to Last Light (%)</label>
+            <input id="llhh_alloc" type="number" min="0" max="100" step="1" value="70" />
+          </div>
+          <div class="field">
+            <label>Demo Target</label>
+            <select id="llhh_target">
+              <option value="27000">Demo Low ($27k)</option>
+              <option value="50000" selected>Demo High ($50k)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Notes</label>
+            <input id="llhh_note" type="text" value="Directional gate check (not a full P&L)" />
+          </div>
+        </div>
+
+        <div class="kpis" style="margin-top:14px;">
+          <div class="kpi">
+            <div class="lbl">Allocated to Last Light</div>
+            <div class="val" id="llhh_toLL">$—</div>
+            <div class="hint">HH studio revenue × allocation</div>
+          </div>
+          <div class="kpi">
+            <div class="lbl">Funding Gap</div>
+            <div class="val" id="llhh_gap">$—</div>
+            <div class="hint">Target – allocated</div>
+          </div>
+          <div class="kpi">
+            <div class="lbl">Gate Status</div>
+            <div class="val" id="llhh_status">—</div>
+            <div class="hint">Meets demo funding threshold?</div>
+          </div>
+        </div>
+
+        <div class="note">
+          If this gate is met, the demo can begin immediately under the milestone-based plan described above. If not, the studio can either (a) continue funding via Hotdog Hustler, or (b) raise a smaller, validation-only tranche.
+        </div>
+      </div>
+    </div>
+
+</div>
     </div>
 
     <!-- MARKET & COMPETITIVE -->
@@ -954,6 +1047,56 @@
       el.addEventListener("change", renderForecast);
     });
     f_csv.addEventListener("click", exportForecastCSV);
+
+
+    // ----------
+    // Hotdog Hustler → Last Light (Inbound funding estimator)
+    // ----------
+    (function(){
+      const $ = (id) => document.getElementById(id);
+      const studioRev = $("llhh_studioRev");
+      const alloc = $("llhh_alloc");
+      const target = $("llhh_target");
+
+      // If section isn't present, exit safely
+      if(!studioRev || !alloc || !target) return;
+
+      const toLL = $("llhh_toLL");
+      const gap = $("llhh_gap");
+      const status = $("llhh_status");
+
+      function money0(n){
+        if(n === null || n === undefined || !isFinite(n)) return "—";
+        return "$" + Math.round(n).toLocaleString("en-US");
+      }
+
+      function render(){
+        const sr = Math.max(0, Number(studioRev.value) || 0);
+        const a = Math.min(100, Math.max(0, Number(alloc.value) || 0)) / 100;
+        const t = Math.max(0, Number(target.value) || 0);
+
+        const allocated = sr * a;
+        const g = Math.max(0, t - allocated);
+
+        toLL.textContent = money0(allocated);
+        gap.textContent = money0(g);
+
+        if(allocated >= t){
+          status.textContent = "Gate Met";
+          status.style.color = "var(--good)";
+        } else {
+          status.textContent = "Not Yet";
+          status.style.color = "var(--warn)";
+        }
+      }
+
+      [studioRev, alloc, target].forEach(el=>{
+        el.addEventListener("input", render);
+        el.addEventListener("change", render);
+      });
+
+      render();
+    })();
 
     // init
     setMode("demo");
